@@ -1,23 +1,32 @@
 import React, {useEffect} from 'react';
 import Menu from "@/components/header/menu";
 import axios from "axios";
+import Head from "next/head";
 
 // @ts-ignore
-export default function Post({ post }) {
+export default function Post({post}) {
     useEffect(() => {
-       // const fu = async () => {
-       //     const res = await fetch(`https://1caravan.ru/wp-json/wp/v2/caravans/3734`)
-       //     const post = await res.json()
-       //     console.log('slug', post)
-       // }
-       // fu()
-       //  console.log('slug', post)
+        // const fu = async () => {
+        //     const res = await fetch(`https://1caravan.ru/wp-json/wp/v2/caravans/3734`)
+        //     const post = await res.json()
+        //     console.log('slug', post)
+        // }
+        // fu()
+        //  console.log('slug', post)
     }, [])
-    return(
+
+    return (
         <div>
+            <Head>
+                <title>{post.title.rendered} | Первый караван</title>
+                <meta name="description" content={`Купить/Заказать ${post.title.rendered} от производителя автодомов ${post._embedded['wp:term'][1][0].name}. Актуальная информация и приятная цена ждут Вас на нашем сайте! Подберем автодом под ваши пожелания`}/>
+                <meta name="viewport" content="width=device-width, initial-scale=1"/>
+                <link rel="icon" href="/favicon.ico"/>
+            </Head>
             <Menu/>
             <h1>{post.title.rendered}</h1>
-            <div className='text' dangerouslySetInnerHTML={{ __html: post.content.rendered}} />
+            <p>Производитель караванов {post._embedded['wp:term'][1][0].name}</p>
+            <div className='text' dangerouslySetInnerHTML={{__html: post.content.rendered}}/>
         </div>
     )
 }
@@ -59,17 +68,17 @@ export async function getStaticPaths() {
 
     // We'll pre-render only these paths at build time.
     // { fallback: false } means other routes should 404.
-    return { paths, fallback: false }
+    return {paths, fallback: false}
 }
 
 // This also gets called at build time
 // @ts-ignore
-export async function getStaticProps({ params }) {
+export async function getStaticProps({params}) {
     // params contains the post `id`.
     // If the route is like /posts/1, then params.id is 1
-    const res = await fetch(`https://1caravan.ru/wp-json/wp/v2/caravans?slug=${params.slug}`)
+    const res = await fetch(`https://1caravan.ru/wp-json/wp/v2/caravans?slug=${params.slug}&_embed`)
     const post = await res.json()
     // console.log(res)
     // Pass post data to the page via props
-    return { props: { post: post[0] } }
+    return {props: {post: post[0]}}
 }
