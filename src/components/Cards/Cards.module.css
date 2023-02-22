@@ -1,0 +1,188 @@
+.katalog {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 1200px;
+    margin: 30px auto;
+    gap: 15px;
+    list-style: none;
+    padding: 0;
+}
+
+.avtocard {
+    background: white;
+    color: black;
+    display: flex;
+    gap: 15px;
+    border: 1px solid #000000;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.image {
+    width: 100%;
+    height: 100%;
+    transform: scale(1.3);
+}
+
+.listavto {
+}
+
+.prevew {
+    width: calc(100% * 0.49);
+    position: relative;
+    overflow: hidden;
+}
+
+.prevew span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
+    border-radius: 6px 0;
+    padding: 5px;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.information {
+    width: calc(100% * 0.51);
+    padding: 10px 10px 10px 0px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    gap: 10px;
+    align-items: flex-start;
+    min-height: 231px;
+}
+
+.ssilka {
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
+    text-transform: uppercase;
+    color: #000000;
+    text-decoration: none;
+    display: flex;
+    width: 100%;
+}
+
+.pmr5 p {
+    margin: 5px 0;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.statusN {
+    background: linear-gradient(117.65deg, #1C8E00 19.25%, #D6F578 89.5%);
+    color: #FFFFFF;
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: row;
+    border-radius: 3px;
+    padding: 0 10px;
+    gap: 10px;
+}
+
+.statusP {
+    background: linear-gradient(135deg, #910000 0%, #F20000 100%);
+    color: #FFFFFF;
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: row;
+    border-radius: 3px;
+    padding: 0 10px;
+    gap: 10px;
+}
+
+.statusZ {
+    background: linear-gradient(132.63deg, #DDC702 0.12%, #EDF578 96.78%);
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: row;
+    border-radius: 3px;
+    padding: 0 10px;
+    gap: 10px;
+}
+
+.statusV {
+    background: linear-gradient(117.65deg, #1C8E00 19.25%, #D6F578 89.5%);
+    color: #FFFFFF;
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: row;
+    border-radius: 3px;
+    padding: 0 10px;
+    gap: 10px;
+}
+
+.statusPZ {
+    background: linear-gradient(135deg, #828282 0%, #B3B3B3 100%);
+    color: #FFFFFF;
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: row;
+    border-radius: 3px;
+    padding: 0 10px;
+    gap: 10px;
+}
+
+.salePrice {
+    font-weight: 400;
+    font-size: 14px;
+    letter-spacing: 0.1em;
+    text-decoration: line-through;
+    color: rgba(0, 0, 0, 0.72);
+    margin: 0;
+}
+
+.usualPrice {
+    font-weight: 700;
+    font-size: 32px;
+    color: #000000;
+    margin: 0;
+}
+
+.redprice {
+    color: #E8473A;
+}
+
+.btnlight {
+    background: linear-gradient(90deg, #EA511B 0%, #F78E69 96.98%);
+    border-radius: 5px;
+    font-weight: 500;
+    font-size: 14px;
+    color: white;
+    text-decoration: none;
+}
+
+.btndark {
+    background: linear-gradient(90deg, #0F0F1B 0%, rgba(34, 34, 58, 0.55) 100%), #0F0F1B;
+    border-radius: 5px;
+    font-weight: 500;
+    font-size: 14px;
+    color: white;
+    text-decoration: none;
+}
+
+.btn_fo{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 10px;
+    width: 100%;
+}
+.btn_fo a{
+    padding: 10px 15px;
+}
+.iconka{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

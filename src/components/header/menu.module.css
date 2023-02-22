@@ -1,0 +1,22 @@
+.btn{
+    color: black;
+    background: yellow;
+    padding: 5px 15px;
+    border:none;
+}
+
+.btn2{
+    color: white;
+    background: green;
+    padding: 5px 15px;
+    border:none;
+}
+.menu{
+    max-width: 1200px;
+    margin: auto;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: green;
+}
