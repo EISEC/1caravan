@@ -1,11 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import Link from "next/link";
 import Image from 'next/image'
-import {Montserrat} from '@next/font/google'
 import cl from './Cards.module.css';
 import axios from "axios";
 
-const montserrat = Montserrat({subsets: ['latin']})
 
 // @ts-ignore
 const Cards = ({cards}) => {
@@ -29,7 +27,7 @@ const Cards = ({cards}) => {
         return formatPrice
     }
 
-    const [showCount, setShowCount] = useState(4)
+    const [showCount, setShowCount] = useState(6)
 
     const isMobile = window.matchMedia('(max-width: 600px)').matches
 
@@ -41,7 +39,7 @@ const Cards = ({cards}) => {
     }
 
     function onShowMore() {
-        if(isMobile) {
+        if (isMobile) {
             setShowCount(prevState => prevState + 2)
         } else {
             setShowCount(prevState => prevState + 4)
@@ -51,7 +49,7 @@ const Cards = ({cards}) => {
 
 
     return (
-        <section className={`${cl.listavto} ${montserrat.className}`}>
+        <section className={`${cl.listavto}`}>
             <ul className={cl.katalog}>
                 {/*// @ts-ignore*/}
                 {getPartCards(cards).map(el => {
@@ -220,7 +218,7 @@ const Cards = ({cards}) => {
             </ul>
             {showCount <= cards.length ?
                 (
-                    <button onClick={() => onShowMore()}>Загрузить больше</button>
+                    <button className={'btn-green'} onClick={() => onShowMore()}>Загрузить больше</button>
                 ) :
                 (
                     <p>Всё загружено</p>

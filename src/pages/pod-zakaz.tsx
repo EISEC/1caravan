@@ -62,7 +62,11 @@ export default function PodZakaz() {
             <main>
                 {doma.length ? (
                     <Cards cards={doma}/>
-                ) : (<h1>подождите, загружаем</h1>)}
+                ) : (
+                    <section>
+                        <h1>подождите, загружаем</h1>
+                    </section>
+                )}
             </main>
         </>
     )

@@ -9,21 +9,23 @@ export default function Blog({posts}) {
         <>
             <Menu/>
             <main>
-                <ul>
-                    {/*// @ts-ignore*/}
-                    {posts.map((post) => (
-                        <li key={post.id}>
-                            <Link
-                                href={{
-                                    pathname: "posts/[id]",
-                                    query: {id: post.id},
-                                }}
-                            >
-                                {post.title.rendered}
-                            </Link>
-                        </li>
-                    ))}
-                </ul>
+                <section>
+                    <ul>
+                        {/*// @ts-ignore*/}
+                        {posts.map((post) => (
+                            <li key={post.id}>
+                                <Link
+                                    href={{
+                                        pathname: "posts/[id]",
+                                        query: {id: post.id},
+                                    }}
+                                >
+                                    {post.title.rendered}
+                                </Link>
+                            </li>
+                        ))}
+                    </ul>
+                </section>
             </main>
         </>
     )

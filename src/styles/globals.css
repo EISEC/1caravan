@@ -1,4 +1,38 @@
-section{
-  max-width: 1200px;
-  margin: 0 auto;
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+}
+
+.btn-green {
+    background: linear-gradient(117.65deg, #1C8E00 19.25%, #D6F578 89.5%);
+    border-radius: 10px;
+    color: white;
+    cursor: pointer;
+    width: 275px;
+    height: 48px;
+    font-weight: 500;
+    font-size: 21px;
+    text-transform: uppercase;
+    border: none;
+    display: block;
+    margin: auto;
+}
+
+.ho2 {
+    font-weight: 500;
+    font-size: 32px;
+    text-transform: uppercase;
+}
+
+.po2 {
+    font-weight: 300;
+    font-size: 22px;
+}
+
+section, .auto_center {
+    max-width: 1200px;
+    margin: 0 auto;
 }

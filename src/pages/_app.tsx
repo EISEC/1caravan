@@ -1,13 +1,22 @@
 import '@/styles/globals.css'
-import type { AppProps } from 'next/app'
+import type {AppProps} from 'next/app'
 import NavigationLoader from "@/components/header/loaderPage";
+import {Montserrat} from "@next/font/google";
 
-export default function App({ Component, pageProps }: AppProps) {
+const montserrat = Montserrat({subsets: ['latin']})
 
-  return (
-      <>
-        <NavigationLoader/>
-        <Component {...pageProps} />
-      </>
-  )
+export default function App({Component, pageProps}: AppProps) {
+
+    return (
+        <>
+            <style jsx global>{`
+              html {
+                font-family: ${montserrat.style.fontFamily};
+              }
+            `}
+            </style>
+            <NavigationLoader/>
+            <Component {...pageProps} />
+        </>
+    )
 }

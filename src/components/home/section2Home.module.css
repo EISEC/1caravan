@@ -1,0 +1,22 @@
+.relative_prava {
+    position: relative;
+    margin: 90px auto;
+}
+
+.iconca {
+    position: absolute;
+    top: -35px;
+    right: -40px;
+}
+
+.darkthem {
+    background: linear-gradient(90deg, #0F0F1B 0%, rgba(34, 34, 58, 0.55) 100%), #0F0F1B;
+    border-radius: 10px;
+    padding: 25px;
+}
+
+.darkthem p {
+    font-size: 21px;
+    color: white;
+}
+

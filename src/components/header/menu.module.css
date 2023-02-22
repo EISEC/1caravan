@@ -1,22 +1,39 @@
-.btn{
-    color: black;
-    background: yellow;
-    padding: 5px 15px;
-    border:none;
-}
-
-.btn2{
-    color: white;
-    background: green;
-    padding: 5px 15px;
-    border:none;
-}
-.menu{
+.menu {
     max-width: 1200px;
     margin: auto;
     width: 100%;
+    background: linear-gradient(90deg, #0F0F1B 0%, rgba(34, 34, 58, 0.55) 100%), #0F0F1B;
+    border-radius: 10px;
+    position: fixed;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    z-index: 99;
     display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+.logo{
+    padding-left: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.insideMenu {
+    display: flex;
+    list-style: none;
+    padding: 5px 15px;
     align-items: center;
     justify-content: space-between;
-    background: green;
+    gap: 15px;
+}
+
+.insideMenu a {
+    color: white;
+    text-decoration: none;
+    font-weight: 300;
+    font-size: 20px;
+}
+
+.insideMenu a:hover {
+    color: #FC5649;
 }

@@ -1,8 +1,5 @@
 import Head from 'next/head'
-import Link from "next/link";
 import Menu from "@/components/header/menu";
-import Catalog from "@/components/avtodom/catalog";
-import {any} from "prop-types";
 import axios from 'axios'
 import {useEffect, useState} from "react";
 import Cards from "@/components/Cards/Cards";
@@ -56,11 +53,11 @@ export default function Avtodom(props) {
                 <link rel="icon" href="/favicon.ico"/>
             </Head>
             <Menu/>
-            <div>
+            <main>
                 {doma.length ? (
                     <Cards cards={doma}/>
                 ) : (<h1>подождите, загружаем</h1>)}
-            </div>
+            </main>
         </>
     )
 }

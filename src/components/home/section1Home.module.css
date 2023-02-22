@@ -1,0 +1,52 @@
+.pochemu {
+    padding: 30px 0;
+}
+
+.pochemu h2 {
+    text-transform: uppercase;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 32px;
+}
+
+.card_fav {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.card_icon_fav {
+    background: linear-gradient(90deg, #EA511B 0%, #F78E69 96.98%);
+    color: #FFFFFF;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px;
+    justify-content: flex-end;
+    box-sizing: border-box;
+    padding: 20px;
+}
+
+.card_icon_fav h3 {
+    font-weight: 700;
+    font-size: 22px;
+    text-transform: uppercase;
+}
+
+.card_icon_fav p {
+    font-weight: 400;
+    font-size: 16px;
+    min-height: 100px;
+    margin: 0;
+    display: flex;
+    align-items: center;
+}
+
+.iconca {
+    min-height: 138px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

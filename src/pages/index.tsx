@@ -3,6 +3,9 @@ import Menu from "@/components/header/menu";
 import {useEffect, useState} from "react";
 import axios from "axios";
 import Cards from "@/components/Cards/Cards";
+import Section1Home from "@/components/home/section1Home";
+import Section2Home from "@/components/home/section2Home";
+import CapHome from "@/components/home/capHome";
 
 
 export default function Home() {
@@ -55,6 +58,14 @@ export default function Home() {
             </Head>
             <Menu/>
             <main>
+                <CapHome/>
+                <Section1Home/>
+                <Section2Home/>
+
+                <div className="auto_center">
+                    <h2 className="ho2">Популярные караваны</h2>
+                    <p className="po2">Самые просматриваемые караваны этой недели</p>
+                </div>
                 {doma.length ? (
                     <Cards cards={doma}/>
                 ) : (
