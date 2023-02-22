@@ -32,7 +32,6 @@ const Cards = ({cards}) => {
     const [showCount, setShowCount] = useState(4)
 
     const isMobile = window.matchMedia('(max-width: 600px)').matches
-    console.log('isMob', isMobile)
 
     // @ts-ignore
     function getPartCards(arr) {
