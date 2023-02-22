@@ -29,11 +29,33 @@ const Cards = ({cards}) => {
         return formatPrice
     }
 
+    const [showCount, setShowCount] = useState(4)
+
+    const isMobile = window.matchMedia('(max-width: 600px)').matches
+    console.log('isMob', isMobile)
+
+    // @ts-ignore
+    function getPartCards(arr) {
+        const curShowCount = showCount <= arr.length ? showCount : arr.length
+
+        return arr.slice(0, curShowCount)
+    }
+
+    function onShowMore() {
+        if(isMobile) {
+            setShowCount(prevState => prevState + 2)
+        } else {
+            setShowCount(prevState => prevState + 4)
+
+        }
+    }
+
+
     return (
         <section className={`${cl.listavto} ${montserrat.className}`}>
             <ul className={cl.katalog}>
                 {/*// @ts-ignore*/}
-                {cards.map(el => {
+                {getPartCards(cards).map(el => {
                     const statusDom = el.acf.status
                     return (
                         <li className={cl.avtocard} key={el.id}>
@@ -197,6 +219,15 @@ const Cards = ({cards}) => {
                     )
                 })}
             </ul>
+            {showCount <= cards.length ?
+                (
+                    <button onClick={() => onShowMore()}>Загрузить больше</button>
+                ) :
+                (
+                    <p>Всё загружено</p>
+                )
+
+            }
         </section>
     )
         ;
