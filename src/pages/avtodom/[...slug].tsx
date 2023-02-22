@@ -5,7 +5,8 @@ import Head from "next/head";
 
 // @ts-ignore
 export default function Post({post}) {
-    const proizvoditel = post._embedded['wp:term'][1][0].name
+    const proizvoditel = 'Производитель'
+    // post._embedded['wp:term'][1][0].name
 
     return (
         <>
