@@ -5,20 +5,22 @@ import Head from "next/head";
 
 // @ts-ignore
 export default function Post({post}) {
+    const proizvoditel = post._embedded['wp:term'][1][0].name
+
     return (
         <div>
             <Head>
                 <title>{post.title.rendered} | Первый караван</title>
                 <meta name="description"
-                      content={`Купить/Заказать ${post.title.rendered} от производителя автодомов ${post._embedded['wp:term'][1][0].name}. Актуальная информация и приятная цена ждут Вас на нашем сайте! Подберем автодом под ваши пожелания`}/>
+                      content={`Купить/Заказать ${post.title.rendered} от производителя автодомов ${proizvoditel}. Актуальная информация и приятная цена ждут Вас на нашем сайте! Подберем автодом под ваши пожелания`}/>
                 <meta name="keywords"
-                      content={`купить, автодом, караван, прицеп дачу, ${post._embedded['wp:term'][1][0].name}, ${post.title.rendered}, ${post.acf.god_vipuska}`}/>
+                      content={`купить, автодом, караван, прицеп дачу, ${proizvoditel}, ${post.title.rendered}, ${post.acf.god_vipuska}`}/>
                 <meta name="viewport" content="width=device-width, initial-scale=1"/>
                 <link rel="icon" href="/favicon.ico"/>
             </Head>
             <Menu/>
             <h1>{post.title.rendered}</h1>
-            <p>Производитель караванов {post._embedded['wp:term'][1][0].name}</p>
+            <p>Производитель караванов {proizvoditel}</p>
             <div className='text' dangerouslySetInnerHTML={{__html: post.content.rendered}}/>
         </div>
     )
