@@ -58,8 +58,8 @@ export default function PodZakaz() {
                 <meta name="viewport" content="width=device-width, initial-scale=1"/>
                 <link rel="icon" href="/favicon.ico"/>
             </Head>
+            <Menu/>
             <main>
-                <Menu/>
                 {doma.length ? (
                     <Cards cards={doma}/>
                 ) : (<h1>подождите, загружаем</h1>)}

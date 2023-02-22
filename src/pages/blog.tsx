@@ -6,24 +6,26 @@ import Menu from "@/components/header/menu";
 export default function Blog({posts}) {
 
     return (
-        <main>
+        <>
             <Menu/>
-            <ul>
-                {/*// @ts-ignore*/}
-                {posts.map((post) => (
-                    <li key={post.id}>
-                        <Link
-                            href={{
-                                pathname: "posts/[id]",
-                                query: {id: post.id},
-                            }}
-                        >
-                            {post.title.rendered}
-                        </Link>
-                    </li>
-                ))}
-            </ul>
-        </main>
+            <main>
+                <ul>
+                    {/*// @ts-ignore*/}
+                    {posts.map((post) => (
+                        <li key={post.id}>
+                            <Link
+                                href={{
+                                    pathname: "posts/[id]",
+                                    query: {id: post.id},
+                                }}
+                            >
+                                {post.title.rendered}
+                            </Link>
+                        </li>
+                    ))}
+                </ul>
+            </main>
+        </>
     )
 }
 

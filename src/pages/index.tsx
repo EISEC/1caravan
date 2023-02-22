@@ -1,6 +1,4 @@
 import Head from 'next/head'
-import Image from 'next/image'
-import styles from '@/styles/Home.module.css'
 import Menu from "@/components/header/menu";
 import {useEffect, useState} from "react";
 import axios from "axios";
@@ -49,16 +47,21 @@ export default function Home() {
         <>
             <Head>
                 <title>Первый караван | Купить автодом, прицеп-дача, дом на колесах</title>
-                <meta name="description" content="Если вы еще не знаете подойдет вам дом на колесах или нет, то вы можете позвонить нам или оставить свои контактные данные, а мы в свою очередь вас проконсультируем и вы решите для себя нужно покупать дом на колесах или нет."/>
+                <meta name="description"
+                      content="Если вы еще не знаете подойдет вам дом на колесах или нет, то вы можете позвонить нам или оставить свои контактные данные, а мы в свою очередь вас проконсультируем и вы решите для себя нужно покупать дом на колесах или нет."/>
                 <meta name="keywords" content="дом колесах, прицеп-дача, автодом, купить"/>
                 <meta name="viewport" content="width=device-width, initial-scale=1"/>
                 <link rel="icon" href="/favicon.ico"/>
             </Head>
+            <Menu/>
             <main>
-                <Menu/>
                 {doma.length ? (
                     <Cards cards={doma}/>
-                ) : (<h1>подождите, загружаем</h1>)}
+                ) : (
+                    <section>
+                        <h1>подождите, загружаем</h1>
+                    </section>
+                )}
             </main>
         </>
     )

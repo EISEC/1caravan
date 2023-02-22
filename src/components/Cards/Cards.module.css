@@ -1,7 +1,6 @@
 .katalog {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    max-width: 1200px;
     margin: 30px auto;
     gap: 15px;
     list-style: none;

@@ -8,7 +8,7 @@ export default function Post({post}) {
     const proizvoditel = post._embedded['wp:term'][1][0].name
 
     return (
-        <div>
+        <>
             <Head>
                 <title>{post.title.rendered} | Первый караван</title>
                 <meta name="description"
@@ -19,10 +19,14 @@ export default function Post({post}) {
                 <link rel="icon" href="/favicon.ico"/>
             </Head>
             <Menu/>
-            <h1>{post.title.rendered}</h1>
-            <p>Производитель караванов {proizvoditel}</p>
-            <div className='text' dangerouslySetInnerHTML={{__html: post.content.rendered}}/>
-        </div>
+            <main>
+                <section>
+                    <h1>{post.title.rendered}</h1>
+                    <p>Производитель караванов {proizvoditel}</p>
+                    <div className='text' dangerouslySetInnerHTML={{__html: post.content.rendered}}/>
+                </section>
+            </main>
+        </>
     )
 }
 

@@ -3,9 +3,12 @@ import Menu from "@/components/header/menu";
 
 const Tavary = () => {
     return (
-        <div>
+        <>
             <Menu/>
-        </div>
+            <main>
+                
+            </main>
+        </>
     );
 };
 
