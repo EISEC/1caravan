@@ -2,5 +2,8 @@
     max-width: 100%;
     width: 100%;
     height: 80vh;
-    /*background-image: url("./public/fonhome.jpg");*/
+    background-image: url("/fonhome.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
 }

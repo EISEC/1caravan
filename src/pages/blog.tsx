@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from "next/link";
 import Menu from "@/components/header/menu";
+import CapHome from "@/components/home/capHome";
 
 // @ts-ignore
 export default function Blog({posts}) {
@@ -9,6 +10,7 @@ export default function Blog({posts}) {
         <>
             <Menu/>
             <main>
+                <CapHome/>
                 <section>
                     <ul>
                         {/*// @ts-ignore*/}

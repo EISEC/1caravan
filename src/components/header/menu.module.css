@@ -12,19 +12,36 @@
     justify-content: space-between;
     align-items: center;
     gap: 20px;
+    top: 30px;
 }
-.logo{
+
+.menu nav {
+    width: 100%;
+}
+
+.whishlist {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: nowrap;
+    padding: 15px;
+}
+
+.logo {
     padding-left: 20px;
     margin-top: 10px;
     margin-bottom: 10px;
 }
+
 .insideMenu {
     display: flex;
     list-style: none;
     padding: 5px 15px;
     align-items: center;
-    justify-content: space-between;
-    gap: 15px;
+    gap: 35px;
+    justify-content: center;
 }
 
 .insideMenu a {
@@ -36,4 +53,15 @@
 
 .insideMenu a:hover {
     color: #FC5649;
+}
+
+.telefon {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: nowrap;
+    padding: 15px 0;
+    padding-right: 15px;
 }

@@ -2,7 +2,7 @@ import React from 'react';
 import Menu from "@/components/header/menu";
 import CapHome from "@/components/home/capHome";
 
-const Tavary = () => {
+const Wishlist = () => {
     return (
         <>
             <Menu/>
@@ -13,4 +13,4 @@ const Tavary = () => {
     );
 };
 
-export default Tavary;
+export default Wishlist;

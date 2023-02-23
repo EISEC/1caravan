@@ -3,6 +3,7 @@ import Menu from "@/components/header/menu";
 import axios from 'axios'
 import {useEffect, useState} from "react";
 import Cards from "@/components/Cards/Cards";
+import CapHome from "@/components/home/capHome";
 
 // @ts-ignore
 export default function Avtodom(props) {
@@ -54,9 +55,14 @@ export default function Avtodom(props) {
             </Head>
             <Menu/>
             <main>
+                <CapHome/>
                 {doma.length ? (
                     <Cards cards={doma}/>
-                ) : (<h1>подождите, загружаем</h1>)}
+                ) : (
+                    <section>
+                        <h1>подождите, загружаем</h1>
+                    </section>
+                )}
             </main>
         </>
     )
