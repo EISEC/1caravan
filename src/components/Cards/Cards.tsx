@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from 'next/image'
 import cl from './Cards.module.css';
 import axios from "axios";
+import { motion } from "framer-motion";
 
 
 // @ts-ignore
@@ -47,15 +48,43 @@ const Cards = ({cards}) => {
         }
     }
 
+    const container = {
+        hidden: { opacity: 1, scale: 0 },
+        visible: {
+            opacity: 1,
+            scale: 1,
+            transition: {
+                delayChildren: 0.3,
+                staggerChildren: 0.2
+            }
+        }
+    };
+
+    const item = {
+        hidden: { y: 50, opacity: 0 },
+        visible: {
+            y: 0,
+            opacity: 1
+        }
+    };
 
     return (
         <section className={`${cl.listavto}`}>
-            <ul className={cl.katalog}>
+            <motion.ul
+                className={cl.katalog}
+                variants={container}
+                initial="hidden"
+                animate="visible"
+            >
                 {/*// @ts-ignore*/}
                 {getPartCards(cards).map(el => {
                     const statusDom = el.acf.status
                     return (
-                        <li className={cl.avtocard} key={el.id}>
+                        <motion.li
+                            className={cl.avtocard}
+                            key={el.id}
+                            variants={item}
+                        >
                             <div className={cl.prevew}>
                                 <Image
 
@@ -212,10 +241,10 @@ const Cards = ({cards}) => {
                                     </Link>
                                 </div>
                             </div>
-                        </li>
+                        </motion.li>
                     )
                 })}
-            </ul>
+            </motion.ul>
             {showCount <= cards.length ?
                 (
                     <button className={'btn-green'} onClick={() => onShowMore()}>Загрузить больше</button>

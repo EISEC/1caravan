@@ -2,6 +2,7 @@ import React, {useEffect} from 'react';
 import Menu from "@/components/header/menu";
 import axios from "axios";
 import Head from "next/head";
+import cl from "./slug.module.css"
 
 // @ts-ignore
 export default function Post({post}) {
@@ -21,11 +22,13 @@ export default function Post({post}) {
             </Head>
             <Menu/>
             <main>
-                <section>
-                    <h1>{post.title.rendered}</h1>
-                    <p>Производитель караванов {proizvoditel}</p>
-                    <div className='text' dangerouslySetInnerHTML={{__html: post.content.rendered}}/>
-                </section>
+                <div className={cl.topheader}>
+                    <div className={`auto_center ${cl.topcaravan}`}>
+                        <h1>{post.title.rendered}</h1>
+                        <p>Производитель караванов {proizvoditel}</p>
+                    </div>
+                </div>
+                <section className='text' dangerouslySetInnerHTML={{__html: post.content.rendered}}/>
             </main>
         </>
     )
