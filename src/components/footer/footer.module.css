@@ -1,0 +1,45 @@
+.footer {
+    background: linear-gradient(90deg, #0F0F1B 0%, rgba(34, 34, 58, 0.55) 100%), #0F0F1B;
+    color: white;
+}
+
+.nameFot {
+    width: calc(100% / 4);
+}
+
+.nameFot h4, .nameKontakt h4 {
+    font-weight: 500;
+    font-size: 28px;
+}
+
+.footer_menu {
+    list-style: none;
+    padding: 0;
+}
+
+.footer_menu a {
+    color: white;
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 2;
+}
+
+.footer_menu a:hover {
+    color: #FC5649;
+}
+
+.adress {
+}
+
+.map {
+}
+
+.fotme {
+    display: flex;
+    gap: 20px;
+}
+
+.nameKontakt {
+    width: calc(100% / 2);
+}

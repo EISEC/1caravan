@@ -6,6 +6,8 @@ import Cards from "@/components/Cards/Cards";
 import Section1Home from "@/components/home/section1Home";
 import Section2Home from "@/components/home/section2Home";
 import CapHome from "@/components/home/capHome";
+import SectionTextHome from "@/components/home/sectionTextHome";
+import Footer from "@/components/footer/footer";
 
 
 export default function Home() {
@@ -46,6 +48,7 @@ export default function Home() {
     }, [])
 
 
+    // @ts-ignore
     return (
         <>
             <Head>
@@ -73,7 +76,9 @@ export default function Home() {
                         <h1>подождите, загружаем</h1>
                     </section>
                 )}
+                <SectionTextHome/>
             </main>
+            <Footer/>
         </>
     )
 }

@@ -53,14 +53,6 @@ const Menu = () => {
                         {/*// @ts-ignore*/}
                         <li itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ItemList">
                             {/*// @ts-ignore*/}
-                            <Link href={'/sold'} itemprop="url">
-                                Проданые
-                            </Link>
-                            <meta itemProp="name" content="Проданные"/>
-                        </li>
-                        {/*// @ts-ignore*/}
-                        <li itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ItemList">
-                            {/*// @ts-ignore*/}
                             <Link href={'/tavary'} itemprop="url">
                                 Товары
                             </Link>
@@ -73,6 +65,14 @@ const Menu = () => {
                                 Блог
                             </Link>
                             <meta itemProp="name" content="Блог"/>
+                        </li>
+                        {/*// @ts-ignore*/}
+                        <li itemProp="itemListElement" itemScope="" itemType="https://schema.org/ItemList">
+                            {/*// @ts-ignore*/}
+                            <Link href={'#contacts'} itemprop="url">
+                                Контакты
+                            </Link>
+                            <meta itemProp="name" content="Контакты"/>
                         </li>
                     </ul>
                 </nav>

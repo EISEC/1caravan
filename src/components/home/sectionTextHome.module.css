@@ -1,0 +1,18 @@
+.textHome {
+    margin-top: 90px;
+    margin-bottom: 90px;
+}
+
+.textHome h2 {
+    font-weight: 700;
+    font-size: 36px;
+    color: #000000;
+    margin-bottom: 60px;
+}
+
+.textHome p {
+    font-weight: 300;
+    font-size: 28px;
+    color: #000000;
+    text-align: justify;
+}
