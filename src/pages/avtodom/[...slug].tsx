@@ -37,33 +37,43 @@ export default function Post({post}) {
 // This function gets called at build time
 export async function getStaticPaths() {
     // Call an external API endpoint to get posts
-    const first100 = 'https://1caravan.ru/wp-json/wp/v2/caravans?_fields=id,slug&per_page=100'
-    const offset100 = 'https://1caravan.ru/wp-json/wp/v2/caravans?_fields=id,slug&per_page=100&offset=100'
-    const offset200 = 'https://1caravan.ru/wp-json/wp/v2/caravans?_fields=id,slug&per_page=100&offset=200'
-    const offset300 = 'https://1caravan.ru/wp-json/wp/v2/caravans?_fields=id,slug&per_page=100&offset=300'
-    const offset400 = 'https://1caravan.ru/wp-json/wp/v2/caravans?_fields=id,slug&per_page=100&offset=400'
-    const offset500 = 'https://1caravan.ru/wp-json/wp/v2/caravans?_fields=id,slug&per_page=100&offset=500'
+    const allCaravans = 'https://1caravan.ru/wp-json/api/v2/doma/all'
+    // const first100 = 'https://1caravan.ru/wp-json/wp/v2/caravans?_fields=id,slug&per_page=100'
+    // const offset100 = 'https://1caravan.ru/wp-json/wp/v2/caravans?_fields=id,slug&per_page=100&offset=100'
+    // const offset200 = 'https://1caravan.ru/wp-json/wp/v2/caravans?_fields=id,slug&per_page=100&offset=200'
+    // const offset300 = 'https://1caravan.ru/wp-json/wp/v2/caravans?_fields=id,slug&per_page=100&offset=300'
+    // const offset400 = 'https://1caravan.ru/wp-json/wp/v2/caravans?_fields=id,slug&per_page=100&offset=400'
+    // const offset500 = 'https://1caravan.ru/wp-json/wp/v2/caravans?_fields=id,slug&per_page=100&offset=500'
     // const offset600 = 'https://1caravan.ru/wp-json/wp/v2/caravans?_fields=id,slug&per_page=100&offset=600'
+    if (process.env.SKIP_BUILD_STATIC_GENERATION) {
+        return {
+            paths: [],
+            fallback: 'blocking',
+        }
+    }
 
-    const res = await Promise.allSettled(
-        [
-            axios.get(first100),
-            axios.get(offset100),
-            axios.get(offset200),
-            axios.get(offset300),
-            axios.get(offset400),
-            axios.get(offset500),
-        ]
-    )
-    // @ts-ignore
-    const all = []
-    // @ts-ignore
-    res.forEach(arr => arr.value.data.length && all.push(...arr.value.data))
-    // @ts-ignore
+    // Call an external API endpoint to get posts
+    const res = await fetch(allCaravans)
+    const allDom = await res.json()
+    // const res = await Promise.allSettled(
+    //     [
+    //         axios.get(first100),
+    //         axios.get(offset100),
+    //         axios.get(offset200),
+    //         axios.get(offset300),
+    //         axios.get(offset400),
+    //         axios.get(offset500),
+    //     ]
+    // )
+    // // @ts-ignore
+    // const all = []
+    // // @ts-ignore
+    // res.forEach(arr => arr.value.data.length && all.push(...arr.value.data))
+    // // @ts-ignore
 
     // Get the paths we want to pre-render based on posts
     // @ts-ignore
-    const paths = all.map((post) => ({
+    const paths = allDom.map((post) => ({
         params: {
             slug: [post.slug],
         },
