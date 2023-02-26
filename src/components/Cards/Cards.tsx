@@ -10,7 +10,6 @@ import { motion } from "framer-motion";
 const Cards = ({cards}) => {
     const [euro, setEuro] = useState(0)
 
-
     // @ts-ignore
     useEffect(() => {
         async function getEuro() {
@@ -78,7 +77,7 @@ const Cards = ({cards}) => {
             >
                 {/*// @ts-ignore*/}
                 {getPartCards(cards).map(el => {
-                    const statusDom = el.acf.status
+                    const statusDom = el.status
                     return (
                         <motion.li
                             className={cl.avtocard}
@@ -88,13 +87,13 @@ const Cards = ({cards}) => {
                             <div className={cl.prevew}>
                                 <Image
 
-                                    src={el._embedded['wp:featuredmedia'][0].source_url}
-                                    alt={el.title.rendered}
+                                    src={el.img}
+                                    alt={el.title}
                                     width={800}
                                     height={500}
                                     className={cl.image}
                                     priority/>
-                                <span>№{el.acf.vin}</span>
+                                <span>№{el.vin}</span>
                             </div>
                             <div className={cl.information}>
                                 <Link href={{
@@ -102,7 +101,7 @@ const Cards = ({cards}) => {
                                     query: {slug: el.slug},
                                 }}
                                       className={cl.ssilka}>
-                                    {el.title.rendered}
+                                    {el.title}
                                 </Link>
 
                                 {statusDom == 'Выбрать' && (
@@ -219,14 +218,14 @@ const Cards = ({cards}) => {
                                     </div>
                                 )}
 
-                                {el.acf.prices_sale ?
+                                {el.prices_sale ?
                                     (
-                                        <p className={cl.salePrice}>{getFormatPrice(el.acf.price)} ₽</p>
+                                        <p className={cl.salePrice}>{getFormatPrice(el.price)} ₽</p>
                                     ) : null
                                 }
 
-                                <p className={`${cl.usualPrice} ${statusDom == 'Выбрать' && el.acf.prices_sale != 0 ? cl.redprice : ''} ${statusDom == 'В пути' && el.acf.prices_sale != 0 ? cl.redprice : ''}`}>
-                                    {el.acf.prices_sale ? getFormatPrice(el.acf.prices_sale) : getFormatPrice(el.acf.price)} ₽
+                                <p className={`${cl.usualPrice} ${statusDom == 'Выбрать' && el.prices_sale != 0 ? cl.redprice : ''} ${statusDom == 'В пути' && el.prices_sale != 0 ? cl.redprice : ''}`}>
+                                    {el.prices_sale ? getFormatPrice(el.prices_sale) : getFormatPrice(el.price)} ₽
                                 </p>
                                 <div className={cl.btn_fo}>
                                     <Link href={'#'} className={cl.btnlight}>

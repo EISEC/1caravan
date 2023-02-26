@@ -68,8 +68,9 @@ const Footer = () => {
                         </div>
                     </div>
                     <div className={cl.map}>
-                        <Script  type="text/javascript" charSet="utf-8" async
-                                src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A8e0909ee48fb0c759129f6db6cbb220188d65471000e766c8f7c5845c9c8d6ee&amp;width=442&amp;height=400&amp;lang=ru_RU&amp;scroll=false" />
+                        <iframe
+                            src="https://yandex.ru/map-widget/v1/?um=constructor%3A8e0909ee48fb0c759129f6db6cbb220188d65471000e766c8f7c5845c9c8d6ee&amp;source=constructor"
+                            width="100%" height="300" frameBorder="0"></iframe>
                     </div>
                 </div>
             </div>

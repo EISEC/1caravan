@@ -12,34 +12,10 @@ export default function Avtodom(props) {
 
     useEffect(() => {
         const getDoma = async () => {
-            const first100 = 'https://1caravan.ru/wp-json/wp/v2/caravans?_fields=id,slug,title.rendered,_price,acf.price,_links.wp:featuredmedia,_embedded,acf.strana_proiz,acf.vin,acf.god_vipuska,acf.kol_sleep,acf.prices_sale,acf.status&per_page=100&_embed=wp:featuredmedia&catavtodom=8'
-            const offset100 = 'https://1caravan.ru/wp-json/wp/v2/caravans?_fields=id,slug,title.rendered,_price,acf.price,_links.wp:featuredmedia,_embedded,acf.strana_proiz,acf.vin,acf.god_vipuska,acf.kol_sleep,acf.prices_sale,acf.status&per_page=100&_embed=wp:featuredmedia&offset=100&catavtodom=8'
-            // const offset200 = 'https://1caravan.ru/wp-json/wp/v2/caravans?_fields=id,slug,title.rendered,_price,acf.price,_links.wp:featuredmedia,_embedded,acf.strana_proiz,acf.vin,acf.god_vipuska,acf.kol_sleep,acf.prices_sale,acf.status&per_page=100&_embed=wp:featuredmedia&offset=200&catavtodom=8'
-            // const offset300 = 'https://1caravan.ru/wp-json/wp/v2/caravans?_fields=id,slug,title.rendered,_price,acf.price,_links.wp:featuredmedia,_embedded,acf.strana_proiz,acf.vin,acf.god_vipuska,acf.kol_sleep,acf.prices_sale,acf.status&per_page=100&_embed=wp:featuredmedia&offset=300&catavtodom=8'
-            // const offset400 = 'https://1caravan.ru/wp-json/wp/v2/caravans?_fields=id,slug,title.rendered,_price,acf.price,_links.wp:featuredmedia,_embedded,acf.strana_proiz,acf.vin,acf.god_vipuska,acf.kol_sleep,acf.prices_sale,acf.status&per_page=100&_embed=wp:featuredmedia&offset=400&catavtodom=8'
-            // const offset500 = 'https://1caravan.ru/wp-json/wp/v2/caravans?_fields=id,slug,title.rendered,_price,acf.price,_links.wp:featuredmedia,_embedded,acf.strana_proiz,acf.vin,acf.god_vipuska,acf.kol_sleep,acf.prices_sale,acf.status&per_page=100&_embed=wp:featuredmedia&offset=500&catavtodom=8'
-            const res = await Promise.allSettled(
-                [
-                    axios.get(first100),
-                    axios.get(offset100),
-                    // axios.get(offset200),
-                    // axios.get(offset300),
-                    // axios.get(offset400),
-                    // axios.get(offset500),
-                ]
-            )
-
-            // console.log(res)
+            const {data: doma} = await axios.get('https://1caravan.ru/wp-json/api/v2/doma/catalog')
             // @ts-ignore
-            const all = []
+            setDoma(doma)
             // @ts-ignore
-            res.forEach(arr => arr.value.data.length && all.push(...arr.value.data))
-            // @ts-ignore
-            setDoma(all)
-            // @ts-ignore
-            // console.log('all', all)
-
-
         }
         getDoma()
 

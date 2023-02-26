@@ -8,6 +8,7 @@ import cl from "./slug.module.css"
 export default function Post({post}) {
     const proizvoditel = 'Производитель'
     // post._embedded['wp:term'][1][0].name
+    console.log(post)
 
     return (
         <>
@@ -38,12 +39,12 @@ export default function Post({post}) {
 export async function getStaticPaths() {
     // Call an external API endpoint to get posts
     const allCaravans = 'https://1caravan.ru/wp-json/api/v2/doma/all'
-    if (process.env.SKIP_BUILD_STATIC_GENERATION) {
-        return {
-            paths: [],
-            fallback: 'blocking',
-        }
+    // if (process.env.SKIP_BUILD_STATIC_GENERATION) {
+    return {
+        paths: [],
+        fallback: 'blocking',
     }
+    // }
 
     // Call an external API endpoint to get posts
     const res = await fetch(allCaravans)
@@ -71,5 +72,5 @@ export async function getStaticProps({params}) {
     const post = await res.json()
     // console.log(res)
     // Pass post data to the page via props
-    return {props: {post: post[0]},revalidate: 10}
+    return {props: {post: post[0]}, revalidate: 10}
 }
