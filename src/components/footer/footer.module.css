@@ -7,7 +7,7 @@
     width: calc(100% / 4);
 }
 
-.nameFot h4, .nameKontakt h4 {
+.nameFot h4, .widthKontakt h4 {
     font-weight: 500;
     font-size: 28px;
 }
@@ -30,9 +30,21 @@
 }
 
 .adress {
+    width: calc(100% / 2);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.telefonchik {
+    font-weight: 300;
+    font-size: 22px;
+    text-decoration: none;
+    color: white;
 }
 
 .map {
+    width: calc(100% / 2);
 }
 
 .fotme {
@@ -40,6 +52,59 @@
     gap: 20px;
 }
 
-.nameKontakt {
+.widthKontakt {
     width: calc(100% / 2);
+}
+
+.nameKontakt {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.copyrayte {
+    border-top: 1px solid;
+    margin-top: 20px;
+    margin-bottom: 50px;
+    display: flex;
+    flex-direction: row;
+}
+
+.copy {
+    font-weight: 300;
+    font-size: 14px;
+    color: white;
+}
+
+.apstud {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.copyrayte div {
+    width: calc(100% / 2);
+}
+
+.small_text {
+    font-weight: 300;
+    font-size: 10px;
+}
+
+.politika {
+    font-weight: 600;
+    font-size: 14px;
+    text-decoration: none;
+    color: white;
+}
+
+.flexRight {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.mtopNull{
+    margin-top: 0;
 }

@@ -7,6 +7,7 @@ import {useEffect, useState} from "react";
 import axios from "axios";
 import Cards from "@/components/Cards/Cards";
 import CapHome from "@/components/home/capHome";
+import Footer from "@/components/footer/footer";
 
 const inter = Inter({subsets: ['latin']})
 
@@ -45,6 +46,7 @@ export default function Sold() {
                     </section>
                 )}
             </main>
+            <Footer/>
         </>
     )
 }

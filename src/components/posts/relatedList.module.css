@@ -1,0 +1,18 @@
+.list_related{
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.card_post_related{
+    background: white;
+    padding: 5px;
+    border-radius: 5px;
+}
+.ssilka{
+    color: black;
+    text-decoration: none;
+    font-weight: 300;
+    font-size: 14px;
+}

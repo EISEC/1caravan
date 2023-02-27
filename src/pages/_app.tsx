@@ -3,7 +3,7 @@ import type {AppProps} from 'next/app'
 import NavigationLoader from "@/components/header/loaderPage";
 import {Montserrat} from "@next/font/google";
 
-const montserrat = Montserrat({subsets: ['cyrillic']})
+const montserrat = Montserrat({subsets: ['cyrillic', 'latin']})
 
 export default function App({Component, pageProps}: AppProps) {
 

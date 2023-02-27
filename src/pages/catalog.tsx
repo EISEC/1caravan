@@ -4,6 +4,7 @@ import axios from 'axios'
 import {useEffect, useState} from "react";
 import Cards from "@/components/Cards/Cards";
 import CapHome from "@/components/home/capHome";
+import Footer from "@/components/footer/footer";
 
 // @ts-ignore
 export default function Avtodom(props) {
@@ -40,6 +41,7 @@ export default function Avtodom(props) {
                     </section>
                 )}
             </main>
+            <Footer/>
         </>
     )
 }

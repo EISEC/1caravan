@@ -3,10 +3,11 @@ import Menu from "@/components/header/menu";
 import axios from "axios";
 import Head from "next/head";
 import cl from "./slug.module.css"
+import Footer from "@/components/footer/footer";
 
 // @ts-ignore
 export default function Post({post}) {
-    const proizvoditel = 'Производитель'
+    const proizvoditel = post._embedded['wp:term'][1][0].name
     // post._embedded['wp:term'][1][0].name
     console.log(post)
 
@@ -22,15 +23,16 @@ export default function Post({post}) {
                 <link rel="icon" href="/favicon.ico"/>
             </Head>
             <Menu/>
-            <main>
-                <div className={cl.topheader}>
+            <main className={cl.main}>
+                <section className={cl.topheader}>
                     <div className={`auto_center ${cl.topcaravan}`}>
                         <h1>{post.title.rendered}</h1>
                         <p>Производитель караванов {proizvoditel}</p>
                     </div>
-                </div>
+                </section>
                 <section className='text' dangerouslySetInnerHTML={{__html: post.content.rendered}}/>
             </main>
+            <Footer/>
         </>
     )
 }
@@ -72,5 +74,5 @@ export async function getStaticProps({params}) {
     const post = await res.json()
     // console.log(res)
     // Pass post data to the page via props
-    return {props: {post: post[0]}, revalidate: 10}
+    return {props: {post: post[0]}, revalidate: 1}
 }

@@ -1,6 +1,7 @@
 import React from 'react';
 import Menu from "@/components/header/menu";
 import CapHome from "@/components/home/capHome";
+import Footer from "@/components/footer/footer";
 
 const Tavary = () => {
     return (
@@ -9,6 +10,7 @@ const Tavary = () => {
             <main>
                 <CapHome/>
             </main>
+            <Footer/>
         </>
     );
 };

@@ -4,6 +4,29 @@
 
 body {
     margin: 0;
+
+}
+
+body > #__next {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header {
+
+}
+
+main {
+    /* Чтобы занимал оставшееся пространство */
+    flex-grow: 1;
+
+}
+
+footer {
+    /* Чтобы footer не уменьшался */
+    flex-shrink: 0;
+
 }
 
 .btn-green {

@@ -254,8 +254,7 @@ const Cards = ({cards}) => {
 
             }
         </section>
-    )
-        ;
+    );
 };
 
 export default Cards;
