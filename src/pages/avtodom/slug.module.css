@@ -1,4 +1,4 @@
-.main{
+.main {
     margin-top: 130px;
 }
 
@@ -6,4 +6,76 @@
 
 }
 
-.topcaravan{}
+.topcaravan {
+}
+
+.iconka {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pmr5 p {
+    margin: 5px 0;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.statusN {
+    background: linear-gradient(117.65deg, #1C8E00 19.25%, #D6F578 89.5%);
+    color: #FFFFFF;
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: row;
+    border-radius: 3px;
+    padding: 0 10px;
+    gap: 10px;
+}
+
+.statusP {
+    background: linear-gradient(135deg, #910000 0%, #F20000 100%);
+    color: #FFFFFF;
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: row;
+    border-radius: 3px;
+    padding: 0 10px;
+    gap: 10px;
+}
+
+.statusZ {
+    background: linear-gradient(132.63deg, #DDC702 0.12%, #EDF578 96.78%);
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: row;
+    border-radius: 3px;
+    padding: 0 10px;
+    gap: 10px;
+}
+
+.statusV {
+    background: linear-gradient(117.65deg, #1C8E00 19.25%, #D6F578 89.5%);
+    color: #FFFFFF;
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: row;
+    border-radius: 3px;
+    padding: 0 10px;
+    gap: 10px;
+}
+
+.statusPZ {
+    background: linear-gradient(135deg, #828282 0%, #B3B3B3 100%);
+    color: #FFFFFF;
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: row;
+    border-radius: 3px;
+    padding: 0 10px;
+    gap: 10px;
+}

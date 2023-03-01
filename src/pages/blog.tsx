@@ -3,9 +3,31 @@ import Link from "next/link";
 import Menu from "@/components/header/menu";
 import CapHome from "@/components/home/capHome";
 import Footer from "@/components/footer/footer";
+import {motion} from "framer-motion";
+import Image from "next/image";
 
 // @ts-ignore
 export default function Blog({posts}) {
+
+    const container = {
+        hidden: { opacity: 1, scale: 0 },
+        visible: {
+            opacity: 1,
+            scale: 1,
+            transition: {
+                delayChildren: 0.3,
+                staggerChildren: 0.2
+            }
+        }
+    };
+
+    const item = {
+        hidden: { y: 50, opacity: 0 },
+        visible: {
+            y: 0,
+            opacity: 1
+        }
+    };
 
     return (
         <>
@@ -13,21 +35,38 @@ export default function Blog({posts}) {
             <main>
                 <CapHome/>
                 <section>
-                    <ul>
+                    <motion.ul
+                        className={`list_blog`}
+                        variants={container}
+                        initial="hidden"
+                        animate="visible"
+                    >
                         {/*// @ts-ignore*/}
-                        {posts.map((post) => (
-                            <li key={post.id}>
-                                <Link
-                                    href={{
-                                        pathname: "posts/[id]",
-                                        query: {id: post.id},
-                                    }}
+                        {posts.map(el => {
+                            const statusDom = el.status
+                            return (
+                                <motion.li
+                                    className={`list_blog_li`}
+                                    key={el.id}
+                                    variants={item}
                                 >
-                                    {post.title.rendered}
-                                </Link>
-                            </li>
-                        ))}
-                    </ul>
+                                    <Image
+                                        src={el.img}
+                                        alt={el.title}
+                                        width={285}
+                                        height={200}
+                                    />
+                                    <Link href={{
+                                        pathname: "/posts/[...slug]",
+                                        query: {slug: el.slug},
+                                    }}
+                                          className={`list_blog_a`}>
+                                        {el.title}
+                                    </Link>
+                                </motion.li>
+                            )
+                        })}
+                    </motion.ul>
                 </section>
             </main>
             <Footer/>
@@ -38,7 +77,7 @@ export default function Blog({posts}) {
 // This function gets called at build time
 export async function getStaticProps() {
     // Call an external API endpoint to get posts
-    const res = await fetch('https://1caravan.ru/wp-json/wp/v2/posts')
+    const res = await fetch('https://1caravan.ru/wp-json/api/v2/posts/all')
     const posts = await res.json()
 
     // By returning { props: { posts } }, the Blog component

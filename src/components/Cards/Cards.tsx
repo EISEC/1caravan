@@ -246,10 +246,10 @@ const Cards = ({cards}) => {
             </motion.ul>
             {showCount <= cards.length ?
                 (
-                    <button className={'btn-green'} onClick={() => onShowMore()}>Загрузить больше</button>
+                    <button className={`btn-green ${cl.mrgbt25}`} onClick={() => onShowMore()}>Загрузить больше</button>
                 ) :
                 (
-                    <p>Всё загружено</p>
+                    <p className={cl.mrgbt25}>Всё загружено</p>
                 )
 
             }

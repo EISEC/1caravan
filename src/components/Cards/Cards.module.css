@@ -170,18 +170,24 @@
     text-decoration: none;
 }
 
-.btn_fo{
+.btn_fo {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     gap: 10px;
     width: 100%;
 }
-.btn_fo a{
+
+.btn_fo a {
     padding: 10px 15px;
 }
-.iconka{
+
+.iconka {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.mrgbt25 {
+    margin-bottom: 25px;
 }

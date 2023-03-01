@@ -1,15 +1,38 @@
 import React, {useEffect} from 'react';
 import Menu from "@/components/header/menu";
+import Footer from "@/components/footer/footer";
+import Head from "next/head";
+import Image from "next/image";
 
 // @ts-ignore
 export default function Post({post}) {
+    const title = post.title.rendered
+    const excerpt = post.excerpt.rendered
+    const content = post.content.rendered
+    const image_url = post._embedded['wp:featuredmedia'][0].source_url
     return (
         <>
+            <Head>
+                <title>{title} | Первый караван</title>
+                <meta name="description"
+                      content={excerpt}/>
+                <meta name="keywords" content="дом колесах, прицеп-дача, автодом, купить"/>
+                <meta name="viewport" content="width=device-width, initial-scale=1"/>
+                <link rel="icon" href="/favicon.ico"/>
+            </Head>
             <Menu/>
             <main>
-                <h1>{post.title.rendered}</h1>
-                <div className='text' dangerouslySetInnerHTML={{__html: post.content.rendered}}/>
+                <div className="header_blog">
+                    <Image src={image_url} alt={title} layout="fill"/>
+                    <div className={'auto_center'}>
+                        <h1>{title}</h1>
+                    </div>
+                </div>
+                <section className="article">
+                    <div className='text' dangerouslySetInnerHTML={{__html: content}}/>
+                </section>
             </main>
+            <Footer/>
         </>
     )
 }
