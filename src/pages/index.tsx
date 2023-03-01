@@ -8,6 +8,7 @@ import Section2Home from "@/components/home/section2Home";
 import CapHome from "@/components/home/capHome";
 import SectionTextHome from "@/components/home/sectionTextHome";
 import Footer from "@/components/footer/footer";
+import SectionQuiz from "@/components/home/sectionQuiz";
 
 
 export default function Home() {
@@ -53,6 +54,7 @@ export default function Home() {
                         <h1>подождите, загружаем</h1>
                     </section>
                 )}
+                <SectionQuiz/>
                 <SectionTextHome/>
             </main>
             <Footer/>
