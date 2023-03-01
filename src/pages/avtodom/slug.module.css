@@ -18,7 +18,7 @@
 .pmr5 p {
     margin: 5px 0;
     font-weight: 500;
-    font-size: 14px;
+    font-size: 20px;
 }
 
 .statusN {
@@ -78,4 +78,23 @@
     border-radius: 3px;
     padding: 0 10px;
     gap: 10px;
+}
+
+.glavnay_po_caravanu {
+    display: grid;
+    grid-template-columns: 1fr 0.6fr;
+    grid-template-rows: 1fr;
+    gap: 20px 20px;
+    grid-template-areas:
+    "gallary opisaniye"
+    "cena cena";
+}
+
+.opisaniye ul{
+    list-style: none;
+    padding: 0;
+}
+
+.opisaniye ul>li{
+    font-size: 24px;
 }

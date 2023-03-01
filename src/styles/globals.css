@@ -111,3 +111,21 @@ section, .auto_center {
     height: inherit;
     color: white;
 }
+
+.glavnay_po_caravanu .gallary {
+    grid-area: gallary;
+    overflow: auto;
+}
+
+.glavnay_po_caravanu .opisaniye {
+    grid-area: opisaniye;
+    overflow: auto;
+    justify-self: center;
+    align-self: center;
+}
+
+
+.glavnay_po_caravanu .cena {
+    grid-area: cena;
+    overflow: auto;
+}

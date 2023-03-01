@@ -42,8 +42,7 @@ export default function Blog({posts}) {
                         animate="visible"
                     >
                         {/*// @ts-ignore*/}
-                        {posts.map(el => {
-                            const statusDom = el.status
+                        {posts.slice(0, 10).map(el => {
                             return (
                                 <motion.li
                                     className={`list_blog_li`}
