@@ -7,6 +7,8 @@ import cl from "./slug.module.css"
 import Footer from "@/components/footer/footer";
 import Image from "next/image";
 import axios from "axios";
+import {Tab, Tabs, TabList, TabPanel} from 'react-tabs';
+import 'react-tabs/style/react-tabs.css';
 
 // @ts-ignore
 export default function Post({post}) {
@@ -40,9 +42,12 @@ export default function Post({post}) {
     const max_massa = post.acf.Max_mass
     const mesta = post.acf.kol_sleep
     const sanuzel = post.acf.dopy
+    const vin = post.acf.vin
     const god_vipuska = post.acf.god_vipuska
     // post._embedded['wp:term'][1][0].name
     const acfGall = post._embedded['acf:attachment']
+    const preim = post.acf.ospreim
+    const razmer = post.acf.osnova
     const responsive = {
         superLargeDesktop: {
             // the naming can be any, depends on you.
@@ -72,7 +77,8 @@ export default function Post({post}) {
                 className={active ? "active" : "inactive"}
                 onClick={() => onClick()}
             >
-                <Image src={post._embedded['acf:attachment'][index].source_url} alt={`${title} фотография номер ${index}`} width={100} height={80}/>
+                <Image src={post._embedded['acf:attachment'][index].source_url}
+                       alt={`${title} фотография номер ${index}`} width={100} height={80}/>
             </li>
         );
     };
@@ -92,7 +98,7 @@ export default function Post({post}) {
             <main className={cl.main}>
                 <section className={cl.topheader}>
                     <div className={`auto_center ${cl.topcaravan}`}>
-                        <h1>{title}</h1>
+                        <h1>{title} <span className={cl.vin}>№ {vin}</span></h1>
                     </div>
                 </section>
                 <section className={`${cl.glavnay_po_caravanu} glavnay_po_caravanu`}>
@@ -108,7 +114,8 @@ export default function Post({post}) {
                             {acfGall.slice().reverse().map(el => {
                                 return (
                                     <div key={el.id}>
-                                        <Image src={el.source_url} alt={`${title} фотография номер ${el.id}`} width={800} height={600}/>
+                                        <Image src={el.source_url} alt={`${title} фотография номер ${el.id}`}
+                                               width={800} height={600}/>
                                     </div>
                                 )
                             })}
@@ -241,20 +248,44 @@ export default function Post({post}) {
                             <li><b>Тип санузла</b>: {sanuzel}</li>
                         </ul>
 
+                        <div className={post.acf.prices_sale != 0 ? cl.Cina : cl.Sisny}>
+                            {post.acf.prices_sale ?
+                                (
+                                    <p className={cl.salePrice}>{getFormatPrice(post.acf.price)} ₽</p>
+                                ) : null
+                            }
+
+                            <p className={`${cl.usualPrice} ${statusDom == 'Выбрать' && post.acf.prices_sale != 0 ? cl.redprice : ''} ${statusDom == 'В пути' && post.acf.prices_sale != 0 ? cl.redprice : ''}`}>
+                                {post.acf.prices_sale ? getFormatPrice(post.acf.prices_sale) : getFormatPrice(post.acf.price)} ₽
+                            </p>
+                        </div>
                     </div>
                     <div className="cena">
-                        {post.acf.prices_sale ?
-                            (
-                                <p className={cl.salePrice}>{getFormatPrice(post.acf.price)} ₽</p>
-                            ) : null
-                        }
 
-                        <p className={`${cl.usualPrice} ${statusDom == 'Выбрать' && post.acf.prices_sale != 0 ? cl.redprice : ''} ${statusDom == 'В пути' && post.acf.prices_sale != 0 ? cl.redprice : ''}`}>
-                            {post.acf.prices_sale ? getFormatPrice(post.acf.prices_sale) : getFormatPrice(post.acf.price)} ₽
-                        </p>
                     </div>
                 </section>
-                <section className='text' dangerouslySetInnerHTML={{__html: content}}/>
+                <section className='text'>
+                    <Tabs>
+                        <TabList>
+                            <Tab>Краткое описание</Tab>
+                            <Tab>Преимущества</Tab>
+                            <Tab>Размеры</Tab>
+                        </TabList>
+
+                        <TabPanel>
+                            <h2>Краткое описание:</h2>
+                            <p dangerouslySetInnerHTML={{__html: content}}/>
+                        </TabPanel>
+                        <TabPanel>
+                            <h2>Преимущества {title}</h2>
+                            <p dangerouslySetInnerHTML={{__html: preim}}/>
+                        </TabPanel>
+                        <TabPanel>
+                            <h2>Размеры автодома</h2>
+                            <p dangerouslySetInnerHTML={{__html: razmer}}/>
+                        </TabPanel>
+                    </Tabs>
+                </section>
             </main>
             <Footer/>
         </>

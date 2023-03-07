@@ -24,6 +24,7 @@
     "react-multi-carousel": "^2.8.2",
     "react-native-yamap": "^4.1.17",
     "react-redux": "^8.0.5",
+    "react-tabs": "^6.0.0",
     "typescript": "4.9.5"
   }
 }
