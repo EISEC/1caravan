@@ -268,7 +268,7 @@ export default function Post({post}) {
                     <Tabs>
                         <TabList>
                             <Tab>Краткое описание</Tab>
-                            <Tab>Преимущества</Tab>
+                            <Tab>Тех. характеристики</Tab>
                             <Tab>Размеры</Tab>
                         </TabList>
 
@@ -277,7 +277,7 @@ export default function Post({post}) {
                             <p dangerouslySetInnerHTML={{__html: content}}/>
                         </TabPanel>
                         <TabPanel>
-                            <h2>Преимущества {title}</h2>
+                            <h2>Тех. характеристики {title}</h2>
                             <p dangerouslySetInnerHTML={{__html: preim}}/>
                         </TabPanel>
                         <TabPanel>
