@@ -38,24 +38,24 @@ export default function Post({post}) {
 }
 
 // This function gets called at build time
-export async function getStaticPaths() {
-    const allCaravans = 'https://1caravan.ru/wp-json/api/v2/posts/all'
-    const res = await fetch(allCaravans)
-    const allPosts = await res.json()
-
-    // @ts-ignore
-    const paths = allPosts.map((post) => ({
-        params: {
-            slug: [post.slug],
-        },
-    }))
-
-    return {paths, fallback: 'blocking'}
-}
+// export async function getStaticPaths() {
+//     const allCaravans = 'https://1caravan.ru/wp-json/api/v2/posts/all'
+//     const res = await fetch(allCaravans)
+//     const allPosts = await res.json()
+//
+//     // @ts-ignore
+//     const paths = allPosts.map((post) => ({
+//         params: {
+//             slug: [post.slug],
+//         },
+//     }))
+//
+//     return {paths, fallback: 'blocking'}
+// }
 
 
 // @ts-ignore
-export async function getStaticProps({params}) {
+export async function getServerSideProps({params}) {
     const res = await fetch(`https://1caravan.ru/wp-json/wp/v2/posts?slug=${params.slug}&_embed`)
     const [post] = await res.json()
     if (!post) {
