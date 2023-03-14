@@ -11,20 +11,8 @@ import Footer from "@/components/footer/footer";
 
 const inter = Inter({subsets: ['latin']})
 
-export default function Sold() {
-    const [doma, setDoma] = useState([])
-
-
-    useEffect(() => {
-        const getDoma = async () => {
-            const {data: doma} = await axios.get('https://1caravan.ru/wp-json/api/v2/doma/sold')
-            // @ts-ignore
-            setDoma(doma)
-            // @ts-ignore
-        }
-        getDoma()
-
-    }, [])
+// @ts-ignore
+export default function Sold({doma}) {
 
 
     return (
@@ -49,4 +37,11 @@ export default function Sold() {
             <Footer/>
         </>
     )
+}
+
+export async function getStaticProps() {
+    const {data: doma} = await axios.get('https://1caravan.ru/wp-json/api/v2/doma/sold')
+    return {
+        props: {doma}, // will be passed to the page component as props
+    }
 }

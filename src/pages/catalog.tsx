@@ -1,26 +1,12 @@
 import Head from 'next/head'
 import Menu from "@/components/header/menu";
 import axios from 'axios'
-import {useEffect, useState} from "react";
 import Cards from "@/components/Cards/Cards";
 import CapHome from "@/components/home/capHome";
 import Footer from "@/components/footer/footer";
 
 // @ts-ignore
-export default function Avtodom(props) {
-    const [doma, setDoma] = useState([])
-
-
-    useEffect(() => {
-        const getDoma = async () => {
-            const {data: doma} = await axios.get('https://1caravan.ru/wp-json/api/v2/doma/catalog')
-            // @ts-ignore
-            setDoma(doma)
-            // @ts-ignore
-        }
-        getDoma()
-
-    }, [])
+export default function Avtodom({doma}) {
 
     return (
         <>
@@ -76,4 +62,11 @@ export default function Avtodom(props) {
             <Footer/>
         </>
     )
+}
+
+export async function getStaticProps() {
+    const {data: doma} = await axios.get('https://1caravan.ru/wp-json/api/v2/doma/catalog')
+    return {
+        props: {doma}, // will be passed to the page component as props
+    }
 }
