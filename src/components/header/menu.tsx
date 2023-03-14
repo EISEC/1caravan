@@ -23,45 +23,45 @@ const Menu = () => {
                     </svg>
                 </Link>
                 {/*// @ts-ignore*/}
-                <nav itemscope="" itemtype="https://schema.org/SiteNavigationElement">
+                <nav itemScope="" itemType="https://schema.org/SiteNavigationElement">
                     {/*// @ts-ignore*/}
-                    <ul className={cl.insideMenu} itemprop="about" itemscope="" itemtype="https://schema.org/ItemList">
+                    <ul className={cl.insideMenu} itemProp="about" itemScope="" itemType="https://schema.org/ItemList">
                         {/*// @ts-ignore*/}
-                        <li itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ItemList">
+                        <li itemProp="itemListElement" itemScope="" itemType="https://schema.org/ItemList">
                             {/*// @ts-ignore*/}
-                            <Link href={'/'} itemprop="url">
+                            <Link href={'/'} itemProp="url">
                                 Главная
                             </Link>
                             <meta itemProp="name" content="Главная"/>
                         </li>
                         {/*// @ts-ignore*/}
-                        <li itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ItemList">
+                        <li itemProp="itemListElement" itemScope="" itemType="https://schema.org/ItemList">
                             {/*// @ts-ignore*/}
-                            <Link href={'/catalog'} itemprop="url">
+                            <Link href={'/catalog'} itemProp="url">
                                 Каталог
                             </Link>
                             <meta itemProp="name" content="Каталог"/>
                         </li>
                         {/*// @ts-ignore*/}
-                        <li itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ItemList">
+                        <li itemProp="itemListElement" itemScope="" itemType="https://schema.org/ItemList">
                             {/*// @ts-ignore*/}
-                            <Link href={'/pod-zakaz'} itemprop="url">
+                            <Link href={'/pod-zakaz'} itemProp="url">
                                 Под заказ
                             </Link>
                             <meta itemProp="name" content="Под заказ"/>
                         </li>
                         {/*// @ts-ignore*/}
-                        <li itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ItemList">
+                        <li itemProp="itemListElement" itemScope="" itemType="https://schema.org/ItemList">
                             {/*// @ts-ignore*/}
-                            <Link href={'/tavary'} itemprop="url">
+                            <Link href={'/tavary'} itemProp="url">
                                 Товары
                             </Link>
                             <meta itemProp="name" content="Товары"/>
                         </li>
                         {/*// @ts-ignore*/}
-                        <li itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ItemList">
+                        <li itemProp="itemListElement" itemScope="" itemType="https://schema.org/ItemList">
                             {/*// @ts-ignore*/}
-                            <Link href={'/blog'} itemprop="url">
+                            <Link href={'/blog'} itemProp="url">
                                 Блог
                             </Link>
                             <meta itemProp="name" content="Блог"/>
@@ -69,7 +69,7 @@ const Menu = () => {
                         {/*// @ts-ignore*/}
                         <li itemProp="itemListElement" itemScope="" itemType="https://schema.org/ItemList">
                             {/*// @ts-ignore*/}
-                            <Link href={'#contacts'} itemprop="url">
+                            <Link href={'#contacts'} itemProp="url">
                                 Контакты
                             </Link>
                             <meta itemProp="name" content="Контакты"/>
@@ -78,20 +78,20 @@ const Menu = () => {
                 </nav>
                 <Link href={'/wishlist'} className={cl.whishlist}>
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <g clip-path="url(#clip0_1_27)">
+                        <g clipPath="url(#clip0_1_27)">
                             <path
                                 d="M12 8.18L12.46 9.12L13.51 9.28L12.75 10.01L12.93 11.04L12 10.56L11.07 11.04L11.25 10.01L10.49 9.28L11.54 9.12L12 8.18Z"
-                                stroke="#FFB800" stroke-width="1.91" stroke-miterlimit="10" stroke-linecap="square"/>
+                                stroke="#FFB800" strokeWidth="1.91" strokeMiterlimit="10" strokeLinecap="square"/>
                             <path
                                 d="M17.73 22.5C13.91 22.5 12 20.59 12 18.68M12 18.68C12 16.77 17.73 14.86 17.73 11.05C17.73 7.24 15.82 1.5 15.82 1.5H8.18002C8.18002 1.5 6.27002 7.23 6.27002 11.05C6.27002 14.87 12 16.77 12 18.68ZM12 18.68C12 20.59 10.09 22.5 6.27002 22.5"
-                                stroke="#FFB800" stroke-width="1.91" stroke-miterlimit="10"/>
-                            <path d="M6.27002 22.5H17.73" stroke="#FFB800" stroke-width="1.91" stroke-miterlimit="10"/>
+                                stroke="#FFB800" strokeWidth="1.91" strokeMiterlimit="10"/>
+                            <path d="M6.27002 22.5H17.73" stroke="#FFB800" strokeWidth="1.91" strokeMiterlimit="10"/>
                             <path
                                 d="M16.77 4.36C17.046 3.82344 17.4545 3.36631 17.9568 3.03203C18.4591 2.69774 19.0385 2.49739 19.64 2.45C20.0294 2.39458 20.4263 2.4307 20.7993 2.5555C21.1723 2.68029 21.511 2.89032 21.7886 3.1689C22.0662 3.44749 22.2751 3.78696 22.3986 4.16037C22.5221 4.53377 22.5568 4.93083 22.5 5.32C22.5 7.23 17.73 8.8 17.73 11.05C17.719 11.3056 17.7606 11.5608 17.8521 11.7997C17.9437 12.0386 18.0833 12.2562 18.2624 12.439C18.4414 12.6218 18.656 12.7659 18.893 12.8624C19.13 12.9589 19.3842 13.0057 19.64 13"
-                                stroke="#FFB800" stroke-width="1.91" stroke-miterlimit="10"/>
+                                stroke="#FFB800" strokeWidth="1.91" strokeMiterlimit="10"/>
                             <path
                                 d="M7.23001 4.36C6.95406 3.82344 6.54553 3.36631 6.04323 3.03203C5.54093 2.69774 4.96152 2.49739 4.36001 2.45C3.97064 2.39458 3.57371 2.4307 3.20074 2.5555C2.82777 2.68029 2.48903 2.89032 2.21141 3.1689C1.9338 3.44749 1.72495 3.78696 1.60146 4.16037C1.47797 4.53377 1.44324 4.93083 1.50001 5.32C1.50001 7.23 6.27001 8.8 6.27001 11.05C6.28102 11.3056 6.23946 11.5608 6.14789 11.7997C6.05632 12.0386 5.9167 12.2562 5.73767 12.439C5.55863 12.6218 5.34399 12.7659 5.10702 12.8624C4.87006 12.9589 4.61581 13.0057 4.36001 13"
-                                stroke="#FFB800" stroke-width="1.91" stroke-miterlimit="10"/>
+                                stroke="#FFB800" strokeWidth="1.91" strokeMiterlimit="10"/>
                         </g>
                         <defs>
                             <clipPath id="clip0_1_27">
@@ -105,16 +105,16 @@ const Menu = () => {
                         <circle cx="13" cy="13" r="13" fill="url(#paint0_linear_1_63)"/>
                         <path
                             d="M16.4812 6.9375H10.5187C9.85941 6.9375 9.32495 7.47196 9.32495 8.13125V18.8687C9.32495 19.528 9.85941 20.0625 10.5187 20.0625H16.4812C17.1405 20.0625 17.675 19.528 17.675 18.8687V8.13125C17.675 7.47196 17.1405 6.9375 16.4812 6.9375Z"
-                            stroke="#000A63" stroke-width="0.91" stroke-miterlimit="10"/>
+                            stroke="#000A63" strokeWidth="0.91" strokeMiterlimit="10"/>
                         <path
                             d="M14.6938 7.53125H12.3063C12.2253 7.53228 12.145 7.51657 12.0705 7.48511C11.9959 7.45365 11.9286 7.40712 11.8729 7.34844C11.8171 7.28975 11.7741 7.22019 11.7465 7.14409C11.7189 7.068 11.7073 6.98703 11.7125 6.90625H15.2875C15.2927 6.98703 15.2811 7.068 15.2535 7.14409C15.2259 7.22019 15.1829 7.28975 15.1271 7.34844C15.0714 7.40712 15.0041 7.45365 14.9295 7.48511C14.855 7.51657 14.7747 7.53228 14.6938 7.53125Z"
-                            stroke="#000A63" stroke-width="0.91" stroke-miterlimit="10"/>
-                        <path d="M12.9062 18.275H14.0937" stroke="#000A63" stroke-width="1.91" stroke-miterlimit="10"/>
+                            stroke="#000A63" strokeWidth="0.91" strokeMiterlimit="10"/>
+                        <path d="M12.9062 18.275H14.0937" stroke="#000A63" strokeWidth="1.91" strokeMiterlimit="10"/>
                         <defs>
                             <linearGradient id="paint0_linear_1_63" x1="0" y1="0" x2="26" y2="26"
                                             gradientUnits="userSpaceOnUse">
-                                <stop stop-color="#1C8E00"/>
-                                <stop offset="1" stop-color="#D6F578"/>
+                                <stop stopColor="#1C8E00"/>
+                                <stop offset="1" stopColor="#D6F578"/>
                             </linearGradient>
                         </defs>
                     </svg>

@@ -112,7 +112,7 @@ const Cards = ({cards}) => {
                                         <div className={cl.iconka}>
                                             <svg width="17" height="17" viewBox="0 0 17 17" fill="none"
                                                  xmlns="http://www.w3.org/2000/svg">
-                                                <g clip-path="url(#clip0_2_413)">
+                                                <g clipPath="url(#clip0_2_413)">
                                                     <path
                                                         d="M5.9994 5.40642L5.66006 5.74023L5.8985 5.98261L6.23783 5.6488L5.9994 5.40642Z"
                                                         fill="white"/>
