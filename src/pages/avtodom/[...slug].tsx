@@ -274,42 +274,56 @@ export default function Post({post}) {
     )
 }
 
-// This function gets called at build time
-export async function getStaticPaths() {
-    // Call an external API endpoint to get posts
-    const allCaravans = 'https://1caravan.ru/wp-json/api/v2/doma/all'
-    // if (process.env.SKIP_BUILD_STATIC_GENERATION) {
-    return {
-        paths: [],
-        fallback: 'blocking',
-    }
-    // }
+// // This function gets called at build time
+// export async function getStaticPaths() {
+//     // Call an external API endpoint to get posts
+//     const allCaravans = 'https://1caravan.ru/wp-json/api/v2/doma/all'
+//     // if (process.env.SKIP_BUILD_STATIC_GENERATION) {
+//     return {
+//         paths: [],
+//         fallback: 'blocking',
+//     }
+//     // }
+//
+//     // Call an external API endpoint to get posts
+//     const res = await fetch(allCaravans)
+//     const allDom = await res.json()
+//
+//     // Get the paths we want to pre-render based on posts
+//     // @ts-ignore
+//     const paths = allDom.map((post) => ({
+//         params: {
+//             slug: [post.slug],
+//         },
+//     }))
+//
+//     // We'll pre-render only these paths at build time.
+//     // { fallback: false } means other routes should 404.
+//     return {paths, fallback: true}
+// }
+//
+// // This also gets called at build time
+// // @ts-ignore
+// export async function getStaticProps({params}) {
+//     // params contains the post `id`.
+//     // If the route is like /posts/1, then params.id is 1
+//     const res = await fetch(`https://1caravan.ru/wp-json/wp/v2/caravans?slug=${params.slug}&_embed`)
+//     const post = await res.json()
+//     // console.log(res)
+//     // Pass post data to the page via props
+//     return {props: {post: post[0]}, revalidate: 1}
+// }
 
-    // Call an external API endpoint to get posts
-    const res = await fetch(allCaravans)
-    const allDom = await res.json()
-
-    // Get the paths we want to pre-render based on posts
-    // @ts-ignore
-    const paths = allDom.map((post) => ({
-        params: {
-            slug: [post.slug],
-        },
-    }))
-
-    // We'll pre-render only these paths at build time.
-    // { fallback: false } means other routes should 404.
-    return {paths, fallback: true}
-}
-
-// This also gets called at build time
 // @ts-ignore
-export async function getStaticProps({params}) {
-    // params contains the post `id`.
-    // If the route is like /posts/1, then params.id is 1
+export async function getServerSideProps({params}) {
     const res = await fetch(`https://1caravan.ru/wp-json/wp/v2/caravans?slug=${params.slug}&_embed`)
-    const post = await res.json()
-    // console.log(res)
-    // Pass post data to the page via props
-    return {props: {post: post[0]}, revalidate: 1}
+    const [post] = await res.json()
+    if (!post) {
+        return {
+            notFound: true
+        }
+    }
+    return {
+        props: {post, revalidate: 1}, // will be passed to the page component as props
+    }
 }
