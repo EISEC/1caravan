@@ -25,7 +25,7 @@ export default function Post({post}) {
                 <div className="header_blog">
                     <Image src={image_url} alt={title} layout="fill"/>
                     <div className={'auto_center'}>
-                        <h1>{title}</h1>
+                        <h1 dangerouslySetInnerHTML={{__html: title}}></h1>
                     </div>
                 </div>
                 <section className="article">

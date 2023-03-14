@@ -67,21 +67,6 @@ export default function Post({post}) {
             items: 1
         }
     };
-    // @ts-ignore
-
-    const CustomDot = ({onMove, index, onClick, active}) => {
-        // onMove means if dragging or swiping in progress.
-        // active is provided by this lib for checking if the item is active or not.
-        return (
-            <li
-                className={active ? "active" : "inactive"}
-                onClick={() => onClick()}
-            >
-                <Image src={post._embedded['acf:attachment'][index].source_url}
-                       alt={`${title} фотография номер ${index}`} width={100} height={80}/>
-            </li>
-        );
-    };
 
     return (
         <>
@@ -106,15 +91,12 @@ export default function Post({post}) {
                         <Carousel
                             responsive={responsive}
                             itemClass="carousel-item-padding-40-px"
-                            showDots
-                            // @ts-ignore
-                            customDot={<CustomDot/>}
                         >
                             {/*// @ts-ignore*/}
                             {acfGall.slice().reverse().map(el => {
                                 return (
                                     <div key={el.id}>
-                                        <Image src={el.source_url} alt={`${title} фотография номер ${el.id}`}
+                                        <Image className={cl.imgCarusel} src={el.source_url} alt={`${title} фотография номер ${el.id}`}
                                                width={800} height={600}/>
                                     </div>
                                 )
@@ -274,7 +256,7 @@ export default function Post({post}) {
 
                         <TabPanel>
                             <h2>Краткое описание:</h2>
-                            <p dangerouslySetInnerHTML={{__html: content}}/>
+                            <div dangerouslySetInnerHTML={{__html: content}}/>
                         </TabPanel>
                         <TabPanel>
                             <h2>Тех. характеристики {title}</h2>
