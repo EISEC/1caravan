@@ -36,15 +36,16 @@ export default function Post({post}) {
         </>
     )
 }
+
 // This function gets called at build time
 export async function getStaticPaths() {
     // Call an external API endpoint to get posts
     const allCaravans = 'https://1caravan.ru/wp-json/api/v2/posts/all'
     if (process.env.SKIP_BUILD_STATIC_GENERATION) {
-    return {
-        paths: [],
-        fallback: 'blocking',
-    }
+        return {
+            paths: [],
+            fallback: 'blocking',
+        }
     }
 
     // Call an external API endpoint to get posts
@@ -62,7 +63,7 @@ export async function getStaticPaths() {
 
     // We'll pre-render only these paths at build time.
     // { fallback: false } means other routes should 404.
-    return {paths, fallback: false}
+    return {paths, fallback: true}
 }
 
 // This also gets called at build time
@@ -81,13 +82,13 @@ export async function getStaticPaths() {
 // @ts-ignore
 export async function getStaticProps({params}) {
     const res = await fetch(`https://1caravan.ru/wp-json/wp/v2/posts?slug=${params.slug}&_embed`)
-    const post = await res.json()
-    if(!post){
+    const [post] = await res.json()
+    if (!post) {
         return {
-            notFound:true
+            notFound: true
         }
     }
     return {
-        props: {post: post[0], revalidate: 1}, // will be passed to the page component as props
+        props: {post, revalidate: 1}, // will be passed to the page component as props
     }
 }

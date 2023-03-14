@@ -11,20 +11,8 @@ import Footer from "@/components/footer/footer";
 import SectionQuiz from "@/components/home/sectionQuiz";
 
 
-export default function Home() {
-    const [doma, setDoma] = useState([])
-
-
-    useEffect(() => {
-        const getDoma = async () => {
-            const {data: doma} = await axios.get('https://1caravan.ru/wp-json/api/v2/doma/index')
-            // @ts-ignore
-            setDoma(doma)
-            // @ts-ignore
-        }
-        getDoma()
-
-    }, [])
+// @ts-ignore
+export default function Home({doma}) {
 
     // @ts-ignore
     return (
@@ -60,4 +48,11 @@ export default function Home() {
             <Footer/>
         </>
     )
+}
+
+export async function getStaticProps() {
+    const {data: doma} = await axios.get('https://1caravan.ru/wp-json/api/v2/doma/index')
+    return {
+        props: {doma}, // will be passed to the page component as props
+    }
 }
