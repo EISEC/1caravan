@@ -87,12 +87,15 @@ const Footer = () => {
                                 <a href="tel:+79811518850" className={cl.telefonchik}>+7 (981) 151 - 88 - 50</a>
                             </div>
                             <div>
-                                <iframe src="https://yandex.ru/sprav/widget/rating-badge/187769733343?type=rating"
-                                        width="150" height="50" frameBorder="0"></iframe>
+                                <iframe
+                                    loading="lazy"
+                                    src="https://yandex.ru/sprav/widget/rating-badge/187769733343?type=rating"
+                                    width="150" height="50" frameBorder="0"></iframe>
                             </div>
                         </div>
                         <div className={cl.map}>
                             <iframe
+                                loading="lazy"
                                 src="https://yandex.ru/map-widget/v1/?um=constructor%3A8e0909ee48fb0c759129f6db6cbb220188d65471000e766c8f7c5845c9c8d6ee&amp;source=constructor"
                                 width="100%" height="300" frameBorder="0"></iframe>
                         </div>
