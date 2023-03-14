@@ -40,14 +40,15 @@ export default function Post({post}) {
 export async function getStaticPaths() {
     // Call an external API endpoint to get posts
     const allCaravans = 'https://1caravan.ru/wp-json/api/v2/posts/all'
-    // if (process.env.SKIP_BUILD_STATIC_GENERATION) {
+    if (process.env.SKIP_BUILD_STATIC_GENERATION) {
     return {
         paths: [],
         fallback: 'blocking',
     }
-    // }
+    }
 
     // Call an external API endpoint to get posts
+
     const res = await fetch(allCaravans)
     const allPosts = await res.json()
 
@@ -81,6 +82,11 @@ export async function getStaticPaths() {
 export async function getStaticProps({params}) {
     const res = await fetch(`https://1caravan.ru/wp-json/wp/v2/posts?slug=${params.slug}&_embed`)
     const post = await res.json()
+    if(!post){
+        return {
+            notFound:true
+        }
+    }
     return {
         props: {post: post[0]}, // will be passed to the page component as props
     }
