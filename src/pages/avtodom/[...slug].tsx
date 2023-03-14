@@ -46,6 +46,7 @@ export default function Post({post}) {
     const god_vipuska = post.acf.god_vipuska
     // post._embedded['wp:term'][1][0].name
     const acfGall = post._embedded['acf:attachment']
+    const glavFoto = post._embedded['wp:featuredmedia'][0]
     const preim = post.acf.ospreim
     const razmer = post.acf.osnova
     const responsive = {
@@ -92,6 +93,10 @@ export default function Post({post}) {
                             responsive={responsive}
                             itemClass="carousel-item-padding-40-px"
                         >
+                            <div>
+                                <Image className={cl.imgCarusel} src={glavFoto.source_url} alt={`${title} фотография номер ${glavFoto.id}`}
+                                       width={800} height={600}/>
+                            </div>
                             {/*// @ts-ignore*/}
                             {acfGall.slice().reverse().map(el => {
                                 return (
@@ -111,7 +116,7 @@ export default function Post({post}) {
                                     <div className={cl.iconka}>
                                         <svg width="22" height="22" viewBox="0 0 17 17" fill="none"
                                              xmlns="http://www.w3.org/2000/svg">
-                                            <g clip-path="url(#clip0_2_413)">
+                                            <g clipPath="url(#clip0_2_413)">
                                                 <path
                                                     d="M5.9994 5.40642L5.66006 5.74023L5.8985 5.98261L6.23783 5.6488L5.9994 5.40642Z"
                                                     fill="white"/>
@@ -246,7 +251,7 @@ export default function Post({post}) {
 
                     </div>
                 </section>
-                <section className='text'>
+                <section className='text' id={'findContent'}>
                     <Tabs>
                         <TabList>
                             <Tab>Краткое описание</Tab>
@@ -256,15 +261,15 @@ export default function Post({post}) {
 
                         <TabPanel>
                             <h2>Краткое описание:</h2>
-                            <div dangerouslySetInnerHTML={{__html: content}}/>
+                            <div dangerouslySetInnerHTML={{__html: content.replace(/—|-|–|—/g, '<br>$&')}}/>
                         </TabPanel>
                         <TabPanel>
-                            <h2>Тех. характеристики {title}</h2>
-                            <p dangerouslySetInnerHTML={{__html: preim}}/>
+                            <h2>Тех. характеристики {title.replace(/Новый|новый/g, '')}</h2>
+                            <p dangerouslySetInnerHTML={{__html: preim.replace(/-|–|—/g, '<br>$&')}}/>
                         </TabPanel>
                         <TabPanel>
                             <h2>Размеры автодома</h2>
-                            <p dangerouslySetInnerHTML={{__html: razmer}}/>
+                            <p dangerouslySetInnerHTML={{__html: razmer.replace(/-|–|—/g, '<br>$&')}}/>
                         </TabPanel>
                     </Tabs>
                 </section>
@@ -274,45 +279,6 @@ export default function Post({post}) {
     )
 }
 
-// // This function gets called at build time
-// export async function getStaticPaths() {
-//     // Call an external API endpoint to get posts
-//     const allCaravans = 'https://1caravan.ru/wp-json/api/v2/doma/all'
-//     // if (process.env.SKIP_BUILD_STATIC_GENERATION) {
-//     return {
-//         paths: [],
-//         fallback: 'blocking',
-//     }
-//     // }
-//
-//     // Call an external API endpoint to get posts
-//     const res = await fetch(allCaravans)
-//     const allDom = await res.json()
-//
-//     // Get the paths we want to pre-render based on posts
-//     // @ts-ignore
-//     const paths = allDom.map((post) => ({
-//         params: {
-//             slug: [post.slug],
-//         },
-//     }))
-//
-//     // We'll pre-render only these paths at build time.
-//     // { fallback: false } means other routes should 404.
-//     return {paths, fallback: true}
-// }
-//
-// // This also gets called at build time
-// // @ts-ignore
-// export async function getStaticProps({params}) {
-//     // params contains the post `id`.
-//     // If the route is like /posts/1, then params.id is 1
-//     const res = await fetch(`https://1caravan.ru/wp-json/wp/v2/caravans?slug=${params.slug}&_embed`)
-//     const post = await res.json()
-//     // console.log(res)
-//     // Pass post data to the page via props
-//     return {props: {post: post[0]}, revalidate: 1}
-// }
 
 // @ts-ignore
 export async function getServerSideProps({params}) {

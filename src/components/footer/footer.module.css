@@ -108,3 +108,32 @@
 .mtopNull{
     margin-top: 0;
 }
+
+@media (max-width: 998px){
+    .fotme{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .copyrayte{
+        display: flex;
+        flex-direction: column-reverse;
+    }
+    .copyrayte div{
+        width: 100%;
+    }
+    .nameFot, .widthKontakt{
+        width: 100%;
+    }
+    .nameKontakt{
+        flex-direction: column;
+    }
+    .nameKontakt>div{
+        width: 100%;
+    }
+}
+@media (max-width: 600px){
+    .fotme{
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+    }
+}

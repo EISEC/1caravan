@@ -191,3 +191,23 @@
 .mrgbt25 {
     margin-bottom: 25px;
 }
+
+@media (max-width: 998px) {
+    .avtocard {
+        flex-direction: column;
+    }
+
+    .avtocard > div {
+        width: 100%;
+    }
+
+    .information {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 600px) {
+    .katalog {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}

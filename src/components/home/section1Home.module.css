@@ -50,3 +50,19 @@
     align-items: center;
     justify-content: center;
 }
+
+@media (max-width: 998px) {
+    .card_fav {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+    .pochemu {
+        padding: 30px 20px;
+    }
+}
+@media (max-width: 600px){
+    .card_fav{
+        grid-template-columns: repeat(1,1fr);
+    }
+}

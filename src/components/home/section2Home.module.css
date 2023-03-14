@@ -20,3 +20,8 @@
     color: white;
 }
 
+@media (max-width: 1300px) {
+    .iconca{
+        right: 0;
+    }
+}

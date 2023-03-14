@@ -14,7 +14,11 @@ body > #__next {
 }
 
 header {
-
+    position: fixed;
+    display: flex;
+    width: 100%;
+    top: 30px;
+    z-index: 9;
 }
 
 main {
@@ -128,4 +132,12 @@ section, .auto_center {
 .glavnay_po_caravanu .cena {
     grid-area: cena;
     overflow: auto;
+}
+
+@media (max-width: 1250px){
+    section, .auto_center {
+        max-width: 1200px;
+        padding: 0 20px;
+        width: 100%;
+    }
 }
