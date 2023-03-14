@@ -74,7 +74,7 @@ export default function Blog({posts}) {
 }
 
 // This function gets called at build time
-export async function getStaticProps() {
+export async function getServerSideProps() {
     // Call an external API endpoint to get posts
     const res = await fetch('https://1caravan.ru/wp-json/api/v2/posts/all')
     const posts = await res.json()
