@@ -10,6 +10,7 @@ import axios from "axios";
 import {Tab, Tabs, TabList, TabPanel} from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 
+
 // @ts-ignore
 export default function Post({post}) {
 

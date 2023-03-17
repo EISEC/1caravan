@@ -12,12 +12,11 @@ export default function Avtodom({doma}) {
             <HeadTitle/>
             <Menu/>
             <main>
-
                 {doma.length ? (
                     <Cards cards={doma}/>
                 ) : (
                     <section>
-                        <h1>подождите, загружаем</h1>
+                        <span>подождите, загружаем</span>
                     </section>
                 )}
                 <section>

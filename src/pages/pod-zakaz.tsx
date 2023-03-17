@@ -13,6 +13,13 @@ const inter = Inter({subsets: ['latin']})
 
 // @ts-ignore
 export default function PodZakaz({doma}) {
+    const [input, setInput] = useState('')
+
+    useEffect(() => {
+        doma.current.filter((u: { title: string; }) =>
+        u.title.toLowerCase().includes(input.toLowerCase())
+        )
+    }, [input])
 
     return (
         <>
@@ -26,6 +33,7 @@ export default function PodZakaz({doma}) {
             <Menu/>
             <main>
                 <CapHome/>
+                <input value={input} onChange={(e) => setInput(e.target.value)}/>
                 {doma.length ? (
                     <Cards cards={doma}/>
                 ) : (
