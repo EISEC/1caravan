@@ -17,13 +17,17 @@ export default function PodZakaz({doma}) {
     const [inputVin, setInputVin] = useState('')
     const [filteredDoma, setFilteredDoma] = useState(doma)
     const [isFonud, setIsFound] = useState(true)
+    const [sortPrice, setSortPrice] = useState('')
+    const [sortNew, setSortNew] = useState('')
+    const [sortMass, setSortMass] = useState('')
+    const [sortDlinna, setSortDlinna] = useState('')
+
     const [mesta, setMesta] = useState([])
     const [curMesta, setCurMesta] = useState('')
 
 
     useEffect(() => {
         let filtered = doma;
-
 
         if (inputSearch) {
             // @ts-ignore
@@ -39,10 +43,24 @@ export default function PodZakaz({doma}) {
             )
         }
 
+        if(sortPrice){
+        
+        }
+
+        if(sortNew){
+
+        }
+
+        if(sortMass){
+
+        }
+
+        if(sortDlinna){
+
+        }
+
         if (curMesta) {
-            // @ts-ignore
-            filtered = filtered.filter((u) => u.kol_sleep === '4');
-            setIsFound(filtered.length === 0 ? false : true)
+
         } else {
             setIsFound(filtered.length === 0 ? false : true)
             setFilteredDoma(filtered)
@@ -59,10 +77,6 @@ export default function PodZakaz({doma}) {
         setMesta([...setSleep])
     }, [])
 
-    // // @ts-ignore
-    // function setCurMestaFu(e) {
-    //     setCurMesta(e.target.value)
-    // }
 
     return (
         <>
@@ -82,31 +96,36 @@ export default function PodZakaz({doma}) {
                         <input value={inputSearch} onChange={(e) => setInputSearch(e.target.value)} placeholder="Поиск по названию"/>
                     </div>
                     <div className="vin">
-                        <input value={inputVin} onChange={(e) => setInputVin(e.target.value)} placeholder="Поиск по VIN"/>
+                        <input value={inputVin} onChange={(e) => setInputVin(e.target.value)} placeholder="Поиск по №"/>
                     </div>
-                    {/*<div className="kol_sleep">*/}
-                    {/*    <p>Спальные места</p>*/}
-                    {/*    {mesta.length !== 0 && mesta.map(el => {*/}
-                    {/*        return (*/}
-                    {/*            <>*/}
-                    {/*                <input type="checkbox" id="mesta" checked={el.curMesta} onChange={(e) => setCurMesta(e.target.checked)}/>*/}
-                    {/*                <label htmlFor={el}>{el}</label>*/}
-                    {/*            </>*/}
-                    {/*        )*/}
-                    {/*    })}*/}
-                    {/*</div>*/}
-                    {/*<select onChange={(e) => setCurMestaFu(e)} name="mesta" id="mesta">*/}
-                    {/*    <>*/}
-                    {/*        <option value=''>Выбрать</option>*/}
-
-                    {/*        {mesta.length !== 0 && mesta.map(el => {*/}
-                    {/*            return (*/}
-                    {/*                <option value={el}>{el}</option>*/}
-                    {/*            )*/}
-                    {/*        })}*/}
-                    {/*    </>*/}
-                    {/*</select>*/}
-
+                    <div className="price">
+                        <select onChange={(e) => setSortPrice(e)} name="price" id="price">
+                            <option value=''>По цене</option>
+                            <option value='Бюджетные'>Бюджетные</option>
+                            <option value='Дорогие'>Дорогие</option>
+                        </select>
+                    </div>
+                    <div className="kachestvo">
+                        <select onChange={(e) => setSortNew(e)} name="kachestvo" id="kachestvo">
+                            <option value=''>По износу</option>
+                            <option value='Новые'>Новые</option>
+                            <option value='бу'>Б/у</option>
+                        </select>
+                    </div>
+                    <div className="massa">
+                        <select onChange={(e) => setSortMass(e)} name="massa" id="massa">
+                            <option value=''>По массе</option>
+                            <option value='Легкие'>Легкие</option>
+                            <option value='Тяжелые'>Тяжелые</option>
+                        </select>
+                    </div>
+                    <div className="dlinna">
+                        <select onChange={(e) => setSortDlinna(e)} name="dlinna" id="dlinna">
+                            <option value=''>По длинне</option>
+                            <option value='Короткие'>Короткие</option>
+                            <option value='Длинные'>Длинные</option>
+                        </select>
+                    </div>
                     <div>Нашлось {filteredDoma.length} караванов</div>
                 </section>
                 {!!filteredDoma.length && (

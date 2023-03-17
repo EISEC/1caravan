@@ -8,25 +8,17 @@ import { motion } from "framer-motion";
 
 // @ts-ignore
 const Cards = ({cards}) => {
-    const [euro, setEuro] = useState(0)
     const [isMobile, setIsMobile] = useState(false)
 
 
     // @ts-ignore
     useEffect(() => {
         setIsMobile(window.matchMedia('(max-width: 600px)').matches)
-
-        async function getEuro() {
-            const euros_curs = await axios.get('https://1caravan.ru/wp-json/mmw/v1/course')
-            setEuro(euros_curs.data[0].curse_evro)
-        }
-
-        getEuro()
     }, [])
 
 
     function getFormatPrice(price: string) {
-        const pRes = Number(price) * Number(euro)
+        const pRes = Number(price)
         const formatPrice = String(pRes).replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1 ");
         return formatPrice
     }
