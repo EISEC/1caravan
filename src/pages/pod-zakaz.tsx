@@ -43,19 +43,19 @@ export default function PodZakaz({doma}) {
             )
         }
 
-        if(sortPrice){
-        
-        }
-
-        if(sortNew){
+        if (sortPrice) {
 
         }
 
-        if(sortMass){
+        if (sortNew) {
 
         }
 
-        if(sortDlinna){
+        if (sortMass) {
+
+        }
+
+        if (sortDlinna) {
 
         }
 
@@ -91,43 +91,55 @@ export default function PodZakaz({doma}) {
             <Menu/>
             <main>
                 <CapHome/>
-                <section>
-                    <div className="search">
-                        <input value={inputSearch} onChange={(e) => setInputSearch(e.target.value)} placeholder="Поиск по названию"/>
+                <section className={'filter'}>
+                    <div className="block-filter">
+                        <div className="search">
+                            <input value={inputSearch} onChange={(e) => setInputSearch(e.target.value)}
+                                   placeholder="Поиск по названию"/>
+                        </div>
+                        <div className="vin">
+                            <input value={inputVin} onChange={(e) => setInputVin(e.target.value)}
+                                   placeholder="Поиск по №"/>
+                        </div>
                     </div>
-                    <div className="vin">
-                        <input value={inputVin} onChange={(e) => setInputVin(e.target.value)} placeholder="Поиск по №"/>
+                    <div className="block-filter">
+                        <div className="price">
+                            {/*// @ts-ignore*/}
+                            <select onChange={(e) => setSortPrice(e)} name="price" id="price">
+                                <option value=''>По цене</option>
+                                <option value='Бюджетные'>Бюджетные</option>
+                                <option value='Дорогие'>Дорогие</option>
+                            </select>
+                        </div>
+                        <div className="kachestvo">
+                            {/*// @ts-ignore*/}
+                            <select onChange={(e) => setSortNew(e)} name="kachestvo" id="kachestvo">
+                                <option value=''>По износу</option>
+                                <option value='Новые'>Новые</option>
+                                <option value='бу'>Б/у</option>
+                            </select>
+                        </div>
                     </div>
-                    <div className="price">
-                        <select onChange={(e) => setSortPrice(e)} name="price" id="price">
-                            <option value=''>По цене</option>
-                            <option value='Бюджетные'>Бюджетные</option>
-                            <option value='Дорогие'>Дорогие</option>
-                        </select>
+                    <div className="block-filter">
+                        <div className="massa">
+                            {/*// @ts-ignore*/}
+                            <select onChange={(e) => setSortMass(e)} name="massa" id="massa">
+                                <option value=''>По массе</option>
+                                <option value='Легкие'>Легкие</option>
+                                <option value='Тяжелые'>Тяжелые</option>
+                            </select>
+                        </div>
+                        <div className="dlinna">
+                            {/*// @ts-ignore*/}
+                            <select onChange={(e) => setSortDlinna(e)} name="dlinna" id="dlinna">
+                                <option value=''>По длинне</option>
+                                <option value='Короткие'>Короткие</option>
+                                <option value='Длинные'>Длинные</option>
+                            </select>
+                        </div>
                     </div>
-                    <div className="kachestvo">
-                        <select onChange={(e) => setSortNew(e)} name="kachestvo" id="kachestvo">
-                            <option value=''>По износу</option>
-                            <option value='Новые'>Новые</option>
-                            <option value='бу'>Б/у</option>
-                        </select>
-                    </div>
-                    <div className="massa">
-                        <select onChange={(e) => setSortMass(e)} name="massa" id="massa">
-                            <option value=''>По массе</option>
-                            <option value='Легкие'>Легкие</option>
-                            <option value='Тяжелые'>Тяжелые</option>
-                        </select>
-                    </div>
-                    <div className="dlinna">
-                        <select onChange={(e) => setSortDlinna(e)} name="dlinna" id="dlinna">
-                            <option value=''>По длинне</option>
-                            <option value='Короткие'>Короткие</option>
-                            <option value='Длинные'>Длинные</option>
-                        </select>
-                    </div>
-                    <div>Нашлось {filteredDoma.length} караванов</div>
                 </section>
+                <div className={'auto_center'}>Нашлось {filteredDoma.length} караванов</div>
                 {!!filteredDoma.length && (
                     <Cards cards={filteredDoma}/>
                 )}

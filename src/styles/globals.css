@@ -134,7 +134,51 @@ section, .auto_center {
     overflow: auto;
 }
 
-@media (max-width: 1250px){
+.filter {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 30px;
+    gap: 30px;
+    margin-bottom: 15px;
+}
+
+.block-filter {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    align-items: center;
+}
+
+.block-filter > .search input {
+    min-height: 40px;
+    min-width: 256px;
+    font-size: 1.3rem;
+    border-radius: 10px;
+    border: 1px solid black;
+    padding-left: 10px;
+}
+
+.block-filter > .vin input {
+    min-height: 40px;
+    max-width: 150px;
+    font-size: 1.3rem;
+    border-radius: 10px;
+    border: 1px solid black;
+    padding-left: 10px;
+}
+
+.block-filter select{
+    min-height: 40px;
+    min-width: 162px;
+    font-size: 1.3rem;
+    border-radius: 10px;
+    border: 1px solid black;
+    padding-left: 10px;
+}
+
+@media (max-width: 1250px) {
     section, .auto_center {
         max-width: 1200px;
         padding: 0 20px;
