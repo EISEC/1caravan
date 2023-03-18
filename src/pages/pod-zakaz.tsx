@@ -27,7 +27,7 @@ export default function PodZakaz({doma}) {
 
 
     useEffect(() => {
-        let filtered = doma;
+        let filtered = [...doma]; // т.к. пропсы нельзя изменять!!! было - = doma
 
         if (inputSearch) {
             // @ts-ignore
@@ -43,16 +43,29 @@ export default function PodZakaz({doma}) {
             )
         }
 
-        if (sortPrice) {
-
-        }
 
         if (sortNew) {
-
+            filtered.sort((a, b) => {
+                return sortNew === 'Новые' ?
+                    (!!b.god_vipuska ? b.god_vipuska : b.price) - (a.god_vipuska ? a.god_vipuska : a.price)
+                    : (!!a.god_vipuska ? a.god_vipuska : a.price) - (b.god_vipuska ? b.god_vipuska : b.price)
+            })
         }
 
         if (sortMass) {
+            filtered.sort((a, b) => {
+                return sortMass === 'Тяжелые' ?
+                    (!!b.mass ? b.mass : b.price) - (a.mass ? a.mass : a.price)
+                    : (!!a.mass ? a.mass : a.price) - (b.mass ? b.mass : b.price)
+            })
+        }
 
+        if (sortPrice) {
+            filtered.sort((a, b) => {
+                return sortPrice === 'Дорогие' ?
+                    (!!b.prices_sale ? b.prices_sale : b.price) - (a.prices_sale ? a.prices_sale : a.price)
+                    : (!!a.prices_sale ? a.prices_sale : a.price) - (b.prices_sale ? b.prices_sale : b.price)
+            })
         }
 
         if (sortDlinna) {
@@ -61,13 +74,12 @@ export default function PodZakaz({doma}) {
 
         if (curMesta) {
 
-        } else {
-            setIsFound(filtered.length === 0 ? false : true)
-            setFilteredDoma(filtered)
         }
 
+        setIsFound(filtered.length === 0 ? false : true)
+        setFilteredDoma(filtered)
 
-    }, [inputSearch, inputVin, curMesta])
+    }, [inputSearch, inputVin, curMesta, sortMass, sortDlinna, sortPrice, sortNew])
 
     useEffect(() => {
         // @ts-ignore
@@ -76,7 +88,6 @@ export default function PodZakaz({doma}) {
         // @ts-ignore
         setMesta([...setSleep])
     }, [])
-
 
     return (
         <>
@@ -105,7 +116,7 @@ export default function PodZakaz({doma}) {
                     <div className="block-filter">
                         <div className="price">
                             {/*// @ts-ignore*/}
-                            <select onChange={(e) => setSortPrice(e)} name="price" id="price">
+                            <select onChange={(e) => setSortPrice(e.target.value)} name="price" id="price">
                                 <option value=''>По цене</option>
                                 <option value='Бюджетные'>Бюджетные</option>
                                 <option value='Дорогие'>Дорогие</option>
@@ -113,7 +124,7 @@ export default function PodZakaz({doma}) {
                         </div>
                         <div className="kachestvo">
                             {/*// @ts-ignore*/}
-                            <select onChange={(e) => setSortNew(e)} name="kachestvo" id="kachestvo">
+                            <select onChange={(e) => setSortNew(e.target.value)} name="kachestvo" id="kachestvo">
                                 <option value=''>По износу</option>
                                 <option value='Новые'>Новые</option>
                                 <option value='бу'>Б/у</option>
@@ -123,7 +134,7 @@ export default function PodZakaz({doma}) {
                     <div className="block-filter">
                         <div className="massa">
                             {/*// @ts-ignore*/}
-                            <select onChange={(e) => setSortMass(e)} name="massa" id="massa">
+                            <select onChange={(e) => setSortMass(e.target.value)} name="massa" id="massa">
                                 <option value=''>По массе</option>
                                 <option value='Легкие'>Легкие</option>
                                 <option value='Тяжелые'>Тяжелые</option>
