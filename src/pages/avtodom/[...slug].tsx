@@ -14,42 +14,29 @@ import 'react-tabs/style/react-tabs.css';
 // @ts-ignore
 export default function Post({post}) {
 
-    const [euro, setEuro] = useState(0)
-
-    // @ts-ignore
-    useEffect(() => {
-        async function getEuro() {
-            const euros_curs = await axios.get('https://1caravan.ru/wp-json/mmw/v1/course')
-            setEuro(euros_curs.data[0].curse_evro)
-        }
-
-        getEuro()
-    }, [])
-
-
     function getFormatPrice(price: string) {
-        const pRes = Number(price) * Number(euro)
+        const pRes = Number(price)
         const formatPrice = String(pRes).replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1 ");
         return formatPrice
     }
 
     const proizvoditeli_karavanov = post.proizvoditeli_karavanov
-    const proizvoditel = proizvoditeli_karavanov != 0 && (post._embedded['wp:term'][1][0].name)
-    const title = post.title.rendered
-    const content = post.content.rendered
-    const statusDom = post.acf.status
-    const strana = post.acf.strana_proiz
-    const massa = post.acf.mass_pusto
-    const max_massa = post.acf.Max_mass
-    const mesta = post.acf.kol_sleep
-    const sanuzel = post.acf.dopy
-    const vin = post.acf.vin
-    const god_vipuska = post.acf.god_vipuska
+    const proizvoditel = proizvoditeli_karavanov != 0 && (post.proizvoditel[0])
+    const title = post.title
+    const content = post.content
+    const statusDom = post.status
+    const strana = post.strana_proiz
+    const massa = post.mass
+    const max_massa = post.maxmass
+    const mesta = post.kol_sleep
+    const sanuzel = post.dopy
+    const vin = post.vin
+    const god_vipuska = post.god_vipuska
     // post._embedded['wp:term'][1][0].name
-    const acfGall = post._embedded['acf:attachment']
-    const glavFoto = post._embedded['wp:featuredmedia'][0]
-    const preim = post.acf.ospreim
-    const razmer = post.acf.osnova
+    const acfGall = post.gallary
+    const glavFoto = post.img
+    const preim = post.ospreim
+    const razmer = post.osnova
     const responsive = {
         superLargeDesktop: {
             // the naming can be any, depends on you.
@@ -77,7 +64,7 @@ export default function Post({post}) {
                 <meta name="description"
                       content={`Купить/Заказать ${title} от производителя автодомов ${proizvoditel}. Актуальная информация и приятная цена ждут Вас на нашем сайте! Подберем автодом под ваши пожелания`}/>
                 <meta name="keywords"
-                      content={`купить, автодом, караван, прицеп дачу, ${proizvoditel}, ${title}, ${post.acf.god_vipuska}`}/>
+                      content={`купить, автодом, караван, прицеп дачу, ${proizvoditel}, ${title}, ${post.god_vipuska}`}/>
                 <meta name="viewport" content="width=device-width, initial-scale=1"/>
                 <link rel="icon" href="/favicon.ico"/>
             </Head>
@@ -95,14 +82,14 @@ export default function Post({post}) {
                             itemClass="carousel-item-padding-40-px"
                         >
                             <div>
-                                <Image className={cl.imgCarusel} src={glavFoto.source_url} alt={`${title} фотография номер ${glavFoto.id}`}
+                                <Image className={cl.imgCarusel} src={glavFoto} alt={`${title} фотография номер ${glavFoto}`}
                                        width={800} height={600}/>
                             </div>
                             {/*// @ts-ignore*/}
-                            {acfGall.slice().reverse().map(el => {
+                            {acfGall.slice().map(el => {
                                 return (
                                     <div key={el.id}>
-                                        <Image className={cl.imgCarusel} src={el.source_url} alt={`${title} фотография номер ${el.id}`}
+                                        <Image className={cl.imgCarusel} src={el.url} alt={`${title} фотография номер ${el.id}`}
                                                width={800} height={600}/>
                                     </div>
                                 )
@@ -236,15 +223,15 @@ export default function Post({post}) {
                             <li><b>Тип санузла</b>: {sanuzel}</li>
                         </ul>
 
-                        <div className={post.acf.prices_sale != 0 ? cl.Cina : cl.Sisny}>
-                            {post.acf.prices_sale ?
+                        <div className={post.prices_sale != 0 ? cl.Cina : cl.Sisny}>
+                            {post.prices_sale ?
                                 (
-                                    <p className={cl.salePrice}>{getFormatPrice(post.acf.price)} ₽</p>
+                                    <p className={cl.salePrice}>{getFormatPrice(post.price)} ₽</p>
                                 ) : null
                             }
 
-                            <p className={`${cl.usualPrice} ${statusDom == 'Выбрать' && post.acf.prices_sale != 0 ? cl.redprice : ''} ${statusDom == 'В пути' && post.acf.prices_sale != 0 ? cl.redprice : ''}`}>
-                                {post.acf.prices_sale ? getFormatPrice(post.acf.prices_sale) : getFormatPrice(post.acf.price)} ₽
+                            <p className={`${cl.usualPrice} ${statusDom == 'Выбрать' && post.prices_sale != 0 ? cl.redprice : ''} ${statusDom == 'В пути' && post.prices_sale != 0 ? cl.redprice : ''}`}>
+                                {post.prices_sale ? getFormatPrice(post.prices_sale) : getFormatPrice(post.price)} ₽
                             </p>
                         </div>
                     </div>
@@ -283,7 +270,8 @@ export default function Post({post}) {
 
 // @ts-ignore
 export async function getServerSideProps({params}) {
-    const res = await fetch(`https://1caravan.ru/wp-json/wp/v2/caravans?slug=${params.slug}&_embed`)
+    // const res = await fetch(`https://1caravan.ru/wp-json/wp/v2/caravans?slug=${params.slug}&_embed`)
+    const res = await fetch(`https://1caravan.ru/wp-json/api/v2/doma/${params.slug}`)
     const [post] = await res.json()
     if (!post) {
         return {
