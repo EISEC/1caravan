@@ -7,8 +7,6 @@ import RelatedList from "@/components/posts/relatedList";
 // @ts-ignore
 const Footer = () => {
     const [posts, setPosts] = useState([])
-
-
     useEffect(() => {
         const getPosts = async () => {
             const {data: posts} = await axios.get('https://1caravan.ru/wp-json/api/v2/posts/related')
