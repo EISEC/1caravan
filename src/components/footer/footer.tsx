@@ -19,10 +19,10 @@ const Footer = () => {
     }, [])
 
     return (
-        <footer className={cl.footer}>
-            <div className={`auto_center ${cl.fotme}`}>
+        <footer className={`${cl.footer} pt-10`}>
+            <div className={`container mx-auto ${cl.fotme}`}>
                 <div className={cl.nameFot}>
-                    <h4>
+                    <h4 className={'mb-3'}>
                         Навигация
                     </h4>
                     <ul className={cl.footer_menu}>
@@ -59,7 +59,7 @@ const Footer = () => {
                     </ul>
                 </div>
                 <div className={cl.nameFot}>
-                    <h4>
+                    <h4 className={'mb-3'}>
                         Свежие записи
                     </h4>
                     {posts.length ? (
@@ -71,7 +71,7 @@ const Footer = () => {
                     )}
                 </div>
                 <div className={cl.widthKontakt}>
-                    <h4>
+                    <h4 className={'mb-3'}>
                         Контакты
                     </h4>
                     <div className={cl.nameKontakt}>
@@ -100,8 +100,8 @@ const Footer = () => {
                     </div>
                 </div>
             </div>
-            <div className={`auto_center ${cl.copyrayte}`}>
-                <div>
+            <div className={`container mx-auto ${cl.copyrayte}`}>
+                <div className={'pt-3'}>
                     <p className={cl.copy}>
                         Разработано
                         <Link href={'https://ап-студия.рф'} className={cl.apstud}> “АП-Студия.рф”</Link>
@@ -110,7 +110,7 @@ const Footer = () => {
                         © “Первый караван” - Продажа автодомов, караванов, прицеп-дача.
                     </p>
                 </div>
-                <div className={cl.flexRight}>
+                <div className={`${cl.flexRight} pt-3`}>
                     <p className={cl.small_text}>
                         Обращаем ваше внимание на то, что данный интернет-сайт носит исключительно информационный
                         характер и ни при каких условиях не является публичной офертой, определяемой положениями Статьи

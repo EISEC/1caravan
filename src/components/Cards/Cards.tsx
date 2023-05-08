@@ -3,7 +3,8 @@ import Link from "next/link";
 import Image from 'next/image'
 import cl from './Cards.module.css';
 import axios from "axios";
-import { motion } from "framer-motion";
+import {motion} from "framer-motion";
+import {FaFilter, FaHeart} from "react-icons/fa";
 
 
 // @ts-ignore
@@ -37,13 +38,13 @@ const Cards = ({cards}) => {
         if (isMobile) {
             setShowCount(prevState => prevState + 2)
         } else {
-            setShowCount(prevState => prevState + 4)
+            setShowCount(prevState => prevState + 3)
 
         }
     }
 
     const container = {
-        hidden: { opacity: 1, scale: 0 },
+        hidden: {opacity: 1, scale: 0},
         visible: {
             opacity: 1,
             scale: 1,
@@ -55,7 +56,7 @@ const Cards = ({cards}) => {
     };
 
     const item = {
-        hidden: { y: 50, opacity: 0 },
+        hidden: {y: 50, opacity: 0},
         visible: {
             y: 0,
             opacity: 1
@@ -63,9 +64,9 @@ const Cards = ({cards}) => {
     };
 
     return (
-        <section className={`${cl.listavto}`}>
+        <section className={`${cl.listavto} container mx-auto`}>
             <motion.ul
-                className={cl.katalog}
+                className={'grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 mb-8'}
                 variants={container}
                 initial="hidden"
                 animate="visible"
@@ -75,32 +76,31 @@ const Cards = ({cards}) => {
                     const statusDom = el.status
                     return (
                         <motion.li
-                            className={cl.avtocard}
+                            className={'rounded-lg overflow-hidden bg-white shadow-lg p-3 flex flex-col justify-between'}
                             key={el.id}
                             variants={item}
                         >
-                            <div className={cl.prevew}>
+                            <div className={'relative h-[325px]'}>
                                 <Image
 
                                     src={el.img}
                                     alt={el.title}
-                                    width={800}
-                                    height={500}
-                                    className={cl.image}
+                                    fill
+                                    className={'object-cover rounded-lg shadow-md'}
                                     priority/>
-                                <span>№{el.vin}</span>
+                                <span className={'absolute bg-white p-1 rounded mt-2 ml-2'}>№{el.vin}</span>
                             </div>
-                            <div className={cl.information}>
+                            <div className={'mt-3 gap-3 flex flex-col justify-stretch'}>
                                 <Link href={{
                                     pathname: "avtodom/[...slug]",
                                     query: {slug: el.slug},
                                 }}
-                                      className={cl.ssilka}>
+                                      className={'uppercase text-xl font-bold block mb-3'}>
                                     {el.title}
                                 </Link>
 
                                 {statusDom == 'Выбрать' && (
-                                    <div className={`${cl.statusN} ${cl.pmr5}`}>
+                                    <div className={`${cl.statusN} ${cl.pmr5} max-w-[175px]`}>
                                         <div className={cl.iconka}>
                                             <svg width="17" height="17" viewBox="0 0 17 17" fill="none"
                                                  xmlns="http://www.w3.org/2000/svg">
@@ -138,7 +138,7 @@ const Cards = ({cards}) => {
                                     </div>
                                 )}
                                 {statusDom == 'Забронирован' && (
-                                    <div className={`${cl.statusZ} ${cl.pmr5}`}>
+                                    <div className={`${cl.statusZ} ${cl.pmr5} max-w-[175px]`}>
                                         <div className={cl.iconka}>
                                             <svg width="17" height="17" viewBox="0 0 17 17" fill="none"
                                                  xmlns="http://www.w3.org/2000/svg">
@@ -153,7 +153,7 @@ const Cards = ({cards}) => {
                                     </div>
                                 )}
                                 {statusDom == 'В пути' && (
-                                    <div className={`${cl.statusV} ${cl.pmr5}`}>
+                                    <div className={`${cl.statusV} ${cl.pmr5} max-w-[175px]`}>
                                         <div className={cl.iconka}>
                                             <svg width="19" height="19" viewBox="0 0 19 19" fill="none"
                                                  xmlns="http://www.w3.org/2000/svg">
@@ -172,7 +172,7 @@ const Cards = ({cards}) => {
                                     </div>
                                 )}
                                 {statusDom == 'Продан' && (
-                                    <div className={`${cl.statusP} ${cl.pmr5}`}>
+                                    <div className={`${cl.statusP} ${cl.pmr5} max-w-[175px]`}>
                                         <div className={cl.iconka}>
                                             <svg width="17" height="17" viewBox="0 0 17 17" fill="none"
                                                  xmlns="http://www.w3.org/2000/svg">
@@ -191,7 +191,7 @@ const Cards = ({cards}) => {
                                     </div>
                                 )}
                                 {statusDom == 'Под заказ' && (
-                                    <div className={`${cl.statusPZ} ${cl.pmr5}`}>
+                                    <div className={`${cl.statusPZ} ${cl.pmr5} max-w-[175px]`}>
                                         <div className={cl.iconka}>
                                             <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
                                                  xmlns="http://www.w3.org/2000/svg">
@@ -222,18 +222,19 @@ const Cards = ({cards}) => {
                                 <p className={`${cl.usualPrice} ${statusDom == 'Выбрать' && el.prices_sale != 0 ? cl.redprice : ''} ${statusDom == 'В пути' && el.prices_sale != 0 ? cl.redprice : ''}`}>
                                     {el.prices_sale ? getFormatPrice(el.prices_sale) : getFormatPrice(el.price)} ₽
                                 </p>
-                                <div className={cl.btn_fo}>
-                                    <Link href={'#'} className={cl.btnlight}>
-                                        Оставить заявку
-                                    </Link>
-                                    <Link href={{
-                                        pathname: "avtodom/[...slug]",
-                                        query: {slug: el.slug},
-                                    }}
-                                          className={cl.btndark}>
-                                        Подробнее
-                                    </Link>
+                                <div className={'grid grid-cols-2 gap-2 py-2'}>
+                                    <button className={'flex flex-row items-center justify-center gap-2'}>В
+                                        Сравнение <FaFilter className={'text-blue-600'}/></button>
+                                    <button className={'flex flex-row items-center justify-center gap-2'}>В
+                                        Избранное <FaHeart className={'text-red-700'}/></button>
                                 </div>
+                                <Link href={{
+                                    pathname: "avtodom/[...slug]",
+                                    query: {slug: el.slug},
+                                }}
+                                      className={`${cl.btndark} block w-full text-center text-lg py-3 mt-2`}>
+                                    Подробнее
+                                </Link>
                             </div>
                         </motion.li>
                     )
@@ -241,7 +242,8 @@ const Cards = ({cards}) => {
             </motion.ul>
             {showCount <= cards.length ?
                 (
-                    <button className={`btn-green ${cl.mrgbt25}`} onClick={() => onShowMore()}>Загрузить больше</button>
+                    <button className={`btn-green ${cl.mrgbt25} `} onClick={() => onShowMore()}>Загрузить
+                        больше</button>
                 ) :
                 (
                     <p className={cl.mrgbt25}>Всё загружено</p>

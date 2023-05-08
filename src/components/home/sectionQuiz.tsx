@@ -51,7 +51,7 @@ const SectionQuiz = () => {
 
 
     return (
-        <section>
+        <section className={'container mx-auto'}>
             <div data-marquiz-id="617169426d08b20044f239b3"></div>
         </section>
     );

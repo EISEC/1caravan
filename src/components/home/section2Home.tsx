@@ -3,7 +3,7 @@ import cl from './section2Home.module.css'
 
 const Section2Home = () => {
     return (
-        <section className={cl.relative_prava}>
+        <section className={`${cl.relative_prava} container mx-auto`}>
             <div className={cl.iconca}>
                 <svg width="81" height="81" viewBox="0 0 81 81" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <g clipPath="url(#clip0_1_229)">

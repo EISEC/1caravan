@@ -3,7 +3,7 @@ import cl from './sectionTextHome.module.css'
 
 const SectionTextHome = () => {
     return (
-        <section className={cl.textHome}>
+        <section className={`${cl.textHome} container mx-auto`}>
             <h2>В России многие люди решают купить прицеп дача, дом на колесах, или автодом.</h2>
 
             <p><b>Прицепы-дачи</b> — это удобный способ, чтобы насладиться природой и отдохнуть на просторах своего

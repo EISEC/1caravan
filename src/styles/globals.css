@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 * {
     box-sizing: border-box;
 }
@@ -33,6 +37,15 @@ footer {
 
 }
 
+p {
+    margin-bottom: 15px;
+}
+
+p strong,
+p b {
+    font-weight: bold;
+}
+
 .btn-green {
     background: linear-gradient(117.65deg, #1C8E00 19.25%, #D6F578 89.5%);
     border-radius: 10px;
@@ -57,11 +70,6 @@ footer {
 .po2 {
     font-weight: 300;
     font-size: 22px;
-}
-
-section, .auto_center {
-    max-width: 1200px;
-    margin: 0 auto;
 }
 
 .list_blog {
@@ -169,19 +177,11 @@ section, .auto_center {
     padding-left: 10px;
 }
 
-.block-filter select{
+.block-filter select {
     min-height: 40px;
     min-width: 162px;
     font-size: 1.3rem;
     border-radius: 10px;
     border: 1px solid black;
     padding-left: 10px;
-}
-
-@media (max-width: 1250px) {
-    section, .auto_center {
-        max-width: 1200px;
-        padding: 0 20px;
-        width: 100%;
-    }
 }
