@@ -24,19 +24,19 @@ export default function Post({post}) {
     const proizvoditel = proizvoditeli_karavanov != 0 && (post.proizvoditel[0])
     const title = post.title
     const content = post.content
-    const statusDom = post.status
-    const strana = post.strana_proiz
-    const massa = post.mass
-    const max_massa = post.maxmass
-    const mesta = post.kol_sleep
-    const sanuzel = post.dopy
-    const vin = post.vin
-    const god_vipuska = post.god_vipuska
+    const statusDom = post.acf.status
+    const strana = post.acf.strana_proiz
+    const massa = post.acf.mass_pusto
+    const max_massa = post.acf.Max_mass
+    const mesta = post.acf.kol_sleep
+    const sanuzel = post.acf.dopy
+    const vin = post.acf.vin
+    const god_vipuska = post.acf.god_vipuska
     // post._embedded['wp:term'][1][0].name
-    const acfGall = post.gallary
+    const acfGall = post.acf.gallery_avtod
     const glavFoto = post.img
-    const preim = post.ospreim
-    const razmer = post.osnova
+    const preim = post.acf.ospreim
+    const razmer = post.acf.osnova
     const responsive = {
         superLargeDesktop: {
             // the naming can be any, depends on you.
@@ -71,11 +71,11 @@ export default function Post({post}) {
             <Menu/>
             <main className={cl.main}>
                 <section className={cl.topheader}>
-                    <div className={`auto_center ${cl.topcaravan}`}>
-                        <h1>{title} <span className={cl.vin}>№ {vin}</span></h1>
+                    <div className={`container px-6 py-2 mx-auto ${cl.topcaravan}`}>
+                        <h1 className={'font-bold text-4xl'}>{title} <span className={`text-xl ${cl.vin}`}>№ {vin}</span></h1>
                     </div>
                 </section>
-                <section className={`${cl.glavnay_po_caravanu} glavnay_po_caravanu`}>
+                <section className={`${cl.glavnay_po_caravanu} container px-6 py-6 mx-auto glavnay_po_caravanu`}>
                     <div className="gallary">
                         <Carousel
                             responsive={responsive}
@@ -239,7 +239,7 @@ export default function Post({post}) {
 
                     </div>
                 </section>
-                <section className='text' id={'findContent'}>
+                <section className='container px-6 py-6 mx-auto text' id={'findContent'}>
                     <Tabs>
                         <TabList>
                             <Tab>Краткое описание</Tab>

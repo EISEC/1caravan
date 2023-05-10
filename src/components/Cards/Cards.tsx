@@ -80,7 +80,7 @@ const Cards = ({cards}) => {
                             key={el.id}
                             variants={item}
                         >
-                            <div className={'relative h-[325px]'}>
+                            <div className={'relative h-[225px]'}>
                                 <Image
 
                                     src={el.img}
