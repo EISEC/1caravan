@@ -7,7 +7,12 @@ import RelatedList from "@/components/posts/relatedList";
 // @ts-ignore
 const Footer = () => {
     const [posts, setPosts] = useState([])
-    const [loading, setLoading] = useState(true);
+    const [ready, setReady] = useState(false)
+    useEffect(() => {
+        setTimeout(() => {
+            setReady(true)
+        }, 3000)
+    }, [])
     useEffect(() => {
         const getPosts = async () => {
             const {data: posts} = await axios.get('https://1caravan.ru/wp-json/api/v2/posts/related')
@@ -21,7 +26,7 @@ const Footer = () => {
 
 
     return (
-        <footer className={`${cl.footer} pt-10`} onLoad={() => setLoading(false)}>
+        <footer className={`${cl.footer} pt-10`}>
             <div className={`container mx-auto ${cl.fotme}`}>
                 <div className={cl.nameFot}>
                     <h4 className={'mb-3'}>
@@ -87,15 +92,15 @@ const Footer = () => {
                                 <a href="tel:+79811518850" className={cl.telefonchik}>+7 (981) 151 - 88 - 50</a>
                             </div>
                             <div>
-                                <iframe
+                                {!ready ? '' : <iframe
                                     title={'рейтинг'}
                                     loading="lazy"
                                     src="https://yandex.ru/sprav/widget/rating-badge/187769733343?type=rating"
-                                    width="150" height="50" frameBorder="0"></iframe>
+                                    width="150" height="50" frameBorder="0"></iframe>}
                             </div>
                         </div>
                         <div className={cl.map}>
-                            {loading ? '' : <iframe
+                            {!ready ? '' : <iframe
                                 title='карта'
                                 loading='lazy'
                                 src='https://yandex.ru/map-widget/v1/?um=constructor%3A8e0909ee48fb0c759129f6db6cbb220188d65471000e766c8f7c5845c9c8d6ee&amp;source=constructor'
