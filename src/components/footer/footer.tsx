@@ -7,6 +7,7 @@ import RelatedList from "@/components/posts/relatedList";
 // @ts-ignore
 const Footer = () => {
     const [posts, setPosts] = useState([])
+    const [loading, setLoading] = useState(true);
     useEffect(() => {
         const getPosts = async () => {
             const {data: posts} = await axios.get('https://1caravan.ru/wp-json/api/v2/posts/related')
@@ -18,8 +19,9 @@ const Footer = () => {
 
     }, [])
 
+
     return (
-        <footer className={`${cl.footer} pt-10`}>
+        <footer className={`${cl.footer} pt-10`} onLoad={() => setLoading(false)}>
             <div className={`container mx-auto ${cl.fotme}`}>
                 <div className={cl.nameFot}>
                     <h4 className={'mb-3'}>
@@ -86,16 +88,18 @@ const Footer = () => {
                             </div>
                             <div>
                                 <iframe
+                                    title={'рейтинг'}
                                     loading="lazy"
                                     src="https://yandex.ru/sprav/widget/rating-badge/187769733343?type=rating"
                                     width="150" height="50" frameBorder="0"></iframe>
                             </div>
                         </div>
                         <div className={cl.map}>
-                            <iframe
-                                loading="lazy"
-                                src="https://yandex.ru/map-widget/v1/?um=constructor%3A8e0909ee48fb0c759129f6db6cbb220188d65471000e766c8f7c5845c9c8d6ee&amp;source=constructor"
-                                width="100%" height="300" frameBorder="0"></iframe>
+                            {loading ? '' : <iframe
+                                title='карта'
+                                loading='lazy'
+                                src='https://yandex.ru/map-widget/v1/?um=constructor%3A8e0909ee48fb0c759129f6db6cbb220188d65471000e766c8f7c5845c9c8d6ee&amp;source=constructor'
+                                width='100%' height='300' frameBorder='0'/>}
                         </div>
                     </div>
                 </div>
