@@ -38,7 +38,7 @@ const Cards = ({cards}) => {
         if (isMobile) {
             setShowCount(prevState => prevState + 2)
         } else {
-            setShowCount(prevState => prevState + 3)
+            setShowCount(prevState => prevState + 6)
 
         }
     }

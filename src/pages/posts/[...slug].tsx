@@ -22,14 +22,29 @@ export default function Post({post}) {
             </Head>
             <Menu/>
             <main>
-                <div className="header_blog">
-                    <Image src={image_url} alt={title} layout="fill"/>
-                    <div className={'auto_center'}>
-                        <h1 dangerouslySetInnerHTML={{__html: title}}></h1>
+                <section
+                    className="container px-4 mt-[150px] mx-auto mb-8 flex flex-col justify-between items-center gap-6 sm:gap-10 md:mb-16 md:gap-16 lg:flex-row">
+
+                    <div className="flex flex-col justify-center sm:text-center lg:py-12 lg:text-left xl:w-5/12">
+                        <p className="mb-4 font-semibold text-blue-950 md:mb-6 md:text-lg xl:text-xl">Блог</p>
+
+                        <h1 className="text-black-800 mb-8 text-3xl font-bold sm:text-4xl md:mb-12 "
+                            dangerouslySetInnerHTML={{__html: title}}></h1>
                     </div>
-                </div>
+
+
+                    <div className="relative h-48 overflow-hidden rounded-lg bg-gray-100 shadow-lg lg:h-96 xl:w-5/12">
+                        <Image loading="lazy" src={image_url} alt={title} fill
+                               className="h-full w-full object-cover object-center"/>
+                    </div>
+
+                </section>
                 <section className="article">
-                    <div className='text' dangerouslySetInnerHTML={{__html: content}}/>
+                    <div className=" w-full px-5 py-24 mx-auto lg:px-32">
+                        <div className="flex flex-col w-full mx-auto mb-2 prose text-left prose-md">
+                            <div className='text' dangerouslySetInnerHTML={{__html: content}}/>
+                        </div>
+                    </div>
                 </section>
             </main>
             <Footer/>

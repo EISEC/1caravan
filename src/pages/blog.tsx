@@ -10,7 +10,7 @@ import Image from "next/image";
 export default function Blog({posts}) {
 
     const container = {
-        hidden: { opacity: 1, scale: 0 },
+        hidden: {opacity: 1, scale: 0},
         visible: {
             opacity: 1,
             scale: 1,
@@ -22,7 +22,7 @@ export default function Blog({posts}) {
     };
 
     const item = {
-        hidden: { y: 50, opacity: 0 },
+        hidden: {y: 50, opacity: 0},
         visible: {
             y: 0,
             opacity: 1
@@ -34,9 +34,9 @@ export default function Blog({posts}) {
             <Menu/>
             <main>
                 <CapHome/>
-                <section>
+                <section className={'container mx-auto mt-6 mb-8'}>
                     <motion.ul
-                        className={`list_blog`}
+                        className={`grid gap-4 sm:grid-cols-2 md:gap-6 lg:grid-cols-3 xl:grid-cols-4 xl:gap-8`}
                         variants={container}
                         initial="hidden"
                         animate="visible"
@@ -44,25 +44,31 @@ export default function Blog({posts}) {
                         {/*// @ts-ignore*/}
                         {posts.slice(0, 10).map(el => {
                             return (
-                                <motion.li
-                                    className={`list_blog_li`}
-                                    key={el.id}
-                                    variants={item}
-                                >
-                                    <Image
-                                        src={el.img}
-                                        alt={el.title}
-                                        width={285}
-                                        height={200}
-                                    />
-                                    <Link href={{
-                                        pathname: "/posts/[...slug]",
-                                        query: {slug: el.slug},
-                                    }}
-                                          className={`list_blog_a`}>
-                                        {el.title}
-                                    </Link>
-                                </motion.li>
+                                <Link href={{
+                                    pathname: "/posts/[...slug]",
+                                    query: {slug: el.slug},
+                                }}
+                                      className={`list_blog_a`}>
+                                    <motion.li
+                                        className={`group relative flex h-48 flex-col overflow-hidden rounded-lg bg-gray-100 shadow-lg md:h-64 xl:h-96`}
+                                        key={el.id}
+                                        variants={item}
+                                    >
+                                        <Image
+                                            loading="lazy"
+                                            src={el.img}
+                                            alt={el.title}
+                                            fill
+                                            className="inset-0 h-full w-full object-cover object-center transition duration-200 group-hover:scale-110"
+                                        />
+                                        <div
+                                            className="pointer-events-none absolute inset-0 bg-gradient-to-t from-gray-800 to-transparent md:via-transparent"></div>
+                                        <div className="relative mt-auto p-4">
+                                            <h2 className="mb-2 text-xl font-semibold text-white transition duration-100">{el.title}</h2>
+                                            <span className="font-semibold text-indigo-300">Читать</span>
+                                        </div>
+                                    </motion.li>
+                                </Link>
                             )
                         })}
                     </motion.ul>

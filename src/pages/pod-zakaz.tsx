@@ -102,7 +102,7 @@ export default function PodZakaz({doma}) {
             <Menu/>
             <main>
                 <CapHome/>
-                <section className={'filter'}>
+                <section className={'filter container px-6 py-6 mx-auto'}>
                     <div className="block-filter">
                         <div className="search">
                             <input value={inputSearch} onChange={(e) => setInputSearch(e.target.value)}
@@ -150,7 +150,7 @@ export default function PodZakaz({doma}) {
                         </div>
                     </div>
                 </section>
-                <div className={'auto_center'}>Нашлось {filteredDoma.length} караванов</div>
+                <div className={'container mx-auto px-6'}>Нашлось {filteredDoma.length} караванов</div>
                 {!!filteredDoma.length && (
                     <Cards cards={filteredDoma}/>
                 )}
