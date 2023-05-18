@@ -1,24 +1,24 @@
-import React from 'react';
 import Menu from "@/components/header/menu";
 import CapHome from "@/components/home/capHome";
+import {clearComp} from "@/store/slice/compare";
 import Footer from "@/components/footer/footer";
 import {useAppDispatch, useAppSelector} from "@/store/store";
-import {clearWish} from "@/store/slice/wishlist";
+import React from "react";
 
-const Wishlist = () => {
+const Compare = () => {
     const dispatch = useAppDispatch()
-    const {wishList} = useAppSelector(state => state.wishlist)
+    const {compareList} = useAppSelector(state => state.compare)
     return (
         <>
             <Menu/>
             <main>
                 <CapHome/>
-                <button onClick={() => dispatch(clearWish())}>
+                <button onClick={() => dispatch(clearComp())}>
                     Очистить
                 </button>
                 <ul>
                     {/*//@ts-ignore*/}
-                    {wishList.map(el => {
+                    {compareList.map(el => {
                         return(
                             <li key={el.slug}>
                                 {el.title}
@@ -32,4 +32,4 @@ const Wishlist = () => {
     );
 };
 
-export default Wishlist;
+export default Compare;

@@ -5,10 +5,33 @@ import cl from './Cards.module.css';
 import axios from "axios";
 import {motion} from "framer-motion";
 import {FaFilter, FaHeart} from "react-icons/fa";
-
+import {useAppDispatch} from "@/store/store";
+import {AddWish} from "@/store/slice/wishlist";
+import {AddComp} from "@/store/slice/compare";
 
 // @ts-ignore
 const Cards = ({cards}) => {
+
+    const dispatch = useAppDispatch();
+    //@ts-ignore
+    const sendToCart = (slug, title, price, img) => {
+        //@ts-ignore
+        dispatch(AddWish({slug, title, price, img}))
+        //@ts-ignore
+        // refCount.current.value = 1
+        // setShowToast((currVal) => !currVal)
+        // setTimeout(() => setShowToast(false), 3000)
+    }
+    //@ts-ignore
+    const sendToComp = (slug, title, price, img) => {
+        //@ts-ignore
+        dispatch(AddComp({slug, title, price, img}))
+        //@ts-ignore
+        // refCount.current.value = 1
+        // setShowToast((currVal) => !currVal)
+        // setTimeout(() => setShowToast(false), 3000)
+    }
+
     const [isMobile, setIsMobile] = useState(false)
 
 
@@ -223,9 +246,11 @@ const Cards = ({cards}) => {
                                     {el.prices_sale ? getFormatPrice(el.prices_sale) : getFormatPrice(el.price)} ₽
                                 </p>
                                 <div className={'grid grid-cols-2 gap-2 py-2'}>
-                                    <button className={'flex flex-row items-center justify-center gap-2'}>В
+                                    <button onClick={() => sendToComp(el.slug, el.title, el.price, el.img)}
+                                            className={'flex flex-row items-center justify-center gap-2'}>В
                                         Сравнение <FaFilter className={'text-blue-600'}/></button>
-                                    <button className={'flex flex-row items-center justify-center gap-2'}>В
+                                    <button onClick={() => sendToCart(el.slug, el.title, el.price, el.img)}
+                                            className={'flex flex-row items-center justify-center gap-2'}>В
                                         Избранное <FaHeart className={'text-red-700'}/></button>
                                 </div>
                                 <Link href={{

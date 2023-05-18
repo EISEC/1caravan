@@ -44,7 +44,7 @@ export default function Blog({posts}) {
                         {/*// @ts-ignore*/}
                         {posts.slice(0, 10).map(el => {
                             return (
-                                <Link href={{
+                                <Link key={el.id} href={{
                                     pathname: "/posts/[...slug]",
                                     query: {slug: el.slug},
                                 }}

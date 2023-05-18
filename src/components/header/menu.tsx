@@ -2,11 +2,18 @@ import Link from "next/link";
 import {useEffect, useState} from "react";
 import {FaFilter, FaHeart, FaPhone} from "react-icons/fa";
 import cl from './menu.module.css'
+import {useAppSelector} from "@/store/store";
 
 const Menu = () => {
-    const [isMobileMenu, setisMobileMenu] = useState(false)
+    const {wishList} = useAppSelector(state => state.wishlist)
+    const {compareList} = useAppSelector(state => state.compare)
+    const [lenCart, setLenCart] = useState(0)
+    const [lenComp, setLenComp] = useState(0)
+    useEffect(() => setLenCart(wishList.length),[])
+    useEffect(() => setLenComp(compareList.length),[])
+    const [isMobileMenu, setMobileMenu] = useState(false)
     useEffect(() => {
-        setisMobileMenu(window.matchMedia('(max-width: 998px)').matches)
+        setMobileMenu(window.matchMedia('(max-width: 998px)').matches)
     }, [])
 
     function MobileMenu() {
@@ -154,11 +161,13 @@ const Menu = () => {
                 </Link>
                 {/*// @ts-ignore*/}
                 <PcMenu/>
-                <Link href={'/wishlist'}  className={'bg-white p-2 rounded'}>
+                <Link href={'/wishlist'}  className={'relative bg-white p-2 rounded'}>
                     <FaHeart className={'text-red-700'}/>
+                    <span className={'absolute -top-3 -right-3 text-sm bg-red-700 px-1 rounded text-white font-bold'}>{lenCart}</span>
                 </Link>
-                <Link href={'/wishlist'} className={'bg-blue-500 p-2 rounded'}>
+                <Link href={'/compare'} className={'relative bg-blue-500 p-2 rounded'}>
                     <FaFilter className={'text-white'}/>
+                    <span className={'absolute -top-3 -right-3 text-sm bg-red-700 px-1 rounded text-white font-bold'}>{lenComp}</span>
                 </Link>
                 <Link href={'tel:+79811518850'} className={'bg-green-600 p-2 mr-4 rounded'}>
                     <FaPhone className={'text-white'}/>

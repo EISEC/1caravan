@@ -39,8 +39,8 @@ export default function Post({post}) {
                     </div>
 
                 </section>
-                <section className="article">
-                    <div className=" w-full px-5 py-24 mx-auto lg:px-32">
+                <section className="article container mx-auto">
+                    <div className=" w-full px-5 py-8 mx-auto">
                         <div className="flex flex-col w-full mx-auto mb-2 prose text-left prose-md">
                             <div className='text' dangerouslySetInnerHTML={{__html: content}}/>
                         </div>
