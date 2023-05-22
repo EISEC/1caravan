@@ -9,8 +9,8 @@ const Menu = () => {
     const {compareList} = useAppSelector(state => state.compare)
     const [lenCart, setLenCart] = useState(0)
     const [lenComp, setLenComp] = useState(0)
-    useEffect(() => setLenCart(wishList.length),[])
-    useEffect(() => setLenComp(compareList.length),[])
+    useEffect(() => setLenCart(wishList.length),[wishList])
+    useEffect(() => setLenComp(compareList.length),[compareList])
     const [isMobileMenu, setMobileMenu] = useState(false)
     useEffect(() => {
         setMobileMenu(window.matchMedia('(max-width: 998px)').matches)

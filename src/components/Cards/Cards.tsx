@@ -5,12 +5,14 @@ import cl from './Cards.module.css';
 import axios from "axios";
 import {motion} from "framer-motion";
 import {FaFilter, FaHeart} from "react-icons/fa";
-import {useAppDispatch} from "@/store/store";
+import {useAppDispatch, useAppSelector} from "@/store/store";
 import {AddWish} from "@/store/slice/wishlist";
 import {AddComp} from "@/store/slice/compare";
 
 // @ts-ignore
 const Cards = ({cards}) => {
+    const {wishList} = useAppSelector(state => state.wishlist)
+    const {compareList} = useAppSelector(state => state.compare)
 
     const dispatch = useAppDispatch();
     //@ts-ignore
@@ -96,6 +98,20 @@ const Cards = ({cards}) => {
             >
                 {/*// @ts-ignore*/}
                 {getPartCards(cards).map(el => {
+                    const [disableList, setDisableList] = useState(false)
+                    // @ts-ignore
+                    useEffect(() => {
+                        let disableList
+                        //@ts-ignore
+                        const FindWish = wishList.findIndex(list => list.slug === el.slug)
+                        // @ts-ignore
+                        // setDisable(FindWish)
+                        if(FindWish === -1){
+                            setDisableList(false)
+                        } else {
+                            setDisableList(true)
+                        }
+                    },[wishList])
                     const statusDom = el.status
                     return (
                         <motion.li
@@ -246,11 +262,11 @@ const Cards = ({cards}) => {
                                     {el.prices_sale ? getFormatPrice(el.prices_sale) : getFormatPrice(el.price)} ₽
                                 </p>
                                 <div className={'grid grid-cols-2 gap-2 py-2'}>
-                                    <button onClick={() => sendToComp(el.slug, el.title, el.price, el.img)}
-                                            className={'flex flex-row items-center justify-center gap-2'}>В
+                                    <button disabled={false} onClick={() => sendToComp(el.slug, el.title, el.price, el.img)}
+                                            className={'flex flex-row py-2 rounded items-center justify-center gap-2 disabled:bg-gray-400 disabled:text-gray-300 disabled:cursor-no-drop'}>В
                                         Сравнение <FaFilter className={'text-blue-600'}/></button>
-                                    <button onClick={() => sendToCart(el.slug, el.title, el.price, el.img)}
-                                            className={'flex flex-row items-center justify-center gap-2'}>В
+                                    <button disabled={disableList} onClick={() => sendToCart(el.slug, el.title, el.price, el.img)}
+                                            className={'flex flex-row py-2 rounded items-center justify-center gap-2 disabled:bg-gray-400 disabled:text-gray-300 disabled:cursor-no-drop'}>В
                                         Избранное <FaHeart className={'text-red-700'}/></button>
                                 </div>
                                 <Link href={{
