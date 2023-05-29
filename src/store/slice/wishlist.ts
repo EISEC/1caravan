@@ -17,11 +17,9 @@ const initialState: wishListT = {
     wishList: [],
 }
 
-const persistedState = getLocalStore('wishlist', initialState );
-
 export const wishlistSlice = createSlice({
     name: 'wishlist',
-    initialState: persistedState,
+    initialState: initialState,
     reducers: {
         AddWish: (state = initialState, action: PayloadAction<WishItem>) => {
             //@ts-ignore

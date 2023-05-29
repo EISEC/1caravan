@@ -17,11 +17,9 @@ const initialState: compListT = {
     compareList: [],
 }
 
-const persistedState = getLocalStore('compare', initialState );
-
 export const compareSlice = createSlice({
     name: 'compare',
-    initialState: persistedState,
+    initialState: initialState,
     reducers: {
         AddComp: (state = initialState, action: PayloadAction<CompItem>) => {
             //@ts-ignore
