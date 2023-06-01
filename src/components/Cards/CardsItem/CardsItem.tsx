@@ -38,6 +38,20 @@ const CardsItem = ({ wishList, data }) => {
         // setShowToast((currVal) => !currVal)
         // setTimeout(() => setShowToast(false), 3000)
     }
+    const [ disableComp, setDisableComp ] = useState(false)
+    useEffect(() => {
+        // let disableList
+        //@ts-ignore
+        const FindComp = compareList.findIndex(list => list.slug === data.slug)
+        // @ts-ignore
+        // setDisable(FindWish)
+        if (FindComp === -1) {
+            setDisableComp(false)
+        } else {
+            setDisableComp(true)
+        }
+    }, [ compareList ])
+
     const [ disableList, setDisableList ] = useState(false)
     useEffect(() => {
         // let disableList
@@ -63,7 +77,6 @@ const CardsItem = ({ wishList, data }) => {
     return (
         <motion.li
             className={'rounded-lg overflow-hidden bg-white shadow-lg p-3 flex flex-col justify-between'}
-            key={data.id}
             variants={item}
         >
             <div className={'relative h-[225px]'}>
@@ -209,13 +222,13 @@ const CardsItem = ({ wishList, data }) => {
                     {data.prices_sale ? getFormatPrice(data.prices_sale) : getFormatPrice(data.price)} ₽
                 </p>
                 <div className={'grid grid-cols-2 gap-2 py-2'}>
-                    <button disabled={false} onClick={() => sendToComp(data.slug, data.title, data.price, data.img)}
-                            className={'flex flex-row py-2 rounded items-center justify-center gap-2 disabled:bg-gray-400 disabled:text-gray-300 disabled:cursor-no-drop'}>В
-                        Сравнение <FaFilter className={'text-blue-600'}/></button>
+                    <button disabled={disableComp} onClick={() => sendToComp(data.slug, data.title, data.price, data.img)}
+                            className={'flex flex-row border-blue-600 border-2 py-2 rounded items-center justify-center gap-2 disabled:bg-blue-200 disabled:text-white disabled:border-blue-200 disabled:cursor-no-drop'}>
+                        {disableComp ? 'В Сравнении' : 'Сравнить'} <FaFilter className={'text-blue-600'}/></button>
                     <button disabled={disableList}
                             onClick={() => sendToCart(data.slug, data.title, data.price, data.img)}
-                            className={'flex flex-row py-2 rounded items-center justify-center gap-2 disabled:bg-gray-400 disabled:text-gray-300 disabled:cursor-no-drop'}>В
-                        Избранное <FaHeart className={'text-red-700'}/></button>
+                            className={'flex flex-row border-red-700 border-2 py-2 rounded items-center justify-center gap-2 disabled:bg-red-200 disabled:text-white disabled:border-red-200 disabled:cursor-no-drop'}>
+                        {disableList ? 'В Избранном' : 'Изранное'}<FaHeart className={'text-red-700'}/></button>
                 </div>
                 <Link href={{
                     pathname: "avtodom/[...slug]",

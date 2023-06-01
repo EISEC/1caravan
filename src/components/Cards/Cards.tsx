@@ -1,21 +1,13 @@
 import React, {useEffect, useState} from 'react';
-import Link from "next/link";
-import Image from 'next/image'
 import cl from './Cards.module.css';
-import axios from "axios";
 import {motion} from "framer-motion";
-import {FaFilter, FaHeart} from "react-icons/fa";
-import {useAppDispatch, useAppSelector} from "@/store/store";
-import {AddWish} from "@/store/slice/wishlist";
-import {AddComp} from "@/store/slice/compare";
+import { useAppSelector} from "@/store/store";
+
 import CardsItem from "@/components/Cards/CardsItem/CardsItem";
 
 // @ts-ignore
 const Cards = ({cards}) => {
     const {wishList} = useAppSelector(state => state.wishlist)
-    const {compareList} = useAppSelector(state => state.compare)
-
-    const dispatch = useAppDispatch();
     //@ts-ignore
 
 
@@ -71,7 +63,7 @@ const Cards = ({cards}) => {
                 animate="visible"
             >
                 {/*// @ts-ignore*/}
-                {getPartCards(cards).map(el => <CardsItem wishList={wishList} data={el}></CardsItem>)}
+                {getPartCards(cards).map(el => <CardsItem key={el.id} wishList={wishList} data={el}></CardsItem>)}
             </motion.ul>
             {showCount <= cards.length ?
                 (
