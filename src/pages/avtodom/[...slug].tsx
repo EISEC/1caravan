@@ -9,6 +9,7 @@ import Image from "next/image";
 import axios from "axios";
 import {Tab, Tabs, TabList, TabPanel} from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
+import Footcaravaan from "@/components/footer/footcaravaan";
 
 
 // @ts-ignore
@@ -20,6 +21,7 @@ export default function Post({post}) {
         return formatPrice
     }
 
+    const acf = post.acf
     const proizvoditeli_karavanov = post.proizvoditeli_karavanov
     const proizvoditel = proizvoditeli_karavanov != 0 && (post.proizvoditel[0])
     const title = post.title
@@ -37,6 +39,7 @@ export default function Post({post}) {
     const glavFoto = post.img
     const preim = post.acf.ospreim
     const razmer = post.acf.osnova
+    const dop = acf.дополнительно
     const responsive = {
         superLargeDesktop: {
             // the naming can be any, depends on you.
@@ -56,7 +59,6 @@ export default function Post({post}) {
             items: 1
         }
     };
-
     return (
         <>
             <Head>
@@ -72,7 +74,8 @@ export default function Post({post}) {
             <main className={cl.main}>
                 <section className={cl.topheader}>
                     <div className={`container px-6 py-2 mx-auto ${cl.topcaravan}`}>
-                        <h1 className={'font-bold text-4xl'}>{title} <span className={`text-xl ${cl.vin}`}>№ {vin}</span></h1>
+                        <h1 className={'font-bold text-4xl'}>{title} <span
+                            className={`text-xl ${cl.vin}`}>№ {vin}</span></h1>
                     </div>
                 </section>
                 <section className={`${cl.glavnay_po_caravanu} container px-6 py-6 mx-auto glavnay_po_caravanu`}>
@@ -82,14 +85,16 @@ export default function Post({post}) {
                             itemClass="carousel-item-padding-40-px"
                         >
                             <div>
-                                <Image className={cl.imgCarusel} src={glavFoto} alt={`${title} фотография номер ${glavFoto}`}
+                                <Image className={cl.imgCarusel} src={glavFoto}
+                                       alt={`${title} фотография номер ${glavFoto}`}
                                        width={800} height={600}/>
                             </div>
                             {/*// @ts-ignore*/}
                             {acfGall.slice().map(el => {
                                 return (
                                     <div key={el.id}>
-                                        <Image className={cl.imgCarusel} src={el.url} alt={`${title} фотография номер ${el.id}`}
+                                        <Image className={cl.imgCarusel} src={el.url}
+                                               alt={`${title} фотография номер ${el.id}`}
                                                width={800} height={600}/>
                                     </div>
                                 )
@@ -239,29 +244,105 @@ export default function Post({post}) {
 
                     </div>
                 </section>
-                <section className='container px-6 py-6 mx-auto text' id={'findContent'}>
-                    <Tabs>
-                        <TabList>
-                            <Tab>Краткое описание</Tab>
-                            <Tab>Тех. характеристики</Tab>
-                            <Tab>Размеры</Tab>
-                        </TabList>
+                {/*<section className='container px-6 py-6 mx-auto text' id={'findContent'}>*/}
+                {/*    <Tabs>*/}
+                {/*        <TabList>*/}
+                {/*            <Tab>Краткое описание</Tab>*/}
+                {/*            <Tab>Тех. характеристики</Tab>*/}
+                {/*            <Tab>Размеры</Tab>*/}
+                {/*        </TabList>*/}
 
-                        <TabPanel>
-                            <h2>Краткое описание:</h2>
-                            <div dangerouslySetInnerHTML={{__html: content.replace(/—|-|–|—/g, '<br>$&')}}/>
-                        </TabPanel>
-                        <TabPanel>
-                            <h2>Тех. характеристики {title.replace(/Новый|новый/g, '')}</h2>
-                            <p dangerouslySetInnerHTML={{__html: preim.replace(/-|–|—/g, '<br>$&')}}/>
-                        </TabPanel>
-                        <TabPanel>
-                            <h2>Размеры автодома</h2>
-                            <p dangerouslySetInnerHTML={{__html: razmer.replace(/-|–|—/g, '<br>$&')}}/>
-                        </TabPanel>
-                    </Tabs>
+                {/*        <TabPanel>*/}
+                {/*            <h2>Краткое описание:</h2>*/}
+                {/*            <div dangerouslySetInnerHTML={{__html: content.replace(/—|-|–|—/g, '<br>$&')}}/>*/}
+                {/*        </TabPanel>*/}
+                {/*        <TabPanel>*/}
+                {/*            <h2>Тех. характеристики {title.replace(/Новый|новый/g, '')}</h2>*/}
+                {/*            <p dangerouslySetInnerHTML={{__html: preim.replace(/-|–|—/g, '<br>$&')}}/>*/}
+                {/*        </TabPanel>*/}
+                {/*        <TabPanel>*/}
+                {/*            <h2>Размеры автодома</h2>*/}
+                {/*            <p dangerouslySetInnerHTML={{__html: razmer.replace(/-|–|—/g, '<br>$&')}}/>*/}
+                {/*        </TabPanel>*/}
+                {/*    </Tabs>*/}
+                {/*</section>*/}
+                <section className={'container mx-auto px-4 py-6'}>
+                    <h3 className={'font-bold text-xl mb-3'}>Наружная часть</h3>
+                    <ul className={'pl-2 flex flex-col gap-2'}>
+                        <li>Тягово-сцепное устройство - <strong>{acf.тягово_сцепное_устройство}</strong></li>
+                        <li>Дополнительная боковая фиксация сцепного устройства
+                            - <strong>{acf.дополнительная_боковая_фиксация_сцепного_устройства ? 'Есть' : 'Нету'}</strong>
+                        </li>
+                        <li>Страховочный тормозной трос
+                            - <strong>{acf.страховочный_тормозной_трос ? 'Есть' : 'Нету'}</strong></li>
+                        <li>Вилка для подключения к автомобилю
+                            - <strong>{acf.вилка_для_подключения_к_автомобилю}</strong></li>
+                        <li>Электрическая система стабилизации
+                            - <strong>{acf.электрическая_система_стабилизации}</strong></li>
+                        <li>Противооткаты - <strong>{acf.противооткаты ? 'Есть' : 'Нету'}</strong></li>
+                        <li>Штатное место для акб - <strong>{acf.штатное_место_для_акб ? 'Есть' : 'Нету'}</strong></li>
+                        <li>Наружная розетка 220 - <strong>{acf.наружная_розетка_220 ? 'Есть' : 'Нету'}</strong></li>
+                        <li>Наружное подключение газового оборудования гриляплиты
+                            - <strong>{acf.наружное_подключение_газового_оборудования_гриляплиты ? 'Есть' : 'Нету'}</strong>
+                        </li>
+                        <li>Наружное подключение воды английская система
+                            - <strong>{acf.наружное_подключение_воды_английская_система ? 'Есть' : 'Нету'}</strong></li>
+                        <li>Входная дверь - <strong>{acf.входная_дверь}</strong></li>
+                        <li>Ступенька для входа - <strong>{acf.ступенька_для_входа ? 'Есть' : 'Нету'}</strong></li>
+                        <li>Москитная сетка на дверях - <strong>{acf.москитная_сетка_на_дверях ? 'Есть' : 'Нету'}</strong></li>
+                        <li>Мусорное ведро - <strong>{acf.мусорное_ведро ? 'Есть' : 'Нету'}</strong></li>
+                        <li>Ящики для вещей на входной двери - <strong>{acf.ящики_для_вещей_на_входной_двери ? 'Есть' : 'Нету'}</strong></li>
+                        <li>Окно на входной двери - <strong>{acf.окно_на_входной_двери ? 'Есть' : 'Нету'}</strong></li>
+                        <li>Наружное освещение у входа - <strong>{acf.наружное_освещение_у_входа ? 'Есть' : 'Нету'}</strong></li>
+                        <li>Подготовка под велобагажник - <strong>{acf.подготовка_под_велобагажник ? 'Есть' : 'Нету'}</strong></li>
+                        <li>Система сборки - <strong>{acf.система_сборки}</strong></li>
+                    </ul>
+                </section>
+                <section className={'container mx-auto px-4 py-6'}>
+                    <h3 className={'font-bold text-xl mb-3'}>Жилая зона</h3>
+                </section>
+                <section className={'container mx-auto px-4 py-6'}>
+                    <h3 className={'font-bold text-xl mb-3'}>Кухня</h3>
+                </section>
+                <section className={'container mx-auto px-4 py-6'}>
+                    <h3 className={'font-bold text-xl mb-3'}>Санузел</h3>
+                    <ul className={'pl-2 flex flex-col gap-2'}>
+                        <li>Унитаз - <strong>{acf.унитаз ? 'Есть' : 'Нету'}</strong></li>
+                        <li>Бачок смыва туалета - <strong>{acf.бачок_смыва_туалета}</strong></li>
+                        <li>Смыв туалета - <strong>{acf.смыв_туалета}</strong></li>
+                        <li>Индикатор заполнения кассеты туалета - <strong>{acf.индикатор_заполнения_кассеты_туалета ? 'Есть' : 'Нету'}</strong></li>
+                        <li>Регулировка положения унитаза - <strong>{acf.регулировка_положения_унитаза ? 'Есть' : 'Нету'}</strong></li>
+                        <li>Душевая кабина - <strong>{acf.душевая_кабина}</strong></li>
+                        <li>Ванная раковина - <strong>{acf.ванная_раковина ? 'Есть' : 'Нету'}</strong></li>
+                    </ul>
+                </section>
+                <section className={'container mx-auto px-4 py-6'}>
+                    <h3 className={'font-bold text-xl mb-3'}>Водоснаюжение</h3>
+                    <ul className={'pl-2 flex flex-col gap-2'}>
+                        <li>Бак для воды - <strong>{acf.бак_для_воды ? 'Есть' : 'Нету'}</strong></li>
+                        <li>Объем бака для воды - <strong>{acf.объем_бака_для_воды}</strong></li>
+                        <li>Индикатор уровня воды в баке - <strong>{acf.индикатор_уровня_воды_в_баке}</strong></li>
+                        <li>Слив воды из бойлера - <strong>{acf.слив_воды_из_бойлера}</strong></li>
+                    </ul>
+                </section>
+                <section className={'container mx-auto px-4 py-6'}>
+                    <h3 className={'font-bold text-xl mb-3'}>Дополнительно</h3>
+                    <ul className={'pl-2 flex flex-col gap-2'}>
+                        {/*//@ts-ignore}*/}
+                        {dop.map( el => {
+                            return(
+                                <li key={el.наименование_характеристики}>
+                                    {el.наименование_характеристики}
+                                    {el.значение_характеристики ? '- <strong>{el.значение_характеристики}</strong>' : ''}
+                                </li>
+                            )
+                        })}
+                    </ul>
                 </section>
             </main>
+            <Footcaravaan title={title}
+                          price={post.prices_sale ? getFormatPrice(post.prices_sale) : getFormatPrice(post.price)}
+                          img={glavFoto}/>
             <Footer/>
         </>
     )

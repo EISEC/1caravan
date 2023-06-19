@@ -8,6 +8,7 @@ import axios from "axios";
 import Cards from "@/components/Cards/Cards";
 import CapHome from "@/components/home/capHome";
 import Footer from "@/components/footer/footer";
+import Proiz from "@/components/Filter/proiz";
 
 const inter = Inter({subsets: ['latin']})
 
@@ -102,6 +103,7 @@ export default function PodZakaz({doma}) {
             <Menu/>
             <main>
                 <CapHome/>
+                <Proiz/>
                 <section className={'filter container px-6 py-6 mx-auto'}>
                     <div className="block-filter">
                         <div className="search">
