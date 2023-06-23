@@ -99,7 +99,7 @@ export default function Post({post}) {
                             freeMode={true}
                             watchSlidesProgress={true}
                             modules={[FreeMode, Navigation, Thumbs]}
-                            className="mySwiper max-h-[500px] w-[150px] md:max-h-[400px] md:w-[100px]"
+                            className="mySwiper max-h-[400px] w-[100px] md:max-h-[500px] md:w-[150px]"
                         >
                             <SwiperSlide>
                                 <Image className={`rounded-lg pointer${cl.imgCarusel}`} src={glavFoto}
