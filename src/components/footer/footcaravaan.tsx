@@ -60,7 +60,7 @@ const Footcaravaan = ({title, price, img, slug}) => {
     }, [wishList])
     return (
         <div
-            className={'gap-3 fixed bottom-0 w-full bg-[#0F0F1B] text-white flex flex-row justify-between items-center px-4 py-2'}>
+            className={'gap-3 z-10 fixed bottom-0 w-full bg-[#0F0F1B] text-white flex flex-row justify-between items-center px-4 py-2'}>
             <div>
                 <Image src={img} alt={title} width={70} height={60} className={'rounded-lg'}/>
             </div>

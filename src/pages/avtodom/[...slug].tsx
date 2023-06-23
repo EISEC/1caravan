@@ -1,7 +1,7 @@
-import React, {useEffect, useState} from 'react';
+import React, { useRef, useState } from "react";
 import Menu from "@/components/header/menu";
-import Carousel from 'react-multi-carousel';
-import 'react-multi-carousel/lib/styles.css';
+// Import Swiper React components
+import { Swiper, SwiperSlide } from 'swiper/react';
 import Head from "next/head";
 import cl from "./slug.module.css"
 import Footer from "@/components/footer/footer";
@@ -10,10 +10,19 @@ import axios from "axios";
 import {Tab, Tabs, TabList, TabPanel} from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import Footcaravaan from "@/components/footer/footcaravaan";
+import "swiper/css";
+import "swiper/css/free-mode";
+import "swiper/css/navigation";
+import "swiper/css/thumbs";
+
+// import required modules
+import { FreeMode, Navigation, Thumbs } from "swiper";
 
 
 // @ts-ignore
 export default function Post({post}) {
+
+    const [thumbsSwiper, setThumbsSwiper] = useState(null);
 
     function getFormatPrice(price: string) {
         const pRes = Number(price)
@@ -59,6 +68,7 @@ export default function Post({post}) {
             items: 1
         }
     };
+    // @ts-ignore
     return (
         <>
             <Head>
@@ -78,29 +88,62 @@ export default function Post({post}) {
                             className={`text-xl ${cl.vin}`}>№ {vin}</span></h1>
                     </div>
                 </section>
-                <section className={`${cl.glavnay_po_caravanu} container px-6 py-6 mx-auto glavnay_po_caravanu`}>
-                    <div className="gallary">
-                        <Carousel
-                            responsive={responsive}
-                            itemClass="carousel-item-padding-40-px"
+                <section className={`${cl.glavnay_po_caravanu} container md:flex md:flex-row md:gap-[20px] px-6 py-6 mx-auto glavnay_po_caravanu`}>
+                    <div className="gallary flex relative gap-[20px]">
+                        <Swiper
+                            //@ts-ignore
+                            onSwiper={setThumbsSwiper}
+                            spaceBetween={10}
+                            direction={"vertical"}
+                            slidesPerView={5}
+                            freeMode={true}
+                            watchSlidesProgress={true}
+                            modules={[FreeMode, Navigation, Thumbs]}
+                            className="mySwiper max-h-[500px] w-[150px]"
                         >
-                            <div>
-                                <Image className={cl.imgCarusel} src={glavFoto}
+                            <SwiperSlide>
+                                <Image className={`rounded-lg pointer${cl.imgCarusel}`} src={glavFoto}
                                        alt={`${title} фотография номер ${glavFoto}`}
-                                       width={800} height={600}/>
-                            </div>
+                                       fill/>
+                            </SwiperSlide>
                             {/*// @ts-ignore*/}
                             {acfGall.slice().map(el => {
                                 return (
-                                    <div key={el.id}>
-                                        <Image className={cl.imgCarusel} src={el.url}
+                                    <SwiperSlide key={el.id}>
+                                        <Image className={`rounded-lg pointer${cl.imgCarusel}`} src={el.url}
                                                alt={`${title} фотография номер ${el.id}`}
-                                               width={800} height={600}/>
-                                    </div>
+                                               fill/>
+                                    </SwiperSlide>
                                 )
                             })}
-                        </Carousel>
-
+                        </Swiper>
+                        <Swiper
+                            // style={{
+                            //     "--swiper-navigation-color": "#fff",
+                            //     "--swiper-pagination-color": "#fff",
+                            // }}
+                            spaceBetween={10}
+                            navigation={true}
+                            thumbs={{ swiper: thumbsSwiper }}
+                            modules={[FreeMode, Navigation, Thumbs]}
+                            className="mySwiper2 w-[100%] rounded-lg"
+                        >
+                            <SwiperSlide>
+                                <Image className={`rounded-lg ${cl.imgCarusel}`} src={glavFoto}
+                                       alt={`${title} фотография номер ${glavFoto}`}
+                                       fill/>
+                            </SwiperSlide>
+                            {/*// @ts-ignore*/}
+                            {acfGall.slice().map(el => {
+                                return (
+                                    <SwiperSlide key={el.id}>
+                                        <Image className={`rounded-lg ${cl.imgCarusel}`} src={el.url}
+                                               alt={`${title} фотография номер ${el.id}`}
+                                               fill/>
+                                    </SwiperSlide>
+                                )
+                            })}
+                        </Swiper>
                     </div>
                     <div className={`opisaniye ${cl.opisaniye}`}>
                         <ul>
