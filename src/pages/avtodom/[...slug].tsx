@@ -88,7 +88,7 @@ export default function Post({post}) {
                             className={`text-xl ${cl.vin}`}>№ {vin}</span></h1>
                     </div>
                 </section>
-                <section className={`${cl.glavnay_po_caravanu} container md:flex md:flex-row md:gap-[20px] px-6 py-6 mx-auto glavnay_po_caravanu`}>
+                <section className={`${cl.glavnay_po_caravanu} container md:flex md:flex-col md:gap-[20px] px-6 py-6 mx-auto glavnay_po_caravanu`}>
                     <div className="gallary flex relative gap-[20px]">
                         <Swiper
                             //@ts-ignore
