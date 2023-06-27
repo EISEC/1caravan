@@ -104,8 +104,8 @@ export default function PodZakaz({doma}) {
             <main>
                 <CapHome/>
                 <Proiz/>
-                <section className={'filter container px-6 py-6 mx-auto'}>
-                    <div className="block-filter">
+                <section className={'filter container px-6 py-6 mx-auto bg-blue-700 rounded-lg shadow-2xl my-[35px]'}>
+                    <div className="block-filter flex w-full justify-between">
                         <div className="search">
                             <input value={inputSearch} onChange={(e) => setInputSearch(e.target.value)}
                                    placeholder="Поиск по названию"/>
@@ -115,6 +115,7 @@ export default function PodZakaz({doma}) {
                                    placeholder="Поиск по №"/>
                         </div>
                     </div>
+                    <p className={'block w-full text-white'}>Сортировать по:</p>
                     <div className="block-filter">
                         <div className="price">
                             {/*// @ts-ignore*/}

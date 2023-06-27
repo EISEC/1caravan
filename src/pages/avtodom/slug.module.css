@@ -108,7 +108,6 @@
 
 .salePrice {
     font-weight: 400;
-    font-size: 14px;
     letter-spacing: 0.1em;
     text-decoration: line-through;
     color: rgba(0, 0, 0, 0.72);
@@ -122,13 +121,11 @@
 
 .Sisny {
     background: linear-gradient(90deg, #0F0F1B 0%, rgba(34, 34, 58, 0.55) 100%), #0F0F1B;
-    padding: 10px;
     border-radius: 5px;
 }
 
 .Cina {
     background: linear-gradient(90deg, #EA511B 0%, #F78E69 96.98%);
-    padding: 3px 10px;
     border-radius: 5px;
 }
 

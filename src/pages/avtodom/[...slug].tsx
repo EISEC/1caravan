@@ -271,10 +271,10 @@ export default function Post({post}) {
                             <li><b>Тип санузла</b>: {sanuzel}</li>
                         </ul>
 
-                        <div className={post.prices_sale != 0 ? cl.Cina : cl.Sisny}>
+                        <div className={`${post.prices_sale != 0 ? cl.Cina  : cl.Sisny} inline-block px-6 mt-6 relative ${post.prices_sale != 0 ? 'mt-[28px]' : ''}`}>
                             {post.prices_sale ?
                                 (
-                                    <p className={cl.salePrice}>{getFormatPrice(post.price)} ₽</p>
+                                    <p className={`${cl.salePrice} absolute -top-[22px] text-[16px]`}>{getFormatPrice(post.price)} ₽</p>
                                 ) : null
                             }
 
@@ -282,9 +282,6 @@ export default function Post({post}) {
                                 {post.prices_sale ? getFormatPrice(post.prices_sale) : getFormatPrice(post.price)} ₽
                             </p>
                         </div>
-                    </div>
-                    <div className="cena">
-
                     </div>
                 </section>
                 {/*<section className='container px-6 py-6 mx-auto text' id={'findContent'}>*/}
@@ -374,20 +371,20 @@ export default function Post({post}) {
                         <li>Слив воды из бойлера - <strong>{acf.слив_воды_из_бойлера}</strong></li>
                     </ul>
                 </section>
-                <section className={'container mx-auto px-4 py-6'}>
+                {dop ? <section className={'container mx-auto px-4 py-6'}>
                     <h3 className={'font-bold text-xl mb-3'}>Дополнительно</h3>
                     <ul className={'pl-2 flex flex-col gap-2'}>
                         {/*//@ts-ignore}*/}
-                        {dop.map(el => {
+                        {dop? dop.map(el => {
                             return (
                                 <li key={el.наименование_характеристики}>
                                     {el.наименование_характеристики}
                                     {el.значение_характеристики ? '- <strong>{el.значение_характеристики}</strong>' : ''}
                                 </li>
                             )
-                        })}
+                        }): ''}
                     </ul>
-                </section>
+                </section> : ''}
             </main>
             <Footcaravaan title={title}
                           price={post.prices_sale ? getFormatPrice(post.prices_sale) : getFormatPrice(post.price)}

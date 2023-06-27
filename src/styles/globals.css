@@ -147,9 +147,7 @@ p b {
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
-    margin-top: 30px;
     gap: 30px;
-    margin-bottom: 15px;
 }
 
 .block-filter {
@@ -163,7 +161,7 @@ p b {
     min-height: 40px;
     min-width: 256px;
     font-size: 1.3rem;
-    border-radius: 10px;
+    border-radius: 5px;
     border: 1px solid black;
     padding-left: 10px;
 }
@@ -172,7 +170,7 @@ p b {
     min-height: 40px;
     max-width: 150px;
     font-size: 1.3rem;
-    border-radius: 10px;
+    border-radius: 5px;
     border: 1px solid black;
     padding-left: 10px;
 }
