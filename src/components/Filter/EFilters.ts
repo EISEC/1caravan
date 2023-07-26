@@ -5,5 +5,4 @@ export enum EFilters {
     heavy = 'Тяжелые',
     short = 'Короткие',
     long = 'Длинные',
-
 }
