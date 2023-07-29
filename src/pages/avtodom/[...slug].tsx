@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import Menu from "@/components/header/menu";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -17,7 +17,8 @@ import "swiper/css/thumbs";
 
 // import required modules
 import { FreeMode, Navigation, Thumbs } from "swiper";
-
+import { v4 as uuid } from 'uuid';
+import Modal from '@/components/Modal/Modal';
 
 // @ts-ignore
 export default function Post({post}) {
@@ -68,6 +69,97 @@ export default function Post({post}) {
             items: 1
         }
     };
+
+    type TAddItem = {
+        title: string
+        price: number
+        descr: string
+        id: string
+    }
+
+    type TAddItemList = {
+        itemListName: string,
+        info: TAddItem[]
+    }
+
+    type TAddCategory = {
+        categoryName: string
+        categoryItems: TAddItemList[]
+    }
+
+    type TAddCategoryList = TAddCategory[]
+
+    const mockData: TAddCategoryList = useMemo(() => [
+        {
+            categoryName: 'Электроприборы и электрика',
+            categoryItems: [
+                {
+                    itemListName: 'Инвертор',
+                    info: [
+                        {
+                            title: 'ИС стандарт',
+                            price: 33,
+                            descr: 'Стандартный инвертор на 1.5кВт',
+                            id: uuid(),
+                        },
+                        {
+                            title: 'СибВатт',
+                            price: 36,
+                            descr: 'Инвертор на 1.7кВт. Отлично подойдет для работы кофе машины',
+                            id: uuid(),
+                        },
+                        {
+                            title: 'СибВольт',
+                            price: 39,
+                            descr: 'Инвертор увеличенного размера, с кнопкой удаленного запуска/выключения. Отлично подойдет для постоянного',
+                            id: uuid(),
+                        }
+                    ]
+                }
+            ]
+
+        }
+    ], [])
+
+    const getAllAddonItems = () => {
+        const res: TAddItem[] = []
+        mockData.forEach(el => el.categoryItems.forEach(el => el.info.forEach(el => res.push(el))))
+        return res
+    }
+
+
+
+    const [addIdList, setAddIdList] = useState<string[]>([])
+
+    useEffect(() => {
+        console.log('addIdList' , addIdList)
+    }, [addIdList])
+
+    const handleClickAddItem = (id: string) => {
+        console.log('cliced id', id)
+        const curIndex = addIdList.findIndex(el => el === id)
+        console.log('curIndex', curIndex)
+        if(curIndex === -1) setAddIdList(prev => [...prev, id])
+        else setAddIdList(prev => [...(prev.slice(0, curIndex)), ...(prev.slice(curIndex + 1))])
+    }
+
+    const allAddonItems = getAllAddonItems()
+
+    const getPriceWithAddons = useCallback(() => {
+        const addonsPrice = addIdList.reduce((acc, cur) => {
+            const addingPriceItem = allAddonItems.find(el => el.id === cur)
+            acc += addingPriceItem ? addingPriceItem.price : 0
+            return acc
+        }, 0)
+        return post.price + addonsPrice
+    }, [addIdList])
+
+    const isActiveAddon = (id: string) => {
+        return addIdList.find(el => el === id)
+    }
+
+    const [modalIsOpen, setModalIsOpen] = useState(false)
+
     // @ts-ignore
     return (
         <>
@@ -385,7 +477,62 @@ export default function Post({post}) {
                         }): ''}
                     </ul>
                 </section> : ''}
+
             </main>
+            <section>
+                <div>
+                    <h3>Секция допов без стилей</h3>
+                    <h3>price common: {getPriceWithAddons()}</h3>
+                    <button className={'bg-orange-500 px-4 py-2 rounded'}
+                        onClick={() => {
+                            console.log('Ваши дополнения: ')
+                            const pickedAddons = addIdList.map((curId, idx) => {
+                                return allAddonItems.find(el => el.id === curId)
+                            })
+                            console.log(pickedAddons)
+                            setModalIsOpen(true)
+                        }}
+                    >
+                        Оставить заявку
+                    </button>
+                </div>
+                <div>
+                    {mockData.map(category => (
+                        <div key={category.categoryName}>
+                            <h1>{category.categoryName}</h1>
+                            <div className={cl.Column}>
+                                {category.categoryItems.map(itemList => (
+                                    <div key={itemList.itemListName} className={cl.Row}>
+                                        <h2>{itemList.itemListName}</h2>
+                                        <div className={cl.Column}>
+                                            {itemList.info.map(({title, descr, id, price}) => (
+                                                <div  className={cl.Row}
+                                                      key={id}
+                                                      onClick={() => handleClickAddItem(id)}
+                                                      style={{background: `${ isActiveAddon(id)? 'green' : 'none'} `}}
+                                                >
+                                                    <div>{title}</div>
+                                                    <div>{price}</div>
+                                                    <div>{descr}</div>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    ))}
+                </div>
+                <div>
+                    <button onClick={() => setModalIsOpen(true)}>Open Modal</button>
+                    <Modal isOpen={modalIsOpen} onClose={() => setModalIsOpen(false)}>
+                        <h2>Modal Content</h2>
+                        <p>This is the content of the modal.</p>
+                    </Modal>
+                </div>
+
+
+            </section>
             <Footcaravaan title={title}
                           price={post.prices_sale ? getFormatPrice(post.prices_sale) : getFormatPrice(post.price)}
                           img={glavFoto}
