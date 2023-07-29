@@ -1,7 +1,7 @@
-import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import React, {useCallback, useEffect, useMemo, useRef, useState} from "react";
 import Menu from "@/components/header/menu";
 // Import Swiper React components
-import { Swiper, SwiperSlide } from 'swiper/react';
+import {Swiper, SwiperSlide} from 'swiper/react';
 import Head from "next/head";
 import cl from "./slug.module.css"
 import Footer from "@/components/footer/footer";
@@ -16,12 +16,15 @@ import "swiper/css/navigation";
 import "swiper/css/thumbs";
 
 // import required modules
-import { FreeMode, Navigation, Thumbs } from "swiper";
-import { v4 as uuid } from 'uuid';
+import {FreeMode, Navigation, Thumbs} from "swiper";
+import {v4 as uuid} from 'uuid';
 import Modal from '@/components/Modal/Modal';
+import {TAddItem} from "@/pages/avtodom/types";
+import {mockData} from "@/pages/avtodom/mocData";
 
 // @ts-ignore
 export default function Post({post}) {
+
 
     const [thumbsSwiper, setThumbsSwiper] = useState(null);
 
@@ -70,56 +73,6 @@ export default function Post({post}) {
         }
     };
 
-    type TAddItem = {
-        title: string
-        price: number
-        descr: string
-        id: string
-    }
-
-    type TAddItemList = {
-        itemListName: string,
-        info: TAddItem[]
-    }
-
-    type TAddCategory = {
-        categoryName: string
-        categoryItems: TAddItemList[]
-    }
-
-    type TAddCategoryList = TAddCategory[]
-
-    const mockData: TAddCategoryList = useMemo(() => [
-        {
-            categoryName: 'Электроприборы и электрика',
-            categoryItems: [
-                {
-                    itemListName: 'Инвертор',
-                    info: [
-                        {
-                            title: 'ИС стандарт',
-                            price: 33,
-                            descr: 'Стандартный инвертор на 1.5кВт',
-                            id: uuid(),
-                        },
-                        {
-                            title: 'СибВатт',
-                            price: 36,
-                            descr: 'Инвертор на 1.7кВт. Отлично подойдет для работы кофе машины',
-                            id: uuid(),
-                        },
-                        {
-                            title: 'СибВольт',
-                            price: 39,
-                            descr: 'Инвертор увеличенного размера, с кнопкой удаленного запуска/выключения. Отлично подойдет для постоянного',
-                            id: uuid(),
-                        }
-                    ]
-                }
-            ]
-
-        }
-    ], [])
 
     const getAllAddonItems = () => {
         const res: TAddItem[] = []
@@ -128,18 +81,11 @@ export default function Post({post}) {
     }
 
 
-
     const [addIdList, setAddIdList] = useState<string[]>([])
 
-    useEffect(() => {
-        console.log('addIdList' , addIdList)
-    }, [addIdList])
-
     const handleClickAddItem = (id: string) => {
-        console.log('cliced id', id)
         const curIndex = addIdList.findIndex(el => el === id)
-        console.log('curIndex', curIndex)
-        if(curIndex === -1) setAddIdList(prev => [...prev, id])
+        if (curIndex === -1) setAddIdList(prev => [...prev, id])
         else setAddIdList(prev => [...(prev.slice(0, curIndex)), ...(prev.slice(curIndex + 1))])
     }
 
@@ -151,14 +97,25 @@ export default function Post({post}) {
             acc += addingPriceItem ? addingPriceItem.price : 0
             return acc
         }, 0)
-        return post.price + addonsPrice
+        return post.prices_sale ? post.prices_sale + addonsPrice : post.price + addonsPrice
     }, [addIdList])
 
     const isActiveAddon = (id: string) => {
         return addIdList.find(el => el === id)
     }
 
+    const pickedAddons = () => {
+        return addIdList.map((curId, idx) => {
+            return allAddonItems.find(el => el.id === curId)
+        })
+    }
+    const [carAddon, setCarAddon] = useState(mockData[0].catId)
+    const tabcat = (id:string) => {
+        setCarAddon(id)
+    }
+
     const [modalIsOpen, setModalIsOpen] = useState(false)
+
 
     // @ts-ignore
     return (
@@ -180,7 +137,8 @@ export default function Post({post}) {
                             className={`text-xl ${cl.vin}`}>№ {vin}</span></h1>
                     </div>
                 </section>
-                <section className={`${cl.glavnay_po_caravanu} container md:flex md:flex-col md:gap-[20px] px-6 py-6 mx-auto glavnay_po_caravanu`}>
+                <section
+                    className={`${cl.glavnay_po_caravanu} container md:flex md:flex-col md:gap-[20px] px-6 py-6 mx-auto glavnay_po_caravanu`}>
                     <div className="gallary flex relative gap-[20px]">
                         <Swiper
                             //@ts-ignore
@@ -216,7 +174,7 @@ export default function Post({post}) {
                             // }}
                             spaceBetween={10}
                             navigation={true}
-                            thumbs={{ swiper: thumbsSwiper }}
+                            thumbs={{swiper: thumbsSwiper}}
                             modules={[FreeMode, Navigation, Thumbs]}
                             className="mySwiper2 w-[100%] rounded-lg"
                         >
@@ -363,7 +321,8 @@ export default function Post({post}) {
                             <li><b>Тип санузла</b>: {sanuzel}</li>
                         </ul>
 
-                        <div className={`${post.prices_sale != 0 ? cl.Cina  : cl.Sisny} inline-block px-6 mt-6 relative ${post.prices_sale != 0 ? 'mt-[28px]' : ''}`}>
+                        <div
+                            className={`${post.prices_sale != 0 ? cl.Cina : cl.Sisny} inline-block px-6 mt-6 relative ${post.prices_sale != 0 ? 'mt-[28px]' : ''}`}>
                             {post.prices_sale ?
                                 (
                                     <p className={`${cl.salePrice} absolute -top-[22px] text-[16px]`}>{getFormatPrice(post.price)} ₽</p>
@@ -467,49 +426,40 @@ export default function Post({post}) {
                     <h3 className={'font-bold text-xl mb-3'}>Дополнительно</h3>
                     <ul className={'pl-2 flex flex-col gap-2'}>
                         {/*//@ts-ignore}*/}
-                        {dop? dop.map(el => {
+                        {dop ? dop.map(el => {
                             return (
                                 <li key={el.наименование_характеристики}>
                                     {el.наименование_характеристики}
                                     {el.значение_характеристики ? '- <strong>{el.значение_характеристики}</strong>' : ''}
                                 </li>
                             )
-                        }): ''}
+                        }) : ''}
                     </ul>
                 </section> : ''}
 
             </main>
-            <section>
-                <div>
-                    <h3>Секция допов без стилей</h3>
-                    <h3>price common: {getPriceWithAddons()}</h3>
-                    <button className={'bg-orange-500 px-4 py-2 rounded'}
-                        onClick={() => {
-                            console.log('Ваши дополнения: ')
-                            const pickedAddons = addIdList.map((curId, idx) => {
-                                return allAddonItems.find(el => el.id === curId)
-                            })
-                            console.log(pickedAddons)
-                            setModalIsOpen(true)
-                        }}
-                    >
-                        Оставить заявку
-                    </button>
-                </div>
-                <div>
-                    {mockData.map(category => (
-                        <div key={category.categoryName}>
-                            <h1>{category.categoryName}</h1>
-                            <div className={cl.Column}>
+            <section className={'container mx-auto'}>
+                <div className={'flex gap-6'}>
+                    <ul className={'w-[25vw]'}>
+                        {mockData.map(category => (
+                            // @ts-ignore
+                            <li onClick={() => tabcat(category.catId)} key={category.catId} className={'flex gap-4 cursor-pointer'}>
+                                <h1>{category.categoryName}</h1>
+                            </li>
+                        ))}
+                    </ul>
+                    <div className={'w-[75vw]'}>
+                        {mockData.map(category => (
+                            <div key={category.catId} className={category.catId === carAddon ? 'flex flex-col' : 'hidden'}>
                                 {category.categoryItems.map(itemList => (
                                     <div key={itemList.itemListName} className={cl.Row}>
                                         <h2>{itemList.itemListName}</h2>
                                         <div className={cl.Column}>
                                             {itemList.info.map(({title, descr, id, price}) => (
-                                                <div  className={cl.Row}
-                                                      key={id}
-                                                      onClick={() => handleClickAddItem(id)}
-                                                      style={{background: `${ isActiveAddon(id)? 'green' : 'none'} `}}
+                                                <div className={cl.Row}
+                                                     key={id}
+                                                     onClick={() => handleClickAddItem(id)}
+                                                     style={{background: `${isActiveAddon(id) ? 'green' : 'none'} `}}
                                                 >
                                                     <div>{title}</div>
                                                     <div>{price}</div>
@@ -520,24 +470,32 @@ export default function Post({post}) {
                                     </div>
                                 ))}
                             </div>
-                        </div>
-                    ))}
+                        ))}
+                    </div>
                 </div>
-                <div>
-                    <button onClick={() => setModalIsOpen(true)}>Open Modal</button>
-                    <Modal isOpen={modalIsOpen} onClose={() => setModalIsOpen(false)}>
-                        <h2>Modal Content</h2>
-                        <p>This is the content of the modal.</p>
-                    </Modal>
-                </div>
-
-
             </section>
             <Footcaravaan title={title}
-                          price={post.prices_sale ? getFormatPrice(post.prices_sale) : getFormatPrice(post.price)}
+                          price={getFormatPrice(getPriceWithAddons())}
                           img={glavFoto}
-                          slug={post.slug}/>
+                          slug={post.slug}
+                          openModal={() => setModalIsOpen(true)}/>
             <Footer/>
+
+            <Modal isOpen={modalIsOpen} onClose={() => setModalIsOpen(false)}>
+                <h2>Modal Content</h2>
+                <form action="">
+                    <input type="text" name="dfsd" id="dsf"/>
+                    <input type="text" name='sads'/>
+                    <input type="submit" value="Jnghfdbnm"/>
+                    {pickedAddons().length && pickedAddons().map(el => {
+                        return (
+                            //@ts-ignore
+                            <div>{el.title}</div>
+                        )
+
+                    })}
+                </form>
+            </Modal>
         </>
     )
 }

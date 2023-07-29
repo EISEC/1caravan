@@ -6,7 +6,7 @@ import {AddComp} from "@/store/slice/compare";
 import {useAppDispatch, useAppSelector} from "@/store/store";
 
 //@ts-ignore
-const Footcaravaan = ({title, price, img, slug}) => {
+const Footcaravaan = ({title, price, img, slug, openModal}) => {
     // @ts-ignore
     const {wishList} = useAppSelector(state => state.wishlist)
     // @ts-ignore
@@ -80,7 +80,7 @@ const Footcaravaan = ({title, price, img, slug}) => {
                     <FaHeart className={'text-red-700'}/></button>
             </div>
             <div>
-                <button className={'bg-orange-500 px-4 py-2 rounded'}>
+                <button onClick={openModal} className={'bg-orange-500 px-4 py-2 rounded'}>
                     Оставить заявку
                 </button>
             </div>
