@@ -25,7 +25,7 @@ export default function PodZakaz({ doma }) {
         const setSleep = new Set(allMesta)
         // @ts-ignore
         // setMesta([...setSleep])
-    }, [])
+    }, [doma])
 
     useEffect(() => {
         setIsFound(filteredDoma.length === 0 ? false : true)
