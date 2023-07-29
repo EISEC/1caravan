@@ -10,6 +10,7 @@ export type TModal = {
 const Modal: FC<TModal> = ({ isOpen, onClose, children }) => {
     if (!isOpen) return null;
 
+    // @ts-ignore
     const handleOverlayClick = (e) => {
         if (e.target === e.currentTarget) {
             onClose();
