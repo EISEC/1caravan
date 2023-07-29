@@ -1,8 +1,10 @@
-import {useMemo} from "react";
+// @ts-ignore
+// @ts-ignore
+
 import {v4 as uuid} from "uuid";
 import {TAddCategoryList} from "@/pages/avtodom/types";
 
-export const mockData: TAddCategoryList = useMemo(() => [
+export const mockData: TAddCategoryList = [
     {
         categoryName: 'Электроприборы и электрика',
         catId: uuid(),
@@ -63,4 +65,4 @@ export const mockData: TAddCategoryList = useMemo(() => [
         ]
 
     }
-], [])
+]
