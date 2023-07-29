@@ -18,6 +18,7 @@ import "swiper/css/thumbs";
 // import required modules
 import { FreeMode, Navigation, Thumbs } from "swiper";
 import { v4 as uuid } from 'uuid';
+import Modal from '@/components/Modal/Modal';
 
 // @ts-ignore
 export default function Post({post}) {
@@ -156,6 +157,8 @@ export default function Post({post}) {
     const isActiveAddon = (id: string) => {
         return addIdList.find(el => el === id)
     }
+
+    const [modalIsOpen, setModalIsOpen] = useState(false)
 
     // @ts-ignore
     return (
@@ -487,6 +490,7 @@ export default function Post({post}) {
                                 return allAddonItems.find(el => el.id === curId)
                             })
                             console.log(pickedAddons)
+                            setModalIsOpen(true)
                         }}
                     >
                         Оставить заявку
@@ -518,6 +522,13 @@ export default function Post({post}) {
                             </div>
                         </div>
                     ))}
+                </div>
+                <div>
+                    <button onClick={() => setModalIsOpen(true)}>Open Modal</button>
+                    <Modal isOpen={modalIsOpen} onClose={() => setModalIsOpen(false)}>
+                        <h2>Modal Content</h2>
+                        <p>This is the content of the modal.</p>
+                    </Modal>
                 </div>
 
 
