@@ -490,7 +490,7 @@ export default function Post({post}) {
                     {pickedAddons().length && pickedAddons().map(el => {
                         return (
                             //@ts-ignore
-                            <div>{el.title}</div>
+                            <div key={el.id}>{el.title}</div>
                         )
 
                     })}
