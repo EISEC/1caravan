@@ -5,19 +5,19 @@ const Proiz = () => {
     return (
         <section className={'container mx-auto my-3 mt-[35px]'}>
             <div className="flex gap-2  flex-row justify-between">
-                <Link className={'w-full text-center leading-[70px] text-white text-2xl font-extrabold bg-orange-500 rounded-lg'} href={'/proizvoditel/fendt'}>
+                <Link className={'w-full text-center leading-[70px] text-white text-2xl font-extrabold bg-[#4B548D] rounded-lg'} href={'/proizvoditel/fendt'}>
                     Fendt
                 </Link>
-                <Link className={'w-full text-center leading-[70px] text-white text-2xl font-extrabold bg-orange-500 rounded-lg'} href={'/proizvoditel/hobby'}>
+                <Link className={'w-full text-center leading-[70px] text-white text-2xl font-extrabold bg-[#4B548D] rounded-lg'} href={'/proizvoditel/hobby'}>
                     Hobby
                 </Link>
-                <Link className={'w-full text-center leading-[70px] text-white text-2xl font-extrabold bg-orange-500 rounded-lg'} href={'/proizvoditel/knaus'}>
+                <Link className={'w-full text-center leading-[70px] text-white text-2xl font-extrabold bg-[#4B548D] rounded-lg'} href={'/proizvoditel/knaus'}>
                     Knaus
                 </Link>
-                <Link className={'w-full text-center leading-[70px] text-white text-2xl font-extrabold bg-orange-500 rounded-lg'} href={'/proizvoditel/tabbert'}>
+                <Link className={'w-full text-center leading-[70px] text-white text-2xl font-extrabold bg-[#4B548D] rounded-lg'} href={'/proizvoditel/tabbert'}>
                     Tabbert
                 </Link>
-                <Link className={'w-full text-center leading-[70px] text-white text-2xl font-extrabold bg-orange-500 rounded-lg'} href={'/proizvoditel/weinsberg'}>
+                <Link className={'w-full text-center leading-[70px] text-white text-2xl font-extrabold bg-[#4B548D] rounded-lg'} href={'/proizvoditel/weinsberg'}>
                     Weinsberg
                 </Link>
             </div>

@@ -63,81 +63,75 @@ const ParamsFilter = ({doma, setFilteredDoma}) => {
 
     }, [inputSearch, inputVin, filter])
 
-
+    const complete = 'bg-[#4B548D] text-white'
+    const noSelect = 'bg-white'
 
 
     return (
-        <section className={'filter container px-6 py-6 mx-auto bg-blue-700 rounded-lg shadow-2xl my-[35px]'}>
-            <div className="block-filter flex w-full justify-between">
-                <div className="search">
-                    <input value={inputSearch} onChange={(e) => setInputSearch(e.target.value)}
+        <section className={'filter container px-6 py-6 mx-auto bg-[#C2C3C7] flex rounded-lg shadow-2xl my-[35px] justify-between gap-4'}>
+            <div className="block-filter flex flex-col content-stretch gap-2">
+                <div className="search h-full">
+                    <input className={'max-w-[200px] h-full px-[10px] rounded-md'} value={inputSearch} onChange={(e) => setInputSearch(e.target.value)}
                            placeholder="Поиск по названию"/>
                 </div>
-                <div className="vin">
-                    <input value={inputVin} onChange={(e) => setInputVin(e.target.value)}
+                <div className="vin h-full">
+                    <input className={'max-w-[200px] h-full px-[10px] rounded-md'} value={inputVin} onChange={(e) => setInputVin(e.target.value)}
                            placeholder="Поиск по №"/>
                 </div>
             </div>
-            <p className={'block w-full text-white'}>Сортировать по:</p>
-            <div className="block-filter">
-                <div className="price">
+            <div className="block-filter flex justify-around gap-4 w-full">
+                <div className="price flex flex-col content-stretch gap-2">
                     {/*// @ts-ignore*/}
                     <button
-                        className={'block w-full text-black bg-amber-50 p-1 mb-1'}
+                        className={`block w-full text-black p-1 mb-1 px-[10px] py-[5px] font-medium rounded-md text-lg ${filter === EFilters.cheap ? complete : noSelect}`}
                         onClick={(e) => handleFilter(EFilters.cheap)}
-                        style={{background: filter === EFilters.cheap ? 'green' : 'white'}}
                     >
                         Сначала дешёвые
                     </button>
                     <button
-                        className={'block w-full text-black bg-amber-50 p-1'}
+                        className={`block w-full text-black p-1 px-[10px] py-[5px] font-medium rounded-md text-lg ${filter === EFilters.expensive ? complete : noSelect}`}
                         onClick={(e) => handleFilter(EFilters.expensive)}
-                        style={{background: filter === EFilters.expensive ? 'green' : 'white'}}
                     >
                         Сначала дорогие
                     </button>
 
                 </div>
-                <div>
+                <div className={'flex flex-col content-stretch gap-2'}>
                     <button
-                        className={'block w-full text-black bg-amber-50 p-1 mb-1'}
+                        className={`block w-full text-black p-1 mb-1 px-[10px] py-[5px] font-medium rounded-md text-lg ${filter === EFilters.light ? complete : noSelect}`}
                         onClick={(e) => handleFilter(EFilters.light)}
-                        style={{background: filter === EFilters.light ? 'green' : 'white'}}
                     >
                         Сначала лёгкие
                     </button>
                     <button
-                        className={'block w-full text-black bg-amber-50 p-1 '}
+                        className={`block w-full text-black p-1 px-[10px] py-[5px] font-medium rounded-md text-lg ${filter === EFilters.heavy ? complete : noSelect}`}
                         onClick={(e) => handleFilter(EFilters.heavy)}
-                        style={{background: filter === EFilters.heavy ? 'green' : 'white'}}
                     >
                         Сначала тяжёлые
                     </button>
 
                 </div>
-                <div>
+                <div className={'flex flex-col content-stretch gap-2'}>
                     <button
-                        className={'block w-full text-black bg-amber-50 p-1 mb-1'}
+                        className={`block w-full text-black p-1 mb-1 px-[10px] py-[5px] font-medium rounded-md text-lg ${filter === EFilters.short ? complete : noSelect}`}
                         onClick={(e) => handleFilter(EFilters.short)}
-                        style={{background: filter === EFilters.short ? 'green' : 'white'}}
                     >
                         Сначала короткие
                     </button>
                     <button
-                        className={'block w-full text-black bg-amber-50 p-1'}
+                        className={`block w-full text-black p-1 px-[10px] py-[5px] font-medium rounded-md text-lg ${filter === EFilters.long ? complete : noSelect}`}
                         onClick={(e) => handleFilter(EFilters.long)}
-                        style={{background: filter === EFilters.long ? 'green' : 'white'}}
                     >
                         Сначала длинные
                     </button>
                 </div>
             </div>
-            <div>
+            <div className={'justify-center items-center flex'}>
                 <button
-                    className={'block w-full text-black bg-amber-50 p-1'}
+                    className={'block w-[200px] text-black bg-black text-white rounded-md py-2'}
                     onClick={() => handleClear()}
                 >
-                    Сбросить фильтры
+                    Сброс
                 </button>
             </div>
         </section>

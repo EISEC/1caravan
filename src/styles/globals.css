@@ -109,7 +109,7 @@ p b {
     overflow: hidden;
     position: relative;
     height: 385px;
-    background: rgb(0, 0, 0, 0.67);
+    background: rgba(0, 0, 0, 0.67);
 }
 
 .header_blog > img {
@@ -140,46 +140,4 @@ p b {
 .glavnay_po_caravanu .cena {
     grid-area: cena;
     overflow: auto;
-}
-
-.filter {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    gap: 30px;
-}
-
-.block-filter {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-    align-items: center;
-}
-
-.block-filter > .search input {
-    min-height: 40px;
-    min-width: 256px;
-    font-size: 1.3rem;
-    border-radius: 5px;
-    border: 1px solid black;
-    padding-left: 10px;
-}
-
-.block-filter > .vin input {
-    min-height: 40px;
-    max-width: 150px;
-    font-size: 1.3rem;
-    border-radius: 5px;
-    border: 1px solid black;
-    padding-left: 10px;
-}
-
-.block-filter select {
-    min-height: 40px;
-    min-width: 162px;
-    font-size: 1.3rem;
-    border-radius: 10px;
-    border: 1px solid black;
-    padding-left: 10px;
 }

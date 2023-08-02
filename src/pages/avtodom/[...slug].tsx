@@ -118,6 +118,7 @@ export default function Post({post}) {
 
 
     // @ts-ignore
+    // @ts-ignore
     return (
         <>
             <Head>
@@ -439,31 +440,32 @@ export default function Post({post}) {
 
             </main>
             <section className={'container mx-auto'}>
-                <div className={'flex gap-6'}>
-                    <ul className={'w-[25vw]'}>
+                <div className={'flex gap-6 bg-[#C2C3C7] rounded-md p-2 mb-[40px]'}>
+                    <ul className={'w-[20vw] font-medium flex flex-col'}>
                         {mockData.map(category => (
                             // @ts-ignore
-                            <li onClick={() => tabcat(category.catId)} key={category.catId} className={'flex gap-4 cursor-pointer'}>
+                            <li onClick={() => tabcat(category.catId)} key={category.catId} className={`flex gap-4 p-2 rounded-md cursor-pointer ${category.catId === carAddon ? 'bg-[#908859] text-white' : ''}`}>
                                 <h1>{category.categoryName}</h1>
                             </li>
                         ))}
                     </ul>
-                    <div className={'w-[75vw]'}>
+                    <div className={'w-[80vw] bg-[#C2C3C7]'}>
                         {mockData.map(category => (
-                            <div key={category.catId} className={category.catId === carAddon ? 'flex flex-col' : 'hidden'}>
+                            <div key={category.catId} className={category.catId === carAddon ? 'flex flex-col rounded-md gap-2' : 'hidden'}>
                                 {category.categoryItems.map(itemList => (
-                                    <div key={itemList.itemListName} className={cl.Row}>
-                                        <h2>{itemList.itemListName}</h2>
-                                        <div className={cl.Column}>
+                                    <div key={itemList.itemListName} className={'flex flex-row items-center gap-4 w-full bg-white border-[2px] rounded-md border-[#908859] p-2'}>
+                                        <h2 className={'min-w-[250px] w-[250px]'}>{itemList.itemListName}</h2>
+                                        <div className={`${cl.Column} gap-2 w-full cursor-pointer`}>
                                             {itemList.info.map(({title, descr, id, price}) => (
-                                                <div className={cl.Row}
+                                                <div className={`flex flex-row gap-4 w-full rounded-md border-y-[1px] items-center p-1 ${isActiveAddon(id) ? 'text-white' : ''}`}
                                                      key={id}
                                                      onClick={() => handleClickAddItem(id)}
-                                                     style={{background: `${isActiveAddon(id) ? 'green' : 'none'} `}}
+                                                     style={{background: `${isActiveAddon(id) ? '#5E875F' : 'none'} `}}
                                                 >
-                                                    <div>{title}</div>
-                                                    <div>{price}</div>
-                                                    <div>{descr}</div>
+                                                    <div className={'min-w-[250px] w-[250px]'}>{title}</div>
+                                                    {/*// @ts-ignore*/}
+                                                    <div className={'min-w-[150px] w-[150px] text-right'}><strong>{getFormatPrice(price)} ₽</strong></div>
+                                                    <div className={'w-full'}>{descr}</div>
                                                 </div>
                                             ))}
                                         </div>
