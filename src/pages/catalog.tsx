@@ -3,24 +3,58 @@ import axios from 'axios'
 import Cards from "@/components/Cards/Cards";
 import Footer from "@/components/footer/footer";
 import HeadTitle from "@/components/header/HeadTitle";
+import {useEffect, useState} from "react";
+import ParamsFilter from "@/components/Filter/paramsFilter";
+import Akciya from "@/components/hero/Akciya";
 
 // @ts-ignore
-export default function Avtodom({doma}) {
+export default function Avtodom({doma, dom}) {
+    const [filteredDoma, setFilteredDoma] = useState(doma)
+    const [isFonud, setIsFound] = useState(true)
+
+    useEffect(() => {
+        // @ts-ignore
+        const allMesta = doma.map(el => el.kol_sleep)
+        const setSleep = new Set(allMesta)
+    }, [doma])
+
+    useEffect(() => {
+        setIsFound(filteredDoma.length === 0 ? false : true)
+        for (let i = 0; i < filteredDoma.length; i++) {
+            // console.log(filteredDoma[i]['price'], '|', filteredDoma[i]['mass'], '|', filteredDoma[i]['dlina'])
+        }
+    }, [filteredDoma])
 
     return (
         <>
             <HeadTitle/>
             <Menu/>
-            <main>
-                {doma.length ? (
-                    <Cards cards={doma}/>
-                ) : (
-                    <section>
-                        <span>подождите, загружаем</span>
-                    </section>
+            <main className={'mt-[100px]'}>
+                {/*// @ts-ignore*/}
+                <Akciya akciya={dom[0]}/>
+                <div className="container mx-auto px-6">
+                    <ParamsFilter doma={doma} setFilteredDoma={setFilteredDoma}/>
+                </div>
+                <div className={'container mx-auto px-6'}>Нашлось {filteredDoma.length} караванов</div>
+                {!!filteredDoma.length && (
+                    <Cards cards={filteredDoma}/>
                 )}
-                <section className={'container mx-auto'}>
-                    <h2 className={'mb-3 text-2xl font-bold'}>Каталог автодомов, караванов и прицепов дач от Первого каравана</h2>
+
+                {isFonud && filteredDoma.length === 0 &&
+                    (
+                        <section className={'container mx-auto px-6'}>
+                            <span>Подождите, загружаем ...</span>
+                        </section>
+                    )
+                }
+                {!isFonud &&
+                    <section className={'container mx-auto px-6'}>
+                        <span>Ничего не найдено </span>
+                    </section>
+                }
+                <section className={'container mx-auto px-6'}>
+                    <h1 className={'mb-3 text-2xl font-bold'}>Каталог автодомов, караванов и прицепов дач от Первого
+                        каравана</h1>
                     <p>Каталог автодомов, караванов и прицепов дача – это идеальное место для тех, кто ищет надежный
                         транспорт для своих путешествий и отдыха на природе. В нашем каталоге вы найдете большой выбор
                         автодомов, караванов и прицепов дача от ведущих производителей, таких как Fendt, Knaus, Tabbert,
@@ -58,7 +92,8 @@ export default function Avtodom({doma}) {
 
 export async function getStaticProps() {
     const {data: doma} = await axios.get('https://1caravan.ru/wp-json/api/v2/doma/catalog')
+    const {data: dom} = await axios.get('https://1caravan.ru/wp-json/api/v2/doma/akciya')
     return {
-        props: {doma}, // will be passed to the page component as props
+        props: {doma, dom}, // will be passed to the page component as props
     }
 }

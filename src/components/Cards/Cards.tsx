@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import cl from './Cards.module.css';
 import {motion} from "framer-motion";
-import { useAppSelector} from "@/store/store";
+import {useAppSelector} from "@/store/store";
 
 import CardsItem from "@/components/Cards/CardsItem/CardsItem";
 
@@ -18,7 +18,6 @@ const Cards = ({cards}) => {
     useEffect(() => {
         setIsMobile(window.matchMedia('(max-width: 600px)').matches)
     }, [])
-
 
 
     const [showCount, setShowCount] = useState(6)
@@ -53,9 +52,8 @@ const Cards = ({cards}) => {
     };
 
 
-
     return (
-        <section className={`${cl.listavto} container mx-auto`}>
+        <section className={`${cl.listavto} container px-6 mx-auto`}>
             <motion.ul
                 className={'grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 mb-8'}
                 variants={container}

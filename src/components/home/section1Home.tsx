@@ -3,7 +3,7 @@ import cl from './section1Home.module.css'
 
 const Section1Home = () => {
     return (
-        <section className={`${cl.pochemu} container mx-auto`}>
+        <section className={`${cl.pochemu} py-[30px] container mx-auto px-6`}>
             <h2>Почему Первый караван?</h2>
             <div className={cl.card_fav}>
                 <div className={cl.card_icon_fav}>

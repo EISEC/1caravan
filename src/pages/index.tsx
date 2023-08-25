@@ -31,7 +31,7 @@ export default function Home({doma}) {
                 <Section1Home/>
                 <Section2Home/>
 
-                <div className="container mx-auto">
+                <div className="container mx-auto px-6">
                     <h2 className="ho2">Популярные караваны</h2>
                     <p className="po2">Самые просматриваемые караваны этой недели</p>
                 </div>

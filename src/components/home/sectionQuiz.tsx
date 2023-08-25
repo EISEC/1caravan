@@ -2,7 +2,9 @@ import React, {useEffect} from 'react';
 
 const SectionQuiz = () => {
     useEffect(() => {
-        (function() { console.log('rendered')}
+        (function () {
+                console.log('rendered')
+            }
         )();
         (function (w, d, s, o) {
             var j = d.createElement(s);
@@ -47,7 +49,6 @@ const SectionQuiz = () => {
             buttonOnMobile: true
         })
     }, [])
-
 
 
     return (
