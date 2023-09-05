@@ -5,42 +5,71 @@ import Menu from "@/components/header/menu";
 import CapHome from "@/components/home/capHome";
 import Cards from "@/components/Cards/Cards";
 import Footer from "@/components/footer/footer";
+import ParamsFilter from "@/components/Filter/paramsFilter";
+import Proiz from "@/components/Filter/proiz";
+import {useRouter} from "next/router";
 
-const Weinsberg = () => {
-    const [doma, setDoma] = useState([])
-
+//@ts-ignore
+const Weinsberg = ({doma}) => {
+    //@ts-ignore
+    const [filteredDoma, setFilteredDoma] = useState([])
+    const [isFonud, setIsFound] = useState(true)
 
     useEffect(() => {
-        const getDoma = async () => {
-            const {data: doma} = await axios.get('https://1caravan.ru/wp-json/api/v2/doma/weinsberg')
+        let domi = [...doma].filter((i) => {
             // @ts-ignore
-            setDoma(doma)
+            let f = i.proizvoditel
             // @ts-ignore
-        }
-        getDoma()
-
+            if (f[0] === 'Weinsberg') {
+                return i
+            }
+        })
+        // @ts-ignore
+        setFilteredDoma(domi)
     }, [])
+    console.log(setFilteredDoma)
+
+    useEffect(() => {
+        setIsFound(filteredDoma.length === 0 ? false : true)
+        for (let i = 0; i < filteredDoma.length; i++) {
+        }
+    }, [filteredDoma])
 
     return (
         <>
             <Head>
                 <title>Производитель автодомов Weinsberg | Первый Караван</title>
-                <meta name="description" content="Weinsberg - это немецкий производитель автодомов, который известен своими доступными
-                        ценами, надежностью и инновационными решениями."/>
+                <meta name="description"
+                      content="Компания Weinsberg была основана в 1912 году и начала свою деятельность как производитель
+                        автомобильных прицепов. Сегодня Weinsberg является одним из крупнейших производителей автодомов
+                        в Европе и предлагает широкий выбор моделей для различных потребностей и бюджетов."/>
                 <meta name="viewport" content="width=device-width, initial-scale=1"/>
                 <link rel="icon" href="/favicon.ico"/>
             </Head>
             <Menu/>
             <main>
                 <CapHome/>
-                {doma.length ? (
-                    <Cards cards={doma}/>
-                ) : (
-                    <section>
-                        <h1>подождите, загружаем</h1>
-                    </section>
+                <Proiz/>
+                <ParamsFilter doma={filteredDoma} setFilteredDoma={setFilteredDoma} nameCurPage={useRouter().pathname}/>
+
+                <div className={'container mx-auto px-6'}>Нашлось {filteredDoma.length} караванов</div>
+                {!!filteredDoma.length && (
+                    <Cards cards={filteredDoma}/>
                 )}
-                <section>
+
+                {isFonud && filteredDoma.length === 0 &&
+                    (
+                        <section className={'container mx-auto px-6'}>
+                            <span>Подождите, загружаем ...</span>
+                        </section>
+                    )
+                }
+                {!isFonud &&
+                    <section className={'container mx-auto px-6'}>
+                        <span>Ничего не найдено </span>
+                    </section>
+                }
+                <section className={'container mx-auto px-6'}>
                     <p><b>Weinsberg</b> - это немецкий производитель автодомов, который известен своими доступными
                         ценами, надежностью и инновационными решениями.</p>
 
@@ -70,3 +99,10 @@ const Weinsberg = () => {
 };
 
 export default Weinsberg;
+
+export async function getStaticProps() {
+    const {data: doma} = await axios.get('https://1caravan.ru/wp-json/api/v2/doma/vse')
+    return {
+        props: {doma}, // will be passed to the page component as props
+    }
+}

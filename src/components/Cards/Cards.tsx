@@ -1,9 +1,11 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import cl from './Cards.module.css';
 import {motion} from "framer-motion";
 import {useAppSelector} from "@/store/store";
+import {useRouter} from 'next/router'
 
 import CardsItem from "@/components/Cards/CardsItem/CardsItem";
+import {useIsVisible} from "@/hooks/useIsVisible";
 
 // @ts-ignore
 const Cards = ({cards}) => {
@@ -13,6 +15,7 @@ const Cards = ({cards}) => {
 
     const [isMobile, setIsMobile] = useState(false)
 
+    const router = useRouter()
 
     // @ts-ignore
     useEffect(() => {
@@ -51,7 +54,16 @@ const Cards = ({cards}) => {
         }
     };
 
+    const buttonMoreRef = useRef<HTMLButtonElement>(null)
+    const isVisible = useIsVisible(buttonMoreRef)
 
+    let homePage = '/'
+
+    useEffect(() => {
+        if (isVisible && homePage !== router.pathname) {
+            onShowMore()
+        }
+    }, [isVisible])
     return (
         <section className={`${cl.listavto} container px-6 mx-auto`}>
             <motion.ul
@@ -65,7 +77,8 @@ const Cards = ({cards}) => {
             </motion.ul>
             {showCount <= cards.length ?
                 (
-                    <button className={`btn-green ${cl.mrgbt25} `} onClick={() => onShowMore()}>Загрузить
+                    <button ref={buttonMoreRef} className={`btn-green ${cl.mrgbt25} `}
+                            onClick={() => onShowMore()}>Загрузить
                         больше</button>
                 ) :
                 (

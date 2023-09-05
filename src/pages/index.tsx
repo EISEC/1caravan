@@ -29,7 +29,6 @@ export default function Home({doma}) {
             <main>
                 <CapHome/>
                 <Section1Home/>
-                <Section2Home/>
 
                 <div className="container mx-auto px-6">
                     <h2 className="ho2">Популярные караваны</h2>

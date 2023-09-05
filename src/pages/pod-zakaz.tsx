@@ -1,20 +1,21 @@
 import Head from 'next/head'
-import { Inter } from '@next/font/google'
+import {Inter} from '@next/font/google'
 import Menu from "@/components/header/menu";
-import { useEffect, useState } from "react";
+import {useEffect, useState} from "react";
 import axios from "axios";
 import Cards from "@/components/Cards/Cards";
 import CapHome from "@/components/home/capHome";
 import Footer from "@/components/footer/footer";
 import Proiz from "@/components/Filter/proiz";
 import ParamsFilter from '@/components/Filter/paramsFilter';
+import {useRouter} from "next/router";
 
-const inter = Inter({ subsets: [ 'latin' ] })
+const inter = Inter({subsets: ['latin']})
 
 // @ts-ignore
-export default function PodZakaz({ doma }) {
-    const [ filteredDoma, setFilteredDoma ] = useState(doma)
-    const [ isFonud, setIsFound ] = useState(true)
+export default function PodZakaz({doma}) {
+    const [filteredDoma, setFilteredDoma] = useState(doma)
+    const [isFonud, setIsFound] = useState(true)
 
     // const [mesta, setMesta] = useState([])
     // const [curMesta, setCurMesta] = useState('')
@@ -30,10 +31,8 @@ export default function PodZakaz({ doma }) {
     useEffect(() => {
         setIsFound(filteredDoma.length === 0 ? false : true)
         for (let i = 0; i < filteredDoma.length; i++) {
-            console.log(filteredDoma[i]['price'], '|', filteredDoma[i]['mass'], '|', filteredDoma[i]['dlina'])
         }
-        console.log('--------')
-    }, [ filteredDoma ])
+    }, [filteredDoma])
 
 
     return (
@@ -47,10 +46,9 @@ export default function PodZakaz({ doma }) {
                 <link rel="icon" href="/favicon.ico"/>
             </Head>
             <Menu/>
-            <main>
-                <CapHome/>
+            <main className={'mt-28'}>
                 <Proiz/>
-                <ParamsFilter doma={doma} setFilteredDoma={setFilteredDoma}/>
+                <ParamsFilter doma={doma} setFilteredDoma={setFilteredDoma} nameCurPage={useRouter().pathname}/>
 
                 <div className={'container mx-auto px-6'}>Нашлось {filteredDoma.length} караванов</div>
                 {!!filteredDoma.length && (
@@ -76,8 +74,8 @@ export default function PodZakaz({ doma }) {
 }
 
 export async function getStaticProps() {
-    const { data: doma } = await axios.get('https://1caravan.ru/wp-json/api/v2/doma/zakaz')
+    const {data: doma} = await axios.get('https://1caravan.ru/wp-json/api/v2/doma/zakaz')
     return {
-        props: { doma }, // will be passed to the page component as props
+        props: {doma}, // will be passed to the page component as props
     }
 }

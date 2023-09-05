@@ -1,44 +1,53 @@
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import Link from "next/link";
 import Image from 'next/image'
 import cl from 'src/components/Cards/Cards.module.css';
-import { motion } from "framer-motion";
-import { FaFilter, FaHeart } from "react-icons/fa";
+import {motion} from "framer-motion";
+import {FaHeart} from "react-icons/fa";
+import {ImShuffle} from "react-icons/im";
 import {useAppDispatch, useAppSelector} from "@/store/store";
 import {AddWish} from "@/store/slice/wishlist";
 import {AddComp} from "@/store/slice/compare";
+import Toast from "@/components/Toast/toast";
 
 //@ts-ignore
-const CardsItem = ({ wishList, data }) => {
+const CardsItem = ({wishList, data}) => {
 
     // @ts-ignore
     const {compareList} = useAppSelector(state => state.compare)
 
     const dispatch = useAppDispatch();
+
     function getFormatPrice(price: string) {
         const pRes = Number(price)
         const formatPrice = String(pRes).replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1 ");
         return formatPrice
     }
+
+    const [click, setClick] = useState(false)
+    setTimeout(() => setClick(false), 1000)
+
     //@ts-ignore
     const sendToCart = (slug, title, price, img) => {
         //@ts-ignore
-        dispatch(AddWish({ slug, title, price, img }))
+        dispatch(AddWish({slug, title, price, img}))
         //@ts-ignore
         // refCount.current.value = 1
         // setShowToast((currVal) => !currVal)
         // setTimeout(() => setShowToast(false), 3000)
+        setClick(true)
     }
     //@ts-ignore
     const sendToComp = (slug, title, price, img) => {
         //@ts-ignore
-        dispatch(AddComp({ slug, title, price, img }))
+        dispatch(AddComp({slug, title, price, img}))
         //@ts-ignore
         // refCount.current.value = 1
         // setShowToast((currVal) => !currVal)
         // setTimeout(() => setShowToast(false), 3000)
+        setClick(true)
     }
-    const [ disableComp, setDisableComp ] = useState(false)
+    const [disableComp, setDisableComp] = useState(false)
     useEffect(() => {
         // let disableList
         //@ts-ignore
@@ -50,9 +59,9 @@ const CardsItem = ({ wishList, data }) => {
         } else {
             setDisableComp(true)
         }
-    }, [ compareList ])
+    }, [compareList])
 
-    const [ disableList, setDisableList ] = useState(false)
+    const [disableList, setDisableList] = useState(false)
     useEffect(() => {
         // let disableList
         //@ts-ignore
@@ -64,7 +73,7 @@ const CardsItem = ({ wishList, data }) => {
         } else {
             setDisableList(true)
         }
-    }, [ wishList ])
+    }, [wishList])
     const statusDom = data.status
 
     const item = {
@@ -79,20 +88,25 @@ const CardsItem = ({ wishList, data }) => {
             className={'rounded-lg overflow-hidden bg-white shadow-lg p-3 flex flex-col justify-between'}
             variants={item}
         >
-            <div className={'relative h-[225px]'}>
-                <Image
+            <div className={'relative h-[225px] overflow-hidden rounded-lg'}>
+                <Link href={{
+                    pathname: "avtodom/[...slug]",
+                    query: {slug: data.slug},
+                }}>
+                    <Image
 
-                    src={data.img}
-                    alt={data.title}
-                    fill
-                    className={'object-cover rounded-lg shadow-md'}
-                    priority/>
-                <span className={'absolute bg-white p-1 rounded mt-2 ml-2'}>№{data.vin}</span>
+                        src={data.img}
+                        alt={data.title}
+                        fill
+                        className={'object-cover rounded-lg shadow-md transition hover:scale-125'}
+                        priority/>
+                    <span className={'absolute bg-white p-1 rounded mt-2 ml-2'}>№{data.vin}</span>
+                </Link>
             </div>
             <div className={'mt-3 gap-3 flex flex-col justify-stretch'}>
                 <Link href={{
                     pathname: "avtodom/[...slug]",
-                    query: { slug: data.slug },
+                    query: {slug: data.slug},
                 }}
                       className={'uppercase text-xl font-bold block mb-3'}>
                     {data.title}
@@ -222,22 +236,24 @@ const CardsItem = ({ wishList, data }) => {
                     {data.prices_sale ? getFormatPrice(data.prices_sale) : getFormatPrice(data.price)} ₽
                 </p>
                 <div className={'grid grid-cols-2 gap-2 py-2'}>
-                    <button disabled={disableComp} onClick={() => sendToComp(data.slug, data.title, data.price, data.img)}
-                            className={'flex flex-row border-blue-600 border-2 py-2 rounded items-center justify-center gap-2 disabled:bg-blue-200 disabled:text-white disabled:border-blue-200 disabled:cursor-no-drop'}>
-                        {disableComp ? 'В Сравнении' : 'Сравнить'} <FaFilter className={'text-blue-600'}/></button>
+                    <button disabled={disableComp}
+                            onClick={() => sendToComp(data.slug, data.title, data.price, data.img)}
+                            className={'flex flex-row border-blue-600 border-2 py-2 rounded items-center justify-center gap-2 disabled:bg-blue-200 disabled:text-white disabled:border-blue-200 disabled:cursor-no-drop transition hover:scale-90'}>
+                        {disableComp ? 'В Сравнении' : 'Сравнить'} <ImShuffle className={'text-blue-600'}/></button>
                     <button disabled={disableList}
                             onClick={() => sendToCart(data.slug, data.title, data.price, data.img)}
-                            className={'flex flex-row border-red-700 border-2 py-2 rounded items-center justify-center gap-2 disabled:bg-red-200 disabled:text-white disabled:border-red-200 disabled:cursor-no-drop'}>
+                            className={'flex flex-row border-red-700 border-2 py-2 rounded items-center justify-center gap-2 disabled:bg-red-200 disabled:text-white disabled:border-red-200 disabled:cursor-no-drop transition hover:scale-90'}>
                         {disableList ? 'В Избранном' : 'Изранное'}<FaHeart className={'text-red-700'}/></button>
                 </div>
                 <Link href={{
                     pathname: "avtodom/[...slug]",
-                    query: { slug: data.slug },
+                    query: {slug: data.slug},
                 }}
                       className={`${cl.btndark} block w-full text-center text-lg py-3 mt-2`}>
                     Подробнее
                 </Link>
             </div>
+            <Toast click={click}/>
         </motion.li>
     )
 };

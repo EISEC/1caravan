@@ -5,42 +5,71 @@ import Menu from "@/components/header/menu";
 import CapHome from "@/components/home/capHome";
 import Cards from "@/components/Cards/Cards";
 import Footer from "@/components/footer/footer";
+import ParamsFilter from "@/components/Filter/paramsFilter";
+import Proiz from "@/components/Filter/proiz";
+import {useRouter} from "next/router";
 
-const Knaus = () => {
-    const [doma, setDoma] = useState([])
-
+//@ts-ignore
+const Knaus = ({doma}) => {
+    //@ts-ignore
+    const [filteredDoma, setFilteredDoma] = useState([])
+    const [isFonud, setIsFound] = useState(true)
 
     useEffect(() => {
-        const getDoma = async () => {
-            const {data: doma} = await axios.get('https://1caravan.ru/wp-json/api/v2/doma/knaus')
+        let domi = [...doma].filter((i) => {
             // @ts-ignore
-            setDoma(doma)
+            let f = i.proizvoditel
             // @ts-ignore
-        }
-        getDoma()
-
+            if (f[0] === 'Knaus') {
+                return i
+            }
+        })
+        // @ts-ignore
+        setFilteredDoma(domi)
     }, [])
+    console.log(setFilteredDoma)
+
+    useEffect(() => {
+        setIsFound(filteredDoma.length === 0 ? false : true)
+        for (let i = 0; i < filteredDoma.length; i++) {
+        }
+    }, [filteredDoma])
 
     return (
         <>
             <Head>
                 <title>Производитель автодомов Knaus | Первый Караван</title>
                 <meta name="description"
-                      content="Knaus - это немецкий производитель автодомов, который известен своим разнообразием моделей, инновационными технологиями и высоким качеством продукции."/>
+                      content="Компания Knaus была основана в 1960 году и начала свою деятельность как производитель прицепов и
+                        трейлеров. С течением времени компания расширила свой ассортимент и начала производство
+                        автодомов."/>
                 <meta name="viewport" content="width=device-width, initial-scale=1"/>
                 <link rel="icon" href="/favicon.ico"/>
             </Head>
             <Menu/>
             <main>
                 <CapHome/>
-                {doma.length ? (
-                    <Cards cards={doma}/>
-                ) : (
-                    <section>
-                        <h1>подождите, загружаем</h1>
-                    </section>
+                <Proiz/>
+                <ParamsFilter doma={filteredDoma} setFilteredDoma={setFilteredDoma} nameCurPage={useRouter().pathname}/>
+
+                <div className={'container mx-auto px-6'}>Нашлось {filteredDoma.length} караванов</div>
+                {!!filteredDoma.length && (
+                    <Cards cards={filteredDoma}/>
                 )}
-                <section>
+
+                {isFonud && filteredDoma.length === 0 &&
+                    (
+                        <section className={'container mx-auto px-6'}>
+                            <span>Подождите, загружаем ...</span>
+                        </section>
+                    )
+                }
+                {!isFonud &&
+                    <section className={'container mx-auto px-6'}>
+                        <span>Ничего не найдено </span>
+                    </section>
+                }
+                <section className={'container mx-auto px-6'}>
                     <p><b>Knaus</b> - это немецкий производитель <b>автодомов</b>, который известен своим разнообразием
                         моделей,
                         инновационными технологиями и высоким качеством продукции.</p>
@@ -74,3 +103,10 @@ const Knaus = () => {
 };
 
 export default Knaus;
+
+export async function getStaticProps() {
+    const {data: doma} = await axios.get('https://1caravan.ru/wp-json/api/v2/doma/vse')
+    return {
+        props: {doma}, // will be passed to the page component as props
+    }
+}

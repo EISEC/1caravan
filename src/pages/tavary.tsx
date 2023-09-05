@@ -7,8 +7,8 @@ const Tavary = () => {
     return (
         <>
             <Menu/>
-            <main>
-                <CapHome/>
+            <main className={'mt-28'}>
+
             </main>
             <Footer/>
         </>

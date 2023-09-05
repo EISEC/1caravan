@@ -6,6 +6,7 @@ import HeadTitle from "@/components/header/HeadTitle";
 import {useEffect, useState} from "react";
 import ParamsFilter from "@/components/Filter/paramsFilter";
 import Akciya from "@/components/hero/Akciya";
+import {useRouter} from "next/router";
 
 // @ts-ignore
 export default function Avtodom({doma, dom}) {
@@ -33,7 +34,7 @@ export default function Avtodom({doma, dom}) {
                 {/*// @ts-ignore*/}
                 <Akciya akciya={dom[0]}/>
                 <div className="container mx-auto px-6">
-                    <ParamsFilter doma={doma} setFilteredDoma={setFilteredDoma}/>
+                    <ParamsFilter doma={doma} setFilteredDoma={setFilteredDoma} nameCurPage={useRouter().pathname}/>
                 </div>
                 <div className={'container mx-auto px-6'}>Нашлось {filteredDoma.length} караванов</div>
                 {!!filteredDoma.length && (

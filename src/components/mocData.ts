@@ -2,7 +2,7 @@
 // @ts-ignore
 
 import {v4 as uuid} from "uuid";
-import {TAddCategoryList} from "@/pages/avtodom/types";
+import {TAddCategoryList} from "@/components/types";
 
 export const mockData: TAddCategoryList = [
     {
