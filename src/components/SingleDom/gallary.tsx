@@ -9,8 +9,17 @@ import cl from "@/pages/avtodom/slug.module.css";
 //@ts-ignore
 const Gallary = ({title, glavFoto, thumbsSwiper, setThumbsSwiper, acfGall}) => {
     const [isMobile, setIsMobile] = useState(false)
-    const [toggler, setToggler] = useState(false);
+    const [lightboxController, setLightboxController] = useState({
+        toggler: false,
+        slide: 1
+    });
 
+    function openLightboxOnSlide(number: any) {
+        setLightboxController({
+            toggler: !lightboxController.toggler,
+            slide: number
+        });
+    }
     let gallCar = []
     gallCar.push(glavFoto)
     // @ts-ignore
@@ -71,7 +80,7 @@ const Gallary = ({title, glavFoto, thumbsSwiper, setThumbsSwiper, acfGall}) => {
             >
                 <SwiperSlide>
                     <Image
-                        onClick={() => setToggler(!toggler)}
+                        onClick={() => openLightboxOnSlide(1)}
                         className={`rounded-lg cursor-pointer ${cl.imgCarusel}`} src={glavFoto}
                         alt={`${title} фотография  номер ${glavFoto}`}
                         fill
@@ -80,11 +89,14 @@ const Gallary = ({title, glavFoto, thumbsSwiper, setThumbsSwiper, acfGall}) => {
                         loading="lazy"/>
                 </SwiperSlide>
                 {/*// @ts-ignore*/}
-                {acfGall.map(el => {
+                {acfGall.map((el, i) => {
+                    let foto = (i:any) => {
+                        return i + 2
+                    }
                     return (
                         <SwiperSlide key={el.id}>
                             <Image
-                                onClick={() => setToggler(!toggler)}
+                                onClick={() => openLightboxOnSlide(foto(i))}
                                 className={`rounded-lg cursor-pointer ${cl.imgCarusel}`} src={el.url}
                                 alt={`${title} фотография  номер ${el.id}`}
                                 fill/>
@@ -93,9 +105,10 @@ const Gallary = ({title, glavFoto, thumbsSwiper, setThumbsSwiper, acfGall}) => {
                 })}
             </Swiper>
             <FsLightbox
-                toggler={toggler}
+                toggler={lightboxController.toggler}
                 sources={gallCar}
                 type="image"
+                slide={lightboxController.slide}
             />
         </div>
     );
