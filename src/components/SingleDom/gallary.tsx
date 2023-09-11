@@ -2,11 +2,26 @@ import React, {useEffect, useState} from 'react';
 import {Swiper, SwiperSlide} from "swiper/react";
 import {FreeMode, Navigation, Thumbs} from "swiper";
 import Image from "next/image";
+// @ts-ignore
+import FsLightbox from "fslightbox-react";
 import cl from "@/pages/avtodom/slug.module.css";
 
 //@ts-ignore
 const Gallary = ({title, glavFoto, thumbsSwiper, setThumbsSwiper, acfGall}) => {
     const [isMobile, setIsMobile] = useState(false)
+    const [toggler, setToggler] = useState(false);
+
+    let gallCar = []
+    gallCar.push(glavFoto)
+    // @ts-ignore
+    for (let i = 0; i < acfGall.length; i++) {
+        // @ts-ignore
+        if (acfGall[i].url) {
+            // @ts-ignore
+            gallCar.push(acfGall[i].url)
+        }
+    }
+
     // @ts-ignore
     useEffect(() => {
         setIsMobile(window.matchMedia('(max-width: 600px)').matches)
@@ -55,24 +70,33 @@ const Gallary = ({title, glavFoto, thumbsSwiper, setThumbsSwiper, acfGall}) => {
                 className="mySwiper2 w-[100%] min-h-[36vh] rounded-lg"
             >
                 <SwiperSlide>
-                    <Image className={`rounded-lg cursor-pointer ${cl.imgCarusel}`} src={glavFoto}
-                           alt={`${title} фотография  номер ${glavFoto}`}
-                           fill
-                           sizes="100vw"
-                           quality={80}
-                           loading="lazy"/>
+                    <Image
+                        onClick={() => setToggler(!toggler)}
+                        className={`rounded-lg cursor-pointer ${cl.imgCarusel}`} src={glavFoto}
+                        alt={`${title} фотография  номер ${glavFoto}`}
+                        fill
+                        sizes="100vw"
+                        quality={80}
+                        loading="lazy"/>
                 </SwiperSlide>
                 {/*// @ts-ignore*/}
-                {acfGall.slice().map(el => {
+                {acfGall.map(el => {
                     return (
                         <SwiperSlide key={el.id}>
-                            <Image className={`rounded-lg cursor-pointer ${cl.imgCarusel}`} src={el.url}
-                                   alt={`${title} фотография  номер ${el.id}`}
-                                   fill/>
+                            <Image
+                                onClick={() => setToggler(!toggler)}
+                                className={`rounded-lg cursor-pointer ${cl.imgCarusel}`} src={el.url}
+                                alt={`${title} фотография  номер ${el.id}`}
+                                fill/>
                         </SwiperSlide>
                     )
                 })}
             </Swiper>
+            <FsLightbox
+                toggler={toggler}
+                sources={gallCar}
+                type="image"
+            />
         </div>
     );
 };

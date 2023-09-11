@@ -95,7 +95,7 @@ export default function Post({post}) {
     }
 
     const [modalIsOpen, setModalIsOpen] = useState(false)
-    console.log(acf.индикатор_уровня_воды_в_баке)
+
     // @ts-ignore
     return (
         <>
@@ -363,7 +363,6 @@ export default function Post({post}) {
                 <form action="">
                     <input type="text" name="dfsd" id="dsf"/>
                     <input type="text" name='sads'/>
-                    <input type="submit" value="Jnghfdbnm"/>
                     {pickedAddons().length && pickedAddons().map(el => {
                         return (
                             //@ts-ignore
@@ -371,6 +370,7 @@ export default function Post({post}) {
                         )
 
                     })}
+                    <input type="submit" value="Оставить заявку"/>
                 </form>
             </Modal>
         </>

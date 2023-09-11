@@ -8,8 +8,6 @@ const Toast = ({click}) => {
         click ? setNoviseble('') : ''
         !click ? setNoviseble('hidden') : ''
     }, [click])
-
-    console.log(click)
     return (
         <div id="toast-success"
              className={`${noVisible} z-40 fixed flex items-center w-full max-w-xs p-4 mb-4 text-gray-500 bg-white rounded-lg shadow dark:text-gray-400 dark:bg-gray-800 bottom-[100px] right-[50px]`}
