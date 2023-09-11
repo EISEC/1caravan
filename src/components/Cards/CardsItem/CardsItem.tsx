@@ -90,7 +90,7 @@ const CardsItem = ({wishList, data}) => {
         >
             <div className={'relative h-[225px] overflow-hidden rounded-lg'}>
                 <Link href={{
-                    pathname: "avtodom/[...slug]",
+                    pathname: "/avtodom/[...slug]",
                     query: {slug: data.slug},
                 }}>
                     <Image
@@ -105,7 +105,7 @@ const CardsItem = ({wishList, data}) => {
             </div>
             <div className={'mt-3 gap-3 flex flex-col justify-stretch'}>
                 <Link href={{
-                    pathname: "avtodom/[...slug]",
+                    pathname: "/avtodom/[...slug]",
                     query: {slug: data.slug},
                 }}
                       className={'uppercase text-xl font-bold block mb-3'}>

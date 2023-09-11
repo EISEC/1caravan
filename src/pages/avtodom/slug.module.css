@@ -149,9 +149,10 @@
     padding: 3px 6px;
     border-radius: 5px;
 }
-.imgCarusel{
+
+.imgCarusel {
     width: 100%;
-    height: auto;
+    height: auto !important;
 }
 
 @media (max-width: 768px) {
