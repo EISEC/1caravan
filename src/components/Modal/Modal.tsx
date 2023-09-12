@@ -1,5 +1,6 @@
 import React, { FC, ReactNode, useState } from "react";
 import cl from './Modal.module.css'
+import { IoIosClose } from "react-icons/io";
 
 export type TModal = {
     isOpen: boolean
@@ -18,10 +19,10 @@ const Modal: FC<TModal> = ({ isOpen, onClose, children }) => {
     };
 
     return (
-        <div className={`${cl.modalOverlay}`} onClick={handleOverlayClick}>
-            <div className={`${cl.modalContent}`}>
+        <div className={`${cl.modalOverlay} overflow-scroll md:overflow-auto md:items-center`} onClick={handleOverlayClick}>
+            <div className={`${cl.modalContent} h-fit relative`}>
                 {children}
-                <button onClick={onClose}>Close</button>
+                <button className={'absolute top-4 right-4 text-4xl'} onClick={onClose}><IoIosClose className={'text-red-700 font-bold'}/></button>
             </div>
         </div>
     );
