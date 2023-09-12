@@ -131,7 +131,6 @@ p b {
 
 .glavnay_po_caravanu .opisaniye {
     grid-area: opisaniye;
-    overflow: auto;
     justify-self: center;
     align-self: center;
 }
@@ -140,4 +139,44 @@ p b {
 .glavnay_po_caravanu .cena {
     grid-area: cena;
     overflow: auto;
+}
+
+.bg_grey {
+    background-color: #BFC0CA;
+}
+
+.f_grey {
+    color: #BFC0CA;
+}
+
+.bg_yel {
+    background-color: #8A8556;
+}
+
+.f_yel {
+    color: #8A8556;
+}
+
+.bg_green {
+    background-color: #648D64;
+}
+
+.f_green {
+    color: #648D64;
+}
+
+.bg_blue {
+    background-color: #515A89;
+}
+
+.f_blue {
+    color: #515A89;
+}
+
+.bg_dark {
+    background-color: #222225;
+}
+
+.f_dark {
+    color: #222225;
 }

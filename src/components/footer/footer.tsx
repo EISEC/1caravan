@@ -26,7 +26,7 @@ const Footer = () => {
 
 
     return (
-        <footer className={`${cl.footer} pt-10`}>
+        <footer className={`${cl.footer} pt-10 px-4`}>
             <div className={`container mx-auto ${cl.fotme}`}>
                 <div className={cl.nameFot}>
                     <h4 className={'mb-3'}>

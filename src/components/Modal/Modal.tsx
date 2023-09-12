@@ -18,8 +18,8 @@ const Modal: FC<TModal> = ({ isOpen, onClose, children }) => {
     };
 
     return (
-        <div className={cl.modalOverlay} onClick={handleOverlayClick}>
-            <div className={cl.modalContent}>
+        <div className={`${cl.modalOverlay}`} onClick={handleOverlayClick}>
+            <div className={`${cl.modalContent}`}>
                 {children}
                 <button onClick={onClose}>Close</button>
             </div>

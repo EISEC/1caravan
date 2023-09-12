@@ -37,7 +37,7 @@ const Gallary = ({title, glavFoto, thumbsSwiper, setThumbsSwiper, acfGall}) => {
     }, [])
     // @ts-ignore
     return (
-        <div className="gallary flex flex-col md:flex-row relative gap-[20px]">
+        <div className="gallary flex flex-col-reverse md:flex-row relative gap-[20px]">
             <Swiper
                 onSwiper={setThumbsSwiper}
                 spaceBetween={10}

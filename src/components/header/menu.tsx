@@ -145,7 +145,7 @@ const Menu = () => {
     }
 
     return (
-        <header>
+        <header className={'px-4'}>
             <div className={`${cl.menu} container `}>
                 <Link href={'/'} className={cl.logo}>
                     <svg width="139" height="41" viewBox="0 0 139 41" fill="none" xmlns="http://www.w3.org/2000/svg"
