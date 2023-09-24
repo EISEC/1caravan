@@ -23,6 +23,7 @@
     "fslightbox-react": "^1.7.6",
     "next": "13.1.6",
     "next-persist": "^1.2.4",
+    "next-seo": "^6.1.0",
     "plaiceholder": "^2.5.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",

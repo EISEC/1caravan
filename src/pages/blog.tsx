@@ -1,14 +1,15 @@
 import React from 'react';
 import Link from "next/link";
 import Menu from "@/components/header/menu";
-import CapHome from "@/components/home/capHome";
 import Footer from "@/components/footer/footer";
 import {motion} from "framer-motion";
 import Image from "next/image";
+import {NextSeo} from 'next-seo';
+import {useRouter} from 'next/router'
 
 // @ts-ignore
 export default function Blog({posts}) {
-
+    const route = useRouter()
     const container = {
         hidden: {opacity: 1, scale: 0},
         visible: {
@@ -31,9 +32,26 @@ export default function Blog({posts}) {
 
     return (
         <>
+            <NextSeo
+                title="Блог"
+                description="Полезные статьи до приобретения каравана, где отдохнуть, как выбрать."
+                openGraph={{
+                    title: 'Блог',
+                    description: 'Полезные статьи до приобретения каравана, где отдохнуть, как выбрать.',
+                    images: [
+                        {
+                            url: '/fonhome.jpg',
+                            width: 800,
+                            height: 600,
+                            alt: 'Первый караван',
+                            type: 'image/jpeg',
+                        },
+                    ],
+                    siteName: 'Первый караван',
+                }}
+            />
             <Menu/>
-            <main>
-                <CapHome/>
+            <main className={'mt-28'}>
                 <section className={'container mx-auto mt-6 mb-8'}>
                     <motion.ul
                         className={`grid gap-4 sm:grid-cols-2 md:gap-6 lg:grid-cols-3 xl:grid-cols-4 xl:gap-8`}

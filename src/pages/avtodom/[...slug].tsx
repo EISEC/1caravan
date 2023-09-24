@@ -18,9 +18,13 @@ import {mockData} from "@/components/mocData";
 import Status from "@/components/SingleDom/Status";
 import Gallary from "@/components/SingleDom/gallary";
 import Dopy from "@/components/SingleDom/dopy";
+import Collaps from "@/components/Modal/Collaps";
+import {NextSeo, ProductJsonLd} from "next-seo";
+import {useRouter} from "next/router";
 
 // @ts-ignore
 export default function Post({post}) {
+    const route = useRouter();
     const [isMobile, setIsMobile] = useState(false)
     // @ts-ignore
     useEffect(() => {
@@ -118,17 +122,73 @@ export default function Post({post}) {
     const [content5, setContent5] = useState(false)
     const [content6, setContent6] = useState(false)
 
+    const CollapsContent = [
+        content1,
+        content2,
+        content3,
+        content4,
+        content5,
+        content6
+    ]
+    console.log(post.date)
     // @ts-ignore
     return (
         <>
+            <NextSeo
+                title={title.replace(/&#8212;/g, '-')}
+                description={`Купить/Заказать дом на колесах ${title} от производителя автодомов ${proizvoditel}. Актуальная информация и приятная цена ждут Вас на нашем сайте! Подберем автодом/прицеп-дачу/караван под ваши пожелания`}
+                openGraph={{
+                    title: `${title.replace(/&#8212;/g, '-')}`,
+                    description: `Купить/Заказать дом на колесах ${title} от производителя автодомов ${proizvoditel}. Актуальная информация и приятная цена ждут Вас на нашем сайте! Подберем автодом/прицеп-дачу/караван под ваши пожелания`,
+                    images: [
+                        {
+                            url: `${glavFoto}`,
+                            width: 800,
+                            height: 600,
+                            alt: 'Первый караван',
+                            type: 'image/jpeg',
+                        },
+                    ],
+                    siteName: 'Первый караван',
+                }}
+            />
+            <ProductJsonLd
+                productName="Executive Anvil"
+                images={[
+                    glavFoto
+                ]}
+                description={`Купить/Заказать дом на колесах ${title} от производителя автодомов ${proizvoditel}. Актуальная информация и приятная цена ждут Вас на нашем сайте! Подберем автодом/прицеп-дачу/караван под ваши пожелания`}
+                brand={proizvoditel}
+                color="white"
+                manufacturerName={proizvoditel}
+                manufacturerLogo="/logo.svg"
+                material="steel"
+                slogan="Подберем автодом/прицеп-дачу/караван под ваши пожелания!"
+                disambiguatingDescription="Автодома для путеществий и проживания."
+                releaseDate={post.date}
+                productionDate={post.date}
+                purchaseDate={post.date}
+                aggregateRating={{
+                    ratingValue: '4.4',
+                    reviewCount: '89',
+                }}
+                offers={[
+                    {
+                        price: `${getFormatPrice(getPriceWithAddons())}`,
+                        priceCurrency: 'RUB',
+                        itemCondition: 'https://schema.org/UsedCondition',
+                        availability: 'https://schema.org/InStock',
+                        url: `https://1caravan.ru${route.asPath}`,
+                        seller: {
+                            name: 'Первый караван',
+                        },
+                    },
+                ]}
+                mpn={`SKU${post.id}`}
+            />
             <Head>
-                <title>{title} | Первый караван</title>
-                <meta name="description"
-                      content={`Купить/Заказать ${title} от производителя автодомов ${proizvoditel}. Актуальная информация и приятная цена ждут Вас на нашем сайте! Подберем автодом под ваши пожелания`}/>
                 <meta name="keywords"
                       content={`купить, автодом, караван, прицеп дачу, ${proizvoditel}, ${title}, ${post.god_vipuska}`}/>
-                <meta name="viewport" content="width=device-width, initial-scale=1"/>
-                <link rel="icon" href="/favicon.ico"/>
             </Head>
             <Menu/>
             <main className={cl.main}>
@@ -146,9 +206,6 @@ export default function Post({post}) {
                         <ul className={'text-xl md:text-2xl'}>
                             {/*// @ts-ignore*/}
                             <Status status={statusDom}/>
-                            {proizvoditel != 0 && (
-                                <li className={'pt-6'}><b>Производитель</b>: {proizvoditel}</li>
-                            )}
                             <li><b>Год выпуска</b>: {god_vipuska}</li>
                             <li><b>Страна</b>: {strana}</li>
                             <li><b>Фактическая масса</b>: {massa} кг</li>
@@ -181,6 +238,146 @@ export default function Post({post}) {
                 </section>
 
                 <section className={'butonsy container mx-auto px-4 py-6'}>
+                    <Collaps isOpen={content1} onClose={() => setContent1(false)}>
+                        <h3 className={'font-bold text-xl mb-3'}>Наружная часть</h3>
+                        <ul className={'pl-2 flex flex-col gap-2'}>
+                            <li>Тягово-сцепное устройство - <strong>{acf.тягово_сцепное_устройство}</strong></li>
+                            <li>Дополнительная боковая фиксация сцепного устройства
+                                - <strong>{acf.дополнительная_боковая_фиксация_сцепного_устройства ? 'Есть' : 'Нету'}</strong>
+                            </li>
+                            <li>Страховочный тормозной трос
+                                - <strong>{acf.страховочный_тормозной_трос ? 'Есть' : 'Нету'}</strong></li>
+                            <li>Вилка для подключения к автомобилю
+                                - <strong>{acf.вилка_для_подключения_к_автомобилю}</strong></li>
+                            <li>Электрическая система стабилизации
+                                - <strong>{acf.электрическая_система_стабилизации}</strong></li>
+                            <li>Противооткаты - <strong>{acf.противооткаты ? 'Есть' : 'Нету'}</strong></li>
+                            <li>Штатное место для акб - <strong>{acf.штатное_место_для_акб ? 'Есть' : 'Нету'}</strong>
+                            </li>
+                            <li>Наружная розетка 220 - <strong>{acf.наружная_розетка_220 ? 'Есть' : 'Нету'}</strong>
+                            </li>
+                            <li>Наружное подключение газового оборудования гриляплиты
+                                - <strong>{acf.наружное_подключение_газового_оборудования_гриляплиты ? 'Есть' : 'Нету'}</strong>
+                            </li>
+                            <li>Наружное подключение воды английская система
+                                - <strong>{acf.наружное_подключение_воды_английская_система ? 'Есть' : 'Нету'}</strong>
+                            </li>
+                            <li>Входная дверь - <strong>{acf.входная_дверь}</strong></li>
+                            <li>Ступенька для входа - <strong>{acf.ступенька_для_входа ? 'Есть' : 'Нету'}</strong></li>
+                            <li>Москитная сетка на дверях
+                                - <strong>{acf.москитная_сетка_на_дверях ? 'Есть' : 'Нету'}</strong></li>
+                            <li>Мусорное ведро - <strong>{acf.мусорное_ведро ? 'Есть' : 'Нету'}</strong></li>
+                            <li>Ящики для вещей на входной двери
+                                - <strong>{acf.ящики_для_вещей_на_входной_двери ? 'Есть' : 'Нету'}</strong></li>
+                            <li>Окно на входной двери - <strong>{acf.окно_на_входной_двери ? 'Есть' : 'Нету'}</strong>
+                            </li>
+                            <li>Наружное освещение у входа
+                                - <strong>{acf.наружное_освещение_у_входа ? 'Есть' : 'Нету'}</strong></li>
+                            <li>Подготовка под велобагажник
+                                - <strong>{acf.подготовка_под_велобагажник ? 'Есть' : 'Нету'}</strong></li>
+                            <li>Система сборки - <strong>{acf.система_сборки}</strong></li>
+                        </ul>
+                    </Collaps>
+                    <Collaps isOpen={content2} onClose={() => setContent2(false)}>
+                        <h3 className={'font-bold text-xl mb-3'}>Жилая зона</h3>
+                        <ul className={'pl-2 flex flex-col gap-2'}>
+                            <li>Отопление : <strong
+                                dangerouslySetInnerHTML={{__html: acf.отопление.replace(/-|–|—/g, '<br>$&')}}/></li>
+                            <li>Подогрев воды : <strong
+                                dangerouslySetInnerHTML={{__html: acf.подогрев_воды.replace(/-|–|—/g, '<br>$&')}}/></li>
+                            <li>Раздув теплого воздуха - <strong>{acf.раздув_теплого_воздуха}</strong></li>
+                            <li>Дефлекторы раздува - <strong>{acf.дефлекторы_раздува}</strong></li>
+                            <li>Панель управления отоплением и бойлером
+                                - <strong>{acf.панель_управления_отоплением_и_бойлером}</strong></li>
+                            <li>Датчик угарного газа - <strong>{acf.датчик_угарного_газа ? 'Есть' : 'Нету'}</strong>
+                            </li>
+                            <li>Датчик дыма - <strong>{acf.датчик_дыма ? 'Есть' : 'Нету'}</strong></li>
+                            <li>Вольтметр - <strong>{acf.вольтметр ? 'Есть' : 'Нету'}</strong></li>
+                            <li>Место для установки телевизора
+                                - <strong>{acf.место_для_установки_телевизора ? 'Есть' : 'Нету'}</strong></li>
+                            <li>ТВ антенна - <strong>{acf.тв_антенна ? 'Есть' : 'Нету'}</strong></li>
+                            <li>Аудиосистема - <strong>{acf.аудиосистема ? 'Есть' : 'Нету'}</strong></li>
+                            <li>Магнитола - <strong>{acf.магнитола ? 'Есть' : 'Нету'}</strong></li>
+                            <li>Зонирование прицепа дверьюшторами
+                                - <strong>{acf.зонирование_прицепа_дверьюшторами ? 'Есть' : 'Нету'}</strong></li>
+                            <li>Спальных зон - <strong>{acf.спальных_зон}</strong></li>
+                            <li>Потолочный люк - <strong>{acf.потолочный_люк}</strong></li>
+                            <li>Москитные сетки на окнахлюках
+                                - <strong>{acf.москитные_сетки_на_окнахлюках ? 'Есть' : 'Нету'}</strong></li>
+                            <li>Солнцезащитные шторки на окнахлюках
+                                - <strong>{acf.солнцезащитные_шторки_на_окнахлюках ? 'Есть' : 'Нету'}</strong></li>
+                            <li>Шторы-тюли - <strong>{acf.шторы__тюли ? 'Есть' : 'Нету'}</strong></li>
+                            <li>Полкиящики для хранения_вещей
+                                - <strong>{acf.полкиящики_для_хранения_вещей ? 'Есть' : 'Нету'}</strong></li>
+                            <li>Большой шкаф для хранения вещей
+                                - <strong>{acf.большой_шкаф_для_хранения_вещей ? 'Есть' : 'Нету'}</strong></li>
+                            <li>Доводчики мебели - <strong>{acf.доводчики_мебели}</strong></li>
+                            <li>Журнальный столик - <strong>{acf.журнальный_столик ? 'Есть' : 'Нету'}</strong></li>
+                            <li>Зеркало - <strong>{acf.зеркало ? 'Есть' : 'Нету'}</strong></li>
+                            <li>Количество зеркал - <strong>{acf.количество_зеркал}</strong></li>
+                            <li>Ковры для пола - <strong>{acf.ковры_для_пола ? 'Есть' : 'Нету'}</strong></li>
+                        </ul>
+
+                    </Collaps>
+                    <Collaps isOpen={content3} onClose={() => setContent3(false)}>
+                        <h3 className={'font-bold text-xl mb-3'}>Кухня</h3>
+                        <ul className={'pl-2 flex flex-col gap-2'}>
+                            <li>Плита газовая - <strong>{acf.плита_газовая ? 'Есть' : 'Нету'}</strong></li>
+                            <li>Количество конфорок - <strong>{acf.количество_конфорок}</strong></li>
+                            <li>Плита электрическая - <strong>{acf.плита_электрическая ? 'Есть' : 'Нету'}</strong></li>
+                            {acf.количество_конфорок_2 ?
+                                <li>Количество конфорок 2 - <strong>{acf.количество_конфорок_2}</strong></li> : ''}
+                            <li>Газовый духовой шкаф - <strong>{acf.газовый_духовой_шкаф ? 'Есть' : 'Нету'}</strong>
+                            </li>
+                            <li>Газовый гриль - <strong>{acf.газовый_гриль ? 'Есть' : 'Нету'}</strong></li>
+                            <li>Мойка - <strong>{acf.мойка ? 'Есть' : 'Нету'}</strong></li>
+                            <li>Холодильник: <strong
+                                dangerouslySetInnerHTML={{__html: acf.холодильник.replace(/-|–|—/g, '<br>$&')}}/></li>
+                            <li>Микроволновая печь - <strong>{acf.микроволновая_печь ? 'Есть' : 'Нету'}</strong></li>
+                            <li>Вытяжка в кухне - <strong>{acf.вытяжка_в_кухне ? 'Есть' : 'Нету'}</strong></li>
+                            <li>Приточно вытяжная система
+                                - <strong>{acf.приточно_вытяжная_система ? 'Есть' : 'Нету'}</strong></li>
+                            <li>Место для хранения посуды
+                                - <strong>{acf.место_для_хранения_посуды ? 'Есть' : 'Нету'}</strong></li>
+                            <li>Барная полка - <strong>{acf.барная_полка ? 'Есть' : 'Нету'}</strong></li>
+                            <li>Рабочая кухонная поверхность
+                                - <strong>{acf.рабочая_кухонная_поверхность ? 'Есть' : 'Нету'}</strong></li>
+                            <li>Дополнительная рабочая кухонная поверхность столик
+                                - <strong>{acf.дополнительная_рабочая_кухонная_поверхность_столик ? 'Есть' : 'Нету'}</strong>
+                            </li>
+                            <li>Обеденный стол - <strong>{acf.обеденный_стол ? 'Есть' : 'Нету'}</strong></li>
+                        </ul>
+                    </Collaps>
+                    <Collaps isOpen={content4} onClose={() => setContent4(false)}>
+                        <h3 className={'font-bold text-xl mb-3'}>Санузел</h3>
+                        <ul className={'pl-2 flex flex-col gap-2'}>
+                            <li>Унитаз - <strong>{acf.унитаз ? 'Есть' : 'Нету'}</strong></li>
+                            <li>Бачок смыва туалета - <strong>{acf.бачок_смыва_туалета}</strong></li>
+                            <li>Смыв туалета - <strong>{acf.смыв_туалета}</strong></li>
+                            <li>Индикатор заполнения кассеты туалета
+                                - <strong>{acf.индикатор_заполнения_кассеты_туалета ? 'Есть' : 'Нету'}</strong></li>
+                            <li>Регулировка положения унитаза
+                                - <strong>{acf.регулировка_положения_унитаза ? 'Есть' : 'Нету'}</strong></li>
+                            <li>Душевая кабина - <strong>{acf.душевая_кабина}</strong></li>
+                            <li>Ванная раковина - <strong>{acf.ванная_раковина ? 'Есть' : 'Нету'}</strong></li>
+                        </ul>
+                    </Collaps>
+                    <Collaps isOpen={content5} onClose={() => setContent5(false)}>
+                        <h3 className={'font-bold text-xl mb-3'}>Водоснаюжение</h3>
+                        <ul className={'pl-2 flex flex-col gap-2'}>
+                            <li>Бак для воды - <strong>{acf.бак_для_воды ? 'Есть' : 'Нету'}</strong></li>
+                            {acf.объем_бака_для_воды ?
+                                <li>Объем бака для воды - <strong>{acf.объем_бака_для_воды}</strong></li> : ''}
+                            {acf.индикатор_уровня_воды_в_баке ?
+                                <li>Индикатор уровня воды в баке
+                                    - <strong>{acf.индикатор_уровня_воды_в_баке ? `Есть` : 'Нету'}</strong>
+                                </li> : ''}
+                            <li>Слив воды из бойлера - <strong>{acf.слив_воды_из_бойлера}</strong></li>
+                        </ul>
+                    </Collaps>
+                    <Collaps isOpen={content6} onClose={() => setContent6(false)}>
+                        {dop ? <Dopy dopy={dop}/> : ''}
+                    </Collaps>
                     <ul className={'grid grid-cols-2 md:grid-cols-3 gap-8 px-4 break-words'}>
                         <li onClick={() => setContent1(true)}
                             className={'text-xs bg_grey f_dark cursor-pointer shadow-xl p-4 md:py-6 rounded-xl flex flex-col md:flex-row items-center justify-center gap-[8px] md:gap-[15px] md:text-2xl hover:bg-[#515A89] hover:text-white hover:scale-90 transition'}>
@@ -216,61 +413,74 @@ export default function Post({post}) {
                 </section>
                 <section className={'container mx-auto px-4 py-6'}>
                     <h2 className={'text-xl font-bold pb-2'}>Краткое описание:</h2>
-                    <div dangerouslySetInnerHTML={{__html: content.replace(/—|-|–|—/g, '<br>$&')}}/>
-                </section>
-            </main>
-            {!isMobile ? <section className={'container mx-auto my-3 px-4'}>
-                <div className={'flex gap-6 bg-[#C2C3C7] rounded-md p-2 mb-[20px]'}>
-                    <ul className={'w-[20vw] font-medium flex flex-col'}>
-                        {mockData.map(category => (
-                            // @ts-ignore
-                            <li onClick={() => tabcat(category.catId)} key={category.catId}
-                                className={`flex gap-4 p-2 rounded-md cursor-pointer ${category.catId === carAddon ? 'bg-[#908859] text-white' : ''}`}>
-                                <h1>{category.categoryName}</h1>
-                            </li>
-                        ))}
-                    </ul>
-                    <div className={'w-[80vw] bg-[#C2C3C7]'}>
-                        {mockData.map(category => (
-                            <div key={category.catId}
-                                 className={category.catId === carAddon ? 'flex flex-col rounded-md gap-2' : 'hidden'}>
-                                {category.categoryItems.map(itemList => (
-                                    <div key={itemList.itemListName}
-                                         className={'flex flex-row items-center gap-4 w-full bg-white border-[2px] rounded-md border-[#908859] p-2'}>
-                                        <h2 className={'min-w-[250px] w-[250px]'}>{itemList.itemListName}</h2>
-                                        <div className={`${cl.Column} gap-2 w-full cursor-pointer`}>
-                                            {itemList.info.map(({title, descr, id, price}) => (
-                                                <div
-                                                    className={`flex flex-row gap-4 w-full rounded-md border-y-[1px] items-center p-1 ${isActiveAddon(id) ? 'text-white' : ''}`}
-                                                    key={id}
-                                                    onClick={() => handleClickAddItem(id)}
-                                                    style={{background: `${isActiveAddon(id) ? '#5E875F' : 'none'} `}}
-                                                >
-                                                    <div className={'min-w-[250px] w-[250px]'}>{title}</div>
-                                                    {/*// @ts-ignore*/}
-                                                    <div className={'min-w-[150px] w-[150px] text-right'}>
-                                                        {/*// @ts-ignore*/}
-                                                        <strong>{getFormatPrice(price)} ₽</strong></div>
-                                                    <div className={'w-full'}>{descr}</div>
-                                                </div>
-                                            ))}
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-                        ))}
+                    <div className={'flex flex-col-reverse md:flex-row items-center gap-3'}>
+                        <div dangerouslySetInnerHTML={{__html: content.replace(/—|-|–|—/g, '<br>$&')}}/>
+                        <div className={'p-2 md:p-4 bg-gray-400 rounded-lg shadow-xl w-full'}>
+                            <iframe
+                                className={'w-full md:w-[40vw] max-w-[1220px] h-[30vh] rounded-lg'}
+                                src={`https://www.youtube.com/embed/${acf.videob}`}
+                                allow='autoplay; encrypted-media'
+                                title='video'
+                                width={800}
+                                height={450}
+                            />
+                        </div>
                     </div>
-                </div>
-                <button className={'bg-amber-700 px-[10px] py-[5px] rounded-md text-white'}
-                        onClick={() => clearAddons()}>
-                    Очистить
-                </button>
-            </section> : ''}
-            {!isMobile ? <Footcaravaan title={title}
-                                       price={getFormatPrice(getPriceWithAddons())}
-                                       img={glavFoto}
-                                       slug={post.slug}
-                                       openModal={() => setModalIsOpen(true)}/> : ''}
+                </section>
+
+                {!isMobile ? <section className={'container mx-auto my-3 px-4'}>
+                    <div className={'flex flex-col gap-6 bg-[#C2C3C7] rounded-md p-2 mb-[20px]'}>
+                        <ul className={'w-[20vw] font-medium flex flex-col'}>
+                            {mockData.map(category => (
+                                // @ts-ignore
+                                <li onClick={() => tabcat(category.catId)} key={category.catId}
+                                    className={`flex gap-4 p-2 rounded-md cursor-pointer ${category.catId === carAddon ? 'bg-[#908859] text-white' : ''}`}>
+                                    <h1>{category.categoryName}</h1>
+                                </li>
+                            ))}
+                        </ul>
+                        <div className={'w-full bg-[#C2C3C7]'}>
+                            {mockData.map(category => (
+                                <div key={category.catId}
+                                     className={category.catId === carAddon ? 'flex flex-col rounded-md gap-2' : 'hidden'}>
+                                    {category.categoryItems.map(itemList => (
+                                        <div key={itemList.itemListName}
+                                             className={'flex flex-row items-center gap-4 w-full bg-white border-[2px] rounded-md border-[#908859] p-2'}>
+                                            <h2 className={'min-w-[250px] w-[250px]'}>{itemList.itemListName}</h2>
+                                            <div className={`${cl.Column} gap-2 w-full cursor-pointer`}>
+                                                {itemList.info.map(({title, descr, id, price}) => (
+                                                    <div
+                                                        className={`flex flex-row gap-4 w-full rounded-md border-y-[1px] items-center p-1 ${isActiveAddon(id) ? 'text-white' : ''}`}
+                                                        key={id}
+                                                        onClick={() => handleClickAddItem(id)}
+                                                        style={{background: `${isActiveAddon(id) ? '#5E875F' : 'none'} `}}
+                                                    >
+                                                        <div className={'min-w-[250px] w-[250px]'}>{title}</div>
+                                                        {/*// @ts-ignore*/}
+                                                        <div className={'min-w-[150px] w-[150px] text-right'}>
+                                                            {/*// @ts-ignore*/}
+                                                            <strong>{getFormatPrice(price)} ₽</strong></div>
+                                                        <div className={'w-full'}>{descr}</div>
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                    <button className={'bg-amber-700 px-[10px] py-[5px] rounded-md text-white'}
+                            onClick={() => clearAddons()}>
+                        Очистить
+                    </button>
+                </section> : ''}
+                {!isMobile ? <Footcaravaan title={title}
+                                           price={getFormatPrice(getPriceWithAddons())}
+                                           img={glavFoto}
+                                           slug={post.slug}
+                                           openModal={() => setModalIsOpen(true)}/> : ''}
+            </main>
             <Footer/>
 
             <Modal isOpen={modalIsOpen} onClose={() => setModalIsOpen(false)}>
@@ -299,144 +509,6 @@ export default function Post({post}) {
                     width={800}
                     height={450}
                 />
-            </Modal>
-            <Modal isOpen={content1} onClose={() => setContent1(false)}>
-                <h3 className={'font-bold text-xl mb-3'}>Наружная часть</h3>
-                <ul className={'pl-2 flex flex-col gap-2'}>
-                    <li>Тягово-сцепное устройство - <strong>{acf.тягово_сцепное_устройство}</strong></li>
-                    <li>Дополнительная боковая фиксация сцепного устройства
-                        - <strong>{acf.дополнительная_боковая_фиксация_сцепного_устройства ? 'Есть' : 'Нету'}</strong>
-                    </li>
-                    <li>Страховочный тормозной трос
-                        - <strong>{acf.страховочный_тормозной_трос ? 'Есть' : 'Нету'}</strong></li>
-                    <li>Вилка для подключения к автомобилю
-                        - <strong>{acf.вилка_для_подключения_к_автомобилю}</strong></li>
-                    <li>Электрическая система стабилизации
-                        - <strong>{acf.электрическая_система_стабилизации}</strong></li>
-                    <li>Противооткаты - <strong>{acf.противооткаты ? 'Есть' : 'Нету'}</strong></li>
-                    <li>Штатное место для акб - <strong>{acf.штатное_место_для_акб ? 'Есть' : 'Нету'}</strong>
-                    </li>
-                    <li>Наружная розетка 220 - <strong>{acf.наружная_розетка_220 ? 'Есть' : 'Нету'}</strong>
-                    </li>
-                    <li>Наружное подключение газового оборудования гриляплиты
-                        - <strong>{acf.наружное_подключение_газового_оборудования_гриляплиты ? 'Есть' : 'Нету'}</strong>
-                    </li>
-                    <li>Наружное подключение воды английская система
-                        - <strong>{acf.наружное_подключение_воды_английская_система ? 'Есть' : 'Нету'}</strong>
-                    </li>
-                    <li>Входная дверь - <strong>{acf.входная_дверь}</strong></li>
-                    <li>Ступенька для входа - <strong>{acf.ступенька_для_входа ? 'Есть' : 'Нету'}</strong></li>
-                    <li>Москитная сетка на дверях
-                        - <strong>{acf.москитная_сетка_на_дверях ? 'Есть' : 'Нету'}</strong></li>
-                    <li>Мусорное ведро - <strong>{acf.мусорное_ведро ? 'Есть' : 'Нету'}</strong></li>
-                    <li>Ящики для вещей на входной двери
-                        - <strong>{acf.ящики_для_вещей_на_входной_двери ? 'Есть' : 'Нету'}</strong></li>
-                    <li>Окно на входной двери - <strong>{acf.окно_на_входной_двери ? 'Есть' : 'Нету'}</strong>
-                    </li>
-                    <li>Наружное освещение у входа
-                        - <strong>{acf.наружное_освещение_у_входа ? 'Есть' : 'Нету'}</strong></li>
-                    <li>Подготовка под велобагажник
-                        - <strong>{acf.подготовка_под_велобагажник ? 'Есть' : 'Нету'}</strong></li>
-                    <li>Система сборки - <strong>{acf.система_сборки}</strong></li>
-                </ul>
-            </Modal>
-            <Modal isOpen={content2} onClose={() => setContent2(false)}>
-                <h3 className={'font-bold text-xl mb-3'}>Жилая зона</h3>
-                <ul className={'pl-2 flex flex-col gap-2'}>
-                    <li>Отопление : <strong
-                        dangerouslySetInnerHTML={{__html: acf.отопление.replace(/-|–|—/g, '<br>$&')}}/></li>
-                    <li>Подогрев воды : <strong
-                        dangerouslySetInnerHTML={{__html: acf.подогрев_воды.replace(/-|–|—/g, '<br>$&')}}/></li>
-                    <li>Раздув теплого воздуха - <strong>{acf.раздув_теплого_воздуха}</strong></li>
-                    <li>Дефлекторы раздува - <strong>{acf.дефлекторы_раздува}</strong></li>
-                    <li>Панель управления отоплением и бойлером
-                        - <strong>{acf.панель_управления_отоплением_и_бойлером}</strong></li>
-                    <li>Датчик угарного газа - <strong>{acf.датчик_угарного_газа ? 'Есть' : 'Нету'}</strong></li>
-                    <li>Датчик дыма - <strong>{acf.датчик_дыма ? 'Есть' : 'Нету'}</strong></li>
-                    <li>Вольтметр - <strong>{acf.вольтметр ? 'Есть' : 'Нету'}</strong></li>
-                    <li>Место для установки телевизора
-                        - <strong>{acf.место_для_установки_телевизора ? 'Есть' : 'Нету'}</strong></li>
-                    <li>ТВ антенна - <strong>{acf.тв_антенна ? 'Есть' : 'Нету'}</strong></li>
-                    <li>Аудиосистема - <strong>{acf.аудиосистема ? 'Есть' : 'Нету'}</strong></li>
-                    <li>Магнитола - <strong>{acf.магнитола ? 'Есть' : 'Нету'}</strong></li>
-                    <li>Зонирование прицепа дверьюшторами
-                        - <strong>{acf.зонирование_прицепа_дверьюшторами ? 'Есть' : 'Нету'}</strong></li>
-                    <li>Спальных зон - <strong>{acf.спальных_зон}</strong></li>
-                    <li>Потолочный люк - <strong>{acf.потолочный_люк}</strong></li>
-                    <li>Москитные сетки на окнахлюках
-                        - <strong>{acf.москитные_сетки_на_окнахлюках ? 'Есть' : 'Нету'}</strong></li>
-                    <li>Солнцезащитные шторки на окнахлюках
-                        - <strong>{acf.солнцезащитные_шторки_на_окнахлюках ? 'Есть' : 'Нету'}</strong></li>
-                    <li>Шторы-тюли - <strong>{acf.шторы__тюли ? 'Есть' : 'Нету'}</strong></li>
-                    <li>Полкиящики для хранения_вещей
-                        - <strong>{acf.полкиящики_для_хранения_вещей ? 'Есть' : 'Нету'}</strong></li>
-                    <li>Большой шкаф для хранения вещей
-                        - <strong>{acf.большой_шкаф_для_хранения_вещей ? 'Есть' : 'Нету'}</strong></li>
-                    <li>Доводчики мебели - <strong>{acf.доводчики_мебели}</strong></li>
-                    <li>Журнальный столик - <strong>{acf.журнальный_столик ? 'Есть' : 'Нету'}</strong></li>
-                    <li>Зеркало - <strong>{acf.зеркало ? 'Есть' : 'Нету'}</strong></li>
-                    <li>Количество зеркал - <strong>{acf.количество_зеркал}</strong></li>
-                    <li>Ковры для пола - <strong>{acf.ковры_для_пола ? 'Есть' : 'Нету'}</strong></li>
-                </ul>
-
-            </Modal>
-            <Modal isOpen={content3} onClose={() => setContent3(false)}>
-                <h3 className={'font-bold text-xl mb-3'}>Кухня</h3>
-                <ul className={'pl-2 flex flex-col gap-2'}>
-                    <li>Плита газовая - <strong>{acf.плита_газовая ? 'Есть' : 'Нету'}</strong></li>
-                    <li>Количество конфорок - <strong>{acf.количество_конфорок}</strong></li>
-                    <li>Плита электрическая - <strong>{acf.плита_электрическая ? 'Есть' : 'Нету'}</strong></li>
-                    {acf.количество_конфорок_2 ?
-                        <li>Количество конфорок 2 - <strong>{acf.количество_конфорок_2}</strong></li> : ''}
-                    <li>Газовый духовой шкаф - <strong>{acf.газовый_духовой_шкаф ? 'Есть' : 'Нету'}</strong></li>
-                    <li>Газовый гриль - <strong>{acf.газовый_гриль ? 'Есть' : 'Нету'}</strong></li>
-                    <li>Мойка - <strong>{acf.мойка ? 'Есть' : 'Нету'}</strong></li>
-                    <li>Холодильник: <strong
-                        dangerouslySetInnerHTML={{__html: acf.холодильник.replace(/-|–|—/g, '<br>$&')}}/></li>
-                    <li>Микроволновая печь - <strong>{acf.микроволновая_печь ? 'Есть' : 'Нету'}</strong></li>
-                    <li>Вытяжка в кухне - <strong>{acf.вытяжка_в_кухне ? 'Есть' : 'Нету'}</strong></li>
-                    <li>Приточно вытяжная система
-                        - <strong>{acf.приточно_вытяжная_система ? 'Есть' : 'Нету'}</strong></li>
-                    <li>Место для хранения посуды
-                        - <strong>{acf.место_для_хранения_посуды ? 'Есть' : 'Нету'}</strong></li>
-                    <li>Барная полка - <strong>{acf.барная_полка ? 'Есть' : 'Нету'}</strong></li>
-                    <li>Рабочая кухонная поверхность
-                        - <strong>{acf.рабочая_кухонная_поверхность ? 'Есть' : 'Нету'}</strong></li>
-                    <li>Дополнительная рабочая кухонная поверхность столик
-                        - <strong>{acf.дополнительная_рабочая_кухонная_поверхность_столик ? 'Есть' : 'Нету'}</strong>
-                    </li>
-                    <li>Обеденный стол - <strong>{acf.обеденный_стол ? 'Есть' : 'Нету'}</strong></li>
-                </ul>
-            </Modal>
-            <Modal isOpen={content4} onClose={() => setContent4(false)}>
-                <h3 className={'font-bold text-xl mb-3'}>Санузел</h3>
-                <ul className={'pl-2 flex flex-col gap-2'}>
-                    <li>Унитаз - <strong>{acf.унитаз ? 'Есть' : 'Нету'}</strong></li>
-                    <li>Бачок смыва туалета - <strong>{acf.бачок_смыва_туалета}</strong></li>
-                    <li>Смыв туалета - <strong>{acf.смыв_туалета}</strong></li>
-                    <li>Индикатор заполнения кассеты туалета
-                        - <strong>{acf.индикатор_заполнения_кассеты_туалета ? 'Есть' : 'Нету'}</strong></li>
-                    <li>Регулировка положения унитаза
-                        - <strong>{acf.регулировка_положения_унитаза ? 'Есть' : 'Нету'}</strong></li>
-                    <li>Душевая кабина - <strong>{acf.душевая_кабина}</strong></li>
-                    <li>Ванная раковина - <strong>{acf.ванная_раковина ? 'Есть' : 'Нету'}</strong></li>
-                </ul>
-            </Modal>
-            <Modal isOpen={content5} onClose={() => setContent5(false)}>
-                <h3 className={'font-bold text-xl mb-3'}>Водоснаюжение</h3>
-                <ul className={'pl-2 flex flex-col gap-2'}>
-                    <li>Бак для воды - <strong>{acf.бак_для_воды ? 'Есть' : 'Нету'}</strong></li>
-                    {acf.объем_бака_для_воды ?
-                        <li>Объем бака для воды - <strong>{acf.объем_бака_для_воды}</strong></li> : ''}
-                    {acf.индикатор_уровня_воды_в_баке ?
-                        <li>Индикатор уровня воды в баке
-                            - <strong>{acf.индикатор_уровня_воды_в_баке ? `Есть` : 'Нету'}</strong>
-                        </li> : ''}
-                    <li>Слив воды из бойлера - <strong>{acf.слив_воды_из_бойлера}</strong></li>
-                </ul>
-            </Modal>
-            <Modal isOpen={content6} onClose={() => setContent6(false)}>
-                {dop ? <Dopy dopy={dop}/> : ''}
             </Modal>
         </>
     )

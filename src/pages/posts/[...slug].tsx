@@ -1,25 +1,37 @@
 import React, {useEffect} from 'react';
 import Menu from "@/components/header/menu";
 import Footer from "@/components/footer/footer";
-import Head from "next/head";
 import Image from "next/image";
+import {NextSeo} from "next-seo";
+
 
 // @ts-ignore
 export default function Post({post}) {
+
     const title = post.title.rendered
     const excerpt = post.excerpt.rendered
     const content = post.content.rendered
     const image_url = post._embedded['wp:featuredmedia'][0].source_url
     return (
         <>
-            <Head>
-                <title>{title} | Первый караван</title>
-                <meta name="description"
-                      content={excerpt}/>
-                <meta name="keywords" content="дом колесах, прицеп-дача, автодом, купить"/>
-                <meta name="viewport" content="width=device-width, initial-scale=1"/>
-                <link rel="icon" href="/favicon.ico"/>
-            </Head>
+            <NextSeo
+                title={title.replace(/&#8212;/g, '-')}
+                description={excerpt.replace(/<[^>]+>/g, '').replace(/&#8212;/g, '-').replace(/&hellip;/g, '')}
+                openGraph={{
+                    title: `${title.replace(/&#8212;/g, '-')}`,
+                    description: `${excerpt.replace(/<[^>]+>/g, '').replace(/&#8212;/g, '-').replace(/&hellip;/g, '')}`,
+                    images: [
+                        {
+                            url: `${image_url}`,
+                            width: 800,
+                            height: 600,
+                            alt: 'Первый караван',
+                            type: 'image/jpeg',
+                        },
+                    ],
+                    siteName: 'Первый караван',
+                }}
+            />
             <Menu/>
             <main>
                 <section

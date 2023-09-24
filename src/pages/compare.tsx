@@ -11,6 +11,7 @@ import "swiper/css/free-mode";
 import "swiper/css/pagination";
 import {FreeMode, Pagination} from "swiper";
 import CopmareCards from "@/components/Cards/CopmareCards";
+import Link from "next/link";
 
 const Compare = () => {
     const dispatch = useAppDispatch()
@@ -19,7 +20,14 @@ const Compare = () => {
 
     function loadingData(i: any) {
         if (i === 0) {
-            return 'Нет добавленых караванов'
+            return (
+                <div>
+                    <h3 className={'font-bold mb-8'}>Вы ничего не добавляли сюда</h3>
+                    <p>Но вы можете перейти в <Link className={'bg-green-800 text-white p-1 rounded'}
+                                                    href={'/catalog'}>Каталог</Link> , что-бы добавить сюда
+                        понравившиеся Вам караваны!</p>
+                </div>
+            )
         }
         if (i < 0) {
             return 'Ошибка формирования'
@@ -46,9 +54,9 @@ const Compare = () => {
     return (
         <>
             <Menu/>
-            <main>
-                <CapHome/>
-                <div className="container mx-auto py-5 px-2">
+            <main className={'mt-28'}>
+                <section className="container mx-auto py-5 px-2">
+                    <h1 className={'font-medium text-4xl mb-8'}>Сравнение</h1>
                     <Swiper
                         slidesPerView={3}
                         spaceBetween={30}
@@ -71,11 +79,11 @@ const Compare = () => {
                     </Swiper>
                     {/*//@ts-ignore*/}
                     {compareList.length === 0 ? '' : <button onClick={() => dispatch(clearComp())}
-                                                      className="text-white bg-red-700 px-5 py-2 rounded shadow-xl my-4">
+                                                             className="text-white bg-red-700 px-5 py-2 rounded shadow-xl my-4">
                         Очистить
                     </button>
                     }
-                </div>
+                </section>
             </main>
             <Footer/>
         </>
