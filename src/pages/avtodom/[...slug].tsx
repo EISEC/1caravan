@@ -283,8 +283,6 @@ export default function Post({post}) {
                         <ul className={'pl-2 flex flex-col gap-2'}>
                             <li>Отопление : <strong
                                 dangerouslySetInnerHTML={{__html: acf.отопление.replace(/-|–|—/g, '<br>$&')}}/></li>
-                            <li>Подогрев воды : <strong
-                                dangerouslySetInnerHTML={{__html: acf.подогрев_воды.replace(/-|–|—/g, '<br>$&')}}/></li>
                             <li>Раздув теплого воздуха - <strong>{acf.раздув_теплого_воздуха}</strong></li>
                             <li>Дефлекторы раздува - <strong>{acf.дефлекторы_раздува}</strong></li>
                             <li>Панель управления отоплением и бойлером
@@ -355,23 +353,25 @@ export default function Post({post}) {
                             <li>Бачок смыва туалета - <strong>{acf.бачок_смыва_туалета}</strong></li>
                             <li>Смыв туалета - <strong>{acf.смыв_туалета}</strong></li>
                             <li>Индикатор заполнения кассеты туалета
-                                - <strong>{acf.индикатор_заполнения_кассеты_туалета ? 'Есть' : 'Нету'}</strong></li>
+                                - <strong>{acf.индикатор_заполнения_кассеты_туалета ? 'Есть' : 'Нет'}</strong></li>
                             <li>Регулировка положения унитаза
-                                - <strong>{acf.регулировка_положения_унитаза ? 'Есть' : 'Нету'}</strong></li>
+                                - <strong>{acf.регулировка_положения_унитаза ? 'Есть' : 'Нет'}</strong></li>
                             <li>Душевая кабина - <strong>{acf.душевая_кабина}</strong></li>
-                            <li>Ванная раковина - <strong>{acf.ванная_раковина ? 'Есть' : 'Нету'}</strong></li>
+                            <li>Ванная раковина - <strong>{acf.ванная_раковина ? 'Есть' : 'Нет'}</strong></li>
                         </ul>
                     </Collaps>
                     <Collaps isOpen={content5} onClose={() => setContent5(false)}>
                         <h3 className={'font-bold text-xl mb-3'}>Водоснаюжение</h3>
                         <ul className={'pl-2 flex flex-col gap-2'}>
-                            <li>Бак для воды - <strong>{acf.бак_для_воды ? 'Есть' : 'Нету'}</strong></li>
+                            <li>Бак для воды - <strong>{acf.бак_для_воды ? 'Есть' : 'Нет'}</strong></li>
                             {acf.объем_бака_для_воды ?
                                 <li>Объем бака для воды - <strong>{acf.объем_бака_для_воды}</strong></li> : ''}
                             {acf.индикатор_уровня_воды_в_баке ?
                                 <li>Индикатор уровня воды в баке
                                     - <strong>{acf.индикатор_уровня_воды_в_баке ? `Есть` : 'Нету'}</strong>
                                 </li> : ''}
+                            <li>Подогрев воды : <strong
+                                dangerouslySetInnerHTML={{__html: acf.подогрев_воды.replace(/-|–|—/g, '<br>$&')}}/></li>
                             <li>Слив воды из бойлера - <strong>{acf.слив_воды_из_бойлера}</strong></li>
                         </ul>
                     </Collaps>
