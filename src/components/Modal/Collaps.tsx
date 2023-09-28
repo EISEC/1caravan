@@ -16,7 +16,7 @@ const Collaps: FC<TCollaps> = ({isOpen, onClose, children}) => {
         }
     };
     return (
-        <div className={'relative'}>
+        <div className={'relative px-4 py-6 transition'}>
             {children}
             <button
                 className={'w-[200px] mx-auto flex gap-1 items-center justify-center my-[15px] p-4 bg-[#8A8556] text-white rounded-lg transition text-lg hover:text-xl hover:bg-[#515A89]'}

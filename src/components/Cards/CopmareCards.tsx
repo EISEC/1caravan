@@ -1,5 +1,7 @@
 import React from 'react';
 import Image from "next/image";
+import Dopy from "@/components/SingleDom/dopy";
+import Link from "next/link";
 
 //@ts-ignore
 const CopmareCards = ({el}) => {
@@ -11,7 +13,10 @@ const CopmareCards = ({el}) => {
 
     return (
         <div className="relative mx-auto w-full mt-2 mb-[50px]">
-            <a href="#"
+            <Link href={{
+                pathname: "/avtodom/[...slug]",
+                query: {slug: el.slug},
+            }}
                className="relative inline-block duration-300 ease-in-out transition-transform transform hover:-translate-y-2 w-full">
                 <div className="shadow p-4 rounded-lg bg-white">
                     {/*Фото каравана*/}
@@ -68,26 +73,92 @@ const CopmareCards = ({el}) => {
                         <div className="inline-flex gap-2 flex-col xl:flex-row xl:items-center text-gray-800">
                             {/*Иконка*/}
                             <p className="mt-2 xl:mt-0">
-			                    Страна производитель:
-			                </p>
+                                Страна производитель:
+                            </p>
                             {/*Параметр*/}
                             <p className="mt-2 xl:mt-0">
                                 <strong>{el.acf.strana_proiz}</strong>
-			                </p>
+                            </p>
                         </div>
-                        <div className="inline-flex gap-2 flex-col xl:flex-row xl:items-center text-gray-800">
-                            {/*Иконка*/}
-                            <p className="mt-2 xl:mt-0">
-                                Спальных мест:
-                            </p>
-                            {/*Параметр*/}
-                            <p className="mt-2 xl:mt-0">
-                                <strong>{el.acf.kol_sleep}</strong>
-                            </p>
+                        <div className="flex gap-2 flex-col text-gray-800">
+                            <h4 className={'text-md font-bold'}>Наружная часть:</h4>
+                            <ul className={'text-sm'}>
+                                <li>Штатное место для акб
+                                    - <strong>{el.acf.штатное_место_для_акб ? 'Есть' : 'Нет'}</strong>
+                                </li>
+                                <li>Наружное подключение воды английская система
+                                    - <strong>{el.acf.наружное_подключение_воды_английская_система ? 'Есть' : 'Нет'}</strong>
+                                </li>
+                            </ul>
+                        </div>
+                        <div className="flex gap-2 flex-col text-gray-800">
+                            <h4 className={'text-md font-bold'}>Жилая зона:</h4>
+                            <ul className={'text-sm'}>
+                                <li>Спальных зон
+                                    - <strong>{el.acf.kol_sleep}</strong>
+                                </li>
+                            </ul>
+                        </div>
+                        <div className="flex gap-2 flex-col text-gray-800">
+                            <h4 className={'text-md font-bold'}>Кухня:</h4>
+                            <ul className={'text-sm'}>
+                                <li>Плита газовая - <strong>{el.acf.плита_газовая ? 'Есть' : 'Нет'}</strong></li>
+                                <li>Количество конфорок - <strong>{el.acf.количество_конфорок}</strong></li>
+                                <li>Плита электрическая
+                                    - <strong>{el.acf.плита_электрическая ? 'Есть' : 'Нет'}</strong></li>
+                                {el.acf.количество_конфорок_2 ?
+                                    <li>Количество конфорок 2 - <strong>{el.acf.количество_конфорок_2}</strong>
+                                    </li> : ''}
+                                <li>Газовый духовой шкаф
+                                    - <strong>{el.acf.газовый_духовой_шкаф ? 'Есть' : 'Нет'}</strong>
+                                </li>
+                                <li>Газовый гриль - <strong>{el.acf.газовый_гриль ? 'Есть' : 'Нет'}</strong></li>
+                                <li>Мойка - <strong>{el.acf.мойка ? 'Есть' : 'Нет'}</strong></li>
+                                <li>Холодильник: <strong
+                                    dangerouslySetInnerHTML={{__html: el.acf.холодильник.replace(/-|–|—/g, '<br>$&')}}/>
+                                </li>
+                                <li>Микроволновая печь - <strong>{el.acf.микроволновая_печь ? 'Есть' : 'Нет'}</strong>
+                                </li>
+                                <li>Приточно вытяжная система
+                                    - <strong>{el.acf.приточно_вытяжная_система ? 'Есть' : 'Нет'}</strong></li>
+                            </ul>
+                        </div>
+                        <div className="flex gap-2 flex-col text-gray-800">
+                            <h4 className={'text-md font-bold'}>Санузел:</h4>
+                            <ul className={'text-sm'}>
+                                <li>Унитаз - <strong>{el.acf.унитаз ? 'Есть' : 'Нету'}</strong></li>
+                                <li>Смыв туалета - <strong>{el.acf.смыв_туалета}</strong></li>
+                                <li>Регулировка положения унитаза
+                                    - <strong>{el.acf.регулировка_положения_унитаза ? 'Есть' : 'Нет'}</strong></li>
+                                <li>Душевая кабина - <strong>{el.acf.душевая_кабина}</strong></li>
+                                <li>Ванная раковина - <strong>{el.acf.ванная_раковина ? 'Есть' : 'Нет'}</strong></li>
+                            </ul>
+                        </div>
+                        <div className="flex gap-2 flex-col text-gray-800">
+                            <h4 className={'text-md font-bold'}>Водоснабжение:</h4>
+                            <ul className={'text-sm'}>
+                                <li>Бак для воды - <strong>{el.acf.бак_для_воды ? 'Есть' : 'Нет'}</strong></li>
+                                {el.acf.объем_бака_для_воды ?
+                                    <li>Объем бака для воды - <strong>{el.acf.объем_бака_для_воды}</strong></li> : ''}
+                                {el.acf.индикатор_уровня_воды_в_баке ?
+                                    <li>Индикатор уровня воды в баке
+                                        - <strong>{el.acf.индикатор_уровня_воды_в_баке ? `Есть` : 'Нету'}</strong>
+                                    </li> : ''}
+                                <li>Подогрев воды : <strong
+                                    dangerouslySetInnerHTML={{__html: el.acf.подогрев_воды.replace(/-|–|—/g, '<br>$&')}}/>
+                                </li>
+                                <li>Слив воды из бойлера - <strong>{el.acf.слив_воды_из_бойлера}</strong></li>
+                            </ul>
+                        </div>
+                        <div className="flex gap-2 flex-col text-gray-800">
+                            <h4 className={'text-md font-bold'}>Дополнительно:</h4>
+                            <ul className={'text-sm'}>
+                                {el.acf.дополнительно ? <Dopy dopy={el.acf.дополнительно} compare={true}/> : ''}
+                            </ul>
                         </div>
                     </div>
                 </div>
-            </a>
+            </Link>
         </div>
     );
 };

@@ -21,6 +21,7 @@ import Dopy from "@/components/SingleDom/dopy";
 import Collaps from "@/components/Modal/Collaps";
 import {NextSeo, ProductJsonLd} from "next-seo";
 import {useRouter} from "next/router";
+import Quize from "@/components/Quize";
 
 // @ts-ignore
 export default function Post({post}) {
@@ -113,7 +114,7 @@ export default function Post({post}) {
     }
 
     const [modalIsOpen, setModalIsOpen] = useState(false)
-    const [yt, setYt] = useState(false)
+    const [modalQuiz, setModalQuiz] = useState(false)
 
     const [content1, setContent1] = useState(false)
     const [content2, setContent2] = useState(false)
@@ -123,14 +124,15 @@ export default function Post({post}) {
     const [content6, setContent6] = useState(false)
 
     const CollapsContent = [
-        content1,
-        content2,
-        content3,
-        content4,
-        content5,
-        content6
+        {text: content1, id: 1},
+        {text: content2, id: 2},
+        {text: content3, id: 3},
+        {text: content4, id: 4},
+        {text: content5, id: 5},
+        {text: content6, id: 6}
     ]
-    console.log(post.date)
+
+    const bgInvert = (bol: boolean) => bol ? 'bg-[#515A89]' : ''
     // @ts-ignore
     return (
         <>
@@ -153,7 +155,7 @@ export default function Post({post}) {
                 }}
             />
             <ProductJsonLd
-                productName="Executive Anvil"
+                productName={title.replace(/&#8212;/g, '-')}
                 images={[
                     glavFoto
                 ]}
@@ -226,18 +228,49 @@ export default function Post({post}) {
                                 {post.prices_sale ? getFormatPrice(post.prices_sale) : getFormatPrice(post.price)} ₽
                             </p>
                         </div>
-                        <div className="btns mt-3 flex gap-2">
+                        <div className="btns mt-3 flex flex-col gap-2">
                             <button onClick={() => setModalIsOpen(true)}
                                     className={'px-6 w-full py-4 bg_green rounded-xl text-xl text-white hover:scale-90 transition'}>{knopka}</button>
-                            {acf.videob ? <button
-                                onClick={() => setYt(true)}
-                                className={'p-4 text-3xl bg-red-700 text-white rounded-[50%] hover:scale-90 transition'}
-                                title={'Смотреть видео-обзор'}><RxVideo/></button> : ''}
+                            <button onClick={() => setModalQuiz(true)}
+                                    className={'px-6 w-full py-4 bg-[#908859] rounded-xl text-xl text-white hover:scale-90 transition'}>Подобрать
+                            </button>
                         </div>
                     </div>
                 </section>
 
-                <section className={'butonsy container mx-auto px-4 py-6'}>
+                <section className={'butonsy container mx-auto px-2 py-6'}>
+                    <ul className={'grid grid-cols-2 md:grid-cols-3 gap-8 px-4 break-words'}>
+                        <li onClick={() => setContent1(true)}
+                            className={`text-xs bg_grey f_dark cursor-pointer shadow-xl p-4 md:py-6 rounded-xl flex flex-col md:flex-row items-center justify-center gap-[8px] md:gap-[15px] md:text-2xl hover:bg-[#515A89] hover:text-white hover:scale-90 transition`}>
+                            Наружная часть
+                            <GiCaravan className={'text-[36px]'}/>
+                        </li>
+                        <li onClick={() => setContent2(true)}
+                            className={'text-xs bg_grey f_dark cursor-pointer shadow-xl p-4 md:py-6 rounded-xl flex flex-col md:flex-row items-center justify-center gap-[8px] md:gap-[15px] md:text-2xl hover:bg-[#515A89] hover:text-white hover:scale-90 transition'}>
+                            Жилая зона
+                            <GiPersonInBed className={'text-[36px]'}/>
+                        </li>
+                        <li onClick={() => setContent3(true)}
+                            className={'text-xs bg_grey f_dark cursor-pointer shadow-xl p-4 md:py-6 rounded-xl flex flex-col md:flex-row items-center justify-center gap-[8px] md:gap-[15px] md:text-2xl hover:bg-[#515A89] hover:text-white hover:scale-90 transition'}>
+                            Кухня
+                            <GiMeal className={'text-[36px]'}/>
+                        </li>
+                        <li onClick={() => setContent4(true)}
+                            className={'text-xs bg_grey f_dark cursor-pointer shadow-xl p-4 md:py-6 rounded-xl flex flex-col md:flex-row items-center justify-center gap-[8px] md:gap-[15px] md:text-2xl hover:bg-[#515A89] hover:text-white hover:scale-90 transition'}>
+                            Санузел
+                            <GiWarpPipe className={'text-[36px]'}/>
+                        </li>
+                        <li onClick={() => setContent5(true)}
+                            className={'text-xs bg_grey f_dark cursor-pointer shadow-xl p-4 md:py-6 rounded-xl flex flex-col md:flex-row items-center justify-center gap-[8px] md:gap-[15px] md:text-2xl hover:bg-[#515A89] hover:text-white hover:scale-90 transition'}>
+                            Водоснабжение
+                            <GiKitchenTap className={'text-[36px]'}/>
+                        </li>
+                        <li onClick={() => setContent6(true)}
+                            className={'text-xs bg_grey f_dark cursor-pointer shadow-xl p-4 md:py-6 rounded-xl flex flex-col md:flex-row items-center justify-center gap-[8px] md:gap-[15px] md:text-2xl hover:bg-[#515A89] hover:text-white hover:scale-90 transition'}>
+                            Дополнительно
+                            <GiNotebook className={'text-[36px]'}/>
+                        </li>
+                    </ul>
                     <Collaps isOpen={content1} onClose={() => setContent1(false)}>
                         <h3 className={'font-bold text-xl mb-3'}>Наружная часть</h3>
                         <ul className={'pl-2 flex flex-col gap-2'}>
@@ -320,30 +353,30 @@ export default function Post({post}) {
                     <Collaps isOpen={content3} onClose={() => setContent3(false)}>
                         <h3 className={'font-bold text-xl mb-3'}>Кухня</h3>
                         <ul className={'pl-2 flex flex-col gap-2'}>
-                            <li>Плита газовая - <strong>{acf.плита_газовая ? 'Есть' : 'Нету'}</strong></li>
+                            <li>Плита газовая - <strong>{acf.плита_газовая ? 'Есть' : 'Нет'}</strong></li>
                             <li>Количество конфорок - <strong>{acf.количество_конфорок}</strong></li>
-                            <li>Плита электрическая - <strong>{acf.плита_электрическая ? 'Есть' : 'Нету'}</strong></li>
+                            <li>Плита электрическая - <strong>{acf.плита_электрическая ? 'Есть' : 'Нет'}</strong></li>
                             {acf.количество_конфорок_2 ?
                                 <li>Количество конфорок 2 - <strong>{acf.количество_конфорок_2}</strong></li> : ''}
-                            <li>Газовый духовой шкаф - <strong>{acf.газовый_духовой_шкаф ? 'Есть' : 'Нету'}</strong>
+                            <li>Газовый духовой шкаф - <strong>{acf.газовый_духовой_шкаф ? 'Есть' : 'Нет'}</strong>
                             </li>
-                            <li>Газовый гриль - <strong>{acf.газовый_гриль ? 'Есть' : 'Нету'}</strong></li>
-                            <li>Мойка - <strong>{acf.мойка ? 'Есть' : 'Нету'}</strong></li>
+                            <li>Газовый гриль - <strong>{acf.газовый_гриль ? 'Есть' : 'Нет'}</strong></li>
+                            <li>Мойка - <strong>{acf.мойка ? 'Есть' : 'Нет'}</strong></li>
                             <li>Холодильник: <strong
                                 dangerouslySetInnerHTML={{__html: acf.холодильник.replace(/-|–|—/g, '<br>$&')}}/></li>
-                            <li>Микроволновая печь - <strong>{acf.микроволновая_печь ? 'Есть' : 'Нету'}</strong></li>
-                            <li>Вытяжка в кухне - <strong>{acf.вытяжка_в_кухне ? 'Есть' : 'Нету'}</strong></li>
+                            <li>Микроволновая печь - <strong>{acf.микроволновая_печь ? 'Есть' : 'Нет'}</strong></li>
+                            <li>Вытяжка в кухне - <strong>{acf.вытяжка_в_кухне ? 'Есть' : 'Нет'}</strong></li>
                             <li>Приточно вытяжная система
-                                - <strong>{acf.приточно_вытяжная_система ? 'Есть' : 'Нету'}</strong></li>
+                                - <strong>{acf.приточно_вытяжная_система ? 'Есть' : 'Нет'}</strong></li>
                             <li>Место для хранения посуды
-                                - <strong>{acf.место_для_хранения_посуды ? 'Есть' : 'Нету'}</strong></li>
-                            <li>Барная полка - <strong>{acf.барная_полка ? 'Есть' : 'Нету'}</strong></li>
+                                - <strong>{acf.место_для_хранения_посуды ? 'Есть' : 'Нет'}</strong></li>
+                            <li>Барная полка - <strong>{acf.барная_полка ? 'Есть' : 'Нет'}</strong></li>
                             <li>Рабочая кухонная поверхность
-                                - <strong>{acf.рабочая_кухонная_поверхность ? 'Есть' : 'Нету'}</strong></li>
+                                - <strong>{acf.рабочая_кухонная_поверхность ? 'Есть' : 'Нет'}</strong></li>
                             <li>Дополнительная рабочая кухонная поверхность столик
-                                - <strong>{acf.дополнительная_рабочая_кухонная_поверхность_столик ? 'Есть' : 'Нету'}</strong>
+                                - <strong>{acf.дополнительная_рабочая_кухонная_поверхность_столик ? 'Есть' : 'Нет'}</strong>
                             </li>
-                            <li>Обеденный стол - <strong>{acf.обеденный_стол ? 'Есть' : 'Нету'}</strong></li>
+                            <li>Обеденный стол - <strong>{acf.обеденный_стол ? 'Есть' : 'Нет'}</strong></li>
                         </ul>
                     </Collaps>
                     <Collaps isOpen={content4} onClose={() => setContent4(false)}>
@@ -376,84 +409,52 @@ export default function Post({post}) {
                         </ul>
                     </Collaps>
                     <Collaps isOpen={content6} onClose={() => setContent6(false)}>
-                        {dop ? <Dopy dopy={dop}/> : ''}
+                        {dop ? <Dopy dopy={dop} compare={false}/> : ''}
                     </Collaps>
-                    <ul className={'grid grid-cols-2 md:grid-cols-3 gap-8 px-4 break-words'}>
-                        <li onClick={() => setContent1(true)}
-                            className={'text-xs bg_grey f_dark cursor-pointer shadow-xl p-4 md:py-6 rounded-xl flex flex-col md:flex-row items-center justify-center gap-[8px] md:gap-[15px] md:text-2xl hover:bg-[#515A89] hover:text-white hover:scale-90 transition'}>
-                            Наружная часть
-                            <GiCaravan className={'text-[36px]'}/>
-                        </li>
-                        <li onClick={() => setContent2(true)}
-                            className={'text-xs bg_grey f_dark cursor-pointer shadow-xl p-4 md:py-6 rounded-xl flex flex-col md:flex-row items-center justify-center gap-[8px] md:gap-[15px] md:text-2xl hover:bg-[#515A89] hover:text-white hover:scale-90 transition'}>
-                            Жилая зона
-                            <GiPersonInBed className={'text-[36px]'}/>
-                        </li>
-                        <li onClick={() => setContent3(true)}
-                            className={'text-xs bg_grey f_dark cursor-pointer shadow-xl p-4 md:py-6 rounded-xl flex flex-col md:flex-row items-center justify-center gap-[8px] md:gap-[15px] md:text-2xl hover:bg-[#515A89] hover:text-white hover:scale-90 transition'}>
-                            Кухня
-                            <GiMeal className={'text-[36px]'}/>
-                        </li>
-                        <li onClick={() => setContent4(true)}
-                            className={'text-xs bg_grey f_dark cursor-pointer shadow-xl p-4 md:py-6 rounded-xl flex flex-col md:flex-row items-center justify-center gap-[8px] md:gap-[15px] md:text-2xl hover:bg-[#515A89] hover:text-white hover:scale-90 transition'}>
-                            Санузел
-                            <GiWarpPipe className={'text-[36px]'}/>
-                        </li>
-                        <li onClick={() => setContent5(true)}
-                            className={'text-xs bg_grey f_dark cursor-pointer shadow-xl p-4 md:py-6 rounded-xl flex flex-col md:flex-row items-center justify-center gap-[8px] md:gap-[15px] md:text-2xl hover:bg-[#515A89] hover:text-white hover:scale-90 transition'}>
-                            Водоснабжение
-                            <GiKitchenTap className={'text-[36px]'}/>
-                        </li>
-                        <li onClick={() => setContent6(true)}
-                            className={'text-xs bg_grey f_dark cursor-pointer shadow-xl p-4 md:py-6 rounded-xl flex flex-col md:flex-row items-center justify-center gap-[8px] md:gap-[15px] md:text-2xl hover:bg-[#515A89] hover:text-white hover:scale-90 transition'}>
-                            Дополнительно
-                            <GiNotebook className={'text-[36px]'}/>
-                        </li>
-                    </ul>
                 </section>
-                <section className={'container mx-auto px-4 py-6'}>
+                <section className={'container mx-auto px-6 py-6'}>
                     <h2 className={'text-xl font-bold pb-2'}>Краткое описание:</h2>
                     <div className={'flex flex-col-reverse md:flex-row items-center gap-3'}>
-                        <div dangerouslySetInnerHTML={{__html: content.replace(/—|-|–|—/g, '<br>$&')}}/>
-                        <div className={'p-2 md:p-4 bg-gray-400 rounded-lg shadow-xl w-full'}>
+                        <div className={'min-w-[40%] w-full'}
+                             dangerouslySetInnerHTML={{__html: content.replace(/—|-|–|—/g, '<br>$&')}}/>
+                        {acf.videob ? <div className={'p-2 md:p-4 bg-gray-400 rounded-lg shadow-xl w-full'}>
                             <iframe
-                                className={'w-full md:w-[40vw] max-w-[1220px] h-[30vh] rounded-lg'}
+                                className={'w-full md:w-[100%] max-w-[1220px] h-[30vh] rounded-lg'}
                                 src={`https://www.youtube.com/embed/${acf.videob}`}
                                 allow='autoplay; encrypted-media'
                                 title='video'
                                 width={800}
                                 height={450}
                             />
-                        </div>
+                        </div> : ''}
                     </div>
                 </section>
 
                 {!isMobile ? <section className={'container mx-auto my-3 px-4'}>
-                    <div className={'flex flex-col gap-6 bg-[#C2C3C7] rounded-md p-2 mb-[20px]'}>
-                        <ul className={'w-[20vw] font-medium flex flex-col'}>
+                    <h2 className={'text-xl font-bold pb-2 px-4'}>Дополнительно можно оборудовать:</h2>
+                    <div className={'flex flex-col gap-6 rounded-md p-2 mb-[20px]'}>
+                        <ul className={'font-medium grid grid-cols-2 md:grid-cols-4 gap-3'}>
                             {mockData.map(category => (
                                 // @ts-ignore
                                 <li onClick={() => tabcat(category.catId)} key={category.catId}
-                                    className={`flex gap-4 p-2 rounded-md cursor-pointer ${category.catId === carAddon ? 'bg-[#908859] text-white' : ''}`}>
-                                    <h1>{category.categoryName}</h1>
+                                    className={`flex gap-4 p-2 rounded-md cursor-pointer flex items-center transition justify-center border-[2px] border-[#515A89] hover:bg-[#515A89] hover:text-white ${category.catId === carAddon ? 'bg-[#515A89] text-white' : ''}`}>
+                                    <h4>{category.categoryName}</h4>
                                 </li>
                             ))}
                         </ul>
-                        <div className={'w-full bg-[#C2C3C7]'}>
+                        <div className={'w-full'}>
                             {mockData.map(category => (
                                 <div key={category.catId}
                                      className={category.catId === carAddon ? 'flex flex-col rounded-md gap-2' : 'hidden'}>
                                     {category.categoryItems.map(itemList => (
                                         <div key={itemList.itemListName}
-                                             className={'flex flex-row items-center gap-4 w-full bg-white border-[2px] rounded-md border-[#908859] p-2'}>
-                                            <h2 className={'min-w-[250px] w-[250px]'}>{itemList.itemListName}</h2>
-                                            <div className={`${cl.Column} gap-2 w-full cursor-pointer`}>
+                                             className={'flex flex-row items-center gap-4 w-full bg-white border-[2px] rounded-md border-[#908859]'}>
+                                            <h3 className={'min-w-[250px] w-[250px] p-2'}>{itemList.itemListName}</h3>
+                                            <div className={`${cl.Column} gap-2 w-full`}>
                                                 {itemList.info.map(({title, descr, id, price}) => (
                                                     <div
-                                                        className={`flex flex-row gap-4 w-full rounded-md border-y-[1px] items-center p-1 ${isActiveAddon(id) ? 'text-white' : ''}`}
+                                                        className={`flex flex-row gap-4 w-full items-center p-1 h-full`}
                                                         key={id}
-                                                        onClick={() => handleClickAddItem(id)}
-                                                        style={{background: `${isActiveAddon(id) ? '#5E875F' : 'none'} `}}
                                                     >
                                                         <div className={'min-w-[250px] w-[250px]'}>{title}</div>
                                                         {/*// @ts-ignore*/}
@@ -461,6 +462,12 @@ export default function Post({post}) {
                                                             {/*// @ts-ignore*/}
                                                             <strong>{getFormatPrice(price)} ₽</strong></div>
                                                         <div className={'w-full'}>{descr}</div>
+                                                        <button
+
+                                                            className={isActiveAddon(id) ? 'cursor-pointer bg-red-700 text-white min-w-[130px] min-h-[45px] rounded-md border-[1px] shadow-md hover:bg-red-800 transition' : 'cursor-pointer bg-[#5E875F] text-white min-w-[130px] min-h-[45px] rounded-md border-[1px] shadow-md hover:bg-[#1b401c] transition'}
+                                                            onClick={() => handleClickAddItem(id)}>
+                                                            {isActiveAddon(id) ? 'Убрать -' : 'Добавить +'}
+                                                        </button>
                                                     </div>
                                                 ))}
                                             </div>
@@ -470,10 +477,14 @@ export default function Post({post}) {
                             ))}
                         </div>
                     </div>
-                    <button className={'bg-amber-700 px-[10px] py-[5px] rounded-md text-white'}
-                            onClick={() => clearAddons()}>
-                        Очистить
-                    </button>
+                    <div className={'flex flex-row gap-3 justify-between items-center px-2'}>
+                        <h3 className={'bg-[#222225] text-white text-lg px-3 py-2 rounded'}>Итоговая цена:
+                            ~ <strong>{getFormatPrice(getPriceWithAddons())} ₽</strong></h3>
+                        <button className={'bg-amber-700 px-[10px] py-[5px] rounded-md text-white'}
+                                onClick={() => clearAddons()}>
+                            Очистить
+                        </button>
+                    </div>
                 </section> : ''}
                 {!isMobile ? <Footcaravaan title={title}
                                            price={getFormatPrice(getPriceWithAddons())}
@@ -500,15 +511,8 @@ export default function Post({post}) {
                     <input type="submit" value="Оставить заявку"/>
                 </form>
             </Modal>
-            <Modal isOpen={yt} onClose={() => setYt(false)}>
-                <iframe
-                    className={'w-[90vw] max-w-[1220px] h-[50vh]'}
-                    src={`https://www.youtube.com/embed/${acf.videob}`}
-                    allow='autoplay; encrypted-media'
-                    title='video'
-                    width={800}
-                    height={450}
-                />
+            <Modal isOpen={modalQuiz} onClose={() => setModalQuiz(false)}>
+                <Quize/>
             </Modal>
         </>
     )
