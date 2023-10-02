@@ -310,6 +310,7 @@ export default function Post({post}) {
                                 - <strong>{acf.подготовка_под_велобагажник ? 'Есть' : 'Нету'}</strong></li>
                             <li>Система сборки - <strong>{acf.система_сборки}</strong></li>
                         </ul>
+                        <GiCaravan className={'hidden md:block md:text-[50vh] absolute top-0 right-0'}/>
                     </Collaps>
                     <Collaps isOpen={content2} onClose={() => setContent2(false)}>
                         <h3 className={'font-bold text-xl mb-3'}>Жилая зона</h3>
