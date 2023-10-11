@@ -10,7 +10,6 @@ import "swiper/css/free-mode";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
 import {GiCaravan, GiKitchenTap, GiMeal, GiNotebook, GiPersonInBed, GiWarpPipe} from "react-icons/gi";
-import {RxVideo} from "react-icons/rx";
 
 import Modal from '@/components/Modal/Modal';
 import {TAddItem} from "@/components/types";
