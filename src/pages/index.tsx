@@ -1,10 +1,8 @@
 import Head from 'next/head'
 import Menu from "@/components/header/menu";
-import {useEffect, useState} from "react";
 import axios from "axios";
 import Cards from "@/components/Cards/Cards";
 import Section1Home from "@/components/home/section1Home";
-import Section2Home from "@/components/home/section2Home";
 import CapHome from "@/components/home/capHome";
 import SectionTextHome from "@/components/home/sectionTextHome";
 import Footer from "@/components/footer/footer";

@@ -1,8 +1,11 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import Menu from "@/components/header/menu";
 import Footer from "@/components/footer/footer";
 import Image from "next/image";
 import {NextSeo} from "next-seo";
+import Cards from "@/components/Cards/Cards";
+import axios from "axios";
+import SectionQuiz from "@/components/home/sectionQuiz";
 
 
 // @ts-ignore
@@ -33,7 +36,7 @@ export default function Post({post}) {
                 }}
             />
             <Menu/>
-            <main>
+            <main className={'pb-8'}>
                 <section
                     className="container px-4 mt-[150px] mx-auto mb-8 flex flex-col justify-between items-center gap-6 sm:gap-10 md:mb-16 md:gap-16 lg:flex-row">
 
@@ -58,6 +61,7 @@ export default function Post({post}) {
                         </div>
                     </div>
                 </section>
+                <SectionQuiz/>
             </main>
             <Footer/>
         </>

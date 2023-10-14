@@ -131,6 +131,12 @@ export default function Post({post}) {
         {text: content6, id: 6}
     ]
 
+    const naruzha = {
+        dlina: acf.длина_каравана,
+        shirina: acf.ширина_каравана_копия,
+        visota: acf.высота_каравана_копия2
+    }
+
     const bgInvert = (bol: boolean) => bol ? 'bg-[#515A89]' : ''
     // @ts-ignore
     return (
@@ -272,44 +278,72 @@ export default function Post({post}) {
                     </ul>
                     <Collaps isOpen={content1} onClose={() => setContent1(false)}>
                         <h3 className={'font-bold text-xl mb-3'}>Наружная часть</h3>
-                        <ul className={'pl-2 flex flex-col gap-2'}>
-                            <li>Тягово-сцепное устройство - <strong>{acf.тягово_сцепное_устройство}</strong></li>
-                            <li>Дополнительная боковая фиксация сцепного устройства
-                                - <strong>{acf.дополнительная_боковая_фиксация_сцепного_устройства ? 'Есть' : 'Нету'}</strong>
-                            </li>
-                            <li>Страховочный тормозной трос
-                                - <strong>{acf.страховочный_тормозной_трос ? 'Есть' : 'Нету'}</strong></li>
-                            <li>Вилка для подключения к автомобилю
-                                - <strong>{acf.вилка_для_подключения_к_автомобилю}</strong></li>
-                            <li>Электрическая система стабилизации
-                                - <strong>{acf.электрическая_система_стабилизации}</strong></li>
-                            <li>Противооткаты - <strong>{acf.противооткаты ? 'Есть' : 'Нету'}</strong></li>
-                            <li>Штатное место для акб - <strong>{acf.штатное_место_для_акб ? 'Есть' : 'Нету'}</strong>
-                            </li>
-                            <li>Наружная розетка 220 - <strong>{acf.наружная_розетка_220 ? 'Есть' : 'Нету'}</strong>
-                            </li>
-                            <li>Наружное подключение газового оборудования гриляплиты
-                                - <strong>{acf.наружное_подключение_газового_оборудования_гриляплиты ? 'Есть' : 'Нету'}</strong>
-                            </li>
-                            <li>Наружное подключение воды английская система
-                                - <strong>{acf.наружное_подключение_воды_английская_система ? 'Есть' : 'Нету'}</strong>
-                            </li>
-                            <li>Входная дверь - <strong>{acf.входная_дверь}</strong></li>
-                            <li>Ступенька для входа - <strong>{acf.ступенька_для_входа ? 'Есть' : 'Нету'}</strong></li>
-                            <li>Москитная сетка на дверях
-                                - <strong>{acf.москитная_сетка_на_дверях ? 'Есть' : 'Нету'}</strong></li>
-                            <li>Мусорное ведро - <strong>{acf.мусорное_ведро ? 'Есть' : 'Нету'}</strong></li>
-                            <li>Ящики для вещей на входной двери
-                                - <strong>{acf.ящики_для_вещей_на_входной_двери ? 'Есть' : 'Нету'}</strong></li>
-                            <li>Окно на входной двери - <strong>{acf.окно_на_входной_двери ? 'Есть' : 'Нету'}</strong>
-                            </li>
-                            <li>Наружное освещение у входа
-                                - <strong>{acf.наружное_освещение_у_входа ? 'Есть' : 'Нету'}</strong></li>
-                            <li>Подготовка под велобагажник
-                                - <strong>{acf.подготовка_под_велобагажник ? 'Есть' : 'Нету'}</strong></li>
-                            <li>Система сборки - <strong>{acf.система_сборки}</strong></li>
-                        </ul>
-                        <GiCaravan className={'hidden md:block md:text-[50vh] absolute top-0 right-0'}/>
+                        <div className={'grid grid-cols-1 md:grid-cols-2 gap-8'}>
+                            <ul className={'pl-2 flex flex-col gap-2'}>
+                                <li>Длина - <strong>{naruzha.dlina}</strong> см</li>
+                                <li>Ширина - <strong>{naruzha.shirina}</strong> см</li>
+                                <li>Высота - <strong>{naruzha.visota}</strong> см</li>
+                                <li>Тягово-сцепное устройство - <strong>{acf.тягово_сцепное_устройство}</strong></li>
+                                <li>Дополнительная боковая фиксация сцепного устройства
+                                    - <strong>{acf.дополнительная_боковая_фиксация_сцепного_устройства ? 'Есть' : 'Нету'}</strong>
+                                </li>
+                                <li>Страховочный тормозной трос
+                                    - <strong>{acf.страховочный_тормозной_трос ? 'Есть' : 'Нету'}</strong></li>
+                                <li>Вилка для подключения к автомобилю
+                                    - <strong>{acf.вилка_для_подключения_к_автомобилю}</strong></li>
+                                <li>Электрическая система стабилизации
+                                    - <strong>{acf.электрическая_система_стабилизации}</strong></li>
+                                <li>Противооткаты - <strong>{acf.противооткаты ? 'Есть' : 'Нету'}</strong></li>
+                                <li>Штатное место для акб
+                                    - <strong>{acf.штатное_место_для_акб ? 'Есть' : 'Нету'}</strong>
+                                </li>
+                                <li>Наружная розетка 220 - <strong>{acf.наружная_розетка_220 ? 'Есть' : 'Нету'}</strong>
+                                </li>
+                                <li>Наружное подключение газового оборудования гриляплиты
+                                    - <strong>{acf.наружное_подключение_газового_оборудования_гриляплиты ? 'Есть' : 'Нету'}</strong>
+                                </li>
+                                <li>Наружное подключение воды английская система
+                                    - <strong>{acf.наружное_подключение_воды_английская_система ? 'Есть' : 'Нету'}</strong>
+                                </li>
+                                <li>Входная дверь - <strong>{acf.входная_дверь}</strong></li>
+                                <li>Ступенька для входа - <strong>{acf.ступенька_для_входа ? 'Есть' : 'Нету'}</strong>
+                                </li>
+                                <li>Москитная сетка на дверях
+                                    - <strong>{acf.москитная_сетка_на_дверях ? 'Есть' : 'Нету'}</strong></li>
+                                <li>Мусорное ведро - <strong>{acf.мусорное_ведро ? 'Есть' : 'Нету'}</strong></li>
+                                <li>Ящики для вещей на входной двери
+                                    - <strong>{acf.ящики_для_вещей_на_входной_двери ? 'Есть' : 'Нету'}</strong></li>
+                                <li>Окно на входной двери
+                                    - <strong>{acf.окно_на_входной_двери ? 'Есть' : 'Нету'}</strong>
+                                </li>
+                                <li>Наружное освещение у входа
+                                    - <strong>{acf.наружное_освещение_у_входа ? 'Есть' : 'Нету'}</strong></li>
+                                <li>Подготовка под велобагажник
+                                    - <strong>{acf.подготовка_под_велобагажник ? 'Есть' : 'Нету'}</strong></li>
+                                <li>Система сборки - <strong>{acf.система_сборки}</strong></li>
+                            </ul>
+                            <div className={'hidden md:flex relative top-0 right-14 flex-col gap-8'}>
+                                <div className={'relative flex flex-col gap-3'}>
+                                    <div
+                                        className={'dlina text-center absolute bottom-0 w-full border-b-[1px] border-black'}>
+                                        {naruzha.dlina} см
+                                    </div>
+                                    <div
+                                        className={'visota text-center absolute left-0 w-min border-r-[1px] border-black flex flex-col h-full justify-between'}>
+                                        <span>{naruzha.visota} см</span>
+                                    </div>
+                                    <img src="/dlina.webp" alt="Чертеж каравана"/>
+                                </div>
+                                <div className={'flex flex-col items-center justify-center relative'}>
+                                    <img src="/shiry.webp" alt="Чертеж каравана"/>
+                                    <div
+                                        className={'shiran max-w-[240px] absolute text-center absolute bottom-0 w-full border-b-[1px] border-black'}>
+                                        <span className={'absolute right-0 left-0 top-2'}>{naruzha.shirina} см</span>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
                     </Collaps>
                     <Collaps isOpen={content2} onClose={() => setContent2(false)}>
                         <h3 className={'font-bold text-xl mb-3'}>Жилая зона</h3>

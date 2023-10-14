@@ -13,20 +13,10 @@ import {useRouter} from "next/router";
 const inter = Inter({subsets: ['latin']})
 
 // @ts-ignore
-export default function PodZakaz({doma}) {
+export default function PodZakaz({doma, priz}) {
     const [filteredDoma, setFilteredDoma] = useState(doma)
     const [isFonud, setIsFound] = useState(true)
 
-    // const [mesta, setMesta] = useState([])
-    // const [curMesta, setCurMesta] = useState('')
-
-    useEffect(() => {
-        // @ts-ignore
-        const allMesta = doma.map(el => el.kol_sleep)
-        const setSleep = new Set(allMesta)
-        // @ts-ignore
-        // setMesta([...setSleep])
-    }, [doma])
 
     useEffect(() => {
         setIsFound(filteredDoma.length === 0 ? false : true)
@@ -47,7 +37,7 @@ export default function PodZakaz({doma}) {
             </Head>
             <Menu/>
             <main className={'mt-28'}>
-                <Proiz/>
+                <Proiz data={priz}/>
                 <ParamsFilter doma={doma} setFilteredDoma={setFilteredDoma} nameCurPage={useRouter().pathname}/>
 
                 <div className={'container mx-auto px-6'}>Нашлось {filteredDoma.length} караванов</div>
@@ -75,7 +65,8 @@ export default function PodZakaz({doma}) {
 
 export async function getStaticProps() {
     const {data: doma} = await axios.get('https://1caravan.ru/wp-json/api/v2/doma/zakaz')
+    const {data: priz} = await axios.get('https://1caravan.ru/wp-json/api/v2/doma/proizvoditeli')
     return {
-        props: {doma}, // will be passed to the page component as props
+        props: {doma, priz}, // will be passed to the page component as props
     }
 }
