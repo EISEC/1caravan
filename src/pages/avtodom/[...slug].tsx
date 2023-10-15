@@ -555,7 +555,6 @@ export default function Post({post}) {
 
 // @ts-ignore
 export async function getServerSideProps({params}) {
-    // const res = await fetch(`https://1caravan.ru/wp-json/wp/v2/caravans?slug=${params.slug}&_embed`)
     const res = await fetch(`https://1caravan.ru/wp-json/api/v2/doma/${params.slug}`)
     const [post] = await res.json()
     if (!post) {

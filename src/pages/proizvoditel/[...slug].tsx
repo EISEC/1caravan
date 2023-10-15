@@ -2,7 +2,6 @@ import React, {useEffect, useState} from 'react';
 import axios from "axios";
 import Head from "next/head";
 import Menu from "@/components/header/menu";
-import CapHome from "@/components/home/capHome";
 import Cards from "@/components/Cards/Cards";
 import Footer from "@/components/footer/footer";
 import ParamsFilter from "@/components/Filter/paramsFilter";
@@ -20,37 +19,40 @@ export default function Slug({doma, priz}) {
     const {slug} = router.query;
 
     //@ts-ignore
+    // useEffect( () =>{
+    //     // @ts-ignore
+    //     const upPerCase = () => {
+    //         let title
+    //         console.log(title)
+    //         //@ts-ignore
+    //         const arr = slug[0]
+    //         title = arr[0].toUpperCase()
+    //         //@ts-ignore
+    //         let endTitle = [...title, arr.slice(1)]
+    //         //@ts-ignore
+    //         endTitle = endTitle.join('')
+    //         //@ts-ignore
+    //         setItit(endTitle)
+    //     }
+    //     upPerCase()
+    // })
 
 
     // @ts-ignore
-    useEffect(() => {
-        // @ts-ignore
-        const upPerCase = () => {
-            let title
-            //@ts-ignore
-            const arr = slug[0]
-            title = arr[0].toUpperCase()
-            //@ts-ignore
-            let endTitle = [...title, arr.slice(1)]
-            //@ts-ignore
-            endTitle = endTitle.join('')
-            //@ts-ignore
-            setItit(endTitle)
-        }
-        upPerCase()
-
+    useEffect( () => {
         let domi = [...doma].filter((i) => {
             // @ts-ignore
             let f = i.proizvoditel
-
             // @ts-ignore
-            if (f[0] === itit) {
+            let tit = slug[0]
+            // @ts-ignore
+            if (f[0].toLowerCase() === tit) {
                 return i
             }
         })
         // @ts-ignore
         setFilteredDoma(domi)
-    }, [slug])
+    }, [itit])
 
     useEffect(() => {
         setIsFound(filteredDoma.length === 0 ? false : true)
@@ -61,7 +63,7 @@ export default function Slug({doma, priz}) {
     return (
         <>
             <Head>
-                <title>Производитель автодомов Fendt | Первый Караван</title>
+                <title>Производитель автодомов {itit} | Первый Караван</title>
                 <meta name="description"
                       content="Компания Fendt была основана в 1930 году и начала свою деятельность как производитель
                         сельскохозяйственной техники. В 1987 году компания приобрела бренд Caravaning и начала выпускать
