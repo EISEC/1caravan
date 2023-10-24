@@ -54,16 +54,17 @@ const Cards = ({cards}) => {
         }
     };
 
-    const buttonMoreRef = useRef<HTMLButtonElement>(null)
-    const isVisible = useIsVisible(buttonMoreRef)
-
-    let homePage = '/'
-
-    useEffect(() => {
-        if (isVisible && homePage !== router.pathname) {
-            onShowMore()
-        }
-    }, [isVisible])
+    // const buttonMoreRef = useRef<HTMLButtonElement>(null)
+    // const isVisible = useIsVisible(buttonMoreRef)
+    //
+    // let homePage = '/'
+    //
+    // useEffect(() => {
+    //     if (isVisible && homePage !== router.pathname) {
+    //         onShowMore()
+    //     }
+    // }, [isVisible])
+    // ref={buttonMoreRef}
     return (
         <section className={`${cl.listavto} container px-6 mx-auto`}>
             <motion.ul
@@ -77,7 +78,7 @@ const Cards = ({cards}) => {
             </motion.ul>
             {showCount <= cards.length ?
                 (
-                    <button ref={buttonMoreRef} className={`btn-green ${cl.mrgbt25} `}
+                    <button className={`btn-green ${cl.mrgbt25} `}
                             onClick={() => onShowMore()}>Загрузить
                         больше</button>
                 ) :

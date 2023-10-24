@@ -15,51 +15,17 @@ export default function Slug({doma, priz}) {
     const [isFonud, setIsFound] = useState(true)
     const [itit, setItit] = useState()
 
-    const router = useRouter();
-    const {slug} = router.query;
-
-    //@ts-ignore
-    // useEffect( () =>{
-    //     // @ts-ignore
-    //     const upPerCase = () => {
-    //         let title
-    //         console.log(title)
-    //         //@ts-ignore
-    //         const arr = slug[0]
-    //         title = arr[0].toUpperCase()
-    //         //@ts-ignore
-    //         let endTitle = [...title, arr.slice(1)]
-    //         //@ts-ignore
-    //         endTitle = endTitle.join('')
-    //         //@ts-ignore
-    //         setItit(endTitle)
-    //     }
-    //     upPerCase()
-    // })
-
-
-    // @ts-ignore
-    useEffect( () => {
-        let domi = [...doma].filter((i) => {
-            // @ts-ignore
-            let f = i.proizvoditel
-            // @ts-ignore
-            let tit = slug[0]
-            // @ts-ignore
-            if (f[0].toLowerCase() === tit) {
-                return i
-            }
-        })
-        // @ts-ignore
-        setFilteredDoma(domi)
-    }, [itit])
+    useEffect(() => {
+        setFilteredDoma(doma)
+    }, [doma])
 
     useEffect(() => {
+        setItit(doma[0].proizvoditel[0])
         setIsFound(filteredDoma.length === 0 ? false : true)
         for (let i = 0; i < filteredDoma.length; i++) {
+
         }
     }, [filteredDoma])
-
     return (
         <>
             <Head>
@@ -103,8 +69,8 @@ export default function Slug({doma, priz}) {
 
 
 // @ts-ignore
-export async function getServerSideProps() {
-    const {data: doma} = await axios.get('https://1caravan.ru/wp-json/api/v2/doma/vse')
+export async function getServerSideProps({params}) {
+    const {data: doma} = await axios.get(`https://1caravan.ru/wp-json/api/v2/doma/vse/${params.slug}`)
     const {data: priz} = await axios.get('https://1caravan.ru/wp-json/api/v2/doma/proizvoditeli')
     return {
         props: {doma, priz}, // will be passed to the page component as props

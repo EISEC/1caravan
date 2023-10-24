@@ -246,7 +246,7 @@ const CardsItem = ({wishList, data}) => {
                         {disableList ? 'В Избранном' : 'Изранное'}<FaHeart className={'text-red-700'}/></button>
                 </div>
                 <Link href={{
-                    pathname: "avtodom/[...slug]",
+                    pathname: "/avtodom/[...slug]",
                     query: {slug: data.slug},
                 }}
                       className={`${cl.btndark} block w-full text-center text-lg py-3 mt-2`}>

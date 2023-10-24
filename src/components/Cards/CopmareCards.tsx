@@ -11,13 +11,19 @@ const CopmareCards = ({el}) => {
         return formatPrice
     }
 
+    const naruzha = {
+        dlina: el.acf.длина_каравана,
+        shirina: el.acf.ширина_каравана_копия,
+        visota: el.acf.высота_каравана_копия2
+    }
+
     return (
         <div className="relative mx-auto w-full mt-2 mb-[50px]">
             <Link href={{
                 pathname: "/avtodom/[...slug]",
                 query: {slug: el.slug},
             }}
-               className="relative inline-block duration-300 ease-in-out transition-transform transform hover:-translate-y-2 w-full">
+                  className="relative inline-block duration-300 ease-in-out transition-transform transform hover:-translate-y-2 w-full">
                 <div className="shadow p-4 rounded-lg bg-white">
                     {/*Фото каравана*/}
                     <div className="flex justify-center relative rounded-lg overflow-hidden h-64">
@@ -83,6 +89,9 @@ const CopmareCards = ({el}) => {
                         <div className="flex gap-2 flex-col text-gray-800">
                             <h4 className={'text-md font-bold'}>Наружная часть:</h4>
                             <ul className={'text-sm'}>
+                                <li>Длина - <strong>{naruzha.dlina}</strong> см</li>
+                                <li>Ширина - <strong>{naruzha.shirina}</strong> см</li>
+                                <li>Высота - <strong>{naruzha.visota}</strong> см</li>
                                 <li>Штатное место для акб
                                     - <strong>{el.acf.штатное_место_для_акб ? 'Есть' : 'Нет'}</strong>
                                 </li>
