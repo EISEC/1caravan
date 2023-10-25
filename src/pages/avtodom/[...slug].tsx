@@ -122,14 +122,16 @@ export default function Post({post}) {
     const [content5, setContent5] = useState(false)
     const [content6, setContent6] = useState(false)
 
-    const CollapsContent = [
-        {text: content1, id: 1},
-        {text: content2, id: 2},
-        {text: content3, id: 3},
-        {text: content4, id: 4},
-        {text: content5, id: 5},
-        {text: content6, id: 6}
-    ]
+    const [curDesc, setCurDesc] = useState(1)
+
+    // const CollapsContent = [
+    //     {text: setContent1(false), id: 1},
+    //     {text: setContent2(false), id: 2},
+    //     {text: setContent3(false), id: 3},
+    //     {text: setContent4(false), id: 4},
+    //     {text: setContent5(false), id: 5},
+    //     {text: setContent6(false), id: 6}
+    // ]
 
     const naruzha = {
         dlina: acf.длина_каравана,
@@ -245,38 +247,44 @@ export default function Post({post}) {
 
                 <section className={'butonsy container mx-auto px-2 py-6'}>
                     <ul className={'grid grid-cols-2 md:grid-cols-3 gap-8 px-4 break-words'}>
-                        <li onClick={() => setContent1(true)}
-                            className={`text-xs bg_grey f_dark cursor-pointer shadow-xl p-4 md:py-6 rounded-xl flex flex-col md:flex-row items-center justify-center gap-[8px] md:gap-[15px] md:text-2xl hover:bg-[#515A89] hover:text-white hover:scale-90 transition`}>
+                        <li onClick={() => setCurDesc(1)}
+                            className={`text-xs bg_grey f_dark cursor-pointer shadow-xl p-4 md:py-6 rounded-xl flex flex-col md:flex-row items-center justify-center gap-[8px] md:gap-[15px] md:text-2xl hover:bg-[#515A89] hover:text-white hover:scale-90 transition
+                                ${curDesc === 1 ? `${cl.active} scale-90` : ''}`}>
                             Наружная часть
                             <GiCaravan className={'text-[36px]'}/>
                         </li>
-                        <li onClick={() => setContent2(true)}
-                            className={'text-xs bg_grey f_dark cursor-pointer shadow-xl p-4 md:py-6 rounded-xl flex flex-col md:flex-row items-center justify-center gap-[8px] md:gap-[15px] md:text-2xl hover:bg-[#515A89] hover:text-white hover:scale-90 transition'}>
+                        <li onClick={() => setCurDesc(2)}
+                            className={`text-xs bg_grey f_dark cursor-pointer shadow-xl p-4 md:py-6 rounded-xl flex flex-col md:flex-row items-center justify-center gap-[8px] md:gap-[15px] md:text-2xl hover:bg-[#515A89] hover:text-white hover:scale-90 transition
+                                ${curDesc === 2 ? `${cl.active} scale-90` : ''}`}>
                             Жилая зона
                             <GiPersonInBed className={'text-[36px]'}/>
                         </li>
-                        <li onClick={() => setContent3(true)}
-                            className={'text-xs bg_grey f_dark cursor-pointer shadow-xl p-4 md:py-6 rounded-xl flex flex-col md:flex-row items-center justify-center gap-[8px] md:gap-[15px] md:text-2xl hover:bg-[#515A89] hover:text-white hover:scale-90 transition'}>
+                        <li onClick={() => setCurDesc(3)}
+                            className={`text-xs bg_grey f_dark cursor-pointer shadow-xl p-4 md:py-6 rounded-xl flex flex-col md:flex-row items-center justify-center gap-[8px] md:gap-[15px] md:text-2xl hover:bg-[#515A89] hover:text-white hover:scale-90 transition
+                            ${curDesc === 3 ? `${cl.active} scale-90` : ''}`}>
                             Кухня
                             <GiMeal className={'text-[36px]'}/>
                         </li>
-                        <li onClick={() => setContent4(true)}
-                            className={'text-xs bg_grey f_dark cursor-pointer shadow-xl p-4 md:py-6 rounded-xl flex flex-col md:flex-row items-center justify-center gap-[8px] md:gap-[15px] md:text-2xl hover:bg-[#515A89] hover:text-white hover:scale-90 transition'}>
+                        <li onClick={() => setCurDesc(4)}
+                            className={`text-xs bg_grey f_dark cursor-pointer shadow-xl p-4 md:py-6 rounded-xl flex flex-col md:flex-row items-center justify-center gap-[8px] md:gap-[15px] md:text-2xl hover:bg-[#515A89] hover:text-white hover:scale-90 transition
+                            ${curDesc === 4 ? `${cl.active} scale-90` : ''}`}>
                             Санузел
                             <GiWarpPipe className={'text-[36px]'}/>
                         </li>
-                        <li onClick={() => setContent5(true)}
-                            className={'text-xs bg_grey f_dark cursor-pointer shadow-xl p-4 md:py-6 rounded-xl flex flex-col md:flex-row items-center justify-center gap-[8px] md:gap-[15px] md:text-2xl hover:bg-[#515A89] hover:text-white hover:scale-90 transition'}>
+                        <li onClick={() => setCurDesc(5)}
+                            className={`text-xs bg_grey f_dark cursor-pointer shadow-xl p-4 md:py-6 rounded-xl flex flex-col md:flex-row items-center justify-center gap-[8px] md:gap-[15px] md:text-2xl hover:bg-[#515A89] hover:text-white hover:scale-90 transition
+                            ${curDesc === 5 ? `${cl.active} scale-90` : ''}`}>
                             Водоснабжение
                             <GiKitchenTap className={'text-[36px]'}/>
                         </li>
-                        <li onClick={() => setContent6(true)}
-                            className={'text-xs bg_grey f_dark cursor-pointer shadow-xl p-4 md:py-6 rounded-xl flex flex-col md:flex-row items-center justify-center gap-[8px] md:gap-[15px] md:text-2xl hover:bg-[#515A89] hover:text-white hover:scale-90 transition'}>
+                        <li onClick={() => setCurDesc(6)}
+                            className={`text-xs bg_grey f_dark cursor-pointer shadow-xl p-4 md:py-6 rounded-xl flex flex-col md:flex-row items-center justify-center gap-[8px] md:gap-[15px] md:text-2xl hover:bg-[#515A89] hover:text-white hover:scale-90 transition
+                            ${curDesc === 6 ? `${cl.active} scale-90` : ''}`}>
                             Дополнительно
                             <GiNotebook className={'text-[36px]'}/>
                         </li>
                     </ul>
-                    <Collaps isOpen={content1} onClose={() => setContent1(false)}>
+                    <Collaps isOpen={curDesc === 1}>
                         <h3 className={'font-bold text-xl mb-3'}>Наружная часть</h3>
                         <div className={'grid grid-cols-1 md:grid-cols-2 gap-8'}>
                             <ul className={'pl-2 flex flex-col gap-2'}>
@@ -345,7 +353,7 @@ export default function Post({post}) {
                             </div>
                         </div>
                     </Collaps>
-                    <Collaps isOpen={content2} onClose={() => setContent2(false)}>
+                    <Collaps isOpen={curDesc === 2}>
                         <h3 className={'font-bold text-xl mb-3'}>Жилая зона</h3>
                         <ul className={'pl-2 flex flex-col gap-2'}>
                             <li>Отопление : <strong
@@ -384,7 +392,7 @@ export default function Post({post}) {
                         </ul>
 
                     </Collaps>
-                    <Collaps isOpen={content3} onClose={() => setContent3(false)}>
+                    <Collaps isOpen={curDesc === 3}>
                         <h3 className={'font-bold text-xl mb-3'}>Кухня</h3>
                         <ul className={'pl-2 flex flex-col gap-2'}>
                             <li>Плита газовая - <strong>{acf.плита_газовая ? 'Есть' : 'Нет'}</strong></li>
@@ -413,7 +421,7 @@ export default function Post({post}) {
                             <li>Обеденный стол - <strong>{acf.обеденный_стол ? 'Есть' : 'Нет'}</strong></li>
                         </ul>
                     </Collaps>
-                    <Collaps isOpen={content4} onClose={() => setContent4(false)}>
+                    <Collaps isOpen={curDesc === 4}>
                         <h3 className={'font-bold text-xl mb-3'}>Санузел</h3>
                         <ul className={'pl-2 flex flex-col gap-2'}>
                             <li>Унитаз - <strong>{acf.унитаз ? 'Есть' : 'Нету'}</strong></li>
@@ -427,7 +435,7 @@ export default function Post({post}) {
                             <li>Ванная раковина - <strong>{acf.ванная_раковина ? 'Есть' : 'Нет'}</strong></li>
                         </ul>
                     </Collaps>
-                    <Collaps isOpen={content5} onClose={() => setContent5(false)}>
+                    <Collaps isOpen={curDesc === 5}>
                         <h3 className={'font-bold text-xl mb-3'}>Водоснаюжение</h3>
                         <ul className={'pl-2 flex flex-col gap-2'}>
                             <li>Бак для воды - <strong>{acf.бак_для_воды ? 'Есть' : 'Нет'}</strong></li>
@@ -442,7 +450,7 @@ export default function Post({post}) {
                             <li>Слив воды из бойлера - <strong>{acf.слив_воды_из_бойлера}</strong></li>
                         </ul>
                     </Collaps>
-                    <Collaps isOpen={content6} onClose={() => setContent6(false)}>
+                    <Collaps isOpen={curDesc === 6}>
                         {dop ? <Dopy dopy={dop} compare={false}/> : ''}
                     </Collaps>
                 </section>

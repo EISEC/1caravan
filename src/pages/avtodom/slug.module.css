@@ -152,6 +152,11 @@
     height: auto !important;
 }
 
+.active {
+    background: #515A89;
+    color: white;
+}
+
 @media (max-width: 768px) {
     .glavnay_po_caravanu {
         display: grid;
