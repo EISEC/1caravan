@@ -2,20 +2,14 @@ import React, {useEffect, useRef, useState} from 'react';
 import cl from './Cards.module.css';
 import {motion} from "framer-motion";
 import {useAppSelector} from "@/store/store";
-import {useRouter} from 'next/router'
 
 import CardsItem from "@/components/Cards/CardsItem/CardsItem";
-import {useIsVisible} from "@/hooks/useIsVisible";
 
 // @ts-ignore
 const Cards = ({cards}) => {
     const {wishList} = useAppSelector(state => state.wishlist)
     //@ts-ignore
-
-
     const [isMobile, setIsMobile] = useState(false)
-
-    const router = useRouter()
 
     // @ts-ignore
     useEffect(() => {
@@ -53,18 +47,6 @@ const Cards = ({cards}) => {
             }
         }
     };
-
-    // const buttonMoreRef = useRef<HTMLButtonElement>(null)
-    // const isVisible = useIsVisible(buttonMoreRef)
-    //
-    // let homePage = '/'
-    //
-    // useEffect(() => {
-    //     if (isVisible && homePage !== router.pathname) {
-    //         onShowMore()
-    //     }
-    // }, [isVisible])
-    // ref={buttonMoreRef}
     return (
         <section className={`${cl.listavto} container px-6 mx-auto`}>
             <motion.ul

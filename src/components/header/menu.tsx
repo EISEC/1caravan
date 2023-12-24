@@ -61,7 +61,7 @@ const Menu = () => {
                         <li itemProp="itemListElement" itemScope="" itemType="https://schema.org/ItemList">
                             {/*// @ts-ignore*/}
                             <Link href={'/blog'} itemProp="url">
-                                Блог
+                                FAQ
                             </Link>
                             <meta itemProp="name" content="Блог"/>
                         </li>
@@ -124,7 +124,7 @@ const Menu = () => {
                         <li itemProp="itemListElement" itemScope="" itemType="https://schema.org/ItemList">
                             {/*// @ts-ignore*/}
                             <Link href={'/blog'} itemProp="url">
-                                Блог
+                                FAQ
                             </Link>
                             <meta itemProp="name" content="Блог"/>
                         </li>

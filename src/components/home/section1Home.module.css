@@ -12,8 +12,6 @@
 }
 
 .card_icon_fav {
-    background: linear-gradient(90deg, #EA511B 0%, #F78E69 96.98%);
-    color: #FFFFFF;
     height: 100%;
     width: 100%;
     display: flex;
@@ -38,14 +36,6 @@
     margin: 0;
     display: flex;
     align-items: center;
-}
-
-.iconca {
-    min-height: 138px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 6rem;
 }
 
 @media (max-width: 998px) {

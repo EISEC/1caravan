@@ -22,7 +22,6 @@ export default function Avtodom({doma, dom}) {
     useEffect(() => {
         setIsFound(filteredDoma.length === 0 ? false : true)
         for (let i = 0; i < filteredDoma.length; i++) {
-            // console.log(filteredDoma[i]['price'], '|', filteredDoma[i]['mass'], '|', filteredDoma[i]['dlina'])
         }
     }, [filteredDoma])
 
@@ -30,13 +29,13 @@ export default function Avtodom({doma, dom}) {
         <>
             <HeadTitle/>
             <Menu/>
-            <main className={'mt-[100px]'}>
+            <main className={'mt-[100px] container mx-auto'}>
                 {/*// @ts-ignore*/}
-                <Akciya akciya={dom[0]}/>
-                <div className="container mx-auto px-6">
+                {dom[0] ? <Akciya akciya={dom[0]}/> : ''}
+                <div className="container mx-auto px-2">
                     <ParamsFilter doma={doma} setFilteredDoma={setFilteredDoma} nameCurPage={useRouter().pathname}/>
                 </div>
-                <div className={'container mx-auto px-6'}>Нашлось {filteredDoma.length} караванов</div>
+                <div className={'container mx-auto px-8'}>Нашлось {filteredDoma.length} караванов</div>
                 {!!filteredDoma.length && (
                     <Cards cards={filteredDoma}/>
                 )}

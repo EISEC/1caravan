@@ -7,6 +7,7 @@ import CapHome from "@/components/home/capHome";
 import SectionTextHome from "@/components/home/sectionTextHome";
 import Footer from "@/components/footer/footer";
 import SectionQuiz from "@/components/home/sectionQuiz";
+import Otzivishki from "@/components/hero/otzivishki";
 
 
 // @ts-ignore
@@ -28,7 +29,7 @@ export default function Home({doma}) {
                 <CapHome/>
                 <Section1Home/>
 
-                <div className="container mx-auto px-6">
+                <div className="container mx-auto px-6 text-center">
                     <h2 className="ho2">Популярные караваны</h2>
                     <p className="po2">Самые просматриваемые караваны этой недели</p>
                 </div>
@@ -39,6 +40,7 @@ export default function Home({doma}) {
                         <h1>подождите, загружаем</h1>
                     </section>
                 )}
+                <Otzivishki/>
                 <SectionQuiz/>
                 <SectionTextHome/>
             </main>

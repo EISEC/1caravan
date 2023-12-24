@@ -27,26 +27,17 @@ const Akciya = ({akciya}) => {
             //@ts-ignore
             dispatch(AddWish({slug, title, price, img}))
             //@ts-ignore
-            // refCount.current.value = 1
-            // setShowToast((currVal) => !currVal)
-            // setTimeout(() => setShowToast(false), 3000)
         }
         //@ts-ignore
         const sendToComp = (slug, title, price, img) => {
             //@ts-ignore
             dispatch(AddComp({slug, title, price, img}))
-            //@ts-ignore
-            // refCount.current.value = 1
-            // setShowToast((currVal) => !currVal)
-            // setTimeout(() => setShowToast(false), 3000)
         }
         const [disableComp, setDisableComp] = useState(false)
         useEffect(() => {
-            // let disableList
             //@ts-ignore
             const FindComp = compareList.findIndex(list => list.slug === akciya.slug)
             // @ts-ignore
-            // setDisable(FindWish)
             if (FindComp === -1) {
                 setDisableComp(false)
             } else {
@@ -56,11 +47,9 @@ const Akciya = ({akciya}) => {
 
         const [disableList, setDisableList] = useState(false)
         useEffect(() => {
-            // let disableList
             //@ts-ignore
             const FindWish = wishList.findIndex(list => list.slug === akciya.slug)
             // @ts-ignore
-            // setDisable(FindWish)
             if (FindWish === -1) {
                 setDisableList(false)
             } else {

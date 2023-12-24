@@ -11,9 +11,9 @@ const CapHome = () => {
                 <div className={'container mx-auto px-6'}>
                     <h1 className={'text-white font-bold uppercase text-3xl sm:text-6xl mb-3'}>Самый большой <br/>парк
                         караванов</h1>
-                    <p className={'text-gray-300 text-md sm:text-lg'}>Продажа караванов, прицепов домов, <br/> кемперов
+                    <p className={'text-gray-300 text-md sm:text-lg'}>Продажа караванов, домов на колесах,<br/> кемперов, автодомов от
                         от 2000 до {god} года выпуска</p>
-                    <button className={'bg-orange-600 text-white px-6 py-3 text-xl font-bold rounded-lg'}>
+                    <button className={'bg-amber-500 text-white px-6 py-3 text-xl font-bold rounded-lg border-[1px] border-white'}>
                         Подобрать караван
                     </button>
                 </div>

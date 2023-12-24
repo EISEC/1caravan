@@ -74,7 +74,7 @@
 }
 
 .statusN {
-    background: linear-gradient(117.65deg, #1C8E00 19.25%, #D6F578 89.5%);
+    background: #1C8E00;
     color: #FFFFFF;
     display: inline-flex;
     align-items: center;
@@ -86,7 +86,7 @@
 }
 
 .statusP {
-    background: linear-gradient(135deg, #910000 0%, #F20000 100%);
+    background: #910000;
     color: #FFFFFF;
     display: inline-flex;
     align-items: center;
@@ -98,7 +98,7 @@
 }
 
 .statusZ {
-    background: linear-gradient(132.63deg, #DDC702 0.12%, #EDF578 96.78%);
+    background: #DDC702;
     display: inline-flex;
     align-items: center;
     justify-content: flex-start;
@@ -109,7 +109,7 @@
 }
 
 .statusV {
-    background: linear-gradient(117.65deg, #1C8E00 19.25%, #D6F578 89.5%);
+    background: #1C8E00;
     color: #FFFFFF;
     display: inline-flex;
     align-items: center;
@@ -121,7 +121,7 @@
 }
 
 .statusPZ {
-    background: linear-gradient(135deg, #828282 0%, #B3B3B3 100%);
+    background: #828282;
     color: #FFFFFF;
     display: inline-flex;
     align-items: center;

@@ -60,7 +60,7 @@ const Footer = () => {
                         </li>
                         <li>
                             <Link href={'/blog'}>
-                                Блог
+                                FAQ
                             </Link>
                         </li>
                     </ul>
