@@ -22,6 +22,7 @@ import {NextSeo, ProductJsonLd} from "next-seo";
 import {useRouter} from "next/router";
 import Quize from "@/components/Quize";
 
+
 // @ts-ignore
 export default function Post({post}) {
     const route = useRouter();
@@ -30,6 +31,7 @@ export default function Post({post}) {
     useEffect(() => {
         setIsMobile(window.matchMedia('(max-width: 600px)').matches)
     }, [])
+
 
     const [thumbsSwiper, setThumbsSwiper] = useState(null);
 
@@ -115,23 +117,7 @@ export default function Post({post}) {
     const [modalIsOpen, setModalIsOpen] = useState(false)
     const [modalQuiz, setModalQuiz] = useState(false)
 
-    const [content1, setContent1] = useState(false)
-    const [content2, setContent2] = useState(false)
-    const [content3, setContent3] = useState(false)
-    const [content4, setContent4] = useState(false)
-    const [content5, setContent5] = useState(false)
-    const [content6, setContent6] = useState(false)
-
     const [curDesc, setCurDesc] = useState(1)
-
-    // const CollapsContent = [
-    //     {text: setContent1(false), id: 1},
-    //     {text: setContent2(false), id: 2},
-    //     {text: setContent3(false), id: 3},
-    //     {text: setContent4(false), id: 4},
-    //     {text: setContent5(false), id: 5},
-    //     {text: setContent6(false), id: 6}
-    // ]
 
     const naruzha = {
         dlina: acf.длина_каравана,
@@ -343,7 +329,7 @@ export default function Post({post}) {
                                     <img src="/dlina.webp" alt="Чертеж каравана"/>
                                 </div>
                                 <div className={'flex flex-col items-center justify-center relative'}>
-                                    <img src="/shiry.webp" alt="Чертеж каравана"/>
+                                    <img src="/shiry.webp" className={'max-w-[260px]'} alt="Чертеж каравана"/>
                                     <div
                                         className={'shiran max-w-[240px] absolute text-center absolute bottom-0 w-full border-b-[1px] border-black'}>
                                         <span className={'absolute right-0 left-0 top-2'}>{naruzha.shirina} см</span>
