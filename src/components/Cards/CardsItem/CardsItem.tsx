@@ -3,11 +3,11 @@ import Link from "next/link";
 import Image from 'next/image'
 import cl from 'src/components/Cards/Cards.module.css';
 import {motion} from "framer-motion";
-import {FaHeart} from "react-icons/fa";
+import {FaHeart, FaRegTrashAlt} from "react-icons/fa";
 import {ImShuffle} from "react-icons/im";
 import {useAppDispatch, useAppSelector} from "@/store/store";
-import {AddWish} from "@/store/slice/wishlist";
-import {AddComp} from "@/store/slice/compare";
+import {AddWish, delWish} from "@/store/slice/wishlist";
+import {AddComp, delet} from "@/store/slice/compare";
 import Toast from "@/components/Toast/toast";
 import Ststus from "@/components/Cards/CardsItem/ststus";
 
@@ -28,6 +28,9 @@ const CardsItem = ({wishList, data}) => {
     const [click, setClick] = useState(false)
     setTimeout(() => setClick(false), 1000)
 
+    const [delclick, setDelclick] = useState(false)
+    setTimeout(() => setDelclick(false), 1000)
+
     //@ts-ignore
     const sendToCart = (slug, title, price, img) => {
         //@ts-ignore
@@ -42,6 +45,22 @@ const CardsItem = ({wishList, data}) => {
         //@ts-ignore
         setClick(true)
     }
+
+    //@ts-ignore
+    const deletCompare = (slug, title, price, img) => {
+        //@ts-ignore
+        dispatch(delet({slug, title, price, img}))
+        //@ts-ignore
+        setDelclick(true)
+    }
+    //@ts-ignore
+    const deletWish = (slug, title, price, img) => {
+        //@ts-ignore
+        dispatch(delWish({slug, title, price, img}))
+        //@ts-ignore
+        setDelclick(true)
+    }
+
     const [disableComp, setDisableComp] = useState(false)
     useEffect(() => {
         // let disableList
@@ -120,14 +139,17 @@ const CardsItem = ({wishList, data}) => {
                     </p>
                 </div>
                 <div className={'grid grid-cols-2 gap-2 py-2'}>
-                    <button disabled={disableComp}
-                            onClick={() => sendToComp(data.slug, data.title, data.price, data.img)}
-                            className={'flex flex-row border-blue-600 border-2 py-2 rounded items-center justify-center gap-2 disabled:bg-blue-200 disabled:text-white disabled:border-blue-200 disabled:cursor-no-drop transition hover:scale-90'}>
-                        {disableComp ? 'В Сравнении' : 'Сравнить'} <ImShuffle className={'text-blue-600'}/></button>
-                    <button disabled={disableList}
-                            onClick={() => sendToCart(data.slug, data.title, data.price, data.img)}
-                            className={'flex flex-row border-red-700 border-2 py-2 rounded items-center justify-center gap-2 disabled:bg-red-200 disabled:text-white disabled:border-red-200 disabled:cursor-no-drop transition hover:scale-90'}>
-                        {disableList ? 'В Избранном' : 'Изранное'}<FaHeart className={'text-red-700'}/></button>
+                    <button
+                        onClick={disableComp ? () => deletCompare(data.slug, data.title, data.price, data.img) : () => sendToComp(data.slug, data.title, data.price, data.img)}
+                        className={'flex flex-row border-blue-600 border-2 py-2 rounded items-center justify-center gap-2 disabled:bg-blue-200 disabled:text-white disabled:border-blue-200 disabled:cursor-no-drop transition hover:scale-90'}>
+                        {disableComp ? 'В Сравнении' : 'Сравнить'}{disableComp ?
+                        <FaRegTrashAlt className={'text-red-700'}/> :
+                        <ImShuffle className={'text-blue-600'}/>} </button>
+                    <button
+                        onClick={disableList ? () => deletWish(data.slug, data.title, data.price, data.img) : () => sendToCart(data.slug, data.title, data.price, data.img)}
+                        className={'flex flex-row border-red-700 border-2 py-2 rounded items-center justify-center gap-2 disabled:bg-red-200 disabled:text-white disabled:border-red-200 disabled:cursor-no-drop transition hover:scale-90'}>
+                        {disableList ? 'В Избранном' : 'Изранное'}{disableList ?
+                        <FaRegTrashAlt className={'text-red-700'}/> : <FaHeart className={'text-red-700'}/>}</button>
                 </div>
                 <Link href={{
                     pathname: "/avtodom/[...slug]",
@@ -137,7 +159,8 @@ const CardsItem = ({wishList, data}) => {
                     Подробнее
                 </Link>
             </div>
-            <Toast click={click}/>
+            <Toast click={click} text={'Добавлено'}/>
+            <Toast click={delclick} text={'Удалено'}/>
         </motion.li>
     )
 };

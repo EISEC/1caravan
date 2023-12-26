@@ -1,5 +1,4 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
-import {getLocalStore} from 'next-persist'
 
 
 export type WishItem = {
@@ -24,9 +23,10 @@ export const wishlistSlice = createSlice({
         AddWish: (state = initialState, action: PayloadAction<WishItem>) => {
             //@ts-ignore
             let idx = state.wishList.findIndex(el => el.slug === action.payload.slug)
-            if(idx === -1){
+            if (idx === -1) {
                 state.wishList.push(action.payload)
-            } if(idx > 0) {
+            }
+            if (idx > 0) {
 
             } else {
 
@@ -35,9 +35,15 @@ export const wishlistSlice = createSlice({
         clearWish: (state = initialState) => {
             state.wishList = []
         },
+        delWish: (state = initialState, action: PayloadAction<WishItem>) => {
+            //@ts-ignore
+            let idx = state.wishList.findIndex(el => el.slug === action.payload.slug)
+            // @ts-ignore
+            idx === 0 ? state.wishList.pop(action.payload) : ''
+        },
     },
 })
 
-export const {AddWish, clearWish} = wishlistSlice.actions
+export const {AddWish, clearWish, delWish} = wishlistSlice.actions
 
 export default wishlistSlice.reducer

@@ -4,7 +4,6 @@ import Head from "next/head";
 import cl from "./slug.module.css"
 import Footer from "@/components/footer/footer";
 import 'react-tabs/style/react-tabs.css';
-import Footcaravaan from "@/components/footer/footcaravaan";
 import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/navigation";
@@ -21,6 +20,12 @@ import Collaps from "@/components/Modal/Collaps";
 import {NextSeo, ProductJsonLd} from "next-seo";
 import {useRouter} from "next/router";
 import Quize from "@/components/Quize";
+import {AddWish, delWish} from "@/store/slice/wishlist";
+import {AddComp, delet} from "@/store/slice/compare";
+import {FaHeart, FaRegTrashAlt} from "react-icons/fa";
+import {ImShuffle} from "react-icons/im";
+import {useAppDispatch, useAppSelector} from "@/store/store";
+import Toast from "@/components/Toast/toast";
 
 
 // @ts-ignore
@@ -31,6 +36,13 @@ export default function Post({post}) {
     useEffect(() => {
         setIsMobile(window.matchMedia('(max-width: 600px)').matches)
     }, [])
+
+    // @ts-ignore
+    const {compareList} = useAppSelector(state => state.compare)
+    // @ts-ignore
+    const {wishList} = useAppSelector(state => state.wishlist)
+
+    const dispatch = useAppDispatch();
 
 
     const [thumbsSwiper, setThumbsSwiper] = useState(null);
@@ -123,6 +135,67 @@ export default function Post({post}) {
         dlina: acf.длина_каравана,
         shirina: acf.ширина_каравана_копия,
         visota: acf.высота_каравана_копия2
+    }
+
+    const [click, setClick] = useState(false)
+    setTimeout(() => setClick(false), 1000)
+
+    const [delclick, setDelclick] = useState(false)
+    setTimeout(() => setDelclick(false), 1000)
+
+    //@ts-ignore
+    const sendToCart = (slug, title, price, img) => {
+        //@ts-ignore
+        dispatch(AddWish({slug, title, price, img}))
+        //@ts-ignore
+        setClick(true)
+    }
+    //@ts-ignore
+    const sendToComp = (slug, title, price, img) => {
+        //@ts-ignore
+        dispatch(AddComp({slug, title, price, img}))
+        //@ts-ignore
+        setClick(true)
+    }
+
+    const [disableComp, setDisableComp] = useState(false)
+    useEffect(() => {
+        // let disableList
+        //@ts-ignore
+        const FindComp = compareList.findIndex(list => list.slug === post.slug)
+        // @ts-ignore
+        // setDisable(FindWish)
+        if (FindComp === -1) {
+            setDisableComp(false)
+        } else {
+            setDisableComp(true)
+        }
+    }, [compareList])
+
+    const [disableList, setDisableList] = useState(false)
+    useEffect(() => {
+        //@ts-ignore
+        const FindWish = wishList.findIndex(list => list.slug === post.slug)
+        // @ts-ignore
+        if (FindWish === -1) {
+            setDisableList(false)
+        } else {
+            setDisableList(true)
+        }
+    }, [wishList])
+    //@ts-ignore
+    const deletCompare = (slug, title, price, img) => {
+        //@ts-ignore
+        dispatch(delet({slug, title, price, img}))
+        //@ts-ignore
+        setDelclick(true)
+    }
+    //@ts-ignore
+    const deletWish = (slug, title, price, img) => {
+        //@ts-ignore
+        dispatch(delWish({slug, title, price, img}))
+        //@ts-ignore
+        setDelclick(true)
     }
 
     const bgInvert = (bol: boolean) => bol ? 'bg-[#515A89]' : ''
@@ -224,9 +297,20 @@ export default function Post({post}) {
                         <div className="btns mt-3 flex flex-col gap-2">
                             <button onClick={() => setModalIsOpen(true)}
                                     className={'px-6 w-full py-4 bg_green rounded-xl text-xl text-white hover:scale-90 transition'}>{knopka}</button>
-                            <button onClick={() => setModalQuiz(true)}
-                                    className={'px-6 w-full py-4 bg-[#908859] rounded-xl text-xl text-white hover:scale-90 transition'}>Подобрать
-                            </button>
+                            <div className={'grid grid-cols-2 gap-2 py-2'}>
+                                <button
+                                    onClick={disableComp ? () => deletCompare(post.slug, post.title, post.price, post.img) : () => sendToComp(post.slug, post.title, post.price, post.img)}
+                                    className={'flex flex-row border-blue-600 border-2 py-2 rounded items-center justify-center gap-2 disabled:bg-blue-200 disabled:text-white disabled:border-blue-200 disabled:cursor-no-drop transition hover:scale-90'}>
+                                    {disableComp ? 'В Сравнении' : 'Сравнить'}{disableComp ?
+                                    <FaRegTrashAlt className={'text-red-700'}/> :
+                                    <ImShuffle className={'text-blue-600'}/>} </button>
+                                <button
+                                    onClick={disableList ? () => deletWish(post.slug, post.title, post.price, post.img) : () => sendToCart(post.slug, post.title, post.price, post.img)}
+                                    className={'flex flex-row border-red-700 border-2 py-2 rounded items-center justify-center gap-2 disabled:bg-red-200 disabled:text-white disabled:border-red-200 disabled:cursor-no-drop transition hover:scale-90'}>
+                                    {disableList ? 'В Избранном' : 'Изранное'}{disableList ?
+                                    <FaRegTrashAlt className={'text-red-700'}/> :
+                                    <FaHeart className={'text-red-700'}/>}</button>
+                            </div>
                         </div>
                     </div>
                 </section>
@@ -514,11 +598,6 @@ export default function Post({post}) {
                         </button>
                     </div>
                 </section> : ''}
-                {!isMobile ? <Footcaravaan title={title}
-                                           price={getFormatPrice(getPriceWithAddons())}
-                                           img={glavFoto}
-                                           slug={post.slug}
-                                           openModal={() => setModalIsOpen(true)}/> : ''}
             </main>
             <Footer/>
 
@@ -542,6 +621,8 @@ export default function Post({post}) {
             <Modal isOpen={modalQuiz} onClose={() => setModalQuiz(false)}>
                 <Quize/>
             </Modal>
+            <Toast click={click} text={'Добавлено'}/>
+            <Toast click={delclick} text={'Удалено'}/>
         </>
     )
 }

@@ -1,5 +1,4 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
-import {getLocalStore} from 'next-persist'
 
 
 export type CompItem = {
@@ -24,9 +23,10 @@ export const compareSlice = createSlice({
         AddComp: (state = initialState, action: PayloadAction<CompItem>) => {
             //@ts-ignore
             let idx = state.compareList.findIndex(el => el.slug === action.payload.slug)
-            if(idx === -1){
+            if (idx === -1) {
                 state.compareList.push(action.payload)
-            } if(idx > 0) {
+            }
+            if (idx > 0) {
 
             } else {
 
@@ -35,9 +35,15 @@ export const compareSlice = createSlice({
         clearComp: (state = initialState) => {
             state.compareList = []
         },
+        delet: (state = initialState, action: PayloadAction<CompItem>) => {
+            //@ts-ignore
+            let idx = state.compareList.findIndex(el => el.slug === action.payload.slug)
+            // @ts-ignore
+            idx === 0 ? state.compareList.pop(action.payload) : ''
+        }
     },
 })
 
-export const {AddComp, clearComp} = compareSlice.actions
+export const {AddComp, clearComp, delet} = compareSlice.actions
 
 export default compareSlice.reducer
