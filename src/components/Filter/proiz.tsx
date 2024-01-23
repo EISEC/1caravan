@@ -35,7 +35,7 @@ export default function Proiz({data}) {
                             return (
                                 <Link
                                     key={e.slug}
-                                    className={'w-full text-center md:leading-[70px] text-white md:text-2xl font-extrabold bg-[#4B548D] rounded-lg'}
+                                    className={'w-full text-center md:leading-[70px] text-white md:text-2xl font-extrabold bg-[#0f0f1b] rounded-lg'}
                                     href={{
                                         pathname: "/proizvoditel/[...slug]",
                                         query: {

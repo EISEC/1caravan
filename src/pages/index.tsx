@@ -8,6 +8,7 @@ import SectionTextHome from "@/components/home/sectionTextHome";
 import Footer from "@/components/footer/footer";
 import SectionQuiz from "@/components/home/sectionQuiz";
 import Otzivishki from "@/components/hero/otzivishki";
+import Link from "next/link";
 
 
 // @ts-ignore
@@ -34,12 +35,17 @@ export default function Home({doma}) {
                     <p className="po2">Самые просматриваемые караваны этой недели</p>
                 </div>
                 {doma.length ? (
-                    <Cards cards={doma}/>
+                    <Cards cards={doma.slice(0, 6)}/>
                 ) : (
                     <section>
                         <h1>подождите, загружаем</h1>
                     </section>
                 )}
+                <section className={'container mx-auto px-6 flex items-center justify-center'}>
+                    <Link className={'text-lg bg-black text-white px-6 py-2 rounded-md'} href={'/catalog'}>
+                        Смотреть бльше
+                    </Link>
+                </section>
                 <Otzivishki/>
                 <SectionQuiz/>
                 <SectionTextHome/>

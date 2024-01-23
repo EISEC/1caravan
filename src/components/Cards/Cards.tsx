@@ -17,25 +17,6 @@ const Cards = ({cards}) => {
     }, [])
 
 
-    const [showCount, setShowCount] = useState(6)
-
-
-    // @ts-ignore
-    function getPartCards(arr) {
-        const curShowCount = showCount <= arr.length ? showCount : arr.length
-
-        return arr.slice(0, curShowCount)
-    }
-
-    function onShowMore() {
-        if (isMobile) {
-            setShowCount(prevState => prevState + 2)
-        } else {
-            setShowCount(prevState => prevState + 6)
-
-        }
-    }
-
     const container = {
         hidden: {opacity: 1, scale: 0},
         visible: {
@@ -56,19 +37,8 @@ const Cards = ({cards}) => {
                 animate="visible"
             >
                 {/*// @ts-ignore*/}
-                {getPartCards(cards).map(el => <CardsItem key={el.id} wishList={wishList} data={el}></CardsItem>)}
+                {cards.map(el => <CardsItem key={el.id} wishList={wishList} data={el}></CardsItem>)}
             </motion.ul>
-            {showCount <= cards.length ?
-                (
-                    <button className={`btn-green ${cl.mrgbt25} `}
-                            onClick={() => onShowMore()}>Загрузить
-                        больше</button>
-                ) :
-                (
-                    <p className={cl.mrgbt25}>Всё загружено</p>
-                )
-
-            }
         </section>
     );
 };

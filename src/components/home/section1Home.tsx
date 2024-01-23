@@ -10,12 +10,12 @@ const Section1Home = () => {
             <div className={cl.card_fav}>
                 {data.map(e => {
                     return (
-                        <div key={e.id} className={'flex flex-row justify-center items-center gap-2 p-[10px] rounded-[15px] border-[1px] border-[#FF9800]'}>
+                        <div key={e.id} className={'flex flex-col items-center gap-2 p-[10px] rounded-[15px] border-[1px] border-[#FF9800]'}>
                             <div className={'text-6xl items-center justify-center flex p-[10px] rounded-[15px] border-[1px]'}>
                                 {e.icon}
                             </div>
                             <div>
-                                <h3 className={'font-semibold'}>{e.title}</h3>
+                                <h3 className={'font-semibold text-center'}>{e.title}</h3>
                                 <p>{e.desc}</p>
                             </div>
                         </div>
