@@ -9,7 +9,7 @@ import Proiz from "@/components/Filter/proiz";
 import {useRouter} from "next/router";
 
 //@ts-ignore
-export default function Slug({doma, priz}) {
+export default function Slug({doma}) {
     //@ts-ignore
     const [filteredDoma, setFilteredDoma] = useState([])
     const [isFonud, setIsFound] = useState(true)
@@ -20,7 +20,7 @@ export default function Slug({doma, priz}) {
     }, [doma])
 
     useEffect(() => {
-        setItit(doma[0].proizvoditel[0])
+        setItit(doma[0]?.proizvoditel[0])
         setIsFound(filteredDoma.length === 0 ? false : true)
         for (let i = 0; i < filteredDoma.length; i++) {
 
@@ -39,7 +39,7 @@ export default function Slug({doma, priz}) {
             </Head>
             <Menu/>
             <main className={'mt-28'}>
-                <Proiz data={priz}/>
+                <Proiz/>
                 <ParamsFilter doma={filteredDoma} setFilteredDoma={setFilteredDoma} nameCurPage={useRouter().pathname}/>
 
                 <div className={'container mx-auto px-6'}>Нашлось {filteredDoma.length} караванов</div>
@@ -71,8 +71,7 @@ export default function Slug({doma, priz}) {
 // @ts-ignore
 export async function getServerSideProps({params}) {
     const {data: doma} = await axios.get(`https://1caravan.ru/wp-json/api/v2/doma/vse/${params.slug}`)
-    const {data: priz} = await axios.get('https://1caravan.ru/wp-json/api/v2/doma/proizvoditeli')
     return {
-        props: {doma, priz}, // will be passed to the page component as props
+        props: {doma}, // will be passed to the page component as props
     }
 }

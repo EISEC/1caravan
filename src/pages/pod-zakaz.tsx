@@ -37,7 +37,7 @@ export default function PodZakaz({doma, priz}) {
             </Head>
             <Menu/>
             <main className={'mt-28'}>
-                <Proiz data={priz}/>
+                <Proiz/>
                 <ParamsFilter doma={doma} setFilteredDoma={setFilteredDoma} nameCurPage={useRouter().pathname}/>
 
                 <div className={'container mx-auto px-6'}>Нашлось {filteredDoma.length} караванов</div>

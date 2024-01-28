@@ -43,7 +43,7 @@ export default function Home({doma}) {
                 )}
                 <section className={'container mx-auto px-6 flex items-center justify-center'}>
                     <Link className={'text-lg bg-black text-white px-6 py-2 rounded-md'} href={'/catalog'}>
-                        Смотреть бльше
+                        Посмотреть все предложения
                     </Link>
                 </section>
                 <Otzivishki/>
