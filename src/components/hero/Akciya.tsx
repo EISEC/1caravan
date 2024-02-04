@@ -1,12 +1,14 @@
 import React, {useEffect, useState} from 'react';
 import {useAppDispatch, useAppSelector} from "@/store/store";
-import {AddWish} from "@/store/slice/wishlist";
-import {AddComp} from "@/store/slice/compare";
+import {AddWish, delWish} from "@/store/slice/wishlist";
+import {AddComp, delet} from "@/store/slice/compare";
 import Image from "next/image";
 import Link from "next/link";
 import cl from "@/components/Cards/Cards.module.css";
-import {FaFilter, FaHeart} from "react-icons/fa";
+import {FaFilter, FaHeart, FaRegTrashAlt} from "react-icons/fa";
 import {motion} from "framer-motion";
+import {ImShuffle} from "react-icons/im";
+import Toast from "@/components/Toast/toast";
 
 //@ts-ignore
 const Akciya = ({akciya}) => {
@@ -22,16 +24,36 @@ const Akciya = ({akciya}) => {
             return formatPrice
         }
 
+        const [click, setClick] = useState(false)
+        setTimeout(() => setClick(false), 1000)
+        const [delclick, setDelclick] = useState(false)
+        setTimeout(() => setDelclick(false), 1000)
         //@ts-ignore
-        const sendToCart = (slug, title, price, img) => {
+        const sendToCart = (slug, title, price, img, status) => {
             //@ts-ignore
-            dispatch(AddWish({slug, title, price, img}))
+            dispatch(AddWish({slug, title, price, img, status}))
             //@ts-ignore
+            setClick(true)
         }
         //@ts-ignore
         const sendToComp = (slug, title, price, img) => {
             //@ts-ignore
             dispatch(AddComp({slug, title, price, img}))
+            setClick(true)
+        }
+        //@ts-ignore
+        const deletCompare = (slug, title, price, img) => {
+            //@ts-ignore
+            dispatch(delet({slug, title, price, img}))
+            //@ts-ignore
+            setDelclick(true)
+        }
+        //@ts-ignore
+        const deletWish = (slug, title, price, img, status) => {
+            //@ts-ignore
+            dispatch(delWish({slug, title, price, img, status}))
+            //@ts-ignore
+            setDelclick(true)
         }
         const [disableComp, setDisableComp] = useState(false)
         useEffect(() => {
@@ -218,14 +240,18 @@ const Akciya = ({akciya}) => {
                             {akciya.prices_sale ? getFormatPrice(akciya.prices_sale) : getFormatPrice(akciya.price)} ₽
                         </p>
                         <div className={'grid grid-cols-2 gap-2 py-2'}>
-                            <button disabled={disableComp}
-                                    onClick={() => sendToComp(akciya.slug, akciya.title, akciya.price, akciya.img)}
-                                    className={'flex flex-row border-blue-600 border-2 py-2 rounded items-center justify-center gap-2 disabled:bg-blue-200 disabled:text-white disabled:border-blue-200 disabled:cursor-no-drop'}>
-                                {disableComp ? 'В Сравнении' : 'Сравнить'} <FaFilter className={'text-blue-600'}/></button>
-                            <button disabled={disableList}
-                                    onClick={() => sendToCart(akciya.slug, akciya.title, akciya.price, akciya.img)}
-                                    className={'flex flex-row border-red-700 border-2 py-2 rounded items-center justify-center gap-2 disabled:bg-red-200 disabled:text-white disabled:border-red-200 disabled:cursor-no-drop'}>
-                                {disableList ? 'В Избранном' : 'Изранное'}<FaHeart className={'text-red-700'}/></button>
+                            <button
+                                onClick={disableComp ? () => deletCompare(akciya.slug, akciya.title, akciya.price, akciya.img) : () => sendToComp(akciya.slug, akciya.title, akciya.price, akciya.img)}
+                                className={'flex flex-row border-blue-600 border-2 py-2 rounded items-center justify-center gap-2 disabled:bg-blue-200 disabled:text-white disabled:border-blue-200 disabled:cursor-no-drop transition hover:scale-90'}>
+                                {disableComp ? 'В Сравнении' : 'Сравнить'}{disableComp ?
+                                <FaRegTrashAlt className={'text-red-700'}/> :
+                                <ImShuffle className={'text-blue-600'}/>}</button>
+                            <button
+                                onClick={disableList ? () => deletWish(akciya.slug, akciya.title, akciya.price, akciya.img, statusDom) : () => sendToCart(akciya.slug, akciya.title, akciya.price, akciya.img, statusDom)}
+                                className={'flex flex-row border-red-700 border-2 py-2 rounded items-center justify-center gap-2 disabled:bg-red-200 disabled:text-white disabled:border-red-200 disabled:cursor-no-drop transition hover:scale-90'}>
+                                {disableList ? 'В Избранном' : 'Изранное'}{disableList ?
+                                <FaRegTrashAlt className={'text-red-700'}/> :
+                                <FaHeart className={'text-red-700'}/>}</button>
                         </div>
                         <Link href={{
                             pathname: "avtodom/[...slug]",
@@ -235,6 +261,8 @@ const Akciya = ({akciya}) => {
                             Подробнее
                         </Link>
                     </div>
+                    <Toast click={click} text={'Добавлено'}/>
+                    <Toast click={delclick} text={'Удалено'}/>
                 </motion.li>
             </section>
         )

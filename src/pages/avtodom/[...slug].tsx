@@ -144,9 +144,9 @@ export default function Post({post}) {
     setTimeout(() => setDelclick(false), 1000)
 
     //@ts-ignore
-    const sendToCart = (slug, title, price, img) => {
+    const sendToCart = (slug, title, price, img, status) => {
         //@ts-ignore
-        dispatch(AddWish({slug, title, price, img}))
+        dispatch(AddWish({slug, title, price, img, status}))
         //@ts-ignore
         setClick(true)
     }
@@ -191,9 +191,9 @@ export default function Post({post}) {
         setDelclick(true)
     }
     //@ts-ignore
-    const deletWish = (slug, title, price, img) => {
+    const deletWish = (slug, title, price, img, status) => {
         //@ts-ignore
-        dispatch(delWish({slug, title, price, img}))
+        dispatch(delWish({slug, title, price, img, status}))
         //@ts-ignore
         setDelclick(true)
     }
@@ -305,7 +305,7 @@ export default function Post({post}) {
                                     <FaRegTrashAlt className={'text-red-700'}/> :
                                     <ImShuffle className={'text-blue-600'}/>} </button>
                                 <button
-                                    onClick={disableList ? () => deletWish(post.slug, post.title, post.price, post.img) : () => sendToCart(post.slug, post.title, post.price, post.img)}
+                                    onClick={disableList ? () => deletWish(post.slug, post.title, post.price, post.img, statusDom) : () => sendToCart(post.slug, post.title, post.price, post.img, statusDom)}
                                     className={'flex flex-row border-red-700 border-2 py-2 rounded items-center justify-center gap-2 disabled:bg-red-200 disabled:text-white disabled:border-red-200 disabled:cursor-no-drop transition hover:scale-90'}>
                                     {disableList ? 'В Избранном' : 'Изранное'}{disableList ?
                                     <FaRegTrashAlt className={'text-red-700'}/> :

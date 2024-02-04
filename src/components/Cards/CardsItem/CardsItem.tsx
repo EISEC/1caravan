@@ -32,9 +32,9 @@ const CardsItem = ({wishList, data}) => {
     setTimeout(() => setDelclick(false), 1000)
 
     //@ts-ignore
-    const sendToCart = (slug, title, price, img) => {
+    const sendToCart = (slug, title, price, img, status) => {
         //@ts-ignore
-        dispatch(AddWish({slug, title, price, img}))
+        dispatch(AddWish({slug, title, price, img, status}))
         //@ts-ignore
         setClick(true)
     }
@@ -54,9 +54,9 @@ const CardsItem = ({wishList, data}) => {
         setDelclick(true)
     }
     //@ts-ignore
-    const deletWish = (slug, title, price, img) => {
+    const deletWish = (slug, title, price, img, status) => {
         //@ts-ignore
-        dispatch(delWish({slug, title, price, img}))
+        dispatch(delWish({slug, title, price, img, status}))
         //@ts-ignore
         setDelclick(true)
     }
@@ -146,7 +146,7 @@ const CardsItem = ({wishList, data}) => {
                         <FaRegTrashAlt className={'text-red-700'}/> :
                         <ImShuffle className={'text-blue-600'}/>} </button>
                     <button
-                        onClick={disableList ? () => deletWish(data.slug, data.title, data.price, data.img) : () => sendToCart(data.slug, data.title, data.price, data.img)}
+                        onClick={disableList ? () => deletWish(data.slug, data.title, data.price, data.img, statusDom) : () => sendToCart(data.slug, data.title, data.price, data.img, statusDom)}
                         className={'flex flex-row border-red-700 border-2 py-2 rounded items-center justify-center gap-2 disabled:bg-red-200 disabled:text-white disabled:border-red-200 disabled:cursor-no-drop transition hover:scale-90'}>
                         {disableList ? 'В Избранном' : 'Изранное'}{disableList ?
                         <FaRegTrashAlt className={'text-red-700'}/> : <FaHeart className={'text-red-700'}/>}</button>

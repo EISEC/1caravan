@@ -6,6 +6,7 @@ export type WishItem = {
     img: string,
     price: any,
     title: string,
+    status: string,
 }
 
 export type wishListT = {
@@ -38,8 +39,10 @@ export const wishlistSlice = createSlice({
         delWish: (state = initialState, action: PayloadAction<WishItem>) => {
             //@ts-ignore
             let idx = state.wishList.findIndex(el => el.slug === action.payload.slug)
-            // @ts-ignore
-            idx === 0 ? state.wishList.pop(action.payload) : ''
+            if (idx >= 0) {
+                // @ts-ignore
+                state.wishList.splice(idx, 1)
+            }
         },
     },
 })

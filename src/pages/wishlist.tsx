@@ -1,11 +1,12 @@
 import React from 'react';
 import Menu from "@/components/header/menu";
-import CapHome from "@/components/home/capHome";
 import Footer from "@/components/footer/footer";
 import {useAppDispatch, useAppSelector} from "@/store/store";
-import {clearWish} from "@/store/slice/wishlist";
+import {clearWish, delWish} from "@/store/slice/wishlist";
 import Image from "next/image";
 import Link from "next/link";
+import {FaRegTrashAlt} from "react-icons/fa";
+import Ststus from "@/components/Cards/CardsItem/ststus";
 
 const Wishlist = () => {
     const dispatch = useAppDispatch()
@@ -15,6 +16,12 @@ const Wishlist = () => {
         const pRes = Number(price)
         const formatPrice = String(pRes).replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1 ");
         return formatPrice
+    }
+
+    //@ts-ignore
+    const deletWish = (slug, title, price, img, status) => {
+        //@ts-ignore
+        dispatch(delWish({slug, title, price, img, status}))
     }
 
     return (
@@ -34,18 +41,26 @@ const Wishlist = () => {
                             </div>
                             : wishList.map(el => {
                                 return (
-                                    <li className={'relative shadow-xl rounded-lg'} key={el.slug}>
+                                    <li className={'relative shadow-xl rounded-lg flex flex-row items-center justify-between gap-4 pr-4'}
+                                        key={el.slug}>
                                         <Link href={{
                                             pathname: "avtodom/[...slug]",
                                             query: {slug: el.slug},
                                         }}
-                                              className={'uppercase text-xl font-bold block grid grid-cols-3 rounded-lg items-center gap-2 content-between'}>
+                                              className={'uppercase text-xl font-bold rounded-lg items-center gap-2 content-between'}>
                                             <div className={'relative w-36 h-28'}>
                                                 <Image className={'rounded-xl'} src={el.img} alt={el.title} fill/>
                                             </div>
-                                            <h3 className={'px-4'}>{el.title}</h3>
-                                            <p className={'text-right px-4 mb-0'}>{getFormatPrice(el.price)} ₽</p>
                                         </Link>
+                                        <h3 className={'px-4 w-full'}>{el.title}</h3>
+                                        <div className={'min-w-[200px]'}>
+                                            <Ststus status={el.status}/>
+                                        </div>
+                                        <p className={'text-right text-md px-4 mb-0 min-w-[200px]'}>{getFormatPrice(el.price)} ₽</p>
+                                        <button
+                                            onClick={() => deletWish(el.slug, el.title, el.price, el.img, el.status)}
+                                            className={'flex flex-row border-red-700 border-2 p-2 rounded items-center justify-center gap-2 disabled:bg-red-200 disabled:text-white disabled:border-red-200 disabled:cursor-no-drop transition hover:scale-90'}>
+                                            <FaRegTrashAlt className={'text-red-700'}/></button>
                                     </li>
                                 )
 

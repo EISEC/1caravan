@@ -38,8 +38,10 @@ export const compareSlice = createSlice({
         delet: (state = initialState, action: PayloadAction<CompItem>) => {
             //@ts-ignore
             let idx = state.compareList.findIndex(el => el.slug === action.payload.slug)
-            // @ts-ignore
-            idx === 0 ? state.compareList.pop(action.payload) : ''
+            if (idx >= 0) {
+                // @ts-ignore
+                state.compareList.splice(idx, 1)
+            }
         }
     },
 })

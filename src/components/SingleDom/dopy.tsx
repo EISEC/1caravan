@@ -6,10 +6,10 @@ const Dopy = ({dopy, compare}) => {
         //@ts-ignore
         return dopy ? dopy.map((el, index) => {
             return (
-                <li className={'pt-1 leading-1'} key={el.наименование_характеристики}>
+                <td className={'pt-1 leading-1'} key={el.наименование_характеристики}>
                     <b>{index + 1})</b> {el.наименование_характеристики}
                     {el.значение_характеристики ? '- <strong>{el.значение_характеристики}</strong>' : ''}
-                </li>
+                </td>
             )
         }) : ''
 
@@ -20,10 +20,10 @@ const Dopy = ({dopy, compare}) => {
                 {/*//@ts-ignore}*/}
                 {dopy ? dopy.map(el => {
                     return (
-                        <li key={el.наименование_характеристики}>
+                        <td key={el.наименование_характеристики}>
                             {el.наименование_характеристики}
                             {el.значение_характеристики ? '- <strong>{el.значение_характеристики}</strong>' : ''}
-                        </li>
+                        </td>
                     )
                 }) : ''}
             </ul>
