@@ -4,8 +4,8 @@ import Footer from "@/components/footer/footer";
 import {useAppDispatch, useAppSelector} from "@/store/store";
 import React, {useEffect, useState} from "react";
 import axios from "axios";
-import CopmareCards from "@/components/Cards/CopmareCards";
 import Link from "next/link";
+import TabelComapareFunction from "@/components/tabelComapareFunction";
 
 const Compare = () => {
     const dispatch = useAppDispatch()
@@ -39,33 +39,18 @@ const Compare = () => {
             // @ts-ignore
             setCaravans(current => [...current, caravan.data[0]])
         })
-    }, [])
+    }, [compareList])
 
     useEffect(() => {
         if (compareList.length === 0) setCaravans([])
     }, [compareList])
-    console.log(caravans)
     return (
         <>
             <Menu/>
             <main className={'mt-28'}>
                 <section className="container mx-auto py-5 px-2">
                     <h1 className={'font-medium text-4xl mb-8'}>Сравнение</h1>
-                    <table className={'block overflow-x-auto'}>
-                        <tbody>
-                        <tr className={'flex gap-2'}>
-                            {/*//@ts-ignore*/}
-                            {!caravans.length ? loadingData(compareList.length) : caravans.map((el, idx) => {
-                                return (
-                                    // @ts-ignore
-                                    <td className={'w-[375px]'} key={el.id}>
-                                        <CopmareCards el={el}/>
-                                    </td>
-                                )
-                            })}
-                        </tr>
-                        </tbody>
-                    </table>
+                    {!caravans.length ? loadingData(compareList.length) : <TabelComapareFunction arr={caravans}/>}
                     {/*//@ts-ignore*/}
                     {compareList.length === 0 ? '' : <button onClick={() => dispatch(clearComp())}
                                                              className="text-white bg-red-700 px-5 py-2 rounded shadow-xl my-4">
