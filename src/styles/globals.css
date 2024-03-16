@@ -253,8 +253,8 @@ p b {
     box-sizing: border-box
 }
 
-.piframe .badge{
-    max-width: 100%!important;
+.piframe .badge {
+    max-width: 100% !important;
 }
 
 .piotzovi {
@@ -263,7 +263,6 @@ p b {
     color: #b3b3b3;
     font-size: 10px;
     font-family: YS Text, sans-serif;
-    padding: 0 20px;
     position: absolute;
     bottom: 8px;
     width: 100%;
@@ -275,5 +274,17 @@ p b {
     max-height: 14px;
     white-space: nowrap;
     padding: 0 16px;
-    box-sizing: border-box
+}
+
+.swiper-slide {
+    /*display: none!important;*/
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    justify-content: center;
+    align-items: center;
+}
+
+.swiper-slide .active{
+    display: block!important;
 }

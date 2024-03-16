@@ -1,0 +1,1017 @@
+{
+  "entries": [
+    {
+      "type": "score",
+      "value": {
+        "score": 5,
+        "scoreFloat": 4.9,
+        "reviewCount": 53,
+        "ratingStat": [
+          {
+            "score": 5,
+            "title": "51",
+            "count": 51
+          },
+          {
+            "score": 4,
+            "title": "1",
+            "count": 1
+          },
+          {
+            "score": 3,
+            "title": "0",
+            "count": 0
+          },
+          {
+            "score": 2,
+            "title": "0",
+            "count": 0
+          },
+          {
+            "score": 1,
+            "title": "1",
+            "count": 1
+          }
+        ],
+        "title": "Отличный продавец",
+        "subtitle": "на основании 53 оценок",
+        "ratingAction": {
+          "title": "Оставить отзыв",
+          "description": "Рейтинг — это среднее арифметическое оценок пользователей.",
+          "link": {
+            "title": "Подробнее",
+            "url": "https://support.avito.ru/articles/1092"
+          },
+          "uri": "/user/review?fid=789cfa6ab68b67da932bd7f686d76e6fb7f9710e100000ffff524c09e7"
+        }
+      }
+    },
+    {
+      "type": "searchParameters",
+      "value": {
+        "sort": {
+          "paramName": "sortRating",
+          "selectedOption": "date_desc",
+          "updateLabel": "Сначала",
+          "options": [
+            {
+              "value": "date_desc",
+              "label": "Сначала новые"
+            },
+            {
+              "value": "date_asc",
+              "label": "Сначала старые"
+            },
+            {
+              "value": "score_desc",
+              "label": "Сначала положительные"
+            },
+            {
+              "value": "score_asc",
+              "label": "Сначала отрицательные"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "rating",
+      "value": {
+        "title": "Сергей",
+        "avatar": "https://static.avito.ru/stub_avatars/%D0%A1/4_256x256.png",
+        "rated": "8 февраля",
+        "itemTitle": "Прицеп-дача Swift Challenger, 2010",
+        "stageTitle": "Сделка состоялась",
+        "textSections": [
+          {
+            "title": "Комментарий",
+            "text": "Долго искали свой караван и решили обратиться в первый караван, в итоге сделкой остались очень довольны!\nПарни любезные, дружелюбные, клиентооринтриентированый подход.\nУступили в цене и без подарков не оставили. Все подробно рассказали, показали, научили. Какие-то мелкие недочеты устранили на месте перед дальней дорогой.\nМолодцом, так держать!"
+          }
+        ],
+        "id": 197968145,
+        "score": 5,
+        "images": [
+          {
+            "256x192": "https://50.img.avito.st/image/1/1.srOEs7a5tAcwkBjYMc7tiKWsHVg2Fh7YNpAfWDYGGlg.ESu5mk_T9XLUoJgo4QgMtYdeSbRrM5ce3RVG06SR5BQ",
+            "1280x960": "https://50.img.avito.st/image/1/1.srOEs7a5tAcwkAjYPc7tiKWsHVg2Fh7YJpATWDYGGlg.zYPJ29EAaGl3XA9ydo6OImJGJzy0pa_IptHTVeaZf7I",
+            "180x135": "https://50.img.avito.st/image/1/1.srOEs7a5tAcw-B7WMM7tiKWsHVg2Fh6wMJ4eWDYGGlg.q8FZkYBbrY1jWIkXGSd3s-ucBd-ZLAFr7N7mk3ht3ck",
+            "640x480": "https://50.img.avito.st/image/1/1.srOEs7a5tAcwkBaYNc7tiKWsHVg2Fh7YONAbWDYGGlg.CcyZZR6__UqLv1D6PGHQ_-kViDfgTHJxodnzZjTMszc",
+            "originalSize": {
+              "width": 1280,
+              "height": 576
+            }
+          },
+          {
+            "1280x960": "https://60.img.avito.st/image/1/1.pmiXpra5oNwjhRwDLvP5U7a5CYMlAwoDNYUHgyUTDoM.jus5bLef5drhWWkAG2lpblfTaw8qKE_tfMJrQRPWwpw",
+            "256x192": "https://60.img.avito.st/image/1/1.pmiXpra5oNwjhQwDIvP5U7a5CYMlAwoDJYULgyUTDoM.imfVBpnVp2oOHrv3HQpQkfZ1FqqAspz-DGJtFgcumpU",
+            "180x135": "https://60.img.avito.st/image/1/1.pmiXpra5oNwj7QoNI_P5U7a5CYMlAwprI4sKgyUTDoM.ogv_efK_vnhodF7m07DpZjvLvwnrlg-MM07fZjUibGI",
+            "640x480": "https://60.img.avito.st/image/1/1.pmiXpra5oNwjhQJDJvP5U7a5CYMlAwoDK8UPgyUTDoM.hORt27M3yjm8-iaItSg2u6bHPE4CX8ln6u7bQ2tL2hk",
+            "originalSize": {
+              "width": 1280,
+              "height": 576
+            }
+          },
+          {
+            "180x135": "https://10.img.avito.st/image/1/1.qSomoba5r56S6gVPkuryEQe-BsGUBAUpkowFwZQUAcE.vhNXABMWHVLO80sdzImq-IZH0GKAuc4IZJaA6ad3k3Q",
+            "1280x960": "https://10.img.avito.st/image/1/1.qSomoba5r56SghNBn-ryEQe-BsGUBAVBhIIIwZQUAcE.AceCAVccWsGzrJF-QMsgfypxoaaxdX9V7LyPoOWm0fo",
+            "640x480": "https://10.img.avito.st/image/1/1.qSomoba5r56Sgg0Bl-ryEQe-BsGUBAVBmsIAwZQUAcE.46qaISoApMcnZgPTlYyBg9C0j-v_foaT1Jr2jsnkGtQ",
+            "256x192": "https://10.img.avito.st/image/1/1.qSomoba5r56SggNBk-ryEQe-BsGUBAVBlIIEwZQUAcE.SNr8mRpkJACrK-BrFHPhutgYGTXu_dZ6jhR98V6AR7k",
+            "originalSize": {
+              "width": 1280,
+              "height": 576
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "rating",
+      "value": {
+        "title": "Андрей",
+        "avatar": "https://static.avito.ru/stub_avatars/%D0%90/4_256x256.png",
+        "rated": "30 января",
+        "itemTitle": "Прицеп-дача Swift Charisma, 2009",
+        "stageTitle": "Сделка состоялась",
+        "textSections": [
+          {
+            "title": "Комментарий",
+            "text": "Покупаем в 1 Караване уже второй свой домик на колёсах. Всё как всегда на высоте! Удобные тёплые  ангары в которых можно осмотреть караваны со всех сторон включая крышу,   отвечают на любые вопросы, сервис на уровне! Видно что ребята развиваются, так держать!\nОтдельное спасибо Ивану за отличный домик.\nМарку за классный обзор и презентацию каравана .\nИ конечно же Артёму который передавал мне дом , проконсультировал по всем системам, ответил на все вопросы , всё подключил, запустил, проверил-просто молодец! \nТак держать, 5 баллов!"
+          }
+        ],
+        "id": 196033537,
+        "score": 5,
+        "images": [
+          {
+            "1280x960": "https://30.img.avito.st/image/1/1.d4ngJ7a5cT1UBM3iWVAn8Ys-2GJSgtviQgTWYlKS32I.6bbTRYv1TuAiSELRFWbSTxtmapHM8abIVPBmu-kEqeE",
+            "180x135": "https://30.img.avito.st/image/1/1.d4ngJ7a5cT1UbNvsVFAn8Ys-2GJSgtuKVArbYlKS32I.g3vnzdVbiXBbYmKQMfotiPZDDVWdaTeUTkKPGhgEaUU",
+            "640x480": "https://30.img.avito.st/image/1/1.d4ngJ7a5cT1UBNOiUVAn8Ys-2GJSgtviXETeYlKS32I.B0B2AwmBQbb8IwvkKbNyyof0SZYvFfLHppHnrdoE7yM",
+            "256x192": "https://30.img.avito.st/image/1/1.d4ngJ7a5cT1UBN3iVVAn8Ys-2GJSgtviUgTaYlKS32I.X3M4H4PK8meQhOOyyd0w1TrGCt2C1R2RkuwNPD6DGyw",
+            "originalSize": {
+              "width": 1280,
+              "height": 960
+            }
+          },
+          {
+            "1280x960": "https://00.img.avito.st/image/1/1.7ONyDra56lfGLVaIy0--mxkXQwjAq0CI0C1NCMC7RAg.3u0QtuhSpD1o8aPalLmcQHgy_dy3o4oEqgcBD2pskzY",
+            "180x135": "https://00.img.avito.st/image/1/1.7ONyDra56lfGRUCGxk--mxkXQwjAq0DgxiNACMC7RAg.09hi8Bq_7t_B4iQK00N6onERuX41BE8IzfGpxthhy_E",
+            "640x480": "https://00.img.avito.st/image/1/1.7ONyDra56lfGLUjIw0--mxkXQwjAq0CIzm1FCMC7RAg.8kJg5-czOzOmrXcCWQKI4NHAFsybP7xE0KTC_M3ryD0",
+            "256x192": "https://00.img.avito.st/image/1/1.7ONyDra56lfGLUaIx0--mxkXQwjAq0CIwC1BCMC7RAg.jSoPEC4uyk3hVYM9_CYt4RkxZX6mLuq9Bp_jHs3MOuE",
+            "originalSize": {
+              "width": 921,
+              "height": 960
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "rating",
+      "value": {
+        "title": "Михаил",
+        "avatar": "https://90.img.avito.st/image/1/1.uSEnlra1A8gRMZfOWezNVx80F8iZPZfOETEXyg.8GkRaatsaKjZD9iyrmPcIKTdXBoxMxrxEJKMs03k0j0",
+        "rated": "5 января",
+        "itemTitle": "Прицеп-дача Swift Freestyle, 2010",
+        "stageTitle": "Сделка состоялась",
+        "textSections": [
+          {
+            "title": "Комментарий",
+            "text": "Марк лучший! Приятный в общении , внимательный, без него «Первый Караван» не был бы Первым! Приедем обязательно за своим прицепом) Спасибо тебе 🤝"
+          }
+        ],
+        "id": 190459505,
+        "score": 5,
+        "images": [
+          {
+            "180x135": "https://10.img.avito.st/image/1/1.gcXjDLa5h3FXRy2gVxeivdAYLi5RqS3GVyEtLlG5KS4.ZM85_eKgIjDrKnMxpD7QaTz1XT2vyAidFH17xxfV7ZA",
+            "640x480": "https://10.img.avito.st/image/1/1.gcXjDLa5h3FXLyXuUheivdAYLi5RqS2uX28oLlG5KS4.71p3vPVoPnYjmKlUG_C2etUpjX7Ab88NyX2w8cPB1_Y",
+            "256x192": "https://10.img.avito.st/image/1/1.gcXjDLa5h3FXLyuuVheivdAYLi5RqS2uUS8sLlG5KS4.T49jxmuCwVKds14C0mB76TfpBEgkX6vRhxlLjh_n3HE",
+            "1280x960": "https://10.img.avito.st/image/1/1.gcXjDLa5h3FXLzuuWheivdAYLi5RqS2uQS8gLlG5KS4.N44UWAOkOWUPCYz0opxjB5DrNCNFiTayHQ9Ldhh00o4",
+            "originalSize": {
+              "width": 1280,
+              "height": 960
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "rating",
+      "value": {
+        "title": "Ludmila",
+        "avatar": "https://static.avito.ru/stub_avatars/L/11_256x256.png",
+        "rated": "29 ноября 2023",
+        "itemTitle": "Прицеп-дача ACE Jubilee, 2008",
+        "stageTitle": "Сделка состоялась",
+        "textSections": [
+          {
+            "title": "Комментарий",
+            "text": "Мы объездили немало мест перед тем, как попали в Первый караван. Были и в Краснодарском крае, и в Пскове. И очень рады, что нашли свой караван именно у этих ребят. Они знают свое дело, рассказывают и показывают все от и до. Для новичков это очень важно. Караван супер, планировкой довольны на 100%. Нам установили бак для воды, объяснили, как пользоваться всем, необходимым для использования трейлера. Менеджер Марк несколько раз показывал нам его и спокойно, терпеливо разжевывал и объяснял все нюансы)) Техник Игорь также рассказал и напомнил, как пользоваться бойлером, когда мы уже были в Волгограде. Сервисом очень довольны"
+          }
+        ],
+        "id": 181830769,
+        "score": 5,
+        "images": [
+          {
+            "180x135": "https://50.img.avito.st/image/1/1.2m0WYLa53NmiK3YIok3gLk9ydYakxXZuok12hqTVcoY.QylQjbMvjcrorbUAr4G6c-QSRvA6w4ENuVvEx62IKzo",
+            "640x480": "https://50.img.avito.st/image/1/1.2m0WYLa53NmiQ35Gp03gLk9ydYakxXYGqgNzhqTVcoY.Qqd2RqmNckpOj8xKbeC7oMifzH6_hHJRcImll2Mf4U0",
+            "1280x960": "https://50.img.avito.st/image/1/1.2m0WYLa53NmiQ2AGr03gLk9ydYakxXYGtEN7hqTVcoY.9vd2OZkyRcbSPXk0Vho89ieTFGlFVi8spfM80HcBAfQ",
+            "256x192": "https://50.img.avito.st/image/1/1.2m0WYLa53NmiQ3AGo03gLk9ydYakxXYGpEN3hqTVcoY.gJjpVzy00YTbTeVlYs7UJfit8Rsz_SNh9qzg8JfKwTc",
+            "originalSize": {
+              "width": 1280,
+              "height": 720
+            }
+          },
+          {
+            "180x135": "https://20.img.avito.st/image/1/1.Rs_cr7a5QHto5OqqaLoOjIW96SRuCurMaILqJG4a7iQ.om1L9MMWpqVz0lJFfnhDlImLC37ru30VNrAhUBzINDs",
+            "640x480": "https://20.img.avito.st/image/1/1.Rs_cr7a5QHtojOLkbboOjIW96SRuCuqkYMzvJG4a7iQ.nQY0IdoB17pYtN063lpxPFdQ-dSDCfVKTGncW_PqnVo",
+            "256x192": "https://20.img.avito.st/image/1/1.Rs_cr7a5QHtojOykaboOjIW96SRuCuqkbozrJG4a7iQ.cJe4nCg4XJRhUcQG_bS_gjk5wjxsJZMGxhxI1GzycwA",
+            "1280x960": "https://20.img.avito.st/image/1/1.Rs_cr7a5QHtojPykZboOjIW96SRuCuqkfoznJG4a7iQ.TUbCTlN37b3kV4hEtSF5lyGAZfdzM7MntreqqeAoKJs",
+            "originalSize": {
+              "width": 720,
+              "height": 960
+            }
+          },
+          {
+            "1280x960": "https://80.img.avito.st/image/1/1.6DE1qra57oWBiVJajOOucmy4R9qHD0Ral4lJ2ocfQNo.lx0vlFCxELcrFiECIGptzI1BMIuna1ibF0EBnCP8dXo",
+            "180x135": "https://80.img.avito.st/image/1/1.6DE1qra57oWB4URUgeOucmy4R9qHD0QygYdE2ocfQNo.8WfeebMSUFevWG8Eb1aq-fVLgxKBX-DD_6XErykvqj0",
+            "640x480": "https://80.img.avito.st/image/1/1.6DE1qra57oWBiUwahOOucmy4R9qHD0RaiclB2ocfQNo.03uvF-GME1ofi0C8Md1F9D1sPu2nvkSYkRx2De4otv4",
+            "256x192": "https://80.img.avito.st/image/1/1.6DE1qra57oWBiUJagOOucmy4R9qHD0Rah4lF2ocfQNo.IqVDE3nC1A1jF1PkqZsHpqjm7smfXnQeErJ_8MGjW5I",
+            "originalSize": {
+              "width": 720,
+              "height": 960
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "rating",
+      "value": {
+        "title": "Виталик Остапенко",
+        "avatar": "https://40.img.avito.st/image/1/1.vZ7Cdba2B3f00pNxtBuM0z3WEX18Vhf1cNYT.Y3fEWjtVA0c62LZdgJflwJs03arjZlMEwDzBDJZkDnc",
+        "rated": "22 ноября 2023",
+        "itemTitle": "Прицеп-дача Bailey Unicorn, 2014",
+        "stageTitle": "Сделка состоялась",
+        "textSections": [
+          {
+            "title": "Комментарий",
+            "text": "Дом мечты"
+          }
+        ],
+        "id": 180078433,
+        "score": 5,
+        "images": [
+          {
+            "1280x960": "https://00.img.avito.st/image/1/1.Jx10Iba5IanAAp12zXYSNBkyiPbGhIt21gKG9saUj_Y.36AazSz0trDupYWiewhWWOL6wEP55S_IlHJvToWOyj8",
+            "640x480": "https://00.img.avito.st/image/1/1.Jx10Iba5IanAAoM2xXYSNBkyiPbGhIt2yEKO9saUj_Y.8-sCjqW0EbW9cjukPnsTPCWcVmjz7pcLYsFB7KZ-1vI",
+            "256x192": "https://00.img.avito.st/image/1/1.Jx10Iba5IanAAo12wXYSNBkyiPbGhIt2xgKK9saUj_Y.hE4Z9EhiNX7PiSx0tt5RUlW7JlR4-vi86YdaYW8O2HY",
+            "180x135": "https://00.img.avito.st/image/1/1.Jx10Iba5IanAaot4wHYSNBkyiPbGhIsewAyL9saUj_Y.bWqb4DR0VNz8P1sAMf1HzL0jpqN7j80sulUOWYXyfoE",
+            "originalSize": {
+              "width": 1280,
+              "height": 576
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "rating",
+      "value": {
+        "title": "Елена",
+        "avatar": "https://80.img.avito.st/image/1/1.wP10yLa2ehRCb-4SePPFw_9rbB7K62qWxmtu.fxHDbwgMXZLxzK0XvkoQriboscjgB_LF9s9ktXe0mhI",
+        "rated": "19 ноября 2023",
+        "itemTitle": "Прицеп-дача Sterling Europa, 2010",
+        "stageTitle": "Сделка состоялась",
+        "textSections": [
+          {
+            "title": "Комментарий",
+            "text": "Спасибо за наш автодом🥰\nМы из Москвы , нашли на Авито автодом, Марк по телефону все подробно объяснил , прислал фотки \nМы решили сами съездить в Питер и посмотреть его, как раз были там дела\n( хотя можно было все оформить удаленно)\nНа месте нам провели показ и подробно все рассказали и показали как и чем пользоваться \nАвтодом нам доставили до Москвы , спасибо за оперативность  и аккуратность\nЕще мне нравится , что если есть какой то вопрос ты можешь позвонить и тебя проконсультируют и все подробно расскажут🥰\nНаш автодом просто в идеальном состоянии, как будто им никто и не пользовался)\nСпасибо за нашу мечту❤️"
+          }
+        ],
+        "id": 179356993,
+        "score": 5,
+        "images": [
+          {
+            "1280x960": "https://60.img.avito.st/image/1/1.RmvT2La5QN9n-_wAas0eFf3L6YBhfeoAcfvngGFt7oA.DYHWsj9UZfYdqiaa2d8fDOdCNKokgWO5bw8XvNuaXQ8",
+            "180x135": "https://60.img.avito.st/image/1/1.RmvT2La5QN9nk-oOZ80eFf3L6YBhfepoZ_XqgGFt7oA.XiGxAqk8hdKjlF_lmXKpy-oeNHwu4_cUnJxnJJAi2Ng",
+            "640x480": "https://60.img.avito.st/image/1/1.RmvT2La5QN9n--JAYs0eFf3L6YBhfeoAb7vvgGFt7oA.hT0AjspFhr-5PVSGi3NXbnsvZmyx3qMUfWQJGuBHQSc",
+            "256x192": "https://60.img.avito.st/image/1/1.RmvT2La5QN9n--wAZs0eFf3L6YBhfeoAYfvrgGFt7oA.3Ha0KoPsITH_ElT4f3URQi_GTEwQ9h4i_dflkGvUa8I",
+            "originalSize": {
+              "width": 720,
+              "height": 960
+            }
+          },
+          {
+            "256x192": "https://70.img.avito.st/image/1/1.mrwOpba5nAi6hjDXu4jBwiC2NVe8ADbXvIY3V7wQMlc.YOk6JM_C5Bt0vHHuQPWkEewbGSL3YesU3LjY_1Llcdc",
+            "1280x960": "https://70.img.avito.st/image/1/1.mrwOpba5nAi6hiDXt4jBwiC2NVe8ADbXrIY7V7wQMlc.A6wtneQvQsb3PnQUfWZNrgoxkpgzLimiFUddplXu9ik",
+            "180x135": "https://70.img.avito.st/image/1/1.mrwOpba5nAi67jbZuojBwiC2NVe8ADa_uog2V7wQMlc.hg95Gj9E66EQ6kFJg2nFLG86rzsflKtaG4iIFj2jFTY",
+            "640x480": "https://70.img.avito.st/image/1/1.mrwOpba5nAi6hj6Xv4jBwiC2NVe8ADbXssYzV7wQMlc.Zjj-p39OLKNRTVvFjgg911A4yM25o83q7IJ3W1Msyc4",
+            "originalSize": {
+              "width": 720,
+              "height": 960
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "rating",
+      "value": {
+        "title": "Александр",
+        "avatar": "https://static.avito.ru/stub_avatars/%D0%90/12_256x256.png",
+        "rated": "5 ноября 2023",
+        "itemTitle": "Прицеп-дача Bailey Senator California, 2009",
+        "stageTitle": "Сделка состоялась",
+        "textSections": [
+          {
+            "title": "Комментарий",
+            "text": "Все отлично!Купили караван остались довольны и покупкой и сервисом."
+          }
+        ],
+        "id": 175768737,
+        "score": 5
+      }
+    },
+    {
+      "type": "rating",
+      "value": {
+        "title": "Олег",
+        "avatar": "https://static.avito.ru/stub_avatars/%D0%9E/15_256x256.png",
+        "rated": "5 октября 2023",
+        "itemTitle": "Прицеп-дача Swift Charisma, 2011",
+        "stageTitle": "Сделка состоялась",
+        "textSections": [
+          {
+            "title": "Комментарий",
+            "text": "Наверное самый большой в РФ салон по продаже , автодомов и караванов. Опытные менеджеры. менеджер Марк профессионально , технично описал работу и достоинства каравана  Swift Challanger, который я и купил.\nТак же грамотно Марк рассказал про дополнительное оборудование, и все варианты комплектации. Спасибо 1му Каравану и Марку  за помощь в приобретении мечты."
+          }
+        ],
+        "id": 167773585,
+        "score": 5
+      }
+    },
+    {
+      "type": "rating",
+      "value": {
+        "title": "Петр",
+        "avatar": "https://static.avito.ru/stub_avatars/%D0%9F/5_256x256.png",
+        "rated": "3 октября 2023",
+        "itemTitle": "Прицеп-дача Sterckeman Starlett Comfort, 2007",
+        "stageTitle": "Сделка состоялась",
+        "textSections": [
+          {
+            "title": "Комментарий",
+            "text": "Спасибо Первому каравану и лично Марку за наш новый домик! Все прошло отлично,  нам показали и рассказали все технические моменты (за что отдельное спасибо Роману, как профессионалу). Помогли с постановкой на учет. Уже пригнали прицеп домой, уже ждем путешествий...))"
+          }
+        ],
+        "id": 167175953,
+        "score": 5,
+        "images": [
+          {
+            "180x135": "https://20.img.avito.st/image/1/1.CIIrnra5Djaf1aTnn5cFhzWVp2mZO6SBn7OkaZkroGk.M-4opjG_2LFXooiqOdGn2iK1PxnE2W_W7LMe6DoQ58I",
+            "640x480": "https://20.img.avito.st/image/1/1.CIIrnra5DjafvaypmpcFhzWVp2mZO6Tpl_2haZkroGk.UVUioVsuxQYtm96JPNmTo-gD7OLbgs68AG4GyjqxIyo",
+            "256x192": "https://20.img.avito.st/image/1/1.CIIrnra5DjafvaLpnpcFhzWVp2mZO6Tpmb2laZkroGk.-Ha0C2AaqRULj9VriJItF0zc5RZ98cP0-djZGg7rgVQ",
+            "1280x960": "https://20.img.avito.st/image/1/1.CIIrnra5DjafvbLpkpcFhzWVp2mZO6Tpib2paZkroGk.fAGHcF21IdJEOsff7_JQQkRuD-QpMzbzvaFVJ3hLCqw",
+            "originalSize": {
+              "width": 1280,
+              "height": 589
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "rating",
+      "value": {
+        "title": "Владислава",
+        "avatar": "https://80.img.avito.st/image/1/1.k_U0Yra2KRwCxb0aHmSzsZzBPxaKQTmehsE9.JHHUR7BceT5ju4PGMjvTanpRWYrq2FYHS-ev-f4P81I",
+        "rated": "2 октября 2023",
+        "itemTitle": "Прицеп-дача Bailey Unicorn, 2020",
+        "stageTitle": "Сделка состоялась",
+        "textSections": [
+          {
+            "title": "Комментарий",
+            "text": "Приобрели летом замечательный прицеп, Бэйли. Работали с Марком, который подробно и главное терпеливо помогал нам в выборе и подборе каравана. Компетентный опытный специалист) быстрое оформление без проблем. Далее по доп.оборудованию все прошло без проблем и довольно оперативно. Надеемся, что и обслуживание дальше пройдет успешно)"
+          }
+        ],
+        "id": 167017745,
+        "score": 5,
+        "images": [
+          {
+            "256x192": "https://70.img.avito.st/image/1/1.qr0emba5rAmqugDWq9T9yzGSBVasPAbWrLoHVqwsAlY.Q9gPI3YbQ81fL3NegUifBfE6Z1NaaQajAVMi_lXmpPw",
+            "1280x960": "https://70.img.avito.st/image/1/1.qr0emba5rAmquhDWp9T9yzGSBVasPAbWvLoLVqwsAlY.4HD7WZVlr1VxrOf0dbqDW9SSuMZGu3djjxVP7mwJwoc",
+            "180x135": "https://70.img.avito.st/image/1/1.qr0emba5rAmq0gbYqtT9yzGSBVasPAa-qrQGVqwsAlY.9grj1vQMT8NXPKsPhhPO3uFLX_rCJNibxBR_UWCMeic",
+            "640x480": "https://70.img.avito.st/image/1/1.qr0emba5rAmqug6Wr9T9yzGSBVasPAbWovoDVqwsAlY.RRVV4e2eA1z5NHJhokydSvoc6iK2jUK5FolouGLt00Q",
+            "originalSize": {
+              "width": 1280,
+              "height": 959
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "rating",
+      "value": {
+        "title": "Сергей",
+        "avatar": "https://static.avito.ru/stub_avatars/%D0%A1/4_256x256.png",
+        "rated": "21 сентября 2023",
+        "itemTitle": "Прицеп-дача Bailey Pegasus, 2018",
+        "stageTitle": "Сделка состоялась",
+        "textSections": [
+          {
+            "title": "Комментарий",
+            "text": "Добрый день. Трейлер покупался в компании «Первый Караван»дистанционно в Петербурге, отправляли в город Владивосток контейнером, компанией «ВЛ Лоджистик.». Большое спасибо сотрудникам обеих компаний, все было в лучшем виде, мы приобрели и получили трейлер не покидая город Владивосток!"
+          }
+        ],
+        "id": 164270881,
+        "score": 5
+      }
+    },
+    {
+      "type": "rating",
+      "value": {
+        "title": "Ксения",
+        "avatar": "https://90.img.avito.st/image/1/1.A_s3tra2uRIBES0UPcJE18gVrxiJlamQhRWt.GNvR53SbhsqYQrbQlTw5jzYpbkt9PnBY8Pcxn1x8lyg",
+        "rated": "10 сентября 2023",
+        "itemTitle": "Прицеп-дача Hobby 645 VIP, 2012",
+        "stageTitle": "Сделка состоялась",
+        "textSections": [
+          {
+            "title": "Комментарий",
+            "text": "Купили свой первый караван именно у этой компании и не пожалели!👍🏼 Караван 2012 года пришёл к нам в состоянии нового! Мы покупали дистанционно, очень подробно всё обсудили по телефону, получили ответы на все вопросы, были установлены допы буквально за пару дней и оформление в гибдд тоже ребята взяли на себя. Прислали подробную видеоинструкцию перед отправкой каравана, и нашли водителя, который привёз нам его сразу же. С момента рншения о покупке до получения готового каравана прошла неделя 👌🏼 Очень вежливые, отзывчивые ребята, для которых, как тут уже писали, человеческое отношение стоит на первом месте, а продажа уже на втором.\nТеперь о самом караване: мы выбрали караван 2012 г на 7 мест, и были готовы к косметическому ремонту при получении, и какого же было наше удивление, когда он приехал в идеальном состоянии! мы просто добавили свой текстиль для уюта и сразу же отправились в первое путешествие! всё работает, всё чистое, спасиюо вам огромное за наш первый и такой удачный опыт! Всем рекомендуем обращаться именно к вам! 🤝🏽"
+          }
+        ],
+        "id": 161594289,
+        "score": 5,
+        "images": [
+          {
+            "640x480": "https://80.img.avito.st/image/1/1.CYkDMLa5Dz23E62isjtI8iw3pmKxlaXiv1OgYrGFoWI.12uKp4i2Fzkc15lSvEbNbazUdxc0taWqiijBf-LmTRE",
+            "1280x960": "https://80.img.avito.st/image/1/1.CYkDMLa5Dz23E7PiujtI8iw3pmKxlaXioROoYrGFoWI.Fk9PG_yke5WBXmlBFFUfk1Cc6NmxEHRRUL70VEzt58E",
+            "256x192": "https://80.img.avito.st/image/1/1.CYkDMLa5Dz23E6PitjtI8iw3pmKxlaXisROkYrGFoWI.30N_vG2lw4nh8gpRuas5nurEJw_Wq4zl3LwFGqL675k",
+            "180x135": "https://80.img.avito.st/image/1/1.CYkDMLa5Dz23e6XstztI8iw3pmKxlaWKtx2lYrGFoWI.y5gUqdJ7Mi9hHeroSb2Sok4Kd90rTmaCF6irac15Sr8",
+            "originalSize": {
+              "width": 584,
+              "height": 960
+            }
+          },
+          {
+            "256x192": "https://20.img.avito.st/image/1/1.SXjUFra5T8xgNeMTYR0JA_sR5pNms-UTZjXkk2aj4ZM.LB7AJaLl9Tk5Px8tHna4jdTWywA9TfNyikOdWDQAE-I",
+            "180x135": "https://20.img.avito.st/image/1/1.SXjUFra5T8xgXeUdYB0JA_sR5pNms-V7YDvlk2aj4ZM.hPk1g6-62CFy3AUUHYRxTeuuq2p0VswhchmXoIm49E0",
+            "640x480": "https://20.img.avito.st/image/1/1.SXjUFra5T8xgNe1TZR0JA_sR5pNms-UTaHXgk2aj4ZM.HD8n-2U7PHozjvnhFPEbf-6WkDoluHEzFjjZqNrGsc0",
+            "1280x960": "https://20.img.avito.st/image/1/1.SXjUFra5T8xgNfMTbR0JA_sR5pNms-UTdjXok2aj4ZM.pB65tXG0fpM2r0LdBLmGAgc7Uhxkyr7dYEKMfF3gjok",
+            "originalSize": {
+              "width": 556,
+              "height": 960
+            }
+          },
+          {
+            "1280x960": "https://10.img.avito.st/image/1/1.9HCjD7a58sQXLE4bGn62C4wIW5sRqlgbASxVmxG6XJs.SpF7FxDHR7HNZfELQOZlDJ0VrRjjDlwlD-Xj7yCUVcY",
+            "180x135": "https://10.img.avito.st/image/1/1.9HCjD7a58sQXRFgVF362C4wIW5sRqlhzFyJYmxG6XJs.w_XvsBeqGXjNHDOB5m05p0M99JCaumJOwiWjz9Ao-hs",
+            "640x480": "https://10.img.avito.st/image/1/1.9HCjD7a58sQXLFBbEn62C4wIW5sRqlgbH2xdmxG6XJs.vlrlRGSksmv_JkQO8pM4zElQ49LGpKeomRSnXg-UcZ8",
+            "256x192": "https://10.img.avito.st/image/1/1.9HCjD7a58sQXLF4bFn62C4wIW5sRqlgbESxZmxG6XJs.6BvrTlyivoI5AckJEbrdTfQHtFdBR0UjeWDpyC_xV-4",
+            "originalSize": {
+              "width": 540,
+              "height": 960
+            }
+          },
+          {
+            "1280x960": "https://00.img.avito.st/image/1/1.WV4lwba5X-qR4uM1nOoZJQrG9rWXZPU1h-L4tZd08bU.1Nayy53E71aCpgDVrP3fRTjLynzHgPFUdXZijbApNRc",
+            "180x135": "https://00.img.avito.st/image/1/1.WV4lwba5X-qRivU7keoZJQrG9rWXZPVdkez1tZd08bU.Ox1Ffc2Ah0UGCTtX2e4BHQJHtEVEmxJWNGuAgp9H6PA",
+            "640x480": "https://00.img.avito.st/image/1/1.WV4lwba5X-qR4v11lOoZJQrG9rWXZPU1maLwtZd08bU.pjinrPWkrDn4uRyUHnM1pp2HhjDj4umQriJHzsQBwBY",
+            "256x192": "https://00.img.avito.st/image/1/1.WV4lwba5X-qR4vM1kOoZJQrG9rWXZPU1l-L0tZd08bU.-KKcRiyYF1Fhp8IVzryb_YkVSeCoZpkl5MNbpfcVecc",
+            "originalSize": {
+              "width": 540,
+              "height": 960
+            }
+          },
+          {
+            "180x135": "https://60.img.avito.st/image/1/1.gYkDMLa5hz23ey3styvC8iw3LmKxlS2Ktx0tYrGFKWI.ybekH13SsFvSEKtRgM0wiHIBW9wMh2fk1s54WoSxGBw",
+            "640x480": "https://60.img.avito.st/image/1/1.gYkDMLa5hz23EyWisivC8iw3LmKxlS3iv1MoYrGFKWI.iYnh2h7obE6E1GKCsJF5ql8Z5LNQIWSfcUBb3pWgr3Q",
+            "256x192": "https://60.img.avito.st/image/1/1.gYkDMLa5hz23EyvitivC8iw3LmKxlS3isRMsYrGFKWI.SAtULiHiiN9HjQXE2asxav8eCQRvc5RWjjbrx4sRTmM",
+            "1280x960": "https://60.img.avito.st/image/1/1.gYkDMLa5hz23EzviuivC8iw3LmKxlS3ioRMgYrGFKWI.4vKrbFapDnnRt8wIm1hvRrm_E2Q_uOXgTWksRgjes3I",
+            "originalSize": {
+              "width": 540,
+              "height": 960
+            }
+          },
+          {
+            "180x135": "https://00.img.avito.st/image/1/1.X2Fg7ra5WdXUpfME1MkfGk_p8IrSS_Ni1MPzitJb94o.2sRHLxUQhxCMC3XPY2PTarAlqHperUsOh5rpXLecS2M",
+            "640x480": "https://00.img.avito.st/image/1/1.X2Fg7ra5WdXUzftK0ckfGk_p8IrSS_MK3I32itJb94o.MCHvBVrCX5h9ZdtSILZ9AMQF8a_XtxeJXYKbk6TF2m4",
+            "256x192": "https://00.img.avito.st/image/1/1.X2Fg7ra5WdXUzfUK1ckfGk_p8IrSS_MK0s3yitJb94o.MHHuORMDrj_1UpkZ9m1so5x9EIKlArxKaW8553yxR7k",
+            "1280x960": "https://00.img.avito.st/image/1/1.X2Fg7ra5WdXUzeUK2ckfGk_p8IrSS_MKws3-itJb94o.hBTIg3hAm4krR2rY39kWr29M5_71_qNwl6OcDaLmFpk",
+            "originalSize": {
+              "width": 540,
+              "height": 960
+            }
+          },
+          {
+            "1280x960": "https://10.img.avito.st/image/1/1.UCIH-ba5Vpaz2upJvsAQWSj-_8m1XPxJpdrxybVM-Mk.2mULboz_pERbzh-0hiPaaIgpO3hcx6IMRuPC-2m_Gbg",
+            "180x135": "https://10.img.avito.st/image/1/1.UCIH-ba5VpazsvxHs8AQWSj-_8m1XPwhs9T8ybVM-Mk.fcBtyr3YftqHEnThbdxy9V0lsMS1o9jny1CPK0nOtHU",
+            "640x480": "https://10.img.avito.st/image/1/1.UCIH-ba5Vpaz2vQJtsAQWSj-_8m1XPxJu5r5ybVM-Mk.Yl96TgPk0ibjrbYefa7IaeHLmVS3fdF4BihEeNmY8sM",
+            "256x192": "https://10.img.avito.st/image/1/1.UCIH-ba5Vpaz2vpJssAQWSj-_8m1XPxJtdr9ybVM-Mk.EXHU7tXQRnRLH8zm8Ov6QExjQKAatsnBTYiCZjiDTqs",
+            "originalSize": {
+              "width": 540,
+              "height": 960
+            }
+          },
+          {
+            "640x480": "https://00.img.avito.st/image/1/1.XcDvlba5W3RbtvnrXrYdu8CS8itdMPGrU_b0K10g9Ss.5fl7zpeQarpGVAMEft8HrSsXcVtetPGev7d4NkC2BwM",
+            "256x192": "https://00.img.avito.st/image/1/1.XcDvlba5W3RbtverWrYdu8CS8itdMPGrXbbwK10g9Ss.hcEomMtESdivlS2lpM6X-8tuHIPRCMtg0C07iOMzC6Y",
+            "1280x960": "https://00.img.avito.st/image/1/1.XcDvlba5W3RbtuerVrYdu8CS8itdMPGrTbb8K10g9Ss.qkRr1P-IkWF2uy_jdVazhnr7bBvwWuaj8ruzyFnqjTM",
+            "180x135": "https://00.img.avito.st/image/1/1.XcDvlba5W3Rb3vGlW7Ydu8CS8itdMPHDW7jxK10g9Ss.SJUUBt_W1Fepjmqns8DPbDqZlZg1UC3DwrwxXLBGI64",
+            "originalSize": {
+              "width": 540,
+              "height": 960
+            }
+          },
+          {
+            "1280x960": "https://60.img.avito.st/image/1/1.hs1zyLa5gHnH6zymyt3FtlzPKSbBbSqm0esnJsF9LiY._SLX0FNSuu4C6m8sg5khKidMtvyv3VJKcOJ8HMS2iDs",
+            "180x135": "https://60.img.avito.st/image/1/1.hs1zyLa5gHnHgyqox93FtlzPKSbBbSrOx-UqJsF9LiY.FR-2XTLMZr-jVPuH9FHFiIa0NLubkjgKFqFL3o9c17I",
+            "640x480": "https://60.img.avito.st/image/1/1.hs1zyLa5gHnH6yLmwt3FtlzPKSbBbSqmz6svJsF9LiY.joQQ7F9m1BNMDBGqVc5pxya5QLBqSip3Au-jJQFe4WA",
+            "256x192": "https://60.img.avito.st/image/1/1.hs1zyLa5gHnH6yymxt3FtlzPKSbBbSqmwesrJsF9LiY.x7mC_vEDcn0nl7IOccRYAkrqJ0MkzDEaL8_nympvv6o",
+            "originalSize": {
+              "width": 540,
+              "height": 960
+            }
+          },
+          {
+            "640x480": "https://80.img.avito.st/image/1/1.sLF_Era5tgXLMRSazmvzylAVH1rNtxzaw3EZWs2nGFo.lKnUThv8RLxw5pMcM1tIeMLVjF5BDnU0xrhv6o7y2vM",
+            "256x192": "https://80.img.avito.st/image/1/1.sLF_Era5tgXLMRraymvzylAVH1rNtxzazTEdWs2nGFo.bfYBvyyxKN0vdnKSiPAvv33vvrnGtR94lw3sVtu2_Xk",
+            "180x135": "https://80.img.avito.st/image/1/1.sLF_Era5tgXLWRzUy2vzylAVH1rNtxyyyz8cWs2nGFo.1Yi_qz46U0LVT2pjIcwDma-HBTw3A0cSN4FugYDLt0Q",
+            "1280x960": "https://80.img.avito.st/image/1/1.sLF_Era5tgXLMQraxmvzylAVH1rNtxza3TERWs2nGFo.z1w8mQRffcivK_0-nvwMtFsV77X1DTUmTZGRe_Cvauk",
+            "originalSize": {
+              "width": 768,
+              "height": 960
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "rating",
+      "value": {
+        "title": "владимир",
+        "avatar": "https://static.avito.ru/stub_avatars/%D0%92/6_256x256.png",
+        "rated": "16 августа 2023",
+        "itemTitle": "Прицеп-дача Hobby Excellent Edition 490 KMF, 2023",
+        "stageTitle": "Сделка состоялась",
+        "textSections": [
+          {
+            "title": "Комментарий",
+            "text": "Купил караван , все прошло отлично . Поставили доп оборудование , ребята толковые , сделали все быстро и качественно . Плюс поставили на регистрационный учет . Рекомендую всем , кто ищет караваны , обращаться к таким ребятам !!! 👌👍"
+          }
+        ],
+        "id": 150487898,
+        "score": 5
+      }
+    },
+    {
+      "type": "rating",
+      "value": {
+        "title": "Евгения",
+        "avatar": "https://80.img.avito.st/image/1/1.SvibM7a28BGtlGQXgy4kzGqQ5hslEOCTKZDk.q5yuG1GKXi8Qx4e1hs0bhF6zG6fQQC--1HjKjKxvtn4",
+        "rated": "15 августа 2023",
+        "itemTitle": "Прицеп-дача Bailey Senator Arizona, 2004",
+        "stageTitle": "Сделка состоялась",
+        "textSections": [
+          {
+            "title": "Комментарий",
+            "text": "Приобретали свой первый караван,выбор пал на одно из объявлений именно этой организации. Понравился обзор, цена и комплектация будущего каравана. Без проблем забронировали товар, получили персональный обзор в онлайн режиме, так как к было возмодности приехать, то сделку закрыли дистанционно, после чего договорились о доставке каравана. В назначенный день мы получили караван, 2 комплекта клбчей к нему и положительные эмоции! Организация подходит ответственно к своей работе, любые нюансы обсуждаются в любое время, это касается как технической части, так и всего остального. Всем рекомендую приобретать прицепы в \"Первом караване\" Еще раз спасибо за профессиональный подход и техническую поддержку!"
+          }
+        ],
+        "id": 150191332,
+        "score": 5,
+        "images": [
+          {
+            "640x480": "https://50.img.avito.st/image/1/1.pPT61ra5okBO9QDfS4ez6NfqCx9IcwifRrUNH0hjDB8.WnAlpkY1RawnNkG_Xx9-U29PUQa4MY1LKAeSKCqN5tU",
+            "256x192": "https://50.img.avito.st/image/1/1.pPT61ra5okBO9Q6fT4ez6NfqCx9IcwifSPUJH0hjDB8.NAgE_cERt0v-J3E41Tw90-jxDwl7r3tifoSOTkNzi0Y",
+            "180x135": "https://50.img.avito.st/image/1/1.pPT61ra5okBOnQiRToez6NfqCx9Icwj3TvsIH0hjDB8.NiiBBCGK_fDV53uzpKKKb3PpM_5EnDfvR_ldZ30vsco",
+            "1280x960": "https://50.img.avito.st/image/1/1.pPT61ra5okBO9R6fQ4ez6NfqCx9IcwifWPUFH0hjDB8.C4S7gRw-Wpa2AYpnmAYetIXdqdVWsIZwilhqVJKkdkg",
+            "originalSize": {
+              "width": 1280,
+              "height": 960
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "rating",
+      "value": {
+        "title": "Не компания",
+        "avatar": "https://static.avito.ru/stub_avatars/%D0%9D/0_256x256.png",
+        "rated": "8 августа 2023",
+        "itemTitle": "Прицеп-дача Abbey Expression 620, 2005",
+        "stageTitle": "Сделка состоялась",
+        "textSections": [
+          {
+            "title": "Комментарий",
+            "text": "Покупал прицеп в марте 23его \"в первом караване\". Изначально планировал покупать у их конкурентов, был даже подписан на их канал и внимательно следил за обзорами. Шёл к этой покупке очень сознательно, поездив с палатками пару сезонов. Сдавал на ВЕ, покупал рамный автомобиль и устанавливал фаркоп с 13пиновой разеткой. А тут нечаянно выплыл караван abbey expression 620 с необходимой мне планировкой на 6 мест и раздельным душем. Цена правда была выше чем я закладывал бюджет, но это произошло из за очередного обвала рубля и пришлось свыкнуться с новой реальностью, так как это всем поставило палки в колёса. Купил честно благодаря менеджеру Марку, если бы не его подход к клиентам наверное даже и не приехал смотреть прицеп. Вообще команда первого каравана меня очень порадовала, никто ничего не навязывает и не втюхивает, доходчиво всё объясняют и рассказывают, помогают даже как говориться с полу слова. Вопрос денег для них стоит ниже на ступени чем человеческое отношение. В свою очередь стараюсь их не беспокоить глупыми вопросами и разбираться самому, но если уже не вывожу, то звоню или пишу, так как у них и кроме меня забот хватает. Очень радует, что есть магазин с необходимыми товарами, команда специалистов которые могут установить допы практически на все мои хотелки, гарантия на прицеп. Это даёт возможность покатать и посмотреть некоторые выплывающие нюансы. Понятно, что чтобы проверить всё оборудование нужно поездить и пожить. Сотрудников на эти мероприятия у компании нет, да и было бы через чур заводить себе штат \"тестировщиков прицепов\". Этот отзыв написан спустя 5 месяцев после покупки, когда уже ощутил прелесть поездок с прицепом из первого каравана и есть что рассказать."
+          }
+        ],
+        "id": 148779806,
+        "score": 5,
+        "answer": {
+          "answerId": 33212336,
+          "title": "Первый Караван",
+          "answered": "8 августа 2023",
+          "text": "Большое спасибо за приятный отзыв! Всегда рады)",
+          "avatar": "https://50.img.avito.st/image/1/1.r2SX2ba1FY2hfoGLxfvNObV7AY0pcoGLoX4Bjw.Ce5_aodyRq6lsWSjbh0sAwNi5UiHWf_3FGl8Yql7_78",
+          "link": "https://www.avito.ru/user/0e58ed0e1f3fed954a3f1be908314a8b/profile?src=ratings"
+        },
+        "images": [
+          {
+            "1280x960": "https://20.img.avito.st/image/1/1._A6ui7a5-roaqEZlF-q-ZvS1U-UcLlBlDKhd5Rw-VOU.D0eysuPusgVS7spFoqLjuCWPK4Rv70f_Bpsz5NoyrL8",
+            "640x480": "https://20.img.avito.st/image/1/1._A6ui7a5-roaqFglH-q-ZvS1U-UcLlBlEuhV5Rw-VOU.53G7uZpO2V8aAmALplz7qEqM0egSQfM72v8HITMIv38",
+            "256x192": "https://20.img.avito.st/image/1/1._A6ui7a5-roaqFZlG-q-ZvS1U-UcLlBlHKhR5Rw-VOU.0XfdcAf6qAB9m8J25TwK-m_LWypbbMnQkl-R_N8o7XI",
+            "180x135": "https://20.img.avito.st/image/1/1._A6ui7a5-roawFBrGuq-ZvS1U-UcLlANGqZQ5Rw-VOU.5UK7wIctYm3-0IXkZkbhGSEiTJOUti8L7WMrnaZr6Tk",
+            "originalSize": {
+              "width": 720,
+              "height": 960
+            }
+          },
+          {
+            "1280x960": "https://40.img.avito.st/image/1/1.VSYm8ra5U5KS0e9Nn8FFSXzM-s2UV_lNhNH0zZRH_c0.sbZn70eWjjndnx-aCQ_5hdq1pCVzgqKtn42dRvhVGyE",
+            "640x480": "https://40.img.avito.st/image/1/1.VSYm8ra5U5KS0fENl8FFSXzM-s2UV_lNmpH8zZRH_c0.zwsz4qRLKQ5E5fyD5okR9FYdyX5Ne1bp92w9PC1q_N0",
+            "256x192": "https://40.img.avito.st/image/1/1.VSYm8ra5U5KS0f9Nk8FFSXzM-s2UV_lNlNH4zZRH_c0.-DbaEdTQw4rATZayZg77qZg3eGDOAaDtIFsRjJ2TeRQ",
+            "180x135": "https://40.img.avito.st/image/1/1.VSYm8ra5U5KSuflDksFFSXzM-s2UV_klkt_5zZRH_c0.3mPk4gMVj2CjrmQqHGwD5WPSxKJjP2WWyBsR62XG1I8",
+            "originalSize": {
+              "width": 720,
+              "height": 960
+            }
+          },
+          {
+            "640x480": "https://40.img.avito.st/image/1/1.bMNTi7a5anfnqMjo4socqwm1wyjhLsCo7-jFKOE-xCg.ntc47or0xZrTXonFyQXf1mPbhLxMcmGBhcy2fcu-LMc",
+            "1280x960": "https://40.img.avito.st/image/1/1.bMNTi7a5anfnqNao6socqwm1wyjhLsCo8ajNKOE-xCg.Rn9xIevAQHdZbmjx9URdptdSCqiOfv2ESPPNDNwJEN4",
+            "256x192": "https://40.img.avito.st/image/1/1.bMNTi7a5anfnqMao5socqwm1wyjhLsCo4ajBKOE-xCg.2k31QfjG33m3tswKcLz-somsSBVyotNle9-fiReZohs",
+            "180x135": "https://40.img.avito.st/image/1/1.bMNTi7a5anfnwMCm58ocqwm1wyjhLsDA56bAKOE-xCg.gxN-M7U74JqSd3hEkaB2TPPtqKXExGoeqKg-0CfOudI",
+            "originalSize": {
+              "width": 720,
+              "height": 960
+            }
+          },
+          {
+            "640x480": "https://10.img.avito.st/image/1/1.Akgiw7a5BPyW4KZjk95DIHj9raOQZq4jnqCro5B2qqM.K7mwDyGZ1IWlfM34slsdxF57xKGtpCJKZIifEBEuj4Y",
+            "256x192": "https://10.img.avito.st/image/1/1.Akgiw7a5BPyW4Kgjl95DIHj9raOQZq4jkOCvo5B2qqM.hvgLGop1GRjAZ4_HzOwoMibDMzb05aFbAUSXUZLyGyE",
+            "1280x960": "https://10.img.avito.st/image/1/1.Akgiw7a5BPyW4Lgjm95DIHj9raOQZq4jgOCjo5B2qqM.m3X78uasTGX-I3vUucUtKk8GD_QIT7IfsmVxEhc6Zjc",
+            "180x135": "https://10.img.avito.st/image/1/1.Akgiw7a5BPyWiK4tlt5DIHj9raOQZq5Llu6uo5B2qqM.tMTC3Jb3skKqXhCF5NMMuzmbbg7gC7xCf5b9W8WbUUM",
+            "originalSize": {
+              "width": 720,
+              "height": 960
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "rating",
+      "value": {
+        "title": "Анатолий",
+        "avatar": "https://static.avito.ru/stub_avatars/%D0%90/10_256x256.png",
+        "rated": "21 июня 2023",
+        "itemTitle": "Прицеп-дача Swift Challanger, 2004",
+        "stageTitle": "Сделка состоялась",
+        "textSections": [
+          {
+            "title": "Комментарий",
+            "text": "Договорились о моем визите в выходные дни. Мне необходим был не большой караванер на 2-3 человека. Преложили три варианта, из котрых я выбрал наиболее приемлемый для меня по цене -Swift. Спасибо менеджеру Павлу за терпение к моим пожеланиям. Еще сутки ушли на дооборудование (солнечная станция с инвертором 1 квт, бак для воды, и еще регулировка холодильника - работал с перебоями от газа). Провели ТО подвески по моей прсьбе, установили аккамулятор, газовый балон на 24.5 л. скурпулезно проинструктировали как пользоваться всеми функциями и оборудованием под запись на диктофон(пригодится). Одним словом полностью экипировали так, что сразу можно и в путешествие. Спасибо огромное компании и сотрудникам за такое внимание, компетентность и открытую предрасположенность к клиентам. Такой уровень сервиса встретил впервые! Так держать! Всем остался доволен."
+          }
+        ],
+        "id": 138533841,
+        "score": 5
+      }
+    },
+    {
+      "type": "rating",
+      "value": {
+        "title": "Станислав",
+        "avatar": "https://60.img.avito.st/image/1/1.UHUcJra26pwqgX6aMBsEcOOF_JaiBfoeroX-.FxsMisWnQt-TlFSMxi6Gu77Wl7EW8lerpP7AqzpK_Pg",
+        "rated": "19 июня 2023",
+        "itemTitle": "Прицеп-дача Fendt BIANCO ACTIV 515 SKF, 2023",
+        "stageTitle": "Сделка состоялась",
+        "textSections": [
+          {
+            "title": "Комментарий",
+            "text": "Привезли под заказ, быстро, без проблем и суеты, оформили все документы для постановки на учет, все честно и прозрачно. Караваном очень доволен!!!!\nУстанавливал допы у них же, из рекомендаций, ассортимент доп оборудования нужно расширять)"
+          }
+        ],
+        "id": 138114553,
+        "score": 5,
+        "answer": {
+          "answerId": 30514000,
+          "title": "Первый Караван",
+          "answered": "20 июня 2023",
+          "text": "Спасибо за отзыв и Ваше доверие к нам! К Вашим пожеланиям обязательно прислушаемся :)",
+          "avatar": "https://50.img.avito.st/image/1/1.r2SX2ba1FY2hfoGLxfvNObV7AY0pcoGLoX4Bjw.Ce5_aodyRq6lsWSjbh0sAwNi5UiHWf_3FGl8Yql7_78",
+          "link": "https://www.avito.ru/user/0e58ed0e1f3fed954a3f1be908314a8b/profile?src=ratings"
+        },
+        "images": [
+          {
+            "640x480": "https://00.img.avito.st/image/1/1.4aa_gba55xILokWNDtrz1I-2Tk0NJE3NA-JITQ00SU0.NNCvXFqY2dvCZW3uYo2vd9ry7ZDg4CS7GuKq5Ugcnos",
+            "256x192": "https://00.img.avito.st/image/1/1.4aa_gba55xILokvNCtrz1I-2Tk0NJE3NDaJMTQ00SU0.nzoDvtuPIvkgd3W7MwE_2Ke06YqEm4-lS-FBsPFhD-A",
+            "180x135": "https://00.img.avito.st/image/1/1.4aa_gba55xILyk3DC9rz1I-2Tk0NJE2lC6xNTQ00SU0.nNzFhDvxBxJjzh_YuVopfNrgo0A1Y7t3Hb4KoknV57Q",
+            "1280x960": "https://00.img.avito.st/image/1/1.4aa_gba55xILolvNBtrz1I-2Tk0NJE3NHaJATQ00SU0.zkytyjkSOcyjLMMbG7Xt-bKk1d5LHmAE_tW25e79yPg",
+            "originalSize": {
+              "width": 1600,
+              "height": 1200
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "rating",
+      "value": {
+        "title": "Ирина",
+        "avatar": "https://static.avito.ru/stub_avatars/%D0%98/3_256x256.png",
+        "rated": "18 июня 2023",
+        "itemTitle": "Прицеп-дача Sterckeman Starlett Comfort, 2014",
+        "stageTitle": "Сделка состоялась",
+        "textSections": [
+          {
+            "title": "Комментарий",
+            "text": "Мысли путешествовать с караваном были давно. Пока планировали взять в прокат, просматривала рынок, в том числе наших производителей. Увидела объявление компании Первый караван о продаже прицепа Sterckerman Starlett 370 CE и поняла, что это идеальный прицеп для нашей семьи, небольшой и вместительный для 4х человек. Через 2 дня приехали, посмотрели, пообщались. Караван очень понравился, состояние очень хорошее. Марк ответил на все вопросы по оформлению, по документам, проконсультировал по установке дополнительного оборудования. Когда приехали забирать, все было установлено. Техник Роман все подробно объяснил, убедился, что запомнили, дал свой телефон. Взяли услугу по оформлению в ГИБДД, после дороги было кстати. Путешествуем недолго, пока только позитив от такого отдыха! Большое спасибо Первому каравану!"
+          }
+        ],
+        "id": 137893649,
+        "score": 5,
+        "images": [
+          {
+            "640x480": "https://30.img.avito.st/image/1/1.w2057La5xdmNz2dGiPPJLmfcbIaLSW8GhY9qhotZa4Y.aiekLHt1XptzdbNqvAVJ_4BXM_DjEvYbkiT1ExbGKyY",
+            "256x192": "https://30.img.avito.st/image/1/1.w2057La5xdmNz2kGjPPJLmfcbIaLSW8Gi89uhotZa4Y.jNRSTc5s1Xa8t2BGt2vdZY7eDNi6Zy_qL8_riE3Gkug",
+            "1280x960": "https://30.img.avito.st/image/1/1.w2057La5xdmNz3kGgPPJLmfcbIaLSW8Gm89ihotZa4Y.gPmQkWpBSNq2Xzf2ZAc5VXTHXYIaf-yKs4BFOQTSQRE",
+            "180x135": "https://30.img.avito.st/image/1/1.w2057La5xdmNp28IjfPJLmfcbIaLSW9ujcFvhotZa4Y.2EW8ZVw54tGdt_GvenMEYtdlSVGOKBZshL90VaN17tw",
+            "originalSize": {
+              "width": 1280,
+              "height": 720
+            }
+          },
+          {
+            "1280x960": "https://60.img.avito.st/image/1/1.nThXALa5m4zjIydT7iOWewkwMtPlpTFT9SM80-W1NdM.-tVwEbBnsRMyzvHppBFjsaDrpA2AWnXKPEsbz5NVCbM",
+            "640x480": "https://60.img.avito.st/image/1/1.nThXALa5m4zjIzkT5iOWewkwMtPlpTFT62M00-W1NdM.k9HZvCe79dIRx9QhR6UGs4EkLiYEqDg-_MHUK-uUy7E",
+            "256x192": "https://60.img.avito.st/image/1/1.nThXALa5m4zjIzdT4iOWewkwMtPlpTFT5SMw0-W1NdM.ndMdmWlGCNY8HnhiIYpm2Dy5OpFvMBS4jyYzRvCzwn4",
+            "180x135": "https://60.img.avito.st/image/1/1.nThXALa5m4zjSzFd4yOWewkwMtPlpTE74y0x0-W1NdM.gxVN_0IIIpUFqlDTAEwkO8bTA5OM1QLOgiNM1ue4Dio",
+            "originalSize": {
+              "width": 1280,
+              "height": 720
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "rating",
+      "value": {
+        "title": "Alexander Pleshakov",
+        "avatar": "https://static.avito.ru/stub_avatars/A/11_256x256.png",
+        "rated": "16 июня 2023",
+        "itemTitle": "Прицеп-дача Swift Conqueror, 2007",
+        "stageTitle": "Сделка состоялась",
+        "textSections": [
+          {
+            "title": "Комментарий",
+            "text": "Если у компании «1 Караван» рейтинг по отзывам 5,0, то этого мало или вернее совсем ничего!\n* Вы видели их территорию? Она как четыре футбольных поля!\n* А какие у них ангары! В них тенистые корты можно обустраивать!\n* Вы видели, какой ассортимент кемперов они предлагают? Больше, чем кто-либо в России!\n* А заметили, что на площадке преобладают свежие или новые кемперы?\n* Они невероятно гибки и услужливы, в приоритетах «для Клиента» и «ради Клиента»!\n* А насколько они быстры!!Ракеты «кинжал», а не ребята!\n* На раз и два! И через два часа зарегистрируют купленный вами кемпер в ГАИ!\n* А вам приходилось быть участником демонстрационных показов кемпера? Это фантастика! Сказочники, а не ребята!\n* Пробовали оценить их компетенции? Нет? И не пробуйте…. Профессиональные компетенции этих ребят настолько высоки, что у вас закружится голова.\n* А как подает материал Марк, тонко и точно указывает на детали!\n* Они знают, чем зацепить Клиента, чтобы его восторг был выше и глубже, чем просто «Wow!” И все эти уловки исключительно ради того, чтобы Клиент был спокоен и доволен!\n* Вы слышали как «поёт Валентин», откройте их сайт и вы услышите его компетентные, объективно правдивые слова. Начиная с дышла, но уже на диване Валентин вас убаюкает, как тот кот Баюн!\n* А вы читали их договора? Они подпишутся на все, чтобы был «спокоен Клиент». Это их фишка в работе с Клиентом, чтобы в зародыше и мысли не было у Клиента, что его собираются здесь надуть. Договор залога - пожалуйста! Договор на ответственное хранение - не вопрос! Договор на регистрацию - тут же будет готов!\n* Деньги они у вас возьмут только после того, когда Клиент с уверенностью поймёт, что ВСЁ, буквально ВСЁООО в полном порядке!\n* Вы увидите множество услужливых людей, они все при делах и не пройдёт и пол часа, как владелец компании будет рядом с вами!\nЕсли вам мало, того что я указал, приезжайте, посмотрите и проверьте сами.\nВиват вам замечательные люди за сервис и содействие. Большое спасибо за все ваши нештячки!\nВы лучшие!"
+          }
+        ],
+        "id": 137421524,
+        "score": 5,
+        "images": [
+          {
+            "1280x960": "https://70.img.avito.st/image/1/1.DA5Ljba5Crr_rrZl8owxcUa9o-X5KKBl6a6t5fk4pOU.XwpiOSys-y0f2N0980qoJyJ2weFtCxCzCb_LttbRbL0",
+            "180x135": "https://70.img.avito.st/image/1/1.DA5Ljba5Crr_xqBr_4wxcUa9o-X5KKAN_6Cg5fk4pOU.qEAvXt-7LyUk03r8-JGHYgDWj0W7r0ZqilOTe1KuY9E",
+            "640x480": "https://70.img.avito.st/image/1/1.DA5Ljba5Crr_rqgl-owxcUa9o-X5KKBl9-6l5fk4pOU.VzxJPHRt80HHDFZ-xhw6HTlph09Bhcw5MZbjan8YGmI",
+            "256x192": "https://70.img.avito.st/image/1/1.DA5Ljba5Crr_rqZl_owxcUa9o-X5KKBl-a6h5fk4pOU.KU1xAW0W40W46FNzu1v_ACQ_Mu8wzhz5bYF6yWvGt4o",
+            "originalSize": {
+              "width": 4624,
+              "height": 3468
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "rating",
+      "value": {
+        "title": "Татьяна",
+        "avatar": "https://static.avito.ru/stub_avatars/%D0%A2/4_256x256.png",
+        "rated": "13 июня 2023",
+        "itemTitle": "Прицеп-дача Fendt Bianco Activ 550 KMG, 2023",
+        "stageTitle": "Сделка состоялась",
+        "textSections": [
+          {
+            "title": "Комментарий",
+            "text": "Долго искали караван своей мечты, обратились к компании Первый караван с заказом. Нужную нам модель привезли и оформили быстро, провели подробный инструктаж, когда мы забирали прицеп из Питера. Сотрудники всегда на связи и  после покупки отвечают на все вопросы и дают разъяснения. Мы очень довольны. Рекомендую!"
+          }
+        ],
+        "id": 136814714,
+        "score": 5,
+        "images": [
+          {
+            "1280x960": "https://30.img.avito.st/image/1/1.PXvX2La5O89j-4cQbrtYOI7pkpBlfZEQdfuckGVtlZA.f2yj9L8j65GIkhYY7v7oTvvdcXvYFoLmuoiTLFGG6WI",
+            "180x135": "https://30.img.avito.st/image/1/1.PXvX2La5O89jk5EeY7tYOI7pkpBlfZF4Y_WRkGVtlZA.K3hHPWgTfcTo5dioenQToLZ51yJEMTsdOyd5QTQkZSQ",
+            "640x480": "https://30.img.avito.st/image/1/1.PXvX2La5O89j-5lQZrtYOI7pkpBlfZEQa7uUkGVtlZA.QOClZaXJkJI--7sbhStLQwxud4zM2GXcWjKrAQfyyFk",
+            "256x192": "https://30.img.avito.st/image/1/1.PXvX2La5O89j-5cQYrtYOI7pkpBlfZEQZfuQkGVtlZA.Yj6krjhAUMu8poFJvPUBu-uFsZxB-4FGif-6EHXvO3M",
+            "originalSize": {
+              "width": 1280,
+              "height": 960
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "rating",
+      "value": {
+        "title": "Максим",
+        "avatar": "https://static.avito.ru/stub_avatars/%D0%9C/12_256x256.png",
+        "rated": "9 июня 2023",
+        "itemTitle": "Прицеп-дача Weinsberg CaraCito 470 QDK, 2023",
+        "stageTitle": "Сделка состоялась",
+        "textSections": [
+          {
+            "title": "Комментарий",
+            "text": "Проехали 3 города: Псков, СПб, Москва.\nПосмотрели основных игроков рынка караванов (б/у и новых). В интернете всех найти не сложно.\nВыбор остановили на 1 Караван. Самое адекватное отношение к клиенту, ни чего не скрывают, рассказывают все как есть.\nКупили у них свой первый караван. Поехали в Беларусь, там есть оборудованные кемперные стоянки, все для караванеров... даже переночевали на заправке с обозначенным местом для караванеров бесплатно...\nОчень понравилось. На 5-й день холодильник \"сказал\" - \"я все\" (караван новый!). Переписывались через WA с поддержкой, вопрос не решили. Приехали через месяц, ребята провозились полдня, причина банальная - отошел шлейф в недоступном месте.\nВсе починили без лишних вопросв и денег, даже сделали больше... Тем кто делает выбор с покупкой прицепа могу рекомендовать именно 1 караван, если ваш бюджет позволяет.\nПриезжайте к ним на площадку, смотрите сами, задавайте вопросы, даже не удобные. Торгуйтесь, может вам повезет))) Вывод сделаете сами."
+          }
+        ],
+        "id": 135930330,
+        "score": 5,
+        "answer": {
+          "answerId": 29984873,
+          "title": "Первый Караван",
+          "answered": "10 июня 2023",
+          "text": "Большое спасибо! Рады стараться",
+          "avatar": "https://50.img.avito.st/image/1/1.r2SX2ba1FY2hfoGLxfvNObV7AY0pcoGLoX4Bjw.Ce5_aodyRq6lsWSjbh0sAwNi5UiHWf_3FGl8Yql7_78",
+          "link": "https://www.avito.ru/user/0e58ed0e1f3fed954a3f1be908314a8b/profile?src=ratings"
+        },
+        "images": [
+          {
+            "256x192": "https://90.img.avito.st/image/1/1.KYcMXba5LzO4foPsuRYUwypshmy--IXsvn6EbL7ogWw.fAQHxIJnx2x8yPZ6OziA05nHe6mjd1PgT25IyL3Z3L8",
+            "1280x960": "https://90.img.avito.st/image/1/1.KYcMXba5LzO4fpPstRYUwypshmy--IXsrn6IbL7ogWw.fm-CebXiVBvo5BPHPin31PKTFA624MepTRFg5hE5Pd8",
+            "180x135": "https://90.img.avito.st/image/1/1.KYcMXba5LzO4FoXiuBYUwypshmy--IWEuHCFbL7ogWw.A21cUP8cZBbko5ty6_p0TbFDOH8WgwZk4bbfuc2fKWc",
+            "640x480": "https://90.img.avito.st/image/1/1.KYcMXba5LzO4fo2svRYUwypshmy--IXssD6AbL7ogWw.ncPWNRzTt0cM-OJKYl_7c_gdO8779YA8M8tzODV5TQs",
+            "originalSize": {
+              "width": 6000,
+              "height": 4000
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "rating",
+      "value": {
+        "title": "Дарья",
+        "avatar": "https://80.img.avito.st/image/1/1.JajeWra1n0Ho_QtHmC473fn4i0Fg8QtH6P2LQw.2lYsojN1BEwUfDfgN82tWNkqZG82WQFUNvoeTVpshRk",
+        "rated": "6 июня 2023",
+        "itemTitle": "Прицеп-дача Swift Elite, 2020",
+        "stageTitle": "Сделка состоялась",
+        "textSections": [
+          {
+            "title": "Комментарий",
+            "text": "Делали заказ на конкретный прицеп. Интересовала модель 2022г, обязательно новый и с подогревом теплого пола. В наличии на тот момент у них был прицеп точно такой же но не в той комплектации. Нам никто его не стал навязывать. Был предложен вариант привезти под заказ из Германии по предоплате. Прозрачный подсчет, приятно были удивлены, что авансовый платеж составлял только 30% - остальное оплатили по прибытию кемпера и после получения ПТС. На месте докупили пару мелочей. И все это за 1 месяц, еще и в нынешних условиях - это сильно. Благодарим всей нашей семьей!"
+          }
+        ],
+        "id": 135257024,
+        "score": 5,
+        "answer": {
+          "answerId": 29984893,
+          "title": "Первый Караван",
+          "answered": "10 июня 2023",
+          "text": "Благодарим за вашу оценку и отзыв!",
+          "avatar": "https://50.img.avito.st/image/1/1.r2SX2ba1FY2hfoGLxfvNObV7AY0pcoGLoX4Bjw.Ce5_aodyRq6lsWSjbh0sAwNi5UiHWf_3FGl8Yql7_78",
+          "link": "https://www.avito.ru/user/0e58ed0e1f3fed954a3f1be908314a8b/profile?src=ratings"
+        },
+        "images": [
+          {
+            "180x135": "https://70.img.avito.st/image/1/1.4YCJF7a55zQ9XE3lPUzHkf0lTms7sk2DPTpNazuiSWs.J9A5kOuXjJpi6wbWp2OqS4Ij3wjSbRhpOue-a3r_X4k",
+            "640x480": "https://70.img.avito.st/image/1/1.4YCJF7a55zQ9NEWrOEzHkf0lTms7sk3rNXRIazuiSWs.rgJzmAzRfFQ88pDJzaCA6t3SJXxQjvoihh4Xint7Irw",
+            "1280x960": "https://70.img.avito.st/image/1/1.4YCJF7a55zQ9NFvrMEzHkf0lTms7sk3rKzRAazuiSWs.C2MNMIH31HPWTmpLnb8xh7O0z73c8jtfjpfnFdWCRJ8",
+            "256x192": "https://70.img.avito.st/image/1/1.4YCJF7a55zQ9NEvrPEzHkf0lTms7sk3rOzRMazuiSWs.wsCe_5aVVhpm_3eXErjQlxoP_y75pVPuceDDX_jPJpk",
+            "originalSize": {
+              "width": 1280,
+              "height": 960
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "rating",
+      "value": {
+        "title": "Анна",
+        "avatar": "https://40.img.avito.st/image/1/1.vkjOqLa2BKH4D5CnvvKEbAsLEqtwixQjfAsQ.Wk9FCTPROcgP-M0_ItCfTfmxHb5vjH2tWBnwA6mIrHs",
+        "rated": "3 июня 2023",
+        "itemTitle": "Прицеп-дача Bailey Pegasus, 2018",
+        "stageTitle": "Сделка состоялась",
+        "textSections": [
+          {
+            "title": "Комментарий",
+            "text": "Ехали целенаправленно в Питер за караваном и переживали, что ничего не сможем выбрать, нам с мужем нужен был небольшой и не очень дорогой караван для двоих. Но у первого очень большой выбор, глаза разбегались! но под наш бюджет было всего 2 варианта, было не так сложно. Ребятам спасибо за помощь в выборе, показали, как что работает в прицепе и подготовили наш дом сразу к путешествию. Как говорится, сели и поехали. Желаю развития и совершенствования!"
+          }
+        ],
+        "id": 134577556,
+        "score": 5,
+        "answer": {
+          "answerId": 29984916,
+          "title": "Первый Караван",
+          "answered": "10 июня 2023",
+          "text": "Спасибо!",
+          "avatar": "https://50.img.avito.st/image/1/1.r2SX2ba1FY2hfoGLxfvNObV7AY0pcoGLoX4Bjw.Ce5_aodyRq6lsWSjbh0sAwNi5UiHWf_3FGl8Yql7_78",
+          "link": "https://www.avito.ru/user/0e58ed0e1f3fed954a3f1be908314a8b/profile?src=ratings"
+        },
+        "images": [
+          {
+            "1280x960": "https://50.img.avito.st/image/1/1.by0Qz7a5aZmk7NVGqYhvFlz8wMaiasNGsuzOxqJ6x8Y.a7CUAesWKVjB8rdBIfUIY_7rsWQivUZ-0b7Dypabzwg",
+            "180x135": "https://50.img.avito.st/image/1/1.by0Qz7a5aZmkhMNIpIhvFlz8wMaiasMupOLDxqJ6x8Y.FdXnwMiOaYCGmbRiXMHbKXwWQ9_tQWscvHyRnlzEgX8",
+            "640x480": "https://50.img.avito.st/image/1/1.by0Qz7a5aZmk7MsGoYhvFlz8wMaiasNGrKzGxqJ6x8Y.w8CB3CYjXNa9E7_RdWP-C4IzNTu1veh20pSxgtVXnsw",
+            "256x192": "https://50.img.avito.st/image/1/1.by0Qz7a5aZmk7MVGpYhvFlz8wMaiasNGouzCxqJ6x8Y.tfMMq01pTAcML3hBlsY-Nut0X9Lj8buIjhrXeQ66zvs",
+            "originalSize": {
+              "width": 1280,
+              "height": 960
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "rating",
+      "value": {
+        "title": "Игорь",
+        "avatar": "https://static.avito.ru/stub_avatars/%D0%98/8_256x256.png",
+        "rated": "27 мая 2023",
+        "itemTitle": "Прицеп-дача Bailey Senator California, 2009",
+        "stageTitle": "Сделка состоялась",
+        "textSections": [
+          {
+            "title": "Комментарий",
+            "text": "Отличная компания, все честно, четко, объективно. При выдаче показали рассказали, все проверили. Большой выбор, отзывчивый и профессиональный персонал."
+          }
+        ],
+        "id": 133144444,
+        "score": 5,
+        "answer": {
+          "answerId": 29984939,
+          "title": "Первый Караван",
+          "answered": "10 июня 2023",
+          "text": "Спасибо за ваш отклик!",
+          "avatar": "https://50.img.avito.st/image/1/1.r2SX2ba1FY2hfoGLxfvNObV7AY0pcoGLoX4Bjw.Ce5_aodyRq6lsWSjbh0sAwNi5UiHWf_3FGl8Yql7_78",
+          "link": "https://www.avito.ru/user/0e58ed0e1f3fed954a3f1be908314a8b/profile?src=ratings"
+        },
+        "images": [
+          {
+            "180x135": "https://00.img.avito.st/image/1/1.eI0f37a5fjmrlNToq7ZkgEzz12atetSOq_LUZq1q0GY.02tTegVSjgJldlqdnuM-WEb4bPR6r_ZhKy5Q2RzbcIE",
+            "640x480": "https://00.img.avito.st/image/1/1.eI0f37a5fjmr_NymrrZkgEzz12atetTmo7zRZq1q0GY.zOmEu8dqCGFu30niSIHfPhgE-sQWOnDTqi9bZvSc1VM",
+            "256x192": "https://00.img.avito.st/image/1/1.eI0f37a5fjmr_NLmqrZkgEzz12atetTmrfzVZq1q0GY.QIZCuHw8kqFGkSk2MgYEcfZn0kLmqMqRrjEM5_xygJY",
+            "1280x960": "https://00.img.avito.st/image/1/1.eI0f37a5fjmr_MLmprZkgEzz12atetTmvfzZZq1q0GY.73Cfxf4L_Q9z68Gggf2Fc4Qa4KWwinr9UuX6G8ipKIQ",
+            "originalSize": {
+              "width": 1280,
+              "height": 960
+            }
+          },
+          {
+            "256x192": "https://80.img.avito.st/image/1/1.SrSvCba5TAAbKuDfGgRWufwl5V8drObfHSrnXx284l8.hhR_gRYQoy3hfjQ2Ge2VKwI44VEWgDuViabWa92JkIU",
+            "180x135": "https://80.img.avito.st/image/1/1.SrSvCba5TAAbQubRGwRWufwl5V8drOa3GyTmXx284l8.4Onfbvp-uwhOl2dGkjPRS3NcuVlgNyKlfejk2x8nAfI",
+            "1280x960": "https://80.img.avito.st/image/1/1.SrSvCba5TAAbKvDfFgRWufwl5V8drObfDSrrXx284l8.dHr4TuW67w_mgbYqw85yR_n_s2dr5fCQfOI06sT9-xo",
+            "640x480": "https://80.img.avito.st/image/1/1.SrSvCba5TAAbKu6fHgRWufwl5V8drObfE2rjXx284l8.kVO1Jh-BADGg-Ghz7W-56K3fgWFVME3qnTazTI8Nww0",
+            "originalSize": {
+              "width": 1280,
+              "height": 960
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "rating",
+      "value": {
+        "title": "Соня",
+        "avatar": "https://70.img.avito.st/image/1/1.botPdLa11GJ500BkH31HoGnWwGLx30BkedPAYA.GNz7rBQe2s7hMb8DVyltVhjU3LTZem2hV7UyYikVCRg",
+        "rated": "27 мая 2023",
+        "itemTitle": "Прицеп-дача Weinsberg CaraCito 500 QDK, 2023",
+        "stageTitle": "Сделка состоялась",
+        "textSections": [
+          {
+            "title": "Комментарий",
+            "text": "Благодарю парней за оперативную работу: нам понадобился прицеп и в кратчайшие сроки с главным условием - полный комплект по дополнительному оборудованию. За 2 суток мы успели выбрать, оплатить, поставить на учет, установить солнечные панели и вывести аккумулятор. Самое интересное, что мы даже не приезжали на площадку - сделали все дистанционно. Большое спасибо."
+          }
+        ],
+        "id": 133064664,
+        "score": 5,
+        "images": [
+          {
+            "256x192": "https://50.img.avito.st/image/1/1.ZPW4x7a5YkEM5M6eDZYw69Hryx4KYsieCuTJHgpyzB4.dVtJ3-xORMkHzc19hAr-hT7AzWXwh0FgG_QjlENtE3U",
+            "1280x960": "https://50.img.avito.st/image/1/1.ZPW4x7a5YkEM5N6eAZYw69Hryx4KYsieGuTFHgpyzB4.FIEOJD3GX99LUlOzYubqctH9nFK5McPbL7Y4D59LNnk",
+            "180x135": "https://50.img.avito.st/image/1/1.ZPW4x7a5YkEMjMiQDJYw69Hryx4KYsj2DOrIHgpyzB4.214Yjc04vVXZ33oecTETDSPj_HB3zZKeI24X-iB1hgY",
+            "640x480": "https://50.img.avito.st/image/1/1.ZPW4x7a5YkEM5MDeCZYw69Hryx4KYsieBKTNHgpyzB4._6XE4CkM-MUY5RDNiX5QnO2VlwieCagVgwURZ-fqOG4",
+            "originalSize": {
+              "width": 1280,
+              "height": 960
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "nextPage": "/web/5/user/0e58ed0e1f3fed954a3f1be908314a8b/ratings?limit=25&offset=25&sortRating=date_desc"
+}
