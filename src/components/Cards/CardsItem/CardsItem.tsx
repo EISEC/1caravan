@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import Link from "next/link";
 import Image from 'next/image'
 import cl from 'src/components/Cards/Cards.module.css';
@@ -95,17 +95,31 @@ const CardsItem = ({wishList, data}) => {
             opacity: 1
         }
     };
+    const itemRef = useRef<HTMLDivElement>(null);
+    useEffect(() => {
+        const lastItemSlug = localStorage.getItem('lastItem')
+        if(lastItemSlug && lastItemSlug === data.slug) {
+            itemRef.current && itemRef.current.scrollIntoView({inline: "start", behavior: 'smooth'})
+
+            localStorage.removeItem('lastItem')
+        }
+    }, []);
+
     // @ts-ignore
     return (
         <motion.li
             className={'rounded-lg overflow-hidden bg-white shadow-lg p-3 flex flex-col justify-between'}
             variants={item}
         >
-            <div className={'relative h-[225px] overflow-hidden rounded-lg'}>
+            <div ref={itemRef} className={'relative h-[225px] overflow-hidden rounded-lg'}>
                 <Link href={{
                     pathname: "/avtodom/[...slug]",
                     query: {slug: data.slug},
-                }}>
+                }}
+                onClick={() => {
+                    localStorage.setItem('lastItem', data.slug)
+                }}
+                >
                     <Image
 
                         src={data.img}
@@ -121,6 +135,9 @@ const CardsItem = ({wishList, data}) => {
                     pathname: "/avtodom/[...slug]",
                     query: {slug: data.slug},
                 }}
+                      onClick={() => {
+                          localStorage.setItem('lastItem', data.slug)
+                      }}
                       className={'uppercase text-xl font-bold block mb-3'}>
                     {data.title}
                 </Link>
@@ -155,6 +172,9 @@ const CardsItem = ({wishList, data}) => {
                     pathname: "/avtodom/[...slug]",
                     query: {slug: data.slug},
                 }}
+                      onClick={() => {
+                          localStorage.setItem('lastItem', data.slug)
+                      }}
                       className={`${cl.btndark} block w-full text-center text-lg py-3 mt-2`}>
                     Подробнее
                 </Link>

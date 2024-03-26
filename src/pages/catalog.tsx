@@ -25,6 +25,7 @@ export default function Avtodom({doma, dom}) {
         }
     }, [filteredDoma])
 
+
     return (
         <>
             <HeadTitle/>

@@ -9,8 +9,7 @@ import CardsItem from "@/components/Cards/CardsItem/CardsItem";
 const Cards = ({cards}) => {
     const {wishList} = useAppSelector(state => state.wishlist)
     //@ts-ignore
-    const [isMobile, setIsMobile] = useState(false)
-
+    const [isMobile, setIsMobile] = useState(true)
     // @ts-ignore
     useEffect(() => {
         setIsMobile(window.matchMedia('(max-width: 600px)').matches)
@@ -33,11 +32,11 @@ const Cards = ({cards}) => {
             <motion.ul
                 className={'grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 mb-8'}
                 variants={container}
-                initial="hidden"
+                initial={{opacity: 1}}
                 animate="visible"
             >
                 {/*// @ts-ignore*/}
-                {cards.map(el => <CardsItem key={el.id} wishList={wishList} data={el}></CardsItem>)}
+                {cards.map(el => <CardsItem  key={el.id} wishList={wishList} data={el}></CardsItem>)}
             </motion.ul>
         </section>
     );
