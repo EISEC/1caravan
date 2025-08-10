@@ -313,7 +313,7 @@ export const mockData: TAddCategoryList = [
                 ]
             },
             {
-                itemListName: 'Кранштейн',
+                itemListName: 'Кронштейн',
                 info: [
                     {
                         title: 'для ТВ',

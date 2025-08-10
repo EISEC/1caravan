@@ -4,7 +4,7 @@ import Otzivy from "@/components/avito/otzivy";
 const Otzivishki = () => {
 
     return (
-        <div className={'container mx-auto px-6 grid grid-cols-2 items-center gap-20'}>
+        <div className={'container mx-auto mb-4 px-6 grid xs:grid-cols-1 md:grid-cols-2 items-center gap-20'}>
             {/*// @ts-ignore*/}
             <div className={'piasd w-1/2'}>
                 {/*// @ts-ignore*/}

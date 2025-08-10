@@ -1,7 +1,7 @@
 import Link from "next/link";
 import {useEffect, useState} from "react";
 import {FaHeart, FaPhone} from "react-icons/fa";
-import {ImShuffle} from "react-icons/im";
+import {AiOutlineBarChart} from "react-icons/ai";
 import cl from './menu.module.css'
 import {useAppSelector} from "@/store/store";
 import Toast from "@/components/Toast/toast";
@@ -17,7 +17,6 @@ const Menu = () => {
     useEffect(() => {
         setMobileMenu(window.matchMedia('(max-width: 998px)').matches)
     }, [])
-
     function MobileMenu() {
         if (isMobileMenu) {
             return (
@@ -168,11 +167,11 @@ const Menu = () => {
                     <span
                         className={'absolute -top-3 -right-3 text-sm bg-red-700 px-1 rounded text-white font-bold'}>{lenCart}</span>
                 </Link>
-                <Link href={'/compare'} className={'relative bg-blue-500 p-2 rounded'}>
-                    <ImShuffle className={'text-white'}/>
+                {!isMobileMenu && <Link href={'/compare'} className={'relative bg-blue-500 p-1 rounded'}>
+                    <AiOutlineBarChart className={'text-white w-[24px] h-[24px]'}/>
                     <span
                         className={'absolute -top-3 -right-3 text-sm bg-red-700 px-1 rounded text-white font-bold'}>{lenComp}</span>
-                </Link>
+                </Link>}
                 <Link href={'tel:+79811518850'} className={'bg-green-600 p-2 mr-4 rounded'}>
                     <FaPhone className={'text-white'}/>
                 </Link>

@@ -10,9 +10,8 @@ export default function Proiz() {
     const proizvod = useMemo(async () => {
         const {data: data} = await axios.get('https://1caravan.ru/wp-json/api/v2/doma/proizvoditeli')
         //@ts-ignore
-        setUnic(data)
+        setUnic(data.sort((a,b) => a.poryadok - b.poryadok))
     }, [])
-
     return (
         <section className={'container mx-auto my-3 mt-[35px] px-4'}>
             <h2 className={'my-0 mb-4 text-3xl font-bold'}>Производители</h2>

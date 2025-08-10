@@ -48,11 +48,11 @@ const Footer = () => {
                                 Под заказ
                             </Link>
                         </li>
-                        <li>
-                            <Link href={'/sold'}>
-                                Проданые
-                            </Link>
-                        </li>
+                        {/*<li>*/}
+                        {/*    <Link href={'/sold'}>*/}
+                        {/*        Проданые*/}
+                        {/*    </Link>*/}
+                        {/*</li>*/}
                         <li>
                             <Link href={'/tavary'}>
                                 Товары
@@ -77,7 +77,7 @@ const Footer = () => {
                         </ul>
                     )}
                 </div>
-                <div className={cl.widthKontakt}>
+                <div className={cl.widthKontakt} id={'contacts'}>
                     <h4 className={'mb-3'}>
                         Контакты
                     </h4>
