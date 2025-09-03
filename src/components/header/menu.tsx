@@ -2,6 +2,7 @@ import Link from "next/link";
 import {useEffect, useState} from "react";
 import {FaHeart, FaPhone} from "react-icons/fa";
 import {AiOutlineBarChart} from "react-icons/ai";
+import { IoIosMenu } from "react-icons/io";
 import cl from './menu.module.css'
 import {useAppSelector} from "@/store/store";
 import Toast from "@/components/Toast/toast";
@@ -11,69 +12,77 @@ const Menu = () => {
     const {compareList} = useAppSelector(state => state.compare)
     const [lenCart, setLenCart] = useState(0)
     const [lenComp, setLenComp] = useState(0)
+    const [menuMob, setMenuMob] = useState(false)
     useEffect(() => setLenCart(wishList.length), [wishList])
     useEffect(() => setLenComp(compareList.length), [compareList])
     const [isMobileMenu, setMobileMenu] = useState(false)
     useEffect(() => {
         setMobileMenu(window.matchMedia('(max-width: 998px)').matches)
     }, [])
+
     function MobileMenu() {
         if (isMobileMenu) {
             return (
-                // @ts-ignore
-                <nav className={cl.MobileMenu} itemScope="" itemType="https://schema.org/SiteNavigationElement">
+                <>
+                    <div className={'bg-white p-2 mr-4 rounded'} onClick={() => setMenuMob((prev) => !prev)}>
+                        <IoIosMenu />
+                    </div>
                     {/*// @ts-ignore*/}
-                    <ul className={cl.insideMenu} itemProp="about" itemScope="" itemType="https://schema.org/ItemList">
+                    {menuMob && <nav className={cl.MobileMenu} itemScope="" itemType="https://schema.org/SiteNavigationElement">
                         {/*// @ts-ignore*/}
-                        <li itemProp="itemListElement" itemScope="" itemType="https://schema.org/ItemList">
+                        <ul className={cl.insideMenu} itemProp="about" itemScope=""
+                            itemType="https://schema.org/ItemList">
                             {/*// @ts-ignore*/}
-                            <Link href={'/'} itemProp="url">
-                                Главная
-                            </Link>
-                            <meta itemProp="name" content="Главная"/>
-                        </li>
-                        {/*// @ts-ignore*/}
-                        <li itemProp="itemListElement" itemScope="" itemType="https://schema.org/ItemList">
+                            <li itemProp="itemListElement" itemScope="" itemType="https://schema.org/ItemList">
+                                {/*// @ts-ignore*/}
+                                <Link href={'/'} itemProp="url" onClick={() => setMenuMob(false)}>
+                                    Главная
+                                </Link>
+                                <meta itemProp="name" content="Главная"/>
+                            </li>
                             {/*// @ts-ignore*/}
-                            <Link href={'/catalog'} itemProp="url">
-                                Каталог
-                            </Link>
-                            <meta itemProp="name" content="Каталог"/>
-                        </li>
-                        {/*// @ts-ignore*/}
-                        <li itemProp="itemListElement" itemScope="" itemType="https://schema.org/ItemList">
+                            <li itemProp="itemListElement" itemScope="" itemType="https://schema.org/ItemList">
+                                {/*// @ts-ignore*/}
+                                <Link href={'/catalog'} itemProp="url" onClick={() => setMenuMob(false)}>
+                                    Каталог
+                                </Link>
+                                <meta itemProp="name" content="Каталог"/>
+                            </li>
                             {/*// @ts-ignore*/}
-                            <Link href={'/pod-zakaz'} itemProp="url">
-                                Под заказ
-                            </Link>
-                            <meta itemProp="name" content="Под заказ"/>
-                        </li>
-                        {/*// @ts-ignore*/}
-                        <li itemProp="itemListElement" itemScope="" itemType="https://schema.org/ItemList">
+                            <li itemProp="itemListElement" itemScope="" itemType="https://schema.org/ItemList">
+                                {/*// @ts-ignore*/}
+                                <Link href={'/pod-zakaz'} itemProp="url" onClick={() => setMenuMob(false)}>
+                                    Под заказ
+                                </Link>
+                                <meta itemProp="name" content="Под заказ"/>
+                            </li>
                             {/*// @ts-ignore*/}
-                            <Link href={'/tavary'} itemProp="url">
-                                Товары
-                            </Link>
-                            <meta itemProp="name" content="Товары"/>
-                        </li>
-                        {/*// @ts-ignore*/}
-                        <li itemProp="itemListElement" itemScope="" itemType="https://schema.org/ItemList">
+                            <li itemProp="itemListElement" itemScope="" itemType="https://schema.org/ItemList">
+                                {/*// @ts-ignore*/}
+                                <Link href={'/tavary'} itemProp="url" onClick={() => setMenuMob(false)}>
+                                    Товары
+                                </Link>
+                                <meta itemProp="name" content="Товары"/>
+                            </li>
                             {/*// @ts-ignore*/}
-                            <Link href={'/blog'} itemProp="url">
-                                FAQ
-                            </Link>
-                            <meta itemProp="name" content="Блог"/>
-                        </li>
-                        {/*// @ts-ignore*/}
-                        <li itemProp="itemListElement" itemScope="" itemType="https://schema.org/ItemList">
+                            <li itemProp="itemListElement" itemScope="" itemType="https://schema.org/ItemList">
+                                {/*// @ts-ignore*/}
+                                <Link href={'/blog'} itemProp="url" onClick={() => setMenuMob(false)}>
+                                    FAQ
+                                </Link>
+                                <meta itemProp="name" content="Блог"/>
+                            </li>
                             {/*// @ts-ignore*/}
-                            <Link href={'#contacts'} itemProp="url">
-                                Контакты
-                            </Link>
-                            <meta itemProp="name" content="Контакты"/>
-                        </li>
-                    </ul>
-                </nav>
+                            <li itemProp="itemListElement" itemScope="" itemType="https://schema.org/ItemList">
+                                {/*// @ts-ignore*/}
+                                <Link href={'#contacts'} itemProp="url" onClick={() => setMenuMob(false)}>
+                                    Контакты
+                                </Link>
+                                <meta itemProp="name" content="Контакты"/>
+                            </li>
+                        </ul>
+                    </nav>}
+                </>
             )
         } else {
             return ''
@@ -172,12 +181,12 @@ const Menu = () => {
                     <span
                         className={'absolute -top-3 -right-3 text-sm bg-red-700 px-1 rounded text-white font-bold'}>{lenComp}</span>
                 </Link>}
-                <Link href={'tel:+79811518850'} className={'bg-green-600 p-2 mr-4 rounded'}>
+                <Link href={'tel:+79811518850'} className={`bg-green-600 p-2 ${menuMob ? 'mr-4' : ''} rounded`}>
                     <FaPhone className={'text-white'}/>
                 </Link>
+                {/*// @ts-ignore*/}
+                <MobileMenu/>
             </div>
-            {/*// @ts-ignore*/}
-            <MobileMenu/>
         </header>
     );
 };

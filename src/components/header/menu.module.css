@@ -31,6 +31,12 @@
     margin-bottom: 10px;
 }
 
+@media (max-width: 998px) {
+    .logo {
+        width: 100%;
+    }
+}
+
 .insideMenu {
     display: flex;
     list-style: none;
@@ -61,6 +67,20 @@
     padding: 15px 0;
     padding-right: 15px;
 }
-.MobileMenu{
-    display: none;
+.MobileMenu {
+    position: absolute;
+    top: 60px;
+    background: white;
+}
+
+.MobileMenu a {
+    color: black!important;
+}
+
+.MobileMenu > ul {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    padding: 15px;
 }

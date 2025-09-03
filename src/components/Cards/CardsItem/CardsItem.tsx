@@ -25,6 +25,11 @@ const CardsItem = ({wishList, data}) => {
         return formatPrice
     }
 
+    const [isMobileMenu, setMobileMenu] = useState(false)
+    useEffect(() => {
+        setMobileMenu(window.matchMedia('(max-width: 998px)').matches)
+    }, [])
+
     const [click, setClick] = useState(false)
     setTimeout(() => setClick(false), 1000)
 
@@ -155,13 +160,13 @@ const CardsItem = ({wishList, data}) => {
                         {data.prices_sale ? getFormatPrice(data.prices_sale) : getFormatPrice(data.price)} ₽
                     </p>
                 </div>
-                <div className={'grid grid-cols-2 gap-2 py-2'}>
-                    <button
+                <div className={`grid ${!isMobileMenu ? 'grid-cols-2': 'grid-cols-1'} gap-2 py-2`}>
+                    {!isMobileMenu && <button
                         onClick={disableComp ? () => deletCompare(data.slug, data.title, data.price, data.img) : () => sendToComp(data.slug, data.title, data.price, data.img)}
                         className={'flex flex-row border-blue-600 border-2 py-2 rounded items-center justify-center gap-2 disabled:bg-blue-200 disabled:text-white disabled:border-blue-200 disabled:cursor-no-drop transition hover:scale-90'}>
                         {disableComp ? 'В Сравнении' : 'Сравнить'}{disableComp ?
                         <FaRegTrashAlt className={'text-red-700'}/> :
-                        <ImShuffle className={'text-blue-600'}/>} </button>
+                        <ImShuffle className={'text-blue-600'}/>} </button>}
                     <button
                         onClick={disableList ? () => deletWish(data.slug, data.title, data.price, data.img, statusDom) : () => sendToCart(data.slug, data.title, data.price, data.img, statusDom)}
                         className={'flex flex-row border-red-700 border-2 py-2 rounded items-center justify-center gap-2 disabled:bg-red-200 disabled:text-white disabled:border-red-200 disabled:cursor-no-drop transition hover:scale-90'}>

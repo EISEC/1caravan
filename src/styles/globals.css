@@ -135,6 +135,12 @@ p b {
     align-self: center;
 }
 
+@media (max-width: 768px) {
+    .glavnay_po_caravanu .opisaniye {
+        justify-self: auto;
+    }
+}
+
 
 .glavnay_po_caravanu .cena {
     grid-area: cena;

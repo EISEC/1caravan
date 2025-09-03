@@ -297,13 +297,13 @@ export default function Post({post}) {
                         <div className="btns mt-3 flex flex-col gap-2">
                             <button onClick={() => setModalIsOpen(true)}
                                     className={'px-6 w-full py-4 bg_green rounded-xl text-xl text-white hover:scale-90 transition'}>{knopka}</button>
-                            <div className={'grid grid-cols-2 gap-2 py-2'}>
-                                <button
+                            <div className={`grid ${!isMobile ? 'grid-cols-2': 'grid-cols-1'} gap-2 py-2`}>
+                                {!isMobile && <button
                                     onClick={disableComp ? () => deletCompare(post.slug, post.title, post.price, post.img) : () => sendToComp(post.slug, post.title, post.price, post.img)}
                                     className={'flex flex-row border-blue-600 border-2 py-2 rounded items-center justify-center gap-2 disabled:bg-blue-200 disabled:text-white disabled:border-blue-200 disabled:cursor-no-drop transition hover:scale-90'}>
                                     {disableComp ? 'В Сравнении' : 'Сравнить'}{disableComp ?
                                     <FaRegTrashAlt className={'text-red-700'}/> :
-                                    <ImShuffle className={'text-blue-600'}/>} </button>
+                                    <ImShuffle className={'text-blue-600'}/>} </button>}
                                 <button
                                     onClick={disableList ? () => deletWish(post.slug, post.title, post.price, post.img, statusDom) : () => sendToCart(post.slug, post.title, post.price, post.img, statusDom)}
                                     className={'flex flex-row border-red-700 border-2 py-2 rounded items-center justify-center gap-2 disabled:bg-red-200 disabled:text-white disabled:border-red-200 disabled:cursor-no-drop transition hover:scale-90'}>
@@ -316,7 +316,7 @@ export default function Post({post}) {
                 </section>
 
                 <section className={'butonsy container mx-auto px-2 py-6'}>
-                    <ul className={'grid grid-cols-2 md:grid-cols-3 gap-8 px-4 break-words'}>
+                    <ul className={'grid grid-cols-2 md:grid-cols-3 md:gap-8 gap-2 px-4 break-words'}>
                         <li onClick={() => setCurDesc(1)}
                             className={`text-xs bg_grey f_dark cursor-pointer shadow-xl p-4 md:py-6 rounded-xl flex flex-col md:flex-row items-center justify-center gap-[8px] md:gap-[15px] md:text-2xl hover:bg-[#515A89] hover:text-white hover:scale-90 transition
                                 ${curDesc === 1 ? `${cl.active} scale-90` : ''}`}>
@@ -517,7 +517,7 @@ export default function Post({post}) {
                                 </li> : ''}
                             <li>Подогрев воды : <strong
                                 dangerouslySetInnerHTML={{__html: acf.подогрев_воды.replace(/-|–|—/g, '<br>$&')}}/></li>
-                            <li>Слив воды из бойлера - <strong>{acf.слив_воды_из_бойлера}</strong></li>
+                            <li>Слив воды из бойлера - <strong style={{textTransform: 'lowercase'}}>{acf.слив_воды_из_бойлера}</strong></li>
                         </ul>
                     </Collaps>
                     <Collaps isOpen={curDesc === 6}>
