@@ -9,6 +9,7 @@ import "swiper/css/free-mode";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
 import {GiCaravan, GiKitchenTap, GiMeal, GiNotebook, GiPersonInBed, GiWarpPipe} from "react-icons/gi";
+import { RxWidth } from "react-icons/rx";
 
 import Modal from '@/components/Modal/Modal';
 import {TAddItem} from "@/components/types";
@@ -403,20 +404,20 @@ export default function Post({post}) {
                             <div className={'hidden md:flex relative top-0 right-14 flex-col gap-8'}>
                                 <div className={'relative flex flex-col gap-3'}>
                                     <div
-                                        className={'dlina text-center absolute bottom-0 w-full border-b-[1px] border-black'}>
-                                        {naruzha.dlina} см
+                                        className={'dlina text-center absolute bottom-0 w-full'}>
+                                        <span><RxWidth size={26} /> <strong>{naruzha.dlina} см</strong></span>
                                     </div>
                                     <div
-                                        className={'visota text-center absolute left-0 w-min border-r-[1px] border-black flex flex-col h-full justify-between'}>
-                                        <span>{naruzha.visota} см</span>
+                                        className={'visota text-center absolute left-0 w-min flex flex-col h-full justify-between'}>
+                                        <span><RxWidth size={26}/> <strong>{naruzha.visota} см</strong></span>
                                     </div>
                                     <img src="/dlina.webp" alt="Чертеж каравана"/>
                                 </div>
                                 <div className={'flex flex-col items-center justify-center relative'}>
                                     <img src="/shiry.webp" className={'max-w-[260px]'} alt="Чертеж каравана"/>
                                     <div
-                                        className={'shiran max-w-[240px] absolute text-center absolute bottom-0 w-full border-b-[1px] border-black'}>
-                                        <span className={'absolute right-0 left-0 top-2'}>{naruzha.shirina} см</span>
+                                        className={'shiran max-w-[240px] text-center absolute bottom-0 w-full'}>
+                                        <span className={'absolute right-0 left-0 top-2'}><RxWidth size={26}/> <strong>{naruzha.shirina} см</strong></span>
                                     </div>
                                 </div>
 
@@ -532,7 +533,7 @@ export default function Post({post}) {
                         {acf.videob ? <div className={'p-[8px] bg-gray-400 rounded-lg shadow-xl w-full'}>
                             <iframe
                                 className={'w-full md:w-[100%] max-w-[1220px] h-[30vh] rounded-lg'}
-                                src={`https://www.youtube.com/embed/${acf.videob}`}
+                                src={`https://rutube.ru/embed/${acf.videob}`}
                                 allow='autoplay; encrypted-media'
                                 title='video'
                                 width={800}
@@ -549,7 +550,7 @@ export default function Post({post}) {
                             {mockData.map(category => (
                                 // @ts-ignore
                                 <li onClick={() => tabcat(category.catId)} key={category.catId}
-                                    className={`flex gap-4 p-2 rounded-md cursor-pointer flex items-center transition justify-center border-[2px] border-[#515A89] hover:bg-[#515A89] hover:text-white ${category.catId === carAddon ? 'bg-[#515A89] text-white' : ''}`}>
+                                    className={`flex gap-4 p-2 rounded-md cursor-pointer items-center transition justify-center border-[2px] border-[#515A89] hover:bg-[#515A89] hover:text-white ${category.catId === carAddon ? 'bg-[#515A89] text-white' : ''}`}>
                                     <h4>{category.categoryName}</h4>
                                 </li>
                             ))}

@@ -189,64 +189,41 @@ p b {
 
 .visota > span {
     position: absolute;
-    top: 0px;
+    top: 45%;
     bottom: 0;
     width: 100px;
     display: flex;
     align-items: center;
     justify-content: center;
     transform: rotate(-90deg);
-    left: -22px;
+    gap: 5px;
+    left: -20px;
+    height: fit-content;
+}
+.dlina {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+}
+.dlina>span {
+    width: 100%;
+    display: flex;
+    gap: 5px;
+    flex-direction: row;
+    align-items: center;
 }
 
-.visota::after {
-    content: '>';
-    transform: rotate(90deg);
-    position: relative;
-    top: 7px;
-    right: -4px;
-}
-
-.visota::before {
-    content: '<';
-    transform: rotate(90deg);
-    position: relative;
-    top: -10px;
-    right: -4px;
-}
-
-.dlina::after {
-    content: '>';
-    position: absolute;
-    bottom: -14px;
-    right: -4px;
-}
-
-.dlina::before {
-    content: '<';
-    position: absolute;
-    bottom: -14px;
-    left: -4px;
-}
-
-.shiran::after {
-    content: '>';
-    position: absolute;
-    bottom: -14px;
-    right: -4px;
-}
-
-.shiran::before {
-    content: '<';
-    position: absolute;
-    bottom: -14px;
-    left: -4px;
+.shiran>span {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
 }
 
 .piasd {
-    margin: 60px 0;
-    width: 100%;
-    height: 800px;
+    /*width: 100%;*/
+    height: 600px;
     overflow: hidden;
     position: relative;
 }
@@ -293,4 +270,8 @@ p b {
 
 .swiper-slide .active{
     display: block!important;
+}
+
+#yandex .badge {
+    max-width: 100% !important;
 }

@@ -1,6 +1,8 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 
 const SectionQuiz = () => {
+    const [isMobileMenu, setMobileMenu] = useState(false)
+
     useEffect(() => {
         (function () {
                 console.log('rendered')
@@ -48,11 +50,20 @@ const SectionQuiz = () => {
             blicked: true,
             buttonOnMobile: true
         })
+        setMobileMenu(window.matchMedia('(max-width: 998px)').matches)
     }, [])
 
 
     return (
-        <section className={'container mx-auto'}>
+        <section className={`container mx-auto flex my-[40px] gap-2 ${isMobileMenu ? 'flex-col-reverse gap-[40px]': 'flex-row'}`}>
+            <div className={'piasd'}>
+                {/*// @ts-ignore*/}
+                <iframe id={'yandex'} className={'piframe'}
+                        src="https://yandex.ru/maps-reviews-widget/187769733343?comments"></iframe>
+                <a className={'piotzovi'} href="https://yandex.ru/maps/org/pervy_caravan/187769733343/"
+                    // @ts-ignore
+                >Первый Caravan на карте Санкт‑Петербурга и Ленинградской области — Яндекс Карты</a>
+            </div>
             <div data-marquiz-id="617169426d08b20044f239b3"></div>
         </section>
     );

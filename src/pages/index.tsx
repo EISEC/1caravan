@@ -46,7 +46,7 @@ export default function Home({doma}) {
                         Посмотреть все предложения
                     </Link>
                 </section>
-                <Otzivishki/>
+                {/*<Otzivishki/>*/}
                 <SectionQuiz/>
                 <SectionTextHome/>
             </main>

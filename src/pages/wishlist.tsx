@@ -41,22 +41,22 @@ const Wishlist = () => {
                             </div>
                             : wishList.map(el => {
                                 return (
-                                    <li className={'relative shadow-xl rounded-lg flex flex-row items-center justify-between gap-4 pr-4'}
+                                    <li className={'relative shadow-xl rounded-lg flex flex-col md:flex-row md:items-center justify-between gap-4 md:pr-4'}
                                         key={el.slug}>
                                         <Link href={{
                                             pathname: "avtodom/[...slug]",
                                             query: {slug: el.slug},
                                         }}
                                               className={'uppercase text-xl font-bold rounded-lg items-center gap-2 content-between'}>
-                                            <div className={'relative w-36 h-28'}>
+                                            <div className={'relative md:w-36 h-56 md:h-28'}>
                                                 <Image className={'rounded-xl'} src={el.img} alt={el.title} fill/>
                                             </div>
                                         </Link>
-                                        <h3 className={'px-4 w-full'}>{el.title}</h3>
-                                        <div className={'min-w-[200px]'}>
+                                        <h3 className={'px-4 w-full text-[20px] md:text-1xl'}>{el.title}</h3>
+                                        <div className={'px-4 min-w-[200px]'}>
                                             <Ststus status={el.status}/>
                                         </div>
-                                        <p className={'text-right text-md px-4 mb-0 min-w-[200px]'}>{getFormatPrice(el.price)} ₽</p>
+                                        <p className={'text-right text-xl md:text-md px-4 mb-0 min-w-[200px]'}>{getFormatPrice(el.price)} ₽</p>
                                         <button
                                             onClick={() => deletWish(el.slug, el.title, el.price, el.img, el.status)}
                                             className={'flex flex-row border-red-700 border-2 p-2 rounded items-center justify-center gap-2 disabled:bg-red-200 disabled:text-white disabled:border-red-200 disabled:cursor-no-drop transition hover:scale-90'}>

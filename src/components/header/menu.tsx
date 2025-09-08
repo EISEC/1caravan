@@ -181,7 +181,7 @@ const Menu = () => {
                     <span
                         className={'absolute -top-3 -right-3 text-sm bg-red-700 px-1 rounded text-white font-bold'}>{lenComp}</span>
                 </Link>}
-                <Link href={'tel:+79811518850'} className={`bg-green-600 p-2 ${menuMob ? 'mr-4' : ''} rounded`}>
+                <Link href={'tel:+79811518850'} className={`bg-green-600 p-2 ${!isMobileMenu ? 'mr-4' : ''} rounded`}>
                     <FaPhone className={'text-white'}/>
                 </Link>
                 {/*// @ts-ignore*/}
