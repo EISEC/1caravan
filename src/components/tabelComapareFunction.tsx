@@ -34,7 +34,7 @@ const TabelComapareFunction = ({arr}: TabelComapareFunctionProps) => {
         }
     }
     
-    const unik: string[] = [...new Set(harki)];
+    const unik: string[] = Array.from(new Set(harki));
 
     const proverka = (item: any): string | JSX.Element => {
         if (Array.isArray(item)) {

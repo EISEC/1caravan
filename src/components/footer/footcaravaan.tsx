@@ -62,43 +62,45 @@ const Footcaravaan = ({title, price, img, slug, openModal}) => {
         }
     }, [wishList])
     return (
-        <div
-            className={'gap-3 z-10 fixed bottom-0 w-full bg-[#0F0F1B] text-white flex flex-row justify-between items-center px-4 py-2'}>
-            <div>
-                <Image src={img} alt={title} width={70} height={60} className={'rounded-lg'}/>
+        <>
+            <div
+                className={'gap-3 z-10 fixed bottom-0 w-full bg-[#0F0F1B] text-white flex flex-row justify-between items-center px-4 py-2'}>
+                <div>
+                    <Image src={img} alt={title} width={70} height={60} className={'rounded-lg'}/>
+                </div>
+                <div className={'text-xl'}>
+                    <h3>{title}</h3>
+                </div>
+                <div className={'text-2xl font-bold'}>
+                    {price} ₽
+                </div>
+                <div className={'grid grid-cols-2 gap-2 py-2'}>
+                    <button disabled={disableComp} onClick={() => sendToComp(slug, title, price, img)}
+                            className={'w-[35px] flex flex-row border-blue-600 border-2 py-2 rounded items-center justify-center gap-2 disabled:bg-blue-200 disabled:text-white disabled:border-blue-200 disabled:cursor-no-drop'}>
+                        <FaFilter className={'text-blue-600'}/></button>
+                    <button disabled={disableList}
+                            onClick={() => sendToCart(slug, title, price, img)}
+                            className={'w-[35px] flex flex-row border-red-700 border-2 py-2 rounded items-center justify-center gap-2 disabled:bg-red-200 disabled:text-white disabled:border-red-200 disabled:cursor-no-drop'}>
+                        <FaHeart className={'text-red-700'}/></button>
+                </div>
+                <div>
+                    <button onClick={() => setModalIsOpen(true)} className={'bg-orange-500 px-4 py-2 rounded'}>
+                        Оставить заявку
+                    </button>
+                </div>
             </div>
-            <div className={'text-xl'}>
-                <h3>{title}</h3>
-            </div>
-            <div className={'text-2xl font-bold'}>
-                {price} ₽
-            </div>
-            <div className={'grid grid-cols-2 gap-2 py-2'}>
-                <button disabled={disableComp} onClick={() => sendToComp(slug, title, price, img)}
-                        className={'w-[35px] flex flex-row border-blue-600 border-2 py-2 rounded items-center justify-center gap-2 disabled:bg-blue-200 disabled:text-white disabled:border-blue-200 disabled:cursor-no-drop'}>
-                    <FaFilter className={'text-blue-600'}/></button>
-                <button disabled={disableList}
-                        onClick={() => sendToCart(slug, title, price, img)}
-                        className={'w-[35px] flex flex-row border-red-700 border-2 py-2 rounded items-center justify-center gap-2 disabled:bg-red-200 disabled:text-white disabled:border-red-200 disabled:cursor-no-drop'}>
-                    <FaHeart className={'text-red-700'}/></button>
-            </div>
-            <div>
-                <button onClick={() => setModalIsOpen(true)} className={'bg-orange-500 px-4 py-2 rounded'}>
-                    Оставить заявку
-                </button>
-            </div>
-        </div>
-        
-        <Modal isOpen={modalIsOpen} onClose={() => setModalIsOpen(false)}>
-            <SimpleApplicationForm
-                productData={{
-                    title: title,
-                    price: price,
-                    slug: slug
-                }}
-                onClose={() => setModalIsOpen(false)}
-            />
-        </Modal>
+            
+            <Modal isOpen={modalIsOpen} onClose={() => setModalIsOpen(false)}>
+                <SimpleApplicationForm
+                    productData={{
+                        title: title,
+                        price: price,
+                        slug: slug
+                    }}
+                    onClose={() => setModalIsOpen(false)}
+                />
+            </Modal>
+        </>
     );
 };
 

@@ -10,7 +10,7 @@ import TabelComapareFunction from "@/components/tabelComapareFunction";
 const Compare = () => {
     const dispatch = useAppDispatch()
     const {compareList} = useAppSelector(state => state.compare)
-    const [caravans, setCaravans] = useState([])
+    const [caravans, setCaravans] = useState<any[]>([])
 
     function loadingData(i: any) {
         if (i === 0) {

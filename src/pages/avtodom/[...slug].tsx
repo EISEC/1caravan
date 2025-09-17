@@ -109,7 +109,7 @@ export default function Post({post}) {
     const pickedAddons = () => {
         return addIdList.map((curId, idx) => {
             return allAddonItems.find(el => el.id === curId)
-        })
+        }).filter((item): item is TAddItem => item !== undefined)
     }
     const clearAddons = () => {
         setAddIdList([])

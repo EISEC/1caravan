@@ -44,6 +44,7 @@ export default function App({Component, pageProps}: AppProps) {
                         }}
                     />
                     <NavigationLoader/>
+                    {/* @ts-ignore */}
                     <Component {...pageProps} />
                 </PersistWrapper>
             </Provider>
