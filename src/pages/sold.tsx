@@ -39,9 +39,16 @@ export default function Sold({doma}) {
     )
 }
 
-export async function getStaticProps() {
-    const {data: doma} = await axios.get('https://1caravan.ru/wp-json/api/v2/doma/sold')
-    return {
-        props: {doma}, // will be passed to the page component as props
+export async function getServerSideProps() {
+    try {
+        const {data: doma} = await axios.get('https://1caravan.ru/wp-json/api/v2/doma/sold')
+        return {
+            props: {doma}, // will be passed to the page component as props
+        }
+    } catch (error) {
+        console.error('Error fetching sold data:', error)
+        return {
+            props: {doma: []}, // Return empty array on error
+        }
     }
 }

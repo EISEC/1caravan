@@ -91,10 +91,17 @@ export default function Avtodom({doma, dom}) {
     )
 }
 
-export async function getStaticProps() {
-    const {data: doma} = await axios.get('https://1caravan.ru/wp-json/api/v2/doma/catalog')
-    const {data: dom} = await axios.get('https://1caravan.ru/wp-json/api/v2/doma/akciya')
-    return {
-        props: {doma, dom}, // will be passed to the page component as props
+export async function getServerSideProps() {
+    try {
+        const {data: doma} = await axios.get('https://1caravan.ru/wp-json/api/v2/doma/catalog')
+        const {data: dom} = await axios.get('https://1caravan.ru/wp-json/api/v2/doma/akciya')
+        return {
+            props: {doma, dom}, // will be passed to the page component as props
+        }
+    } catch (error) {
+        console.error('Error fetching catalog data:', error)
+        return {
+            props: {doma: [], dom: []}, // Return empty arrays on error
+        }
     }
 }

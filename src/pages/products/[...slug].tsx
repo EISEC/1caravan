@@ -254,32 +254,11 @@ export default function ProductDetail({ product }: ProductDetailProps) {
     );
 }
 
-export async function getStaticPaths() {
-    // Получаем список всех товаров для генерации статических путей
-    try {
-        const { data: products } = await axios.get('https://1caravan.ru/wp-json/api/v2/tovary');
-        
-        const paths = products.map((product: any) => ({
-            params: { slug: [product.slug || product.id] }
-        }));
-
-        return {
-            paths,
-            fallback: true
-        };
-    } catch (error) {
-        return {
-            paths: [],
-            fallback: true
-        };
-    }
-}
-
-export async function getStaticProps({ params }: { params: { slug: string[] } }) {
+export async function getServerSideProps({ params }: { params: { slug: string[] } }) {
     try {
         const slug = params.slug[0];
         
-        // Получаем данные товара
+        // Получаем данные товара в реальном времени
         const { data: products } = await axios.get('https://1caravan.ru/wp-json/api/v2/tovary');
         const product = products.find((p: any) => (p.slug || p.id) === slug);
 
@@ -292,10 +271,10 @@ export async function getStaticProps({ params }: { params: { slug: string[] } })
         return {
             props: {
                 product
-            },
-            revalidate: 3600 // Обновляем каждый час
+            }
         };
     } catch (error) {
+        console.error('Error fetching product:', error);
         return {
             notFound: true
         };

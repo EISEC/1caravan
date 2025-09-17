@@ -47,18 +47,16 @@ export default function Tavary({ tovary }: TavaryProps) {
 };
 
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
     try {
         const {data: tovary} = await axios.get('https://1caravan.ru/wp-json/api/v2/tovary')
         return {
             props: {tovary}, // will be passed to the page component as props
-            revalidate: 3600, // Revalidate every hour
         }
     } catch (error) {
         console.error('Error fetching products:', error)
         return {
             props: {tovary: []}, // Return empty array on error
-            revalidate: 60, // Retry in 1 minute on error
         }
     }
 }

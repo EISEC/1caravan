@@ -69,10 +69,17 @@ export default function PodZakaz({doma, priz}: {doma: any[], priz: any[]}) {
     )
 }
 
-export async function getStaticProps() {
-    const {data: doma} = await axios.get('https://1caravan.ru/wp-json/api/v2/doma/zakaz')
-    const {data: priz} = await axios.get('https://1caravan.ru/wp-json/api/v2/doma/proizvoditeli')
-    return {
-        props: {doma, priz}, // will be passed to the page component as props
+export async function getServerSideProps() {
+    try {
+        const {data: doma} = await axios.get('https://1caravan.ru/wp-json/api/v2/doma/zakaz')
+        const {data: priz} = await axios.get('https://1caravan.ru/wp-json/api/v2/doma/proizvoditeli')
+        return {
+            props: {doma, priz}, // will be passed to the page component as props
+        }
+    } catch (error) {
+        console.error('Error fetching order data:', error)
+        return {
+            props: {doma: [], priz: []}, // Return empty arrays on error
+        }
     }
 }

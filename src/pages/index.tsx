@@ -55,9 +55,16 @@ export default function Home({doma}) {
     )
 }
 
-export async function getStaticProps() {
-    const {data: doma} = await axios.get('https://1caravan.ru/wp-json/api/v2/doma/index')
-    return {
-        props: {doma}, // will be passed to the page component as props
+export async function getServerSideProps() {
+    try {
+        const {data: doma} = await axios.get('https://1caravan.ru/wp-json/api/v2/doma/index')
+        return {
+            props: {doma}, // will be passed to the page component as props
+        }
+    } catch (error) {
+        console.error('Error fetching home data:', error)
+        return {
+            props: {doma: []}, // Return empty array on error
+        }
     }
 }
