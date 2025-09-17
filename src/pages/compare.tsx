@@ -32,17 +32,27 @@ const Compare = () => {
     }
 
     useEffect(() => {
-        // @ts-ignore
-        compareList.forEach(async (item) => {
-            // @ts-ignore
-            const caravan = await axios.get(`https://1caravan.ru/wp-json/api/v2/doma/${item.slug}`)
-            // @ts-ignore
-            setCaravans(current => [...current, caravan.data[0]])
-        })
-    }, [compareList])
+        const loadCaravans = async () => {
+            if (compareList.length === 0) {
+                setCaravans([]);
+                return;
+            }
 
-    useEffect(() => {
-        if (compareList.length === 0) setCaravans([])
+            try {
+                const promises = compareList.map(async (item) => {
+                    const response = await axios.get(`https://1caravan.ru/wp-json/api/v2/doma/${item.slug}`);
+                    return response.data[0];
+                });
+
+                const caravansData = await Promise.all(promises);
+                setCaravans(caravansData);
+            } catch (error) {
+                console.error('Ошибка загрузки данных для сравнения:', error);
+                setCaravans([]);
+            }
+        };
+
+        loadCaravans();
     }, [compareList])
     return (
         <>

@@ -1,3 +1,4 @@
+import React from 'react'
 import Head from 'next/head'
 import {Inter} from '@next/font/google'
 import Menu from "@/components/header/menu";
@@ -12,8 +13,7 @@ import {useRouter} from "next/router";
 
 const inter = Inter({subsets: ['latin']})
 
-// @ts-ignore
-export default function PodZakaz({doma, priz}) {
+export default function PodZakaz({doma, priz}: {doma: any[], priz: any[]}) {
     const [filteredDoma, setFilteredDoma] = useState(doma)
     const [isFonud, setIsFound] = useState(true)
 
@@ -27,6 +27,7 @@ export default function PodZakaz({doma, priz}) {
 
     return (
         <>
+            {/* @ts-ignore */}
             <Head>
                 <title>Заказать автодом, прицеп-дача, дом на колесах | Первый караван</title>
                 <meta name="description"
@@ -35,13 +36,17 @@ export default function PodZakaz({doma, priz}) {
                 <meta name="viewport" content="width=device-width, initial-scale=1"/>
                 <link rel="icon" href="/favicon.ico"/>
             </Head>
+            {/* @ts-ignore */}
             <Menu/>
             <main className={'mt-28'}>
+                {/* @ts-ignore */}
                 <Proiz/>
+                {/* @ts-ignore */}
                 <ParamsFilter doma={doma} setFilteredDoma={setFilteredDoma} nameCurPage={useRouter().pathname}/>
 
                 <div className={'container mx-auto px-6'}>Нашлось {filteredDoma.length} караванов</div>
                 {!!filteredDoma.length && (
+                    /* @ts-ignore */
                     <Cards cards={filteredDoma}/>
                 )}
 
@@ -58,6 +63,7 @@ export default function PodZakaz({doma, priz}) {
                     </section>
                 }
             </main>
+            {/* @ts-ignore */}
             <Footer/>
         </>
     )

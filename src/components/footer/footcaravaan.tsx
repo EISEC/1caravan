@@ -4,6 +4,8 @@ import {FaFilter, FaHeart} from "react-icons/fa";
 import {AddWish} from "@/store/slice/wishlist";
 import {AddComp} from "@/store/slice/compare";
 import {useAppDispatch, useAppSelector} from "@/store/store";
+import Modal from '@/components/Modal/Modal';
+import SimpleApplicationForm from '@/components/Modal/SimpleApplicationForm';
 
 //@ts-ignore
 const Footcaravaan = ({title, price, img, slug, openModal}) => {
@@ -13,6 +15,7 @@ const Footcaravaan = ({title, price, img, slug, openModal}) => {
     const {compareList} = useAppSelector(state => state.compare)
 
     const dispatch = useAppDispatch();
+    const [modalIsOpen, setModalIsOpen] = useState(false);
     //@ts-ignore
     const sendToCart = (slug, title, price, img) => {
         //@ts-ignore
@@ -80,11 +83,22 @@ const Footcaravaan = ({title, price, img, slug, openModal}) => {
                     <FaHeart className={'text-red-700'}/></button>
             </div>
             <div>
-                <button onClick={openModal} className={'bg-orange-500 px-4 py-2 rounded'}>
+                <button onClick={() => setModalIsOpen(true)} className={'bg-orange-500 px-4 py-2 rounded'}>
                     Оставить заявку
                 </button>
             </div>
         </div>
+        
+        <Modal isOpen={modalIsOpen} onClose={() => setModalIsOpen(false)}>
+            <SimpleApplicationForm
+                productData={{
+                    title: title,
+                    price: price,
+                    slug: slug
+                }}
+                onClose={() => setModalIsOpen(false)}
+            />
+        </Modal>
     );
 };
 

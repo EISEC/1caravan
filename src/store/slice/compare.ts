@@ -20,27 +20,19 @@ export const compareSlice = createSlice({
     name: 'compare',
     initialState: initialState,
     reducers: {
-        AddComp: (state = initialState, action: PayloadAction<CompItem>) => {
-            //@ts-ignore
-            let idx = state.compareList.findIndex(el => el.slug === action.payload.slug)
-            if (idx === -1) {
-                state.compareList.push(action.payload)
-            }
-            if (idx > 0) {
-
-            } else {
-
+        AddComp: (state, action: PayloadAction<CompItem>) => {
+            const existingItem = state.compareList.find(el => el.slug === action.payload.slug);
+            if (!existingItem) {
+                state.compareList.push(action.payload);
             }
         },
-        clearComp: (state = initialState) => {
-            state.compareList = []
+        clearComp: (state) => {
+            state.compareList = [];
         },
-        delet: (state = initialState, action: PayloadAction<CompItem>) => {
-            //@ts-ignore
-            let idx = state.compareList.findIndex(el => el.slug === action.payload.slug)
+        delet: (state, action: PayloadAction<CompItem>) => {
+            const idx = state.compareList.findIndex(el => el.slug === action.payload.slug);
             if (idx >= 0) {
-                // @ts-ignore
-                state.compareList.splice(idx, 1)
+                state.compareList.splice(idx, 1);
             }
         }
     },

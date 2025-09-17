@@ -12,6 +12,7 @@ import {GiCaravan, GiKitchenTap, GiMeal, GiNotebook, GiPersonInBed, GiWarpPipe} 
 import { RxWidth } from "react-icons/rx";
 
 import Modal from '@/components/Modal/Modal';
+import ApplicationForm from '@/components/Modal/ApplicationForm';
 import {TAddItem} from "@/components/types";
 import {mockData} from "@/components/mocData";
 import Status from "@/components/SingleDom/Status";
@@ -603,21 +604,29 @@ export default function Post({post}) {
             <Footer/>
 
             <Modal isOpen={modalIsOpen} onClose={() => setModalIsOpen(false)}>
-                <h2>Modal Content</h2>
-                <form action="" className={'transition duration-700 ease-in-out'}>
-                    <input type="text" name="dfsd" id="dsf"/>
-                    <input type="text" name='sads'/>
-                    <textarea className={'hidden'}>
-                        {pickedAddons().length && pickedAddons().map(el => {
-                            return (
-                                //@ts-ignore
-                                <div key={el.id}>{el.title}</div>
-                            )
-
-                        })}
-                    </textarea>
-                    <input type="submit" value="Оставить заявку"/>
-                </form>
+                <ApplicationForm
+                    productData={{
+                        title: title,
+                        price: post.price,
+                        salePrice: post.prices_sale,
+                        vin: vin,
+                        year: god_vipuska,
+                        manufacturer: proizvoditel?.name || '',
+                        country: strana,
+                        mass: massa,
+                        maxMass: max_massa,
+                        sleepingPlaces: mesta,
+                        dimensions: {
+                            length: acf.длина_каравана,
+                            width: acf.ширина_каравана_копия,
+                            height: acf.высота_каравана_копия2
+                        },
+                        status: statusDom
+                    }}
+                    selectedAddons={pickedAddons()}
+                    totalPrice={getPriceWithAddons()}
+                    onClose={() => setModalIsOpen(false)}
+                />
             </Modal>
             <Modal isOpen={modalQuiz} onClose={() => setModalQuiz(false)}>
                 <Quize/>

@@ -6,34 +6,58 @@ import {FaRegTrashAlt} from "react-icons/fa";
 import {delet} from "@/store/slice/compare";
 import {useAppDispatch} from "@/store/store";
 
-const TabelComapareFunction = ({arr}: any) => {
+interface CaravanData {
+    id: string;
+    slug: string;
+    title: string;
+    price: number;
+    prices_sale?: number;
+    img: string;
+    acf: Record<string, any>;
+}
+
+interface TabelComapareFunctionProps {
+    arr: CaravanData[];
+}
+
+const TabelComapareFunction = ({arr}: TabelComapareFunctionProps) => {
     const dispatch = useAppDispatch();
-    const harki: any = []
+    const harki: string[] = [];
+    
     if (arr.length > 0) {
         for (let i = 0; i < arr.length; i++) {
-            Object.keys(arr[i]?.acf)?.map((el) => {
-                harki.push(el)
-            })
+            if (arr[i]?.acf) {
+                Object.keys(arr[i].acf).forEach((el) => {
+                    harki.push(el);
+                });
+            }
         }
     }
-    // @ts-ignore
-    const unik: any = [...new Set(harki)]
+    
+    const unik: string[] = [...new Set(harki)];
 
-    const proverka = (item: any) => {
+    const proverka = (item: any): string | JSX.Element => {
         if (Array.isArray(item)) {
-            let dope: any = []
-            item.map((el) => {
-                dope.push(el['наименование_характеристики'])
-            })
-            return dope.join(', ')
+            const dope: string[] = [];
+            item.forEach((el) => {
+                if (el && typeof el === 'object' && el['наименование_характеристики']) {
+                    dope.push(el['наименование_характеристики']);
+                }
+            });
+            return dope.join(', ');
         } else if (typeof item === "boolean") {
-            return item ? 'Есть' : 'Нет'
-        } else if (typeof item === undefined) {
-            return '-'
-        } else if (typeof item === "object") {
-            return `${item['длинна']} x ${item['ширина']} x ${item['высота']}`
+            return item ? 'Есть' : 'Нет';
+        } else if (item === undefined || item === null) {
+            return '-';
+        } else if (typeof item === "object" && item !== null) {
+            const length = item['длинна'] || item['длина'] || '-';
+            const width = item['ширина'] || '-';
+            const height = item['высота'] || '-';
+            return `${length} x ${width} x ${height}`;
+        } else if (typeof item === "string") {
+            return <p dangerouslySetInnerHTML={{__html: item}}/>;
         } else {
-            return <p dangerouslySetInnerHTML={{__html: item}}/>
+            return String(item);
         }
     }
 
@@ -51,25 +75,25 @@ const TabelComapareFunction = ({arr}: any) => {
         'videob',
         'gallery_avtod',
     ]
-    const newArr = unik.filter((item: any) => !arNenuzh.includes(item))
+    const newArr = unik.filter((item: string) => !arNenuzh.includes(item));
 
-    const deletnenuzh = (item: any) => {
-        const newItem: any = preObraz(item)
-        const slovo = newItem.split('_')
-        slovo[0] = slovo[0].charAt(0).toUpperCase() + slovo[0].slice(1).toLowerCase()
-        const newSlovo = slovo.join(' ')
-        return newSlovo
+    const deletnenuzh = (item: string): string => {
+        const newItem: string = preObraz(item);
+        const slovo = newItem.split('_');
+        if (slovo.length > 0) {
+            slovo[0] = slovo[0].charAt(0).toUpperCase() + slovo[0].slice(1).toLowerCase();
+        }
+        return slovo.join(' ');
     }
 
-    function getFormatPrice(price: string) {
-        const pRes = Number(price)
+    function getFormatPrice(price: string | number): string {
+        const pRes = Number(price);
         const formatPrice = String(pRes).replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1 ");
-        return formatPrice
+        return formatPrice;
     }
-    //@ts-ignore
-    const deletCompare = (slug, title, price, img) => {
-        //@ts-ignore
-        dispatch(delet({slug, title, price, img}))
+
+    const deletCompare = (slug: string, title: string, price: number, img: string) => {
+        dispatch(delet({slug, title, price, img}));
     }
     return (
         <table className={'min-w-[1280px]'}>
@@ -113,15 +137,20 @@ const TabelComapareFunction = ({arr}: any) => {
             </tr>
             </thead>
             <tbody>
-            {newArr.map((el: any, idx: number) => {
+            {newArr.map((el: string, idx: number) => {
                 return (
                     <tr key={idx} className={'border-b-[1px] border-gray-950'}>
                         <td className={'w-[350px]'}>{deletnenuzh(el)}</td>
-                        {arr && arr.map((item: any) => {
+                        {arr && arr.map((item: CaravanData) => {
                             return (
                                 <td key={item.id}
                                     className={'w-[350px] border-gray-950 border-l-[1px] p-2 align-baseline'}>
-                                    {el === 'price' ? item['prices_sale'] ? item['prices_sale'] + ' ₽' : getFormatPrice(item['price']) + ' ₽' : proverka(item.acf[el])}
+                                    {el === 'price' 
+                                        ? (item.prices_sale 
+                                            ? `${getFormatPrice(item.prices_sale)} ₽` 
+                                            : `${getFormatPrice(item.price)} ₽`)
+                                        : proverka(item.acf[el])
+                                    }
                                 </td>
                             )
                         })}

@@ -1,38 +1,152 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Первый караван - Продажа автодомов и караванов
 
-## Getting Started
+Сайт для продажи автодомов, прицеп-дач и домов на колесах. Проект построен на Next.js с использованием TypeScript, Redux Toolkit и Tailwind CSS.
 
-First, run the development server:
+## 🚀 Технологии
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+- **Frontend**: Next.js 13.1.6, React 18.2.0, TypeScript 4.9.5
+- **Стилизация**: Tailwind CSS 3.3.2, CSS Modules
+- **Управление состоянием**: Redux Toolkit 1.9.3, Redux Persist 6.0.0
+- **Анимации**: Framer Motion 10.0.0
+- **Дополнительные библиотеки**:
+  - React Icons 4.8.0
+  - Swiper 9.4.1
+  - React Multi Carousel 2.8.2
+  - FSLightbox React 1.7.6
+  - Next SEO 6.1.0
+
+## 📁 Структура проекта
+
+```
+src/
+├── components/          # React компоненты
+│   ├── Cards/          # Компоненты карточек товаров
+│   ├── Filter/         # Компоненты фильтрации
+│   ├── footer/         # Компоненты футера
+│   ├── header/         # Компоненты хедера и меню
+│   ├── hero/           # Главные секции и акции
+│   ├── home/           # Компоненты главной страницы
+│   ├── Modal/          # Модальные окна
+│   ├── SingleDom/      # Компоненты страницы товара
+│   └── Toast/          # Уведомления
+├── hooks/              # Пользовательские хуки
+├── pages/              # Страницы Next.js
+│   ├── api/           # API роуты
+│   ├── avtodom/       # Страницы товаров
+│   ├── posts/         # Страницы блога
+│   └── proizvoditel/  # Страницы производителей
+├── store/             # Redux store и слайсы
+└── styles/            # Глобальные стили
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🎯 Основной функционал
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+### Каталог товаров
+- Просмотр автодомов и караванов
+- Фильтрация по производителям и параметрам
+- Сравнение товаров
+- Избранное (wishlist)
+- Детальная страница товара с галереей
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+### Модальные окна
+- **Модальное окно заявки** (`src/components/Modal/Modal.tsx`) - используется для оформления заявок на покупку
+- **Модальное окно квиза** - интеграция с Marquiz для сбора лидов
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+### Интеграции
+- **Marquiz** - система квизов и лидогенерации
+- **Яндекс.Карты** - отображение местоположения и отзывов
+- **WordPress API** - получение данных о товарах
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## 🚨 Найденные проблемы
 
-## Learn More
+### Кнопки без действий
+1. **Компонент `src/components/hero/pod_zakaz.tsx`** - полностью пустой компонент, не содержит никакого контента
+2. **Компонент `src/components/hero/otzivishki.tsx`** - компонент с закомментированным контентом
 
-To learn more about Next.js, take a look at the following resources:
+### Модальное окно для заявки
+Найдено в файле `src/pages/avtodom/[...slug].tsx` (строки 605-621):
+```tsx
+<Modal isOpen={modalIsOpen} onClose={() => setModalIsOpen(false)}>
+    <h2>Modal Content</h2>
+    <form action="" className={'transition duration-700 ease-in-out'}>
+        <input type="text" name="dfsd" id="dsf"/>
+        <input type="text" name='sads'/>
+        <textarea className={'hidden'}>
+            {/* Список выбранных дополнений */}
+        </textarea>
+        <input type="submit" value="Оставить заявку"/>
+    </form>
+</Modal>
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🛠 Установка и запуск
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+```bash
+# Установка зависимостей
+npm install
+# или
+yarn install
 
-## Deploy on Vercel
+# Запуск в режиме разработки
+npm run dev
+# или
+yarn dev
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+# Сборка для продакшена
+npm run build
+# или
+yarn build
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+# Запуск продакшен версии
+npm start
+# или
+yarn start
+```
+
+Откройте [http://localhost:3000](http://localhost:3000) в браузере.
+
+## 📝 API
+
+Проект использует WordPress API для получения данных:
+- `https://1caravan.ru/wp-json/api/v2/doma/index` - список товаров
+- `https://1caravan.ru/wp-json/api/v2/doma/{slug}` - детальная информация о товаре
+- `https://1caravan.ru/wp-json/api/v2/posts/related` - связанные посты
+
+## 🎨 Стилизация
+
+Проект использует:
+- **Tailwind CSS** для утилитарных стилей
+- **CSS Modules** для компонентных стилей
+- **Framer Motion** для анимаций
+
+## 📱 Адаптивность
+
+Сайт полностью адаптивен и корректно отображается на всех устройствах благодаря использованию Tailwind CSS.
+
+## 📝 Формы заявок
+
+### Типы форм
+1. **Форма заявки на товар** (`ApplicationForm.tsx`) - для конкретного товара с дополнениями
+2. **Простая форма заявки** (`SimpleApplicationForm.tsx`) - для базовых заявок
+3. **Форма подбора каравана** (`CaravanSelectionForm.tsx`) - для консультации по подбору
+
+### Поля форм
+- **Имя** (обязательное) - для обращения к клиенту
+- **Телефон** (обязательное) - для связи
+- **Дополнительная информация** (необязательное) - для вопросов и пожеланий
+
+### Отправка уведомлений
+Все формы автоматически отправляют уведомления:
+- **Email** - красивые HTML-письма с полной информацией
+- **Telegram** - структурированные сообщения с эмодзи
+
+## 🔧 Рекомендации по улучшению
+
+1. **Удалить пустые компоненты** - `pod_zakaz.tsx` и `otzivishki.tsx`
+2. **Добавить обработку ошибок** для API запросов
+3. **Улучшить типизацию** - убрать `@ts-ignore` комментарии
+4. **Добавить тесты** для критических компонентов
+
+## 📄 Лицензия
+
+Проект разработан студией "АП-Студия.рф" для компании "Первый караван".
