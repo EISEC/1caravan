@@ -23,6 +23,7 @@ export default function App({Component, pageProps}: AppProps) {
 
     return (
         <>
+            {/* @ts-ignore */}
             <Provider store={store}>
                 {/*// @ts-ignore*/}
                 <PersistWrapper wrapperConfig={npConfig}>
@@ -32,6 +33,7 @@ export default function App({Component, pageProps}: AppProps) {
                       }
                     `}
                     </style>
+                    {/* @ts-ignore */}
                     <DefaultSeo
                         titleTemplate='%s | Первый караван'
                         defaultTitle='Первый караван'
@@ -43,6 +45,7 @@ export default function App({Component, pageProps}: AppProps) {
                             siteName: 'Первый караван',
                         }}
                     />
+                    {/* @ts-ignore */}
                     <NavigationLoader/>
                     {/* @ts-ignore */}
                     <Component {...pageProps} />

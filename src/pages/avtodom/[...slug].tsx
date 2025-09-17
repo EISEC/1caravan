@@ -46,6 +46,7 @@ export default function Post({post}) {
 
     const dispatch = useAppDispatch();
 
+    const disabled = true;
 
     const [thumbsSwiper, setThumbsSwiper] = useState(null);
 
@@ -544,7 +545,7 @@ export default function Post({post}) {
                     </div>
                 </section>
 
-                {!isMobile ? <section className={'container mx-auto my-3 px-4'}>
+                {!disabled ? <section className={'container mx-auto my-3 px-4'}>
                     <h2 className={'text-xl font-bold pb-2 px-4'}>Дополнительно можно оборудовать:</h2>
                     <div className={'flex flex-col gap-6 rounded-md p-2 mb-[20px]'}>
                         <ul className={'font-medium grid grid-cols-2 md:grid-cols-4 gap-3'}>

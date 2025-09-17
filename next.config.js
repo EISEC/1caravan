@@ -3,7 +3,7 @@ const nextConfig = {
     reactStrictMode: false,
     swcMinify: true,
     optimizeFonts: true,
-    output: 'standalone',
+    trailingSlash: false,
     images: {
         formats: ['image/avif', 'image/webp'],
         remotePatterns: [
@@ -13,6 +13,14 @@ const nextConfig = {
             },
         ],
         minimumCacheTTL: 1500000,
+    },
+    async rewrites() {
+        return [
+            {
+                source: '/tavary',
+                destination: '/tavary',
+            },
+        ]
     },
 }
 

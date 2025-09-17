@@ -71,14 +71,21 @@ export default function Post({post}) {
 
 // @ts-ignore
 export async function getServerSideProps({params}) {
-    const res = await fetch(`https://1caravan.ru/wp-json/wp/v2/posts?slug=${params.slug}&_embed`)
-    const [post] = await res.json()
-    if (!post) {
+    try {
+        const res = await fetch(`https://1caravan.ru/wp-json/wp/v2/posts?slug=${params.slug}&_embed`)
+        const [post] = await res.json()
+        if (!post) {
+            return {
+                notFound: true
+            }
+        }
+        return {
+            props: {post}, // will be passed to the page component as props
+        }
+    } catch (error) {
+        console.error('Error fetching post:', error)
         return {
             notFound: true
         }
-    }
-    return {
-        props: {post, revalidate: 1}, // will be passed to the page component as props
     }
 }
