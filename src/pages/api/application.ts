@@ -2,6 +2,7 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import { getNotificationConfig, ApplicationData } from '@/config/notifications';
 import nodemailer from 'nodemailer';
 import axios from 'axios';
+import { sendToAmoCRM, formatApplicationDataForAmoCRM } from '@/utils/amocrm';
 
 // Валидация данных заявки
 const validateApplicationData = (data: any): ApplicationData | null => {
@@ -120,6 +121,17 @@ const sendEmail = async (applicationData: ApplicationData): Promise<boolean> => 
   }
 };
 
+// Отправка в AmoCRM
+const sendToAmoCRMHandler = async (applicationData: ApplicationData): Promise<boolean> => {
+  try {
+    const amocrmData = formatApplicationDataForAmoCRM(applicationData);
+    return await sendToAmoCRM(amocrmData);
+  } catch (error) {
+    console.error('Error sending to AmoCRM:', error);
+    return false;
+  }
+};
+
 // Отправка в Telegram
 const sendTelegram = async (applicationData: ApplicationData): Promise<boolean> => {
   const config = getNotificationConfig();
@@ -202,11 +214,13 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     // Отправка уведомлений
     const emailSent = await sendEmail(applicationData);
     const telegramSent = await sendTelegram(applicationData);
+    const amocrmSent = await sendToAmoCRMHandler(applicationData);
 
     // Логирование результата
     console.log('Application processed:', {
       emailSent,
       telegramSent,
+      amocrmSent,
       timestamp: applicationData.timestamp,
     });
 
@@ -214,6 +228,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       success: true,
       emailSent,
       telegramSent,
+      amocrmSent,
       message: 'Application submitted successfully',
     });
   } catch (error) {
