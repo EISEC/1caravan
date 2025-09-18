@@ -55,7 +55,7 @@ const SectionQuiz = () => {
 
 
     return (
-        <section className={`container mx-auto flex my-[40px] gap-2 ${isMobileMenu ? 'flex-col-reverse gap-[40px]': 'flex-row'}`}>
+        <section className={`container mx-auto flex items-center my-[40px] gap-2 ${isMobileMenu ? 'flex-col-reverse gap-[40px]': 'flex-row'}`}>
             <div className={'piasd'}>
                 {/*// @ts-ignore*/}
                 <iframe id={'yandex'} className={'piframe'}

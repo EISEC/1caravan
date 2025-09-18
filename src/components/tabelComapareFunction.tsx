@@ -96,69 +96,101 @@ const TabelComapareFunction = ({arr}: TabelComapareFunctionProps) => {
         dispatch(delet({slug, title, price, img}));
     }
     return (
-        <table className={'min-w-[1280px]'}>
-            <thead>
-            <tr className={'text-xl text-left border-b-2 border-black'}>
-                <td></td>
-                {arr.map((el: any) => {
-                    return (
-                        <td key={el.id}>
-                            <button
-                                onClick={() => deletCompare(el.slug, el.title, el.price, el.img)}
-                                className={'flex flex-row border-red-700 border-2 p-2 rounded items-center justify-center gap-2 disabled:bg-red-200 disabled:text-white disabled:border-red-200 disabled:cursor-no-drop transition hover:scale-90'}>
-                                <FaRegTrashAlt className={'text-red-700'}/></button>
-                            <Link
-                                href={{
-                                    pathname: "/avtodom/[...slug]",
-                                    query: {slug: el.slug},
-                                }}>
-                                <div className="flex justify-center relative rounded-lg overflow-hidden h-64">
-                                    <div
-                                        className="transition-transform duration-500 transform ease-in-out hover:scale-110 w-full">
-                                        <div className="absolute inset-0">
-                                            <Image src={el.img} alt={el.title} fill/>
+        <div className="overflow-x-auto">
+            <table className="w-full" style={{ minWidth: `${360 + (arr.length * 360)}px` }}>
+                <thead>
+                <tr className="bg-gray-50 border-b-2 border-gray-200">
+                    <th className="p-4 text-left font-semibold text-gray-700 sticky left-0 bg-gray-50 z-10 border-r-2 border-gray-200" style={{ minWidth: '360px', width: '360px' }}>
+                        Характеристика
+                    </th>
+                    {arr.map((el: CaravanData) => {
+                        return (
+                            <th key={el.id} className="p-4" style={{ minWidth: '360px', width: '360px' }}>
+                                {/* Кнопка удаления */}
+                                <div className="flex justify-end mb-3">
+                                    <button
+                                        onClick={() => deletCompare(el.slug, el.title, el.price, el.img)}
+                                        className="flex items-center gap-2 px-3 py-1 bg-red-100 text-red-700 rounded-lg hover:bg-red-200 transition-colors text-sm"
+                                        title="Удалить из сравнения"
+                                    >
+                                        <FaRegTrashAlt className="w-3 h-3"/>
+                                        Удалить
+                                    </button>
+                                </div>
+                                
+                                {/* Карточка каравана */}
+                                <Link
+                                    href={{
+                                        pathname: "/avtodom/[...slug]",
+                                        query: {slug: el.slug},
+                                    }}
+                                    className="block group"
+                                >
+                                    <div className="relative rounded-lg overflow-hidden bg-gray-100 aspect-[4/3] mb-3">
+                                        <Image 
+                                            src={el.img} 
+                                            alt={el.title} 
+                                            fill
+                                            className="object-cover group-hover:scale-105 transition-transform duration-300"
+                                        />
+                                        
+                                        {/* Статус каравана */}
+                                        <span className={`absolute top-2 left-2 px-2 py-1 rounded-full text-xs font-medium ${
+                                            el.acf.status === 'Выбрать' ? 'bg-green-500' : 
+                                            el.acf.status === 'Забронирован' ? 'bg-yellow-500' : 
+                                            el.acf.status === 'Под заказ' ? 'bg-gray-500' : 
+                                            el.acf.status === 'В пути' ? 'bg-blue-500' : 
+                                            'bg-red-500'
+                                        } text-white`}>
+                                            {el.acf.status === 'Выбрать' ? 'В наличии' : el.acf.status}
+                                        </span>
+                                    </div>
+                                    
+                                    {/* Название и цена */}
+                                    <div className="text-center">
+                                        <h3 className="font-semibold text-gray-800 mb-2 line-clamp-2 group-hover:text-blue-600 transition-colors">
+                                            {el.title}
+                                        </h3>
+                                        <div className="text-lg font-bold text-green-600">
+                                            {el.prices_sale 
+                                                ? `${getFormatPrice(el.prices_sale)} ₽` 
+                                                : `${getFormatPrice(el.price)} ₽`
+                                            }
                                         </div>
                                     </div>
-
-                                    {/*Статус каравана*/}
-                                    <span
-                                        className={`absolute top-0 left-0 inline-flex mt-3 ml-3 px-3 py-2 rounded-lg z-10 ${el.acf.status === 'Выбрать' ? 'bg-green-800' : el.acf.status === 'Забронирован' ? 'bg-yellow-500' : el.acf.status === 'Под заказ' ? 'bg-gray-400' : el.acf.status === 'В пути' ? 'bg-green-800' : 'bg-red-500'} text-sm font-medium text-white select-none`}>
-                                    {el.acf.status === 'Выбрать' ? 'В наличии' : el.acf.status}
-                                </span>
-                                </div>
-                                <h3 className="font-medium text-base md:text-lg text-gray-800 line-clamp-1"
-                                    title={el.title}>
-                                    {el.title}
-                                </h3>
-                            </Link>
-                        </td>
+                                </Link>
+                            </th>
+                        )
+                    })}
+                </tr>
+                </thead>
+                <tbody>
+                {newArr.map((el: string, idx: number) => {
+                    return (
+                        <tr key={idx} className="border-b border-gray-200 hover:bg-gray-50 transition-colors">
+                            <td className="p-4 font-medium text-gray-700 bg-gray-50 sticky left-0 z-10 border-r-2 border-gray-200" style={{ minWidth: '360px', width: '360px' }}>
+                                {deletnenuzh(el)}
+                            </td>
+                            {arr && arr.map((item: CaravanData) => {
+                                return (
+                                    <td key={item.id} className="p-4 text-center" style={{ minWidth: '360px', width: '360px' }}>
+                                        <div className="text-gray-800">
+                                            {el === 'price' 
+                                                ? (item.prices_sale 
+                                                    ? `${getFormatPrice(item.prices_sale)} ₽` 
+                                                    : `${getFormatPrice(item.price)} ₽`)
+                                                : proverka(item.acf[el])
+                                            }
+                                        </div>
+                                    </td>
+                                )
+                            })}
+                        </tr>
                     )
                 })}
-            </tr>
-            </thead>
-            <tbody>
-            {newArr.map((el: string, idx: number) => {
-                return (
-                    <tr key={idx} className={'border-b-[1px] border-gray-950'}>
-                        <td className={'w-[350px]'}>{deletnenuzh(el)}</td>
-                        {arr && arr.map((item: CaravanData) => {
-                            return (
-                                <td key={item.id}
-                                    className={'w-[350px] border-gray-950 border-l-[1px] p-2 align-baseline'}>
-                                    {el === 'price' 
-                                        ? (item.prices_sale 
-                                            ? `${getFormatPrice(item.prices_sale)} ₽` 
-                                            : `${getFormatPrice(item.price)} ₽`)
-                                        : proverka(item.acf[el])
-                                    }
-                                </td>
-                            )
-                        })}
-                    </tr>
-                )
-            })}
-            </tbody>
-        </table>
+                </tbody>
+            </table>
+        </div>
     );
 };
 
